@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <link href="https://ui.decentraland.org/styles.css" rel="stylesheet" />
+    <title>Decentraland - Contract Links</title>
+    <style>
+      html {
+        margin: 20px;
+      }
+      h1 {
+        text-align: center;
+      }
+      h2 {
+        margin: 30px 0 20px 0 !important;
+        text-transform: capitalize;
+      }
+      a {
+        margin-top: 5px;
+        text-decoration: underline;
+      }
+      span {
+        cursor: pointer;
+        font-style: italic;
+        margin-left: 8px;
+        font-size: 10px;
+        vertical-align: top;
+      }
+      @media (max-width: 768px) {
+        span {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <h1>Decentraland - Contract Links</h1>
+    <div id="app"></div>
+
+    <script>
+      const app = document.getElementById('app')
+      const baseURLs = {
+        mainnet: 'https://etherscan.io/address/',
+        goerli: 'https://goerli.etherscan.io/address/',
+        sepolia: 'https://sepolia.etherscan.io/address/',
+        matic: 'https://polygonscan.com/address/',
+        mumbai: 'https://explorer-mumbai.maticvigil.com/address/',
+        amoy: 'https://www.oklink.com/amoy/address/'
+      }
+      const copyToClipboard = str => {
+        const el = document.createElement('textarea')
+        el.value = str
+        el.setAttribute('readonly', '')
+        el.style.position = 'absolute'
+        el.style.left = '-9999px'
+        document.body.appendChild(el)
+        el.select()
+        document.execCommand('copy')
+        document.body.removeChild(el)
+      }
+
+      async function fetchContractLinks() {
+        const res = await fetch(
+          'https://contracts.decentraland.org/addresses.json'
+        )
+        const contracts = await res.json()
+        Object.keys(contracts).map(net => {
+          const addresses = contracts[net]
+          const baseURL = baseURLs[net]
+          const div = document.createElement('div')
+          const h2 = document.createElement('h2')
+          const t = document.createTextNode(net)
+          h2.appendChild(t)
+          div.appendChild(h2)
+
+          Object.keys(addresses).map(name => {
+            const address = addresses[name]
+            const p = document.createElement('p')
+
+            const a = document.createElement('a')
+            a.text = name
+            a.href = baseURL + address
+            a.target = '_blank'
+
+            const t = document.createTextNode(' | ' + address)
+
+            const span = document.createElement('span')
+            span.appendChild(document.createTextNode('[copy address]'))
+            span.onclick = () => copyToClipboard(address)
+
+            p.appendChild(a)
+            p.appendChild(t)
+            p.appendChild(span)
+
+            div.appendChild(p)
+          })
+          app.appendChild(div)
+        })
+      }
+      fetchContractLinks()
+    </script>
+  </body>
+</html>

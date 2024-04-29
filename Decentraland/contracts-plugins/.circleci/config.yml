@@ -1,0 +1,75 @@
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:10.16.3
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - v2-dependencies-{{ checksum "package-lock.json" }}
+      - run:
+          name: Install system dependencies
+          command: sudo apt-get update && sudo apt install -y libusb-1.0-0 libusb-1.0-0-dev
+
+      - run:
+          name: Install packages
+          command: npm install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v2-dependencies-{{ checksum "package-lock.json" }}
+
+      # run tests!
+      - run:
+          name: Run tests
+          command: npm run test
+
+  release:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:10.16.3
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v2-dependencies-{{ checksum "package-lock.json" }}
+
+      - run:
+          name: Install system dependencies
+          command: sudo apt-get update && sudo apt install -y libusb-1.0-0 libusb-1.0-0-dev
+
+      - run:
+          name: Install packages
+          command: npm install
+
+      - run:
+          name: Build
+          command: npm run build
+
+      - run:
+          name: Semantic release
+          command: npm run semantic-release
+
+workflows:
+  version: 2
+  test-build-release:
+    jobs:
+      - build
+      - release:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - master

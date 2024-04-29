@@ -1,0 +1,8 @@
+node_modules/
+build/
+wrangler.toml
+proofs.json
+dist
+.nyc_output
+lcov.info
+.DS_Store

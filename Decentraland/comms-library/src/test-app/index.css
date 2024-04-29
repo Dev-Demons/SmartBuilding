@@ -1,0 +1,9 @@
+@import url('https://unpkg.com/xp.css');
+
+button, input {
+  -webkit-font-smoothing: none!important;
+}
+
+body {
+  background: #ece9d8;
+}

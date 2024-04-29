@@ -1,0 +1,6 @@
+test
+tsconfig.json
+tsconfig-build.json
+scripts
+/src
+.circleci

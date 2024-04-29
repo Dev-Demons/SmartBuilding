@@ -1,0 +1,38 @@
+{
+  "name": "crashbot",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node --trace-warnings --abort-on-uncaught-exception --unhandled-rejections=strict dist/index.js",
+    "test": "jest --forceExit --detectOpenHandles --coverage --verbose --passWithNoTests",
+    "migrate": "node-pg-migrate --database-url-var PG_COMPONENT_PSQL_CONNECTION_STRING --envPath .env -j ts --tsconfig tsconfig.json -m ./src/migrations",
+    "lint:check": "eslint '**/*.{js,ts}'",
+    "lint:fix": "eslint '**/*.{js,ts}' --fix"
+  },
+  "devDependencies": {
+    "@dcl/eslint-config": "^1.1.13",
+    "@types/node": "^20.10.1",
+    "@well-known-components/test-helpers": "^1.5.4",
+    "typescript": "^5.3.2"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none",
+    "tabWidth": 2
+  },
+  "dependencies": {
+    "@slack/bolt": "^3.15.0",
+    "@well-known-components/env-config-provider": "^1.2.0",
+    "@well-known-components/http-server": "^2.0.0",
+    "@well-known-components/interfaces": "^1.1.1",
+    "@well-known-components/logger": "^3.0.0",
+    "@well-known-components/metrics": "^2.0.1",
+    "@well-known-components/pg-component": "^0.2.1",
+    "node-pg-migrate": "^6.2.2",
+    "pg": "^8.8.0",
+    "sql-template-strings": "^2.2.2",
+    "ts-node": "^10.9.1"
+  }
+}

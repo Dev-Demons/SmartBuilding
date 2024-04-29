@@ -1,0 +1,9 @@
+node_modules
+dist
+package-lock.json
+coverage
+build
+.nyc_output
+proofs.json
+scripts/proof.json
+scripts/content_hashes.json

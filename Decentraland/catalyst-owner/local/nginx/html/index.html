@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Catalyst Server">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌎</text></svg>">
+  <title>Catalyst server status</title>
+  <style type="text/css">
+    body {
+      margin: 40px auto;
+      max-width: 650px;
+      line-height: 1.6;
+      font-size: 18px;
+      color: #2e2e2e;
+      padding: 0 10px
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.2;
+      font-family: Georgia, serif;
+    }
+
+    p {
+      font-family: Roboto, sans-serif;
+      font-size: 16px;
+    }
+
+    h1 {
+      color: #0e3802;
+    }
+
+    h2 {
+      color: #176700;
+    }
+
+    h3 {
+      color: #287a11;
+    }
+
+    a {
+      color: #636363;
+    }
+
+    a:visited {
+      color: #636363;
+    }
+
+    a:hover {
+      color: #0b6dd4;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><span id="catalyst-name">Server status...</span></h1>
+    <h2 id="catalyst-nick"></h2>
+  </header>
+  <section>
+    <p>Current users: <span id="user-count">loading...</span></p>
+    <p>Server accepting users: <span id="user-acceptance">loading...</span></p>
+    <p>Network: <span id="network">loading...</span></p>
+    <p>Protocol: <span id="protocol">loading...</span></p>
+  </section>
+  <section>
+    <h3>Content server: <span id="content-status">loading...</span></h3>
+    <p>Version: <span id="content-version">loading...</span></p>
+    <p>Commit hash: <span id="content-hash">loading...</span></p>
+    <p>Public URL: <span id="content-url">loading...</span></p>
+  </section>
+  <section>
+    <h3>Lambdas server: <span id="lambda-status">loading...</span></h3>
+    <p>Version: <span id="lambda-version">loading...</span></p>
+    <p>Commit hash: <span id="lambda-hash">loading...</span></p>
+    <p>Public URL: <span id="lambda-url">loading...</span></p>
+  </section>
+  <script type="text/javascript" async="">
+    ; (function (window, document) {
+      function load () {
+        document.getElementById('catalyst-name').innerText = window.location.host
+        const catalystNickSpan = document.getElementById('catalyst-nick')
+        const currentUsersDiv = document.getElementById('user-count')
+        const userAcceptanceDiv = document.getElementById('user-acceptance')
+        const networkDiv = document.getElementById('network')
+        const protocolDiv = document.getElementById('protocol')
+        const contentStatusDiv = document.getElementById('content-status')
+        const contentVersionDiv = document.getElementById('content-version')
+        const contentHashDiv = document.getElementById('content-hash')
+        const contentUrlDiv = document.getElementById('content-url')
+        const lambdaStatusDiv = document.getElementById('lambda-status')
+        const lambdaVersionDiv = document.getElementById('lambda-version')
+        const lambdaHashDiv = document.getElementById('lambda-hash')
+        const lambdaUrlDiv = document.getElementById('lambda-url')
+        ; (async function fill() {
+          try {
+            const request = await fetch('/about')
+            const _ = await request.json()
+            catalystNickSpan.innerText = 'Server status for "' + _.configurations.realmName + '"'
+            currentUsersDiv.innerText = _.bff.userCount
+            userAcceptanceDiv.innerText = _.acceptingUsers
+            networkDiv.innerText = (_.configurations.networkId === 1) ? 'mainnet' : ('test: ' + _.configurations.networkId)
+            protocolDiv.innerText = _.bff.protocolVersion
+            contentStatusDiv.innerText = _.content.healthy ? 'healthy' : 'needs attention (unhealthy)'
+            contentVersionDiv.innerText = _.content.version
+            contentHashDiv.innerText = _.content.commitHash
+            contentUrlDiv.innerText = _.content.publicUrl
+            lambdaStatusDiv.innerText = _.lambdas.healthy ? 'healthy' : 'needs attention (unhealthy)'
+            lambdaVersionDiv.innerText = _.lambdas.version
+            lambdaHashDiv.innerText = _.lambdas.commitHash
+            lambdaUrlDiv.innerText = _.lambdas.publicUrl
+          } catch (e) {
+            currentUsersDiv.innerText = '(unknown)'
+            userAcceptanceDiv.innerText = '(unknown)'
+            networkDiv.innerText = '(unknown)'
+            protocolDiv.innerText = '(unknown)'
+            contentStatusDiv.innerText = 'Down'
+            contentVersionDiv.innerText = '(unknown)'
+            contentHashDiv.innerText = '(unknown)'
+            contentUrlDiv.innerText = '(unknown)'
+            lambdaStatusDiv.innerText = 'Down'
+            lambdaVersionDiv.innerText = '(unknown)'
+            lambdaHashDiv.innerText = '(unknown)'
+            lambdaUrlDiv.innerText = '(unknown)'
+          }
+        })()
+      }
+      window.load = load
+      window.addEventListener('load', load)
+    })(window, window.document);
+  </script>
+</body>
+</html>

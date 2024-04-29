@@ -1,0 +1,16 @@
+{
+  "extends": "@dcl/eslint-config/sdk",
+  "parserOptions": {
+    "project": [
+      // Specify it only for TypeScript files
+      "tsconfig.json",
+      "test/tsconfig.json"
+    ]
+  },
+  "rules": {
+    // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
+    "@typescript-eslint/no-inferrable-types": 0,
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-floating-promises": 2
+  }
+}
