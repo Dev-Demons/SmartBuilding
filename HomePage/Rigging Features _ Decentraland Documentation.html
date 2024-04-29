@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)https://docs.decentraland.org/creator/emotes/rig-features/ -->
+<html lang="en-us" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Features about the avatar rig and downloadable file.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Rigging Features">
+<meta property="og:description" content="Features about the avatar rig and downloadable file.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://docs.decentraland.org/creator/emotes/rig-features/"><meta property="og:image" content="https://docs.decentraland.org/images/og-logo.png"><meta property="article:section" content="creator">
+<meta property="article:published_time" content="2022-09-01T00:00:00+00:00">
+<meta property="article:modified_time" content="2024-04-26T15:50:40-03:00">
+<title>Rigging Features | Decentraland Documentation</title>
+<link rel="manifest" href="https://docs.decentraland.org/manifest.json">
+<link rel="icon" href="https://docs.decentraland.org/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="./Rigging Features _ Decentraland Documentation_files/book.min.f4a0fa25275edf7eefd0c816f2b982b64e30ef636c0f9b489628b69493e386d8.css" integrity="sha256-9KD6JSde337v0MgW8rmCtk4w72NsD5tIlii2lJPjhtg=" crossorigin="anonymous">
+<script type="text/javascript" async="" src="./Rigging Features _ Decentraland Documentation_files/z0h94kay"></script><script type="text/javascript" src="./Rigging Features _ Decentraland Documentation_files/js" async="" status="loaded"></script><script type="text/javascript" src="./Rigging Features _ Decentraland Documentation_files/f0c61fdd103acbce8883.js.download" async="" status="loaded"></script><script type="text/javascript" async="" src="./Rigging Features _ Decentraland Documentation_files/analytics.min.js.download"></script><script defer="" src="./Rigging Features _ Decentraland Documentation_files/lunr.min.js.download"></script>
+<script defer="" src="./Rigging Features _ Decentraland Documentation_files/en.search.min.6b52c5e340880f4d4309bc4e386aa11630e533e615b71c3010e55438bc701f63.js.download" integrity="sha256-a1LF40CID01DCbxOOGqhFjDlM+YVtxwwEOVUOLxwH2M=" crossorigin="anonymous"></script>
+<script>
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="ZHLrnVct1IQCx7yLeOzxSic7G1Duy0HH";;analytics.SNIPPET_VERSION="4.15.3";
+  analytics.load("ZHLrnVct1IQCx7yLeOzxSic7G1Duy0HH");
+  analytics.page();
+  }}();
+</script>
+<script defer="" src="./Rigging Features _ Decentraland Documentation_files/intercom.min.47bd2edf568b96bf76004cf88a0feac89cc3aa30d7e89a0aaf8fa0e22627387c.js.download" integrity="sha256-R70u31aLlr92AEz4ig/qyJzDqjDX6JoKr4+g4iYnOHw=" crossorigin="anonymous"></script>
+
+</head>
+<body dir="ltr">
+<input type="checkbox" class="hidden toggle" id="menu-control">
+<input type="checkbox" class="hidden toggle" id="toc-control">
+<div class="dcl navbar fullscreen" role="navigation">
+<div class="ui container">
+<div class="dcl navbar-menu">
+<div class="ui secondary stackable menu">
+<a class="dcl navbar-logo" href="https://decentraland.org/">
+<i class="dcl logo"></i>
+</a>
+<div class="item">
+<a href="https://market.decentraland.org/" class="item">Marketplace</a>
+<div class="item submenu">
+<div class="ui vertical menu">
+<a href="https://market.decentraland.org/" class="item">Overview</a>
+<a href="https://market.decentraland.org/browse" class="item">Collectibles</a>
+<a href="https://market.decentraland.org/lands" class="item">LAND</a>
+<a href="https://market.decentraland.org/account" class="item">My Assets</a>
+</div>
+</div>
+</div>
+<div class="item">
+<a href="https://builder.decentraland.org/" class="item">Builder</a>
+<div class="item submenu">
+<div class="ui vertical menu">
+<a href="https://builder.decentraland.org/" class="item">Overview</a>
+<a href="https://builder.decentraland.org/collections" class="item">Collections</a>
+<a href="https://builder.decentraland.org/scenes" class="item">Scenes</a>
+<a href="https://builder.decentraland.org/land" class="item">Land</a>
+<a href="https://builder.decentraland.org/names" class="item">Names</a>
+<a href="https://builder.decentraland.org/worlds" class="item">Worlds</a>
+</div>
+</div>
+</div>
+<div class="item">
+<a href="https://docs.decentraland.org/" class="active item">Docs</a>
+<div class="item submenu">
+<div class="ui vertical menu">
+<a href="https://docs.decentraland.org/player" class="item">Players</a>
+<a href="https://docs.decentraland.org/creator" class="item">Content Creators</a>
+<a href="https://docs.decentraland.org/contributor" class="item">Contributors</a>
+<a href="https://studios.decentraland.org/" class="item">Studios</a>
+</div>
+</div>
+</div>
+<div class="item">
+<a href="https://places.decentraland.org/" class="item">Places</a>
+<div class="item submenu">
+<div class="ui vertical menu">
+<a href="https://places.decentraland.org/" class="item">Overview</a>
+<a href="https://places.decentraland.org/places" class="item">Places</a>
+<a href="https://places.decentraland.org/worlds" class="item">Worlds</a>
+<a href="https://docs.decentraland.org/creator/places/faq" class="item">FAQ</a>
+</div>
+</div>
+</div>
+<div class="item">
+<a href="https://events.decentraland.org/" class="item">Events</a>
+</div>
+<div class="item">
+<a href="https://dao.decentraland.org/" class="item">DAO</a>
+<div class="item submenu">
+<div class="ui vertical menu">
+<a href="https://dao.decentraland.org/" class="item">Overview</a>
+<a href="https://governance.decentraland.org/" class="item">Governance</a>
+<a href="https://governance.decentraland.org/transparency" class="item">Transparency</a>
+</div>
+</div>
+</div>
+<div class="item">
+<a href="https://decentraland.org/blog" class="item">Blog</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function(){var e=document.querySelectorAll(".dcl.navbar .dcl.navbar-menu .ui.menu > div.item");e.forEach(e=>{e.querySelectorAll("a.item").forEach(t=>{var n=e.querySelector("a.item");t.addEventListener("click",function(e){window.analytics&&window.analytics.track("Clicked on navbar",{section:n.textContent.toLowerCase(),submenu:n.textContent!==e.target.textContent?e.target.textContent.toLowerCase():void 0})})})})})()
+</script>
+<div class="tabs-header">
+<div class="dcl tabs ">
+<div class="ui container">
+<div class="dcl tab active" style="border-color: transparent">
+<a aria-current="page" class="tabs-navigation" href="https://docs.decentraland.org/player">Players</a>
+</div>
+<div class="dcl tab active">
+<a aria-current="page" class="tabs-navigation" href="https://docs.decentraland.org/creator">Content Creators</a>
+<div class="active-bar" style="border-color: #4947CD;"></div>
+<style>
+                :root {
+                  --primary: #4947CD;
+                }
+              </style>
+</div>
+<div class="dcl tab active" style="border-color: transparent">
+<a aria-current="page" class="tabs-navigation" href="https://docs.decentraland.org/contributor">Contributors</a>
+</div>
+<div class="book-search">
+<div id="search-overlay" class="hidden"></div>
+<div id="book-search-input">
+<img src="./Rigging Features _ Decentraland Documentation_files/search.svg" class="book-icon" alt="Search">
+<input type="text" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/">
+</div>
+<div class="book-search-spinner hidden"></div>
+<div id="book-search-results">
+<div id="book-search-hits" class="hidden" tabindex="0">
+<ul id="book-search-list"></ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<main class="container flex">
+<aside class="book-menu sidebar">
+<div class="book-menu-content">
+<nav>
+<ul>
+<li>
+<span>Wearables &amp; Emotes</span>
+<ul>
+<li>
+<input type="checkbox" id="section-5238408129bdbe7a41bd58cdbed95be1" class="toggle">
+<label for="section-5238408129bdbe7a41bd58cdbed95be1" class="flex justify-between">
+<a role="button" class="">Wearables</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/wearables/wearables-overview/" class="">Wearables Overview</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/wearables/creating-wearables/" class="">Creating Wearables</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/wearables/linked-wearables/" class="">Linked wearables</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-17f08e4e58ad69e23f1096996f5c4e64" class="toggle" checked="">
+<label for="section-17f08e4e58ad69e23f1096996f5c4e64" class="flex justify-between">
+<a role="button" class="">Emotes</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/emotes/emotes-overview/" class="">Emotes Overview</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/emotes/creating-and-exporting-emotes/" class="">Creating Emotes</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/emotes/avatar-rig/" class="">Avatar Rig</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/emotes/rig-features/" class="active">Rigging Features</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/emotes/props-and-sounds/" class="">Adding Props and Sounds to your Emotes</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/emotes/particles-in-emotes/" class="">Particles in Emotes 2.0</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-57010a4fb000b586393ef3ac0e4c708e" class="toggle">
+<label for="section-57010a4fb000b586393ef3ac0e4c708e" class="flex justify-between">
+<a role="button" class="">Manage Collections</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/wearables-and-emotes/manage-collections/creating-collection/" class="">Creating a Collection</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/wearables-and-emotes/manage-collections/uploading-wearables/" class="">Uploading Wearables</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/wearables-and-emotes/manage-collections/uploading-emotes/" class="">Uploading Emotes</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/wearables-and-emotes/manage-collections/uploading-smart-wearables/" class="">Uploading Smart Wearables</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-b3bac40672f08584afca2b1951d77ffa" class="toggle">
+<label for="section-b3bac40672f08584afca2b1951d77ffa" class="flex justify-between">
+<a role="button" class="">Publishing Collections</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/wearables/publishing-collections/" class="">Publishing Collections</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/wearables/curation-committee/" class="">Curation committee</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<span>Tutorials &amp; Examples</span>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/sdk7/examples/7/" class="">Example scenes</a>
+</li>
+<li>
+<a href="https://www.youtube.com/playlist?list=PLAcRraQmr_GP_K8WN7csnKnImK4R2TgMA" class="external-link " target="_blank" rel="noopener">SDK &amp; Editor Videos<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8.311 0H11.6822C11.8577 0 12 0.142299 12 0.317821V3.68889C12 3.86441 11.8577 4.00671 11.6822 4.00671H10.8346C10.6591 4.00671 10.5168 3.86441 10.5168 3.68889V2.53189L6.16285 6.88583C6.10327 6.94545 6.02242 6.97893 5.93813 6.97893C5.8538 6.97893 5.77299 6.94545 5.71337 6.88583L5.11408 6.28651C4.98996 6.16234 4.98996 5.96114 5.11408 5.83702L9.46805 1.48317H8.311C8.13548 1.48317 7.99318 1.34087 7.99318 1.16534V0.317821C7.99318 0.142299 8.13548 0 8.311 0ZM9.95046 5.96288H10.798C10.9735 5.96288 11.1158 6.10518 11.1158 6.28074V10.1449C11.1158 11.1678 10.2835 12 9.26057 12H1.85503C0.832189 12 0 11.1678 0 10.1449V2.73941C0 1.71645 0.832147 0.884179 1.85503 0.884179H5.91703C6.09255 0.884179 6.23485 1.02648 6.23485 1.202V2.04952C6.23485 2.22505 6.09255 2.36734 5.91703 2.36734H1.85503C1.64997 2.36734 1.48318 2.53426 1.48318 2.73941V10.1448C1.48318 10.3499 1.64997 10.5168 1.85503 10.5168H9.26062C9.46572 10.5168 9.63264 10.3499 9.63264 10.1448V6.2807C9.63264 6.10518 9.77494 5.96288 9.95046 5.96288Z" fill="#0d0d17"></path>
+</svg>
+</a>
+</li>
+<li>
+<a href="https://www.youtube.com/playlist?list=PLAcRraQmr_GN8LcnnQk2BByo9L2Orvp9c" class="external-link " target="_blank" rel="noopener">Emote Videos<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8.311 0H11.6822C11.8577 0 12 0.142299 12 0.317821V3.68889C12 3.86441 11.8577 4.00671 11.6822 4.00671H10.8346C10.6591 4.00671 10.5168 3.86441 10.5168 3.68889V2.53189L6.16285 6.88583C6.10327 6.94545 6.02242 6.97893 5.93813 6.97893C5.8538 6.97893 5.77299 6.94545 5.71337 6.88583L5.11408 6.28651C4.98996 6.16234 4.98996 5.96114 5.11408 5.83702L9.46805 1.48317H8.311C8.13548 1.48317 7.99318 1.34087 7.99318 1.16534V0.317821C7.99318 0.142299 8.13548 0 8.311 0ZM9.95046 5.96288H10.798C10.9735 5.96288 11.1158 6.10518 11.1158 6.28074V10.1449C11.1158 11.1678 10.2835 12 9.26057 12H1.85503C0.832189 12 0 11.1678 0 10.1449V2.73941C0 1.71645 0.832147 0.884179 1.85503 0.884179H5.91703C6.09255 0.884179 6.23485 1.02648 6.23485 1.202V2.04952C6.23485 2.22505 6.09255 2.36734 5.91703 2.36734H1.85503C1.64997 2.36734 1.48318 2.53426 1.48318 2.73941V10.1448C1.48318 10.3499 1.64997 10.5168 1.85503 10.5168H9.26062C9.46572 10.5168 9.63264 10.3499 9.63264 10.1448V6.2807C9.63264 6.10518 9.77494 5.96288 9.95046 5.96288Z" fill="#0d0d17"></path>
+</svg>
+</a>
+</li>
+<li>
+<a href="https://github.com/decentraland-scenes/awesome-repository#tutorials" class="external-link " target="_blank" rel="noopener">Awesome Repository (Deprecated)<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8.311 0H11.6822C11.8577 0 12 0.142299 12 0.317821V3.68889C12 3.86441 11.8577 4.00671 11.6822 4.00671H10.8346C10.6591 4.00671 10.5168 3.86441 10.5168 3.68889V2.53189L6.16285 6.88583C6.10327 6.94545 6.02242 6.97893 5.93813 6.97893C5.8538 6.97893 5.77299 6.94545 5.71337 6.88583L5.11408 6.28651C4.98996 6.16234 4.98996 5.96114 5.11408 5.83702L9.46805 1.48317H8.311C8.13548 1.48317 7.99318 1.34087 7.99318 1.16534V0.317821C7.99318 0.142299 8.13548 0 8.311 0ZM9.95046 5.96288H10.798C10.9735 5.96288 11.1158 6.10518 11.1158 6.28074V10.1449C11.1158 11.1678 10.2835 12 9.26057 12H1.85503C0.832189 12 0 11.1678 0 10.1449V2.73941C0 1.71645 0.832147 0.884179 1.85503 0.884179H5.91703C6.09255 0.884179 6.23485 1.02648 6.23485 1.202V2.04952C6.23485 2.22505 6.09255 2.36734 5.91703 2.36734H1.85503C1.64997 2.36734 1.48318 2.53426 1.48318 2.73941V10.1448C1.48318 10.3499 1.64997 10.5168 1.85503 10.5168H9.26062C9.46572 10.5168 9.63264 10.3499 9.63264 10.1448V6.2807C9.63264 6.10518 9.77494 5.96288 9.95046 5.96288Z" fill="#0d0d17"></path>
+</svg>
+</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Scenes (SDK7)</span>
+<ul>
+<li>
+<input type="checkbox" id="section-b525100342227191f7fcea7ba56bb803" class="toggle">
+<label for="section-b525100342227191f7fcea7ba56bb803" class="flex justify-between">
+<a role="button" class="">Getting started</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/sdk-101/" class="">Quick start</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/dev-workflow/" class="">Development workflow</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/installation-guide/" class="">Editor Installation Guide</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/editor/" class="">Decentraland Editor</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/scene-from-example/" class="">Scene from example</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/preview-scene/" class="">Preview your scene</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/coding-scenes/" class="">Coding essentials</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/cli/" class="">Using the CLI</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-107b6725d990df022e2ce15c90ba14e8" class="toggle">
+<label for="section-107b6725d990df022e2ce15c90ba14e8" class="flex justify-between">
+<a role="button" class="">Designing the experience</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/design-experience/mvp-guidelines/" class="">Scene MVP Guidelines</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/design-experience/ux-ui-guide/" class="">UX and UI guide for creators</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/design-experience/design-games/" class="">Design constraints for games</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-0031fb5ca3e1a9901dcc4dd08b2d9fb2" class="toggle">
+<label for="section-0031fb5ca3e1a9901dcc4dd08b2d9fb2" class="flex justify-between">
+<a role="button" class="">ECS</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/entities-components/" class="">Entities and components</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/systems/" class="">Systems</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/custom-components/" class="">Custom components</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/querying-components/" class="">Querying components</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/data-oriented-programming/" class="">Data oriented programming</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-26d2ff837ef33c0c864da60b58012b08" class="toggle">
+<label for="section-26d2ff837ef33c0c864da60b58012b08" class="flex justify-between">
+<a role="button" class="">3D content essentials</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/entity-positioning/" class="">Set entity positions</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/shape-components/" class="">Shape components</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/materials/" class="">Materials via code</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/sounds/" class="">Sounds</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/3d-model-animations/" class="">Handle animations</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/color-types/" class="">Color types</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/text/" class="">Text shapes</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/move-entities/" class="">Move entities</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/special-types/" class="">Geometry types</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/colliders/" class="">Colliders</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-e2a5c62fa44576cfaf37400c3afd999c" class="toggle">
+<label for="section-e2a5c62fa44576cfaf37400c3afd999c" class="flex justify-between">
+<a role="button" class="">Debugging</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/debug-in-preview/" class="">Debug in preview</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/debug-in-prod/" class="">Debug in production</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/troubleshooting/" class="">Troubleshooting</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/report-a-bug/" class="">Report a bug</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-6a9fe17d8c1556df0ad792ec0a1ee263" class="toggle">
+<label for="section-6a9fe17d8c1556df0ad792ec0a1ee263" class="flex justify-between">
+<a role="button" class="">Media</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/audio-streaming/" class="">Audio streaming</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/video-playing/" class="">Play videos</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/display-a-certified-nft/" class="">Display an NFT</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-17cf12281279261a57549d3a62bf1f9b" class="toggle">
+<label for="section-17cf12281279261a57549d3a62bf1f9b" class="flex justify-between">
+<a role="button" class="">Optimizing</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/performance-optimization/" class="">Performance optimization</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/scene-limitations/" class="">Scene limitations</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-d988b988b9f10b302e874ddf848f6ba3" class="toggle">
+<label for="section-d988b988b9f10b302e874ddf848f6ba3" class="flex justify-between">
+<a role="button" class="">Publishing</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/publishing/" class="">Publishing a scene</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/publishing-permissions/" class="">Publishing options</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/make-discoverable/" class="">Make your scene discoverable</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/deploy-third-party/" class="">Upload a preview</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-cc0b75c7e09cf8ac4f972125fa95c4aa" class="toggle">
+<label for="section-cc0b75c7e09cf8ac4f972125fa95c4aa" class="flex justify-between">
+<a role="button" class="">Decentraland projects</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/kinds-of-projects/" class="">Kinds of Projects</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/scene-metadata/" class="">Scenes</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/scene-files/" class="">Files in a scene</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/workspaces/" class="">Workspaces</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/portable-experiences/" class="">Portable experiences</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/smart-wearables/" class="">Smart Wearables</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-0c95a08d2936e4fb6641631c7518e5c9" class="toggle">
+<label for="section-0c95a08d2936e4fb6641631c7518e5c9" class="flex justify-between">
+<a role="button" class="">Interactivity</a>
+</label>
+<ul>
+<li>
+<input type="checkbox" id="section-62db854699a952e0bb38c11370531240" class="toggle">
+<label for="section-62db854699a952e0bb38c11370531240" class="flex justify-between">
+<a role="button" class="">Input actions</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/click-events/" class="">About input actions</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/register-callback/" class="">Register callback</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/system-based-events/" class="">System based events</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/advanced-button-events/" class="">Advanced button events</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/npc-avatars/" class="">NPC Avatars</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/move-player/" class="">Move a player</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/avatar-modifiers/" class="">Modifier Areas</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/trigger-emotes/" class="">Trigger emotes</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/runtime-data/" class="">Runtime data</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/raycasting/" class="">Raycasting</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/user-data/" class="">Player data</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/external-links/" class="">Outbound links</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/event-listeners/" class="">Event listeners</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/deprecated-functions/" class="">Deprecated functions</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-8aced72970aba367ccb620ac0774d739" class="toggle">
+<label for="section-8aced72970aba367ccb620ac0774d739" class="flex justify-between">
+<a role="button" class="">Networking</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/network-connections/" class="">Network connections</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/serverless-multiplayer/" class="">Serverless Multiplayer</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/authoritative-server/" class="">3rd party servers</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-7c22809946dca82b52a0416bb19bee94" class="toggle">
+<label for="section-7c22809946dca82b52a0416bb19bee94" class="flex justify-between">
+<a role="button" class="">2D UI</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/onscreen-ui/" class="">2D UI</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/dynamic-ui/" class="">Dynamic UIs</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/ui-button-events/" class="">UI Button events</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/ui-positioning/" class="">UI Positioning</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/ui-text/" class="">UI Text</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/ui-background/" class="">UI Background</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/ui-special-elements/" class="">UI special types</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-3339f980e82707ed3f2ac8f0b7215bc6" class="toggle">
+<label for="section-3339f980e82707ed3f2ac8f0b7215bc6" class="flex justify-between">
+<a role="button" class="">Blockchain</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/scene-blockchain-operations/" class="">Scene blockchain operations</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/second-layer/" class="">Second layer blockchain</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/create-a-dapp/" class="">Create a dApp</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/deploying-your-own-transactions-server/" class="">Deploying your own transactions server</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-a9e2088c8e67585827711b1700609398" class="toggle">
+<label for="section-a9e2088c8e67585827711b1700609398" class="flex justify-between">
+<a role="button" class="">Libraries</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/libraries/manage-dependencies/" class="">Manage dependencies</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/sdk7/libraries/7/" class="">Library catalog</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/create-libraries/" class="">Create a library</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-cfc35d405c7d6b713873bbaa8ed9e303" class="toggle">
+<label for="section-cfc35d405c7d6b713873bbaa8ed9e303" class="flex justify-between">
+<a role="button" class="">Programming patterns</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/async-functions/" class="">Asynchronous code</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/mutable-data/" class="">Data mutability</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/game-objects/" class="">Game objects</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-90195531610f61ac8dbe0e10d5e228a6" class="toggle">
+<label for="section-90195531610f61ac8dbe0e10d5e228a6" class="flex justify-between">
+<a role="button" class="">Web Editor</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/web-editor/" class="">Web Editor</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/smart-items/" class="">Smart Items - Basic</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/smart-items-advanced/" class="">Smart Items - Advanced</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/editor-plus-code/" class="">Combine with code</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-76e89a14e1691ab97e791c67b7a232c7" class="toggle">
+<label for="section-76e89a14e1691ab97e791c67b7a232c7" class="flex justify-between">
+<a role="button" class="">API Reference</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/releases/releases/" class="">Release notes</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/sdk7/releases/7/" class="">API Reference SDK7</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/releases/version-agreement/" class="">Version support agreement</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/testing-guidelines/" class="">SDK7 feedback guidelines</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-203470ceeef126c8dd8cbc9c390f57b4" class="toggle">
+<label for="section-203470ceeef126c8dd8cbc9c390f57b4" class="flex justify-between">
+<a role="button" class="">Other</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sdk7/scene-analytics/" class="">Scene Analytics</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-bb199fbca80691618b9d243fc3dbf186" class="toggle">
+<label for="section-bb199fbca80691618b9d243fc3dbf186" class="flex justify-between">
+<a role="button" class="">SDK6 Scenes</a>
+</label>
+<ul>
+<li>
+<input type="checkbox" id="section-370e2ddc65b07bfae1e1a4e45be7210f" class="toggle">
+<label for="section-370e2ddc65b07bfae1e1a4e45be7210f" class="flex justify-between">
+<a role="button" class="">Getting started</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/preview-scene/" class="">Preview your scene</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/cli/" class="">Using the CLI</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-59945f441e3ad1a11e4f4ad4dea8a6c1" class="toggle">
+<label for="section-59945f441e3ad1a11e4f4ad4dea8a6c1" class="flex justify-between">
+<a role="button" class="">ECS</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/entities-components/" class="">Entities and components</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/systems/" class="">Systems</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/custom-components/" class="">Custom components</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/component-groups/" class="">Component groups</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-70bcd3586e0bd17ab633662850238c9f" class="toggle">
+<label for="section-70bcd3586e0bd17ab633662850238c9f" class="flex justify-between">
+<a role="button" class="">3D content essentials</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/entity-positioning/" class="">Set entity positions</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/shape-components/" class="">Shape components</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/materials/" class="">Materials via code</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/sounds/" class="">Sounds</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/3d-model-animations/" class="">Handle animations</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/special-types/" class="">Special types</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/move-entities/" class="">Move entities</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/text/" class="">Text shapes</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-1794a8ff3dcff28148759d9edbe03975" class="toggle">
+<label for="section-1794a8ff3dcff28148759d9edbe03975" class="flex justify-between">
+<a role="button" class="">Debugging</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/debug-in-preview/" class="">Debug in preview</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/debug-in-prod/" class="">Debug in production</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/troubleshooting/" class="">Troubleshooting</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-734c2c5e0f885d60ad25da7416a93698" class="toggle">
+<label for="section-734c2c5e0f885d60ad25da7416a93698" class="flex justify-between">
+<a role="button" class="">Media</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/audio-streaming/" class="">Audio streaming</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/video-playing/" class="">Play videos</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/display-a-certified-nft/" class="">Display an NFT</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-d41c9e9dd257ad935b0ecac1a637344b" class="toggle">
+<label for="section-d41c9e9dd257ad935b0ecac1a637344b" class="flex justify-between">
+<a role="button" class="">Publishing</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/publishing-permissions/" class="">Publishing options</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/publishing/" class="">Publishing a scene</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/deploy-third-party/" class="">Preview in Heroku</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-81e5ae4e449e727ffdfdda3212d2ec63" class="toggle">
+<label for="section-81e5ae4e449e727ffdfdda3212d2ec63" class="flex justify-between">
+<a role="button" class="">Decentraland projects</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/scene-metadata/" class="">Scenes</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/scene-files/" class="">Files in a scene</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-b65cbb78800cb595cbabf490d7aae0da" class="toggle">
+<label for="section-b65cbb78800cb595cbabf490d7aae0da" class="flex justify-between">
+<a role="button" class="">Interactivity</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/click-events/" class="">Button events</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/move-player/" class="">Move a player</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/avatar-modifiers/" class="">Modifier areas</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/trigger-emotes/" class="">Trigger emotes</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/user-data/" class="">Player data</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/external-links/" class="">Outbound links</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/raycasting/" class="">Raycasting</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/event-listeners/" class="">Event listeners</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/onscreen-ui/" class="">2D UI</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-b2ab1e1b77b780d74d0da9e7ac193da8" class="toggle">
+<label for="section-b2ab1e1b77b780d74d0da9e7ac193da8" class="flex justify-between">
+<a role="button" class="">Networking</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/network-connections/" class="">Network connections</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/remote-scene-considerations/" class="">About multiplayer scenes</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-53f68a24178a8634051243575ac00389" class="toggle">
+<label for="section-53f68a24178a8634051243575ac00389" class="flex justify-between">
+<a role="button" class="">Blockchain</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/scene-blockchain-operations/" class="">Scene blockchain operations</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/second-layer/" class="">Second layer blockchain</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-a80cdadec202411af177a687b9de8c81" class="toggle">
+<label for="section-a80cdadec202411af177a687b9de8c81" class="flex justify-between">
+<a role="button" class="">Libraries</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/scene/libraries/manage-dependencies/" class="">Manage dependencies</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/development-guide/utils/" class="">Utils library</a>
+</li>
+</ul>
+</li>
+<li>
+<input type="checkbox" id="section-0126a50da098471b50d6d433c560540a" class="toggle">
+<label for="section-0126a50da098471b50d6d433c560540a" class="flex justify-between">
+<a role="button" class="">Release notes</a>
+</label>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/releases/releases/" class="">Release notes</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<span>3D Modeling and Animations</span>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/3d-modeling/3d-models/" class="">3D Model Essentials</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/3d-modeling/meshes/" class="">Meshes</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/3d-modeling/materials/" class="">Materials</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/3d-modeling/textures/" class="">Textures</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/3d-modeling/colliders/" class="">Colliders</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/3d-modeling/animations/" class="">Animations</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/3d-modeling/create-a-rig/" class="">Create a Rig</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Worlds</span>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/worlds/about/" class="">Worlds Overview</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/worlds/cast/" class="">Decentraland Cast</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Builder</span>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/builder/builder-faq/" class="">Builder FAQ</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/builder/builder-101/" class="">Builder 101</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/builder/export/" class="">Export as code</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/builder/import-items/" class="">Import custom items</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/builder/manage-scenes/" class="">Manage Builder scenes</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/builder/smart-items/" class="">Smart items</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/builder/nfts/" class="">NFTs</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Quests</span>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/quests/overview/" class="">Quests Overview</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/quests/define/" class="">Defining a Quest</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/quests/rewards/" class="">Quest Rewards</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/quests/sdk-client/" class="">Quests SDK Library</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/quests/quest-ui/" class="">Quest HUD - SDK UI</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/quests/cli/" class="">Quests CLI</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/quests/walkthrough/" class="">Create your first quest</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/quests/manager/" class="">Quests Manager</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Rewards</span>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/rewards/overview/" class="">Rewards Overview</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/rewards/getting-started/" class="">Rewards - Getting Starting</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/rewards/users/" class="">Rewards Users and Roles</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/rewards/tx/" class="">Rewards Transactions</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/rewards/api/" class="">Rewards API</a>
+</li>
+<li>
+<a href="https://docs.decentraland.org/creator/rewards/integrations/" class="">Rewards API Integrations</a>
+</li>
+</ul>
+</li>
+<li>
+<span>Places</span>
+<ul>
+<li>
+<a href="https://docs.decentraland.org/creator/places/faq/" class="">Places FAQ</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="https://studios.decentraland.org/" class="external-link " target="_blank" rel="noopener">Metaverse Studios<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8.311 0H11.6822C11.8577 0 12 0.142299 12 0.317821V3.68889C12 3.86441 11.8577 4.00671 11.6822 4.00671H10.8346C10.6591 4.00671 10.5168 3.86441 10.5168 3.68889V2.53189L6.16285 6.88583C6.10327 6.94545 6.02242 6.97893 5.93813 6.97893C5.8538 6.97893 5.77299 6.94545 5.71337 6.88583L5.11408 6.28651C4.98996 6.16234 4.98996 5.96114 5.11408 5.83702L9.46805 1.48317H8.311C8.13548 1.48317 7.99318 1.34087 7.99318 1.16534V0.317821C7.99318 0.142299 8.13548 0 8.311 0ZM9.95046 5.96288H10.798C10.9735 5.96288 11.1158 6.10518 11.1158 6.28074V10.1449C11.1158 11.1678 10.2835 12 9.26057 12H1.85503C0.832189 12 0 11.1678 0 10.1449V2.73941C0 1.71645 0.832147 0.884179 1.85503 0.884179H5.91703C6.09255 0.884179 6.23485 1.02648 6.23485 1.202V2.04952C6.23485 2.22505 6.09255 2.36734 5.91703 2.36734H1.85503C1.64997 2.36734 1.48318 2.53426 1.48318 2.73941V10.1448C1.48318 10.3499 1.64997 10.5168 1.85503 10.5168H9.26062C9.46572 10.5168 9.63264 10.3499 9.63264 10.1448V6.2807C9.63264 6.10518 9.77494 5.96288 9.95046 5.96288Z" fill="#0d0d17"></path>
+</svg>
+</a>
+<ul>
+</ul>
+</li>
+</ul>
+</nav>
+<script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+</div>
+</aside>
+<div class="book-page">
+<header class="book-header">
+<div class="flex align-center justify-between">
+<label for="menu-control">
+<img src="./Rigging Features _ Decentraland Documentation_files/menu.svg" class="book-icon" alt="Menu">
+</label>
+<strong>Rigging Features</strong>
+<label for="toc-control">
+</label>
+</div>
+</header>
+<article class="markdown">
+<h1>Rigging Features</h1><h4 id="armature-transforms">
+Armature Transforms
+<a class="anchor" href="https://docs.decentraland.org/creator/emotes/rig-features/#armature-transforms">#</a>
+</h4>
+<p>These are the armature’s transforms in Object Mode with the controls’ setup. <strong>Do not edit this in any way</strong>. The rig should only be manipulated in Pose Mode. To avoid unwanted editing, the transforms have been locked in Object Mode.</p>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/base_armature_object_mode.png" alt="Rig 1.0 transforms."></p>
+<p><em>Rig 1.0 transforms.</em></p>
+<blockquote>
+<p><strong>Warning</strong>: <strong>Never edit the rig in Object Mode.</strong></p>
+</blockquote>
+<h4 id="bone-orientation">
+Bone Orientation
+<a class="anchor" href="https://docs.decentraland.org/creator/emotes/rig-features/#bone-orientation">#</a>
+</h4>
+<p>This is the bone orientation for Rig 1.0. As it is right now, it’s not possible to mirror behavior on the shoulders, arms, hands, or fingers.</p>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/bone_orientation_rig_1.0.png" alt="Axes for bone orientation."></p>
+<p><em>Axes for bone orientation.</em></p>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/bone_orientation_problem.gif" alt="Behavior when mirrorring poses."></p>
+<p><em>Behavior when mirrorring poses.</em></p>
+<h4 id="layers">
+Layers
+<a class="anchor" href="https://docs.decentraland.org/creator/emotes/rig-features/#layers">#</a>
+</h4>
+<p>To avoid any accidents and to make it easier to identify the controls, this rig is organized in layers that can be accessed in the <em>Object Data Properties</em> tab in Blender. The first set of layers (on the left) has all the controls needed for avatar animation. The second set (on the right) has constraint setups and the base skeleton; there’s no need to select those.</p>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/layers.png" alt="Object Data Properties tab."></p>
+<p><em>Object Data Properties tab.</em></p>
+<p>This is how it’s organized:</p>
+<ul>
+<li>1st Top Layer: here are the global controls, such as the root and spine ones, as well as shoulders. Controls with any custom attributes are also in this layer.</li>
+<li>2nd Top Layer: has all the upper body FK setup controls.</li>
+<li>2nd Bottom Layer: has all the lower body FK setup controls.</li>
+<li>3rd Top Layer: has all the upper body IK setup controls.</li>
+<li>3rd Bottom Layer: has all the lower body IK setup controls.</li>
+<li>4th Top Layer: has the finger controls.</li>
+</ul>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/layer1.png" alt="1st Top Layer."></p>
+<p><em>1st Top Layer.</em></p>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/layer2.png" alt="2nd Top Layer."></p>
+<p><em>2nd Top Layer.</em></p>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/layer2.2.png" alt="2nd Bottom Layer."></p>
+<p><em>2nd Bottom Layer.</em></p>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/layer3.png" alt="3rd Top Layer."></p>
+<p><em>3rd Top Layer.</em></p>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/layer3.2.png" alt="3rd Bottom Layer."></p>
+<p><em>3rd Bottom Layer.</em></p>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/layer6.png" alt="4th Top Layer."></p>
+<p><em>4th Top Layer.</em></p>
+<p>To see all the controls together, select all of the first top four and bottom 2nd and 3rd. To work with separate groups, select just the one you need. While going through the layers, make sure you’re selecting only <em>Layers</em>.</p>
+<blockquote>
+<p><strong>Warning</strong>: <strong>Do not select <em>Protected Layers</em>.</strong></p>
+</blockquote>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/layer4.png" alt="The first set of layers has all the controls needed for animating."></p>
+<p><em>The first set of layers has all the controls needed for animating.</em></p>
+<h4 id="controls-and-grouping">
+Controls and Grouping
+<a class="anchor" href="https://docs.decentraland.org/creator/emotes/rig-features/#controls-and-grouping">#</a>
+</h4>
+<p>Controls are non-deforming bones that drive the base skeleton. They have different colors depending on their category:</p>
+<ul>
+<li>Yellow: global controls and controls with custom attributes</li>
+<li>Green: hip (easier to identify in the spine hierarchy)</li>
+<li>Blue: controls with FK behavior</li>
+<li>Red: IK controls</li>
+<li>Pink: left side controls</li>
+<li>Orange: right side controls</li>
+</ul>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/controls_rig_1.0.png" alt="All the controls and their colors."></p>
+<p><em>All the controls and their colors.</em></p>
+<h4 id="custom-attributes-and-setup">
+Custom Attributes and Setup
+<a class="anchor" href="https://docs.decentraland.org/creator/emotes/rig-features/#custom-attributes-and-setup">#</a>
+</h4>
+<h3 id="fkik-blend">
+FK/IK Blend
+<a class="anchor" href="https://docs.decentraland.org/creator/emotes/rig-features/#fkik-blend">#</a>
+</h3>
+<p>Even though arms are usually set as FK and legs as IK, there are certain situations that will require a different setup. If the hand has to maintain a certain position, like during push ups or while climbing, the IK will be the best choice. As for the legs, while in the air, swimming or rolling, FK works best. For more flexibility and freedom in animation, this rig has an FK/IK blend in the UpperBody control, being 0 completely FK and 1 completely IK. Any other value in-between will be a blend of the two.</p>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/ik_fk_rig_1.0.png" alt="FK/IK blend for both arms and legs."></p>
+<p><em>FK/IK blend for both arms and legs.</em></p>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/IK_FK_rig_1.0.gif" alt="How the FK &amp;gt; IK Switch works."></p>
+<p><em>How the FK &gt; IK Switch works.</em></p>
+<h3 id="isolate-rotation-fk-blend">
+Isolate Rotation FK Blend
+<a class="anchor" href="https://docs.decentraland.org/creator/emotes/rig-features/#isolate-rotation-fk-blend">#</a>
+</h3>
+<p>Another custom attribute in the UpperBody control is the isolate rotation, that allows you to choose if the bone will inherit its parent’s rotation or not (while in FK). While at 0, the bone won’t inherit the rotation, while at 1 it will completely follow the parent’s behavior. Any other value in between will be a blend of the two. This is an interesting tool because it causes the FK bone to maintain its position, behaving a little like an IK.</p>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/IsoRot_rig_1.0.png" alt="Isolate rotation attribute for arms."></p>
+<p><em>Isolate rotation attribute for arms.</em></p>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/IsoRot_Arms_rig_1.0.gif" alt="How the IsoRot attribute for the arms works."></p>
+<p><em>How the IsoRot attribute for the arms works.</em></p>
+<p>The Head control also has this attribute. It’s really helpful for walk cycles, for example, since the head will keep its rotation even though the torso is twisting, making sure it’s always looking forward. Without this option, the animator would have to manually rotate the head every time the torso twists in order for it to be straight and look forward.</p>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/IsoRot_Head_rig_1.0.png" alt="Isolate rotation attribute for the head."></p>
+<p><em>Isolate rotation attribute for the head.</em></p>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/IsoRot_Head_rig_1.0.gif" alt="How the IsoRot attribute for the head works."></p>
+<p><em>How the IsoRot attribute for the head works.</em></p>
+<blockquote class="book-hint warning">
+<strong>Warning</strong>: When animating, even if all controls have been selected and key framed, these custom attributes won’t be automatically key framed. Make sure to manually insert a keyframe in each attribute so you don’t lose the pose/motion you created or, in Blender 3.1, press I, then select Location, Rotation, Scale &amp; Custom Properties.
+</blockquote>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/custom_attributes.gif" alt="In previous versions of Blender, make sure to keyframe all the controls and custom attributes!"></p>
+<p><em>In previous versions of Blender, make sure to keyframe all the controls and custom attributes!</em></p>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/custom_properties_rig_1.0.gif" alt="In Blender 3.1, to keyframe custom properties, press I, then select Location, Rotation, Scale &amp;amp; Custom Properties."></p>
+<p><em>In Blender 3.1, to keyframe custom properties, press I, then select Location, Rotation, Scale &amp; Custom Properties.</em></p>
+<p>Another solution for keyframing custom properties is selecting <em><strong>Keying</strong></em> under on the Timeline tab and on <em><strong>Active Keying Set</strong></em> select Location, Rotation, Scale &amp; Custom Properties, like shown on the gif below. That way, everytime you press I, a keyframe will be created without the pop-up menu. Since some animators prefer the menu, by default, that option is not enabled. But feel free to choose the method that suits you best.</p>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/keyframe_custom_properties.gif" alt="Keyframing with the Keying option."></p>
+<p><em>Keyframing with the Keying option.</em></p>
+<h3 id="reverse-ik-foot-setup">
+Reverse IK Foot Setup
+<a class="anchor" href="https://docs.decentraland.org/creator/emotes/rig-features/#reverse-ik-foot-setup">#</a>
+</h3>
+<p>Animating an FK foot is pretty straightforward: just grab any of the controls and rotate it. Since there’s a control for the foot and another for the toes, the animator has full control over the movements. However, for the IK it’s not so simple. The foot has to stick to the ground, while also being able to rotate on the ball and heels and side to side.</p>
+<p>This rig was set up in a way to give the animator freedom of foot movement without losing the advantages of the IK system. It consists of four controls:</p>
+<ul>
+<li>Foot roll: this control rotates the foot back and forth and side to side. To avoid bending too much on the heel or too much on the ball, a limit was set so the foot rig doesn’t break. When it reaches this limit, the foot will stop rotating.</li>
+</ul>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/foot_roll.gif" alt="Foot roll: rotate in X and it moves back and forth; rotate in Z it moves side to side."></p>
+<p><em>Foot roll: rotate in X and it moves back and forth; rotate in Z it moves side to side.</em></p>
+<ul>
+<li>Toe tip roll: rotates the foot from the tip of the toes. It only rotates forward.</li>
+</ul>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/toe_tip.gif" alt="The toe tip roll only rotates in positive X."></p>
+<p><em>The toe tip roll only rotates in positive X.</em></p>
+<ul>
+<li>Toes control: rotates the toes from the ball.</li>
+</ul>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/toes.gif" alt="Toes can be rotated in any direction."></p>
+<p><em>Toes can be rotated in any direction.</em></p>
+<ul>
+<li>Foot control: this is a global control that moves the foot as a whole. Since it’s the parent of all the other foot controls, it’ll keep any transforms while also being able to be grabbed and rotated.</li>
+</ul>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/foot.gif" alt="How the foot control works."></p>
+<p><em>How the foot control works.</em></p>
+<h3 id="locked-transforms">
+Locked Transforms
+<a class="anchor" href="https://docs.decentraland.org/creator/emotes/rig-features/#locked-transforms">#</a>
+</h3>
+<p>Some controls may have a lock symbol next to the transforms parameters, which means that those values can’t be changed. This was done to controls that should only behave in a certain way and to avoid any unwanted transformation. For example, elbows and knees are meant to rotate on just one axis, which in this case is X, and so the other axes have been locked. Other examples of controls with locked attributes are IK elbows and knees, fingers, foot roll, and toe tip.</p>
+<p>It is advised to keep these locked, but in case you want more freedom of movement, just click on the lock icon to unlock it.</p>
+<p><img src="./Rigging Features _ Decentraland Documentation_files/locked_transform.png" alt="Locked transforms in a control."></p>
+</article>
+<footer class="book-footer">
+<div class="flex flex-wrap justify-between">
+<div><a class="flex align-center" href="https://github.com/decentraland/documentation/commit/86dbc267b62c3ff66b32b916ace28b735033bc59" title="Last modified by Gabriel Díaz | April 26, 2024" target="_blank" rel="noopener">
+<img src="./Rigging Features _ Decentraland Documentation_files/calendar.svg" class="book-icon" alt="Calendar">
+<span>April 26, 2024</span>
+</a>
+</div>
+<div>
+<a class="flex align-center" href="https://github.com/decentraland/documentation/edit/main/content/creator/wearables-and-emotes/emotes/rig-features.md" target="_blank" rel="noopener">
+<img src="./Rigging Features _ Decentraland Documentation_files/edit.svg" class="book-icon" alt="Edit">
+<span>Edit this page</span>
+</a>
+</div>
+</div>
+<script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+</footer>
+<label for="menu-control" class="hidden book-menu-overlay"></label>
+</div>
+</main>
+<div class="ui container dcl footer">
+<div class="main-footer">
+<div role="listbox" aria-expanded="false" class="ui upward dropdown dcl language-dropdown" tabindex="0">
+<div aria-atomic="true" aria-live="polite" role="alert" class="divider text">
+<div class="dcl language-icon-wrapper">
+<i class="dcl language-icon en"> </i>
+<div class="language-icon-label">English</div>
+</div>
+</div>
+</div>
+<div class="links">
+<a href="https://decentraland.org/">Home</a>
+<a href="https://decentraland.org/privacy">Privacy Policy</a>
+<a href="https://decentraland.org/terms">Terms of Use</a>
+<a href="https://decentraland.org/content">Content Policy</a>
+<a href="https://decentraland.org/ethics">Code of Ethics</a>
+</div>
+</div>
+<div class="secondary-footer">
+<div class="social-links">
+<a href="https://dcl.gg/discord">
+<i class="social-icon discord"></i>
+</a>
+<a href="https://reddit.com/r/decentraland">
+<i class="social-icon reddit"></i>
+</a>
+<a href="https://github.com/decentraland">
+<i class="social-icon github"></i>
+</a>
+<a href="https://twitter.com/decentraland">
+<i class="social-icon twitter"></i>
+</a>
+</div>
+<div class="copyright">© 2023 Decentraland</div>
+</div>
+</div>
+<script defer="" src="./Rigging Features _ Decentraland Documentation_files/beacon.min.js.download" data-cf-beacon="{&quot;token&quot;: &quot;ef470b4862c74992aaa278b7c4d4c969&quot;}"></script>
+
+<iframe id="intercom-frame" style="position: absolute !important; opacity: 0 !important; width: 1px !important; height: 1px !important; top: 0 !important; left: 0 !important; border: none !important; display: block !important; z-index: -1 !important; pointer-events: none;" aria-hidden="true" tabindex="-1" title="Intercom" src="./Rigging Features _ Decentraland Documentation_files/saved_resource.html"></iframe><div class="intercom-lightweight-app"><div class="intercom-lightweight-app-launcher intercom-launcher" role="button" tabindex="0" aria-label="Open Intercom Messenger" aria-live="polite"><div class="intercom-lightweight-app-launcher-icon intercom-lightweight-app-launcher-icon-open"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 32"><path d="M28 32s-4.714-1.855-8.527-3.34H3.437C1.54 28.66 0 27.026 0 25.013V3.644C0 1.633 1.54 0 3.437 0h21.125c1.898 0 3.437 1.632 3.437 3.645v18.404H28V32zm-4.139-11.982a.88.88 0 00-1.292-.105c-.03.026-3.015 2.681-8.57 2.681-5.486 0-8.517-2.636-8.571-2.684a.88.88 0 00-1.29.107 1.01 1.01 0 00-.219.708.992.992 0 00.318.664c.142.128 3.537 3.15 9.762 3.15 6.226 0 9.621-3.022 9.763-3.15a.992.992 0 00.317-.664 1.01 1.01 0 00-.218-.707z"></path></svg></div><div class="intercom-lightweight-app-launcher-icon intercom-lightweight-app-launcher-icon-minimize"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M18.601 8.39897C18.269 8.06702 17.7309 8.06702 17.3989 8.39897L12 13.7979L6.60099 8.39897C6.26904 8.06702 5.73086 8.06702 5.39891 8.39897C5.06696 8.73091 5.06696 9.2691 5.39891 9.60105L11.3989 15.601C11.7309 15.933 12.269 15.933 12.601 15.601L18.601 9.60105C18.9329 9.2691 18.9329 8.73091 18.601 8.39897Z" fill="white"></path>
+</svg>
+</div></div><style id="intercom-lightweight-app-style" type="text/css">
+  @keyframes intercom-lightweight-app-launcher {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes intercom-lightweight-app-gradient {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes intercom-lightweight-app-messenger {
+    0% {
+      opacity: 0;
+      transform: scale(0);
+    }
+    40% {
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .intercom-lightweight-app {
+    position: fixed;
+    z-index: 2147483001;
+    width: 0;
+    height: 0;
+    font-family: intercom-font, "Helvetica Neue", "Apple Color Emoji", Helvetica, Arial, sans-serif;
+  }
+
+  .intercom-lightweight-app-gradient {
+    position: fixed;
+    z-index: 2147483002;
+    width: 500px;
+    height: 500px;
+    bottom: 0;
+    right: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at bottom right,
+      rgba(29, 39, 54, 0.16) 0%,
+      rgba(29, 39, 54, 0) 72%);
+    animation: intercom-lightweight-app-gradient 200ms ease-out;
+  }
+
+  .intercom-lightweight-app-launcher {
+    position: fixed;
+    z-index: 2147483003;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none;
+    bottom: 20px;
+    right: 20px;
+    max-width: 48px;
+    width: 48px;
+    max-height: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #FF2D55;
+    cursor: pointer;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.06), 0 2px 32px 0 rgba(0, 0, 0, 0.16);
+    transition: transform 167ms cubic-bezier(0.33, 0.00, 0.00, 1.00);
+    box-sizing: content-box;
+  }
+
+
+  .intercom-lightweight-app-launcher:hover {
+    transition: transform 250ms cubic-bezier(0.33, 0.00, 0.00, 1.00);
+    transform: scale(1.1)
+  }
+
+  .intercom-lightweight-app-launcher:active {
+    transform: scale(0.85);
+    transition: transform 134ms cubic-bezier(0.45, 0, 0.2, 1);
+  }
+
+
+  .intercom-lightweight-app-launcher:focus {
+    outline: none;
+
+    
+  }
+
+  .intercom-lightweight-app-launcher-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 48px;
+    height: 48px;
+    transition: transform 100ms linear, opacity 80ms linear;
+  }
+
+  .intercom-lightweight-app-launcher-icon-open {
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-open svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-open svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve {
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve svg {
+    height: 44px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-launcher-custom-icon-open {
+    max-height: 24px;
+    max-width: 24px;
+
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize {
+    
+        opacity: 0;
+        transform: rotate(-60deg) scale(0);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-messenger {
+    position: fixed;
+    z-index: 2147483003;
+    overflow: hidden;
+    background-color: white;
+    animation: intercom-lightweight-app-messenger 250ms cubic-bezier(0, 1, 1, 1);
+    transform-origin: bottom right;
+
+    
+        width: 400px;
+        height: calc(100% - 104px);
+        max-height: 704px;
+        min-height: 250px;
+        right: 20px;
+        bottom: 84px;
+        box-shadow: 0 5px 40px rgba(0,0,0,0.16);
+      
+
+    border-radius: 16px;
+  }
+
+  .intercom-lightweight-app-messenger-header {
+    height: 64px;
+    border-bottom: none;
+    background: #FF2D55
+
+    
+  }
+
+  .intercom-lightweight-app-messenger-footer{
+    position:absolute;
+    bottom:0;
+    width: 100%;
+    height: 80px;
+    background: #fff;
+    font-size: 14px;
+    line-height: 21px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.05);
+    
+  }
+
+  @media print {
+    .intercom-lightweight-app {
+      display: none;
+    }
+  }
+</style></div></body></html>
