@@ -1,0 +1,21 @@
+add_py_modules(
+	__init__.py
+	bytequeue.py
+	context.py
+	decorators.py
+	files.py
+	fsprinting.py
+	hash.py
+	iterators.py
+	math.py
+	observer.py
+	ordered_set.py
+	profiler.py
+	strings.py
+	struct.py
+	system.py
+	threading.py
+)
+
+add_subdirectory(filelike)
+add_subdirectory(fslike)

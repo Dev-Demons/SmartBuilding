@@ -1,0 +1,156 @@
+// Copyright 2017-2023 the openage authors. See copying.md for legal info.
+
+#pragma once
+
+#include <cstddef>
+#include <memory>
+#include <unordered_set>
+
+#include "event/eventhandler.h"
+#include "event/eventstore.h"
+#include "time/time.h"
+
+
+namespace openage::event {
+
+class Event;
+class EventEntity;
+class State;
+
+/**
+ * The core event handler for execution and execution dependencies.
+ */
+class EventQueue final {
+public:
+	class Change {
+	public:
+		Change(const std::shared_ptr<Event> &evnt,
+		       time::time_t time);
+
+		time::time_t time;
+		std::weak_ptr<Event> evnt;
+		const size_t hash;
+
+		class Hasher {
+		public:
+			size_t operator()(const Change &e) const {
+				return e.hash;
+			}
+		};
+
+		class Equal {
+		public:
+			size_t operator()(const Change &left,
+			                  const Change &right) const;
+		};
+	};
+
+	/**
+	 * Type for the set to store changes to track.
+	 */
+	using change_set = std::unordered_set<Change,
+	                                      Change::Hasher,
+	                                      Change::Equal>;
+
+
+	EventQueue();
+
+	/**
+	 * Add an event for a specified target
+	 *
+	 * A target is every single unit in the game world - so best add these events
+	 * in the constructor of the game objects.
+	 *
+	 * The `reference_time` is the time used to calculate when
+	 * the actual event time will happen by calling `eventhandler->predict_invoke_time()`!
+	 */
+	std::shared_ptr<Event> create_event(const std::shared_ptr<EventEntity> &evententity,
+	                                    const std::shared_ptr<EventHandler> &eventhandler,
+	                                    const std::shared_ptr<State> &state,
+	                                    const time::time_t &reference_time,
+	                                    const EventHandler::param_map &params);
+
+	/**
+	 * Remove the given event from the queue.
+	 */
+	void remove(const std::shared_ptr<Event> &evnt);
+
+	/**
+	 * An update to existing events has to be applied.
+	 * The execution time of this event may have changed or it
+	 * is newly created. This updates/inserts the given event
+	 * in the main queue.
+	 */
+	void enqueue(const std::shared_ptr<Event> &event);
+
+	/**
+	 * The event was just removed, add it again.
+	 * This is used for REPEAT events so that they are repeated.
+	 */
+	void reenqueue(const std::shared_ptr<Event> &event);
+
+	/**
+	 * An event target has changed, and the event shall be retriggered
+	 */
+	void add_change(const std::shared_ptr<Event> &event,
+	                const time::time_t &changed_at);
+
+	/**
+	 * Get an accessor to the running queue for state output purpose.
+	 */
+	const EventStore &get_event_queue() const;
+
+	/**
+	 * Obtain the next event from the `event_queue` that happens before `<= max_time`.
+	 */
+	std::shared_ptr<Event> take_event(const time::time_t &max_time);
+
+	/**
+	 * Get the change_set to process changes.
+	 */
+	const change_set &get_changes() const;
+
+	/**
+	 * All changes (fetched with `get_changes`) have been processed,
+	 * so we can clear the change_set.
+	 */
+	void clear_changes();
+
+	/**
+	 * Swap the `changes` and `future_changes`.
+	 */
+	void swap_changesets();
+
+private:
+	// Implement double buffering around changesets, that we do not run into deadlocks
+	// those point to the `changeset_A` and `changeset_B`.
+	change_set *changes;
+	change_set *future_changes;
+
+	// storage for the double buffer in `changes` and `future_changes`.
+	change_set changeset_A;
+	change_set changeset_B;
+
+	/**
+	 * Stores events that sleep until their dependency changes.
+	 */
+	std::unordered_set<std::shared_ptr<Event>> dependency_events;
+
+	/**
+	 * Stores events that sleep until their dependency changes, but they trigger
+	 * instantly when their dependency changes.
+	 */
+	std::unordered_set<std::shared_ptr<Event>> dependency_immediately_events;
+
+	/**
+	 * Events that fire only when triggered.
+	 */
+	std::unordered_set<std::shared_ptr<Event>> trigger_events;
+
+	/**
+	 * The universe timeline processes through this queue.
+	 */
+	EventStore event_queue;
+};
+
+} // namespace openage::event
