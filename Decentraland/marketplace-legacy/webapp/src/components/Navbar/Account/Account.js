@@ -1,0 +1,33 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+import AddressBlock from 'components/AddressBlock'
+import { walletType } from 'components/types'
+import Mana from 'components/Mana'
+import { locations } from 'locations'
+
+import './Account.css'
+
+export default class Account extends React.PureComponent {
+  static propTypes = {
+    wallet: walletType
+  }
+  render() {
+    const { wallet } = this.props
+    if (!wallet || !wallet.address || wallet.mana == null) {
+      return null
+    }
+    return (
+      <span className="Account">
+        <Link to={locations.settings()}>
+          <Mana amount={wallet.mana} />
+        </Link>
+        <AddressBlock
+          scale={6}
+          link={locations.settings()}
+          address={wallet.address}
+          hasTooltip={false}
+        />
+      </span>
+    )
+  }
+}

@@ -1,0 +1,50 @@
+name: CI/CD on PRs
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build:
+    runs-on: windows-2019
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.inputs.branch_name }}
+        lfs: true
+
+    - name: Install Vulkan SDK
+      uses: jakoch/install-vulkan-sdk-action@v1.0.0
+      with:
+        vulkan_version: 1.3.268.0
+        optional_components: com.lunarg.vulkan.vma
+        install_runtime: true
+        cache: true
+        destination: ${{ github.workspace }}/vulkan-sdt
+
+    - name: Get latest commit SHA of the branch
+      id: get_commit_sha
+      run: echo "::set-output name=sha::$(git rev-parse HEAD)"
+
+    - name: Checkout NuGet PiXYZ package
+      uses: actions/checkout@v2
+      with:
+        repository: 'decentraland/PiXYZ-NuGetPackage'
+        token: ${{ secrets.PAT_NUGET_TOKEN }}
+        path: 'PiXYZ-NuGetPackage'  
+        lfs: true
+
+    - name: Login to DockerHub
+      uses: docker/login-action@v2
+      with:
+        registry: quay.io
+        username: ${{ secrets.QUAY_USERNAME }}
+        password: ${{ secrets.QUAY_TOKEN }}
+
+    - name: Build and push
+      id: docker_build
+      run: |
+        docker build --build-arg COMMIT_HASH=${{ github.sha }} --build-arg PIXYZ_PACKAGE=./PiXYZ-NuGetPackage --build-arg VULKAN_DLL_PATH=./vulkan-sdt/1.3.268.0/runtime/x64/vulkan-1.dll -t quay.io/decentraland/lods-generator:${{ github.sha }} .
+        docker push quay.io/decentraland/lods-generator:${{ github.sha }}

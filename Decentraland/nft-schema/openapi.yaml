@@ -1,0 +1,130 @@
+openapi: 3.0.0
+info:
+  title: NFT Schema API
+  version: 1.0.0
+paths:
+  "/dar":
+    get:
+      summary: Returns a list of Digital Asset Registry (DAR) in this service.
+      operationId: dar_list
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "src/schema.json#/definitions/DARList"
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "src/schema.json#/definitions/ErrorResponse"
+  "/dar/{name}":
+    get:
+      summary: Returns the schema of the scpecified DAR
+      operationId: dar_get_by_name
+      parameters:
+        - name: name
+          in: path
+          description: name of the DAR
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "src/schema.json#/definitions/DARSchema"
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "src/schema.json#/definitions/ErrorResponse"
+  "/dar/{name}/asset/{asset_id}":
+    get:
+      summary: Returns the token and its schema
+      operationId: dar_asset_get
+      parameters:
+        - name: name
+          in: path
+          description: name of the DAR
+          required: true
+          schema:
+            type: string
+        - name: asset_id
+          in: path
+          description: Asset ID
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "src/schema.json#/definitions/AssetSchema"
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "src/schema.json#/definitions/ErrorResponse"
+  "/dar/{name}/address/{address}":
+    get:
+      summary: Returns a list of assets owned by the user
+      operationId: dar_user_asset_list
+      parameters:
+        - name: name
+          in: path
+          description: name of the DAR
+          required: true
+          schema:
+            type: string
+        - name: address
+          in: path
+          description: Address of the user
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "src/schema.json#/definitions/AssetList"
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "src/schema.json#/definitions/ErrorResponse"
+  "/address/{address}":
+    get:
+      summary: Returns a list of all the assets owned by the user
+      operationId: user_asset_list
+      parameters:
+        - name: address
+          in: path
+          description: Address of the user
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "src/schema.json#/definitions/AssetList"
+        default:
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: "src/schema.json#/definitions/ErrorResponse"

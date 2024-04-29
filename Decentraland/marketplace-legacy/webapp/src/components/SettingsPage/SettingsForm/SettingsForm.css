@@ -1,0 +1,127 @@
+.SettingsForm.form .field {
+  margin-bottom: 15px;
+}
+
+.SettingsForm.form .field > label,
+.SettingsForm .ui.dropdown > .text {
+  font-size: 16px;
+}
+
+.SettingsForm.form .ui.checkbox {
+  margin-top: 1px;
+  margin-right: 10px;
+  float: left;
+}
+
+.SettingsForm .form-group {
+  margin-bottom: 3.2em;
+}
+
+.SettingsForm .form-group .subtitle {
+  font-size: 16px;
+  color: var(--white);
+}
+
+.SettingsForm .TxStatusText {
+  font-size: 16px;
+  font-style: italic;
+}
+
+.SettingsForm .Mana {
+  font-size: 16px;
+}
+
+.SettingsForm #wallet-address {
+  color: white;
+  font-size: 16px;
+  margin-top: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.SettingsForm .authorization-checks-container {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.SettingsForm .authorization-checks > .field {
+  margin-bottom: 2em;
+}
+
+.SettingsForm .subtitle,
+.SettingsForm .authorization-checks label {
+  margin-bottom: 1em;
+  color: var(--gray);
+}
+
+.SettingsForm .authorization-checks .loader-tooltip {
+  left: -12px; /*Center of the loader circle*/
+}
+
+.SettingsForm .authorization-checks .ui.loader {
+  margin-right: 5px;
+  left: 6px;
+  top: 10px;
+  position: relative;
+  float: left;
+  display: inline-block;
+}
+
+.SettingsForm .title {
+  font-weight: 700;
+}
+
+.SettingsForm .description {
+  margin-top: 0.8em;
+  color: var(--gray);
+  font-size: 14px;
+}
+
+.SettingsForm .mana {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.SettingsForm .buy-more {
+  margin-right: 1.5em;
+}
+
+.SettingsForm .buy-more.external-link {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.SettingsForm .disabled-buy-more {
+  display: inline-block;
+}
+
+@media (max-width: 767px) {
+  .SettingsForm .authorization-checks {
+    margin-top: 25px;
+  }
+  .SettingsForm .authorization-checks:first-child {
+    margin-top: 0;
+  }
+
+  .SettingsForm .Mana {
+    margin-top: 8px;
+  }
+}
+
+@media (min-width: 767px) {
+  .SettingsForm .mana-actions {
+    margin-left: 88px;
+  }
+
+  .SettingsForm .description {
+    width: 70%;
+  }
+
+  .SettingsForm .authorization-checks {
+    margin-right: 20px;
+  }
+  .SettingsForm .authorization-checks:last-child {
+    margin-right: 0;
+  }
+}

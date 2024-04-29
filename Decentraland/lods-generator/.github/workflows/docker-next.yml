@@ -1,0 +1,29 @@
+name: CI/CD on main branch
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_hash:
+        description: 'Commit hash to re-tag'
+        required: true
+
+jobs:
+  quay-build-push:
+    runs-on: windows-2019
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          registry: quay.io
+          username: ${{ secrets.QUAY_USERNAME }}
+          password: ${{ secrets.QUAY_TOKEN }}
+
+      - name: Mark published image as next
+        run: |
+          COMMIT_HASH=${{ github.event.inputs.commit_hash }}
+          docker pull quay.io/decentraland/lods-generator:${COMMIT_HASH}
+          docker tag quay.io/decentraland/lods-generator:${COMMIT_HASH} quay.io/decentraland/lods-generator:next
+          docker push quay.io/decentraland/lods-generator:next

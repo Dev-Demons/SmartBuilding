@@ -1,0 +1,27 @@
+.ui.secondary.pointing.menu .item,
+.ui.secondary.pointing.menu .item:hover {
+  color: white !important;
+}
+
+.ui.secondary.pointing.menu .item:focus,
+.ui.secondary.pointing.menu .item:active {
+  outline: none;
+}
+
+.ui.secondary.pointing.menu .active.item,
+.ui.secondary.pointing.menu .active.item:hover {
+  border-color: var(--red);
+  color: var(--red) !important;
+  cursor: pointer;
+}
+
+.ui.dropdown .item,
+.ui.dropdown .item,
+.ui.dropdown .item:hover {
+  border: none !important;
+  color: black !important;
+}
+
+.ui.menu .ui.item {
+  font-family: var(--font-family);
+}

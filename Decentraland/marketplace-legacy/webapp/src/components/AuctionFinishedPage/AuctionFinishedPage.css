@@ -1,0 +1,45 @@
+.AuctionFinishedPage {
+  margin: auto;
+  background: var(--background);
+  width: 100%;
+  max-width: 600px;
+  padding: 50px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.AuctionFinishedPage .title {
+  font-size: 2.4em;
+}
+
+.AuctionFinishedPage .description {
+  max-width: 768px;
+  margin: auto;
+}
+
+.AuctionFinishedPage .stats {
+  margin: 35px 0 40px 0;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.AuctionFinishedPage .stat {
+  margin: 10px 0;
+}
+
+.AuctionFinishedPage .stat p:first-child {
+  font-weight: 500;
+  font-size: 2em;
+  margin-bottom: 0;
+}
+
+.AuctionFinishedPage .stat p.days {
+  text-transform: capitalize;
+}
+
+@media (min-width: 767px) {
+  .AuctionFinishedPage .stats {
+    flex-direction: row;
+  }
+}

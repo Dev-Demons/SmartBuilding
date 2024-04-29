@@ -1,0 +1,35 @@
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - '*'
+
+name: Publish NPM package
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      NODE_AUTH_TOKEN: stub
+    steps:
+      - uses: actions/checkout@master
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+          cache: npm
+      - name: install
+        run:  make install
+      - name: check code lint
+        run:  make lint
+      - name: build
+        run:  make build test
+      - name: remove server dependencies
+        run:  make remove-deps
+      - name: Publish
+        uses: menduz/oddish-action@master
+        with:
+          registry-url: "https://registry.npmjs.org"
+          access: public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

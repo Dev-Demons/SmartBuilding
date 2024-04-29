@@ -1,0 +1,17 @@
+.DS_Store
+.idea
+data
+postgres_data
+out
+newrelic_agent.log
+/node_modules/
+
+.env
+
+/.idea/
+
+/webapp/.idea/
+
+*.todo
+*.TODO
+

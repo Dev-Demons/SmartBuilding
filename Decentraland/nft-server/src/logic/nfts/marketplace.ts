@@ -1,0 +1,300 @@
+import {
+  BodyShape,
+  Network,
+  NFTCategory,
+  NFTFilters,
+  NFTSortBy,
+  Rarity,
+  WearableCategory,
+} from '@dcl/schemas'
+import { NFTResult } from '../../ports/nfts/types'
+import { getId, NFT_DEFAULT_SORT_BY } from '../../ports/nfts/utils'
+import { OrderFragment } from '../../ports/orders/types'
+import {
+  fromOrderFragment,
+  getMarketplaceOrderFields,
+} from '../../ports/orders/utils'
+import { getMarketplaceChainId } from '../chainIds'
+import { isOrderExpired } from '../expiration'
+import { capitalize } from '../string'
+
+export const PROHIBITED_SORT_BYS = [
+  NFTSortBy.MAX_RENTAL_PRICE,
+  NFTSortBy.MIN_RENTAL_PRICE,
+  NFTSortBy.RENTAL_LISTING_DATE,
+  NFTSortBy.RENTAL_DATE,
+]
+
+export const getMarketplaceFields = () => `
+  fragment marketplaceFields on NFT {
+    id
+    name
+    image
+    contractAddress
+    tokenId
+    category
+    owner {
+      address
+    }
+    parcel {
+      x
+      y
+      data {
+        description
+      }
+      estate {
+        tokenId
+        data {
+          name
+        }
+      }
+    }
+    estate {
+      size
+      parcels {
+        x
+        y
+      }
+      data {
+        description
+      }
+    }
+    wearable {
+      description
+      category
+      rarity
+      bodyShapes
+    }
+    ens {
+      subdomain
+    }
+    createdAt
+    updatedAt
+    soldAt
+    searchOrderPrice
+    searchOrderCreatedAt
+  }
+`
+
+export const getMarketplaceFragment = () => `
+  fragment marketplaceFragment on NFT {
+    ...marketplaceFields
+    activeOrder {
+      ...orderFields
+    }
+  }
+  ${getMarketplaceFields()}
+  ${getMarketplaceOrderFields()}
+`
+
+export type MarketplaceNFTFields = {
+  id: string
+  name: string | null
+  image: string | null
+  contractAddress: string
+  tokenId: string
+  category: NFTCategory
+  owner: { address: string }
+  parcel?: {
+    x: string
+    y: string
+    data: {
+      description: string
+    } | null
+    estate: {
+      tokenId: string
+      data: {
+        name: string | null
+      } | null
+    } | null
+  }
+  estate?: {
+    size: number
+    parcels: { x: string; y: string }[]
+    data: {
+      description: string
+    } | null
+  }
+  wearable?: {
+    description: string
+    category: WearableCategory
+    rarity: Rarity
+    bodyShapes: BodyShape[]
+  }
+  ens?: {
+    subdomain: string
+  }
+  createdAt: string
+  updatedAt: string
+  soldAt: string
+  searchOrderPrice: string
+  searchOrderCreatedAt: string
+}
+
+export type MarketplaceNFTFragment = MarketplaceNFTFields & {
+  activeOrder: OrderFragment | null
+}
+
+export function getMarketplaceOrderBy(
+  sortBy?: NFTSortBy
+): keyof MarketplaceNFTFragment {
+  switch (sortBy) {
+    case NFTSortBy.NEWEST:
+      return 'createdAt'
+    case NFTSortBy.NAME:
+      return 'name'
+    case NFTSortBy.RECENTLY_LISTED:
+      return 'searchOrderCreatedAt'
+    case NFTSortBy.CHEAPEST:
+      return 'searchOrderPrice'
+    case NFTSortBy.RECENTLY_SOLD:
+      return 'soldAt'
+    default:
+      return getMarketplaceOrderBy(NFT_DEFAULT_SORT_BY)
+  }
+}
+
+export const getMarketplaceFiltersValidation = (filters: NFTFilters) => {
+  const { wearableCategory } = filters
+  // There aren't any HANDS_WEAR wearables in the marketplace subgraph as its only available
+  // for new versions of wearables. If the wearableCategory filter is hands_wear we shouldn't
+  // fetch marketplace graph
+  return wearableCategory !== WearableCategory.HANDS_WEAR
+}
+
+export function fromMarketplaceNFTFragment(
+  fragment: MarketplaceNFTFragment,
+  caller?: string
+): NFTResult {
+  const result: NFTResult = {
+    nft: {
+      id: getId(fragment.contractAddress, fragment.tokenId),
+      tokenId: fragment.tokenId,
+      contractAddress: fragment.contractAddress,
+      activeOrderId:
+        fragment.activeOrder &&
+        ((caller &&
+          caller === fragment.owner.address.toLowerCase() &&
+          fragment.activeOrder.expiresAt.length === 13) ||
+          !isOrderExpired(fragment.activeOrder.expiresAt))
+          ? fragment.activeOrder.id
+          : null,
+      openRentalId: null,
+      owner: fragment.owner.address.toLowerCase(),
+      name: fragment.name || capitalize(fragment.category),
+      image: fragment.image || '',
+      url: `/contracts/${fragment.contractAddress}/tokens/${fragment.tokenId}`,
+      data: {
+        parcel: fragment.parcel
+          ? {
+              description:
+                (fragment.parcel.data && fragment.parcel.data.description) ||
+                null,
+              x: fragment.parcel.x,
+              y: fragment.parcel.y,
+              estate: fragment.parcel.estate
+                ? {
+                    tokenId: fragment.parcel.estate.tokenId,
+                    name:
+                      (fragment.parcel.estate.data &&
+                        fragment.parcel.estate.data.name) ||
+                      capitalize(NFTCategory.ESTATE),
+                  }
+                : null,
+            }
+          : undefined,
+        estate: fragment.estate
+          ? {
+              description:
+                (fragment.estate.data && fragment.estate.data.description) ||
+                null,
+              size: fragment.estate.size,
+              parcels: fragment.estate.parcels.map(({ x, y }) => ({
+                x: +x,
+                y: +y,
+              })),
+            }
+          : undefined,
+        wearable: fragment.wearable
+          ? {
+              bodyShapes: fragment.wearable.bodyShapes,
+              category: fragment.wearable.category,
+              description: fragment.wearable.description,
+              rarity: fragment.wearable.rarity,
+              isSmart: false,
+            }
+          : undefined,
+        ens: fragment.ens ? { subdomain: fragment.ens.subdomain } : undefined,
+      },
+      issuedId: null,
+      itemId: null,
+      category: fragment.category,
+      network: Network.ETHEREUM,
+      chainId: getMarketplaceChainId(),
+      createdAt: +fragment.createdAt * 1000,
+      updatedAt: +fragment.updatedAt * 1000,
+      soldAt: +fragment.soldAt * 1000,
+    },
+    order:
+      fragment.activeOrder &&
+      ((caller &&
+        caller === fragment.owner.address.toLowerCase() &&
+        fragment.activeOrder.expiresAt.length === 13) ||
+        !isOrderExpired(fragment.activeOrder.expiresAt))
+        ? fromMarketplaceOrderFragment(fragment.activeOrder)
+        : null,
+    rental: null,
+  }
+
+  // remove undefined data
+  for (const property of Object.keys(result.nft.data)) {
+    const key = property as keyof typeof result.nft.data
+    if (typeof result.nft.data[key] === 'undefined') {
+      delete result.nft.data[key]
+    }
+  }
+
+  return result
+}
+
+export function getMarketplaceExtraVariables(options: NFTFilters) {
+  const extraVariables: string[] = []
+  if (options.category && options.category !== NFTCategory.EMOTE) {
+    extraVariables.push('$category: Category')
+  }
+  return extraVariables
+}
+
+export function getMarketplaceExtraWhere(options: NFTFilters) {
+  const extraWhere = ['searchEstateSize_gt: 0', 'searchParcelIsInBounds: true']
+  if (options.category && options.category !== NFTCategory.EMOTE) {
+    extraWhere.push('category: $category')
+  }
+  if (options.isLand) {
+    extraWhere.push('searchIsLand: true')
+  }
+  return extraWhere
+}
+
+export function fromMarketplaceOrderFragment(fragment: OrderFragment) {
+  return fromOrderFragment(fragment, Network.ETHEREUM, getMarketplaceChainId())
+}
+
+export function marketplaceShouldFetch(filters: NFTFilters) {
+  const hasAProhibitedSortBySet =
+    filters.sortBy &&
+    PROHIBITED_SORT_BYS.includes(filters.sortBy as unknown as NFTSortBy)
+  if (
+    (filters.network && filters.network !== Network.ETHEREUM) ||
+    filters.category === NFTCategory.EMOTE ||
+    filters.tenant ||
+    filters.itemId ||
+    filters.isWearableSmart ||
+    filters.isOnRent ||
+    hasAProhibitedSortBySet
+  ) {
+    return false
+  }
+
+  return true
+}

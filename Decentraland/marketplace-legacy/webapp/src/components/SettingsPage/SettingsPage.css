@@ -1,0 +1,64 @@
+.SettingsPage {
+  color: var(--text);
+}
+
+.SettingsPage .header {
+  font-weight: 100;
+}
+
+.SettingsPage > .Loading {
+  font-size: 10px;
+  top: 25%;
+}
+
+.SettingsPage .row {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.SettingsPage .column {
+  display: inline-block;
+  padding: 1em;
+}
+
+.SettingsPage form {
+  display: inline-block;
+}
+
+.SettingsPage .AddressBlock {
+  margin-right: 40px;
+  box-shadow: 0px 5px 15px 5px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .SettingsPage .row {
+    flex-flow: column nowrap;
+  }
+
+  .blockie {
+    margin: 0 auto 50px;
+  }
+
+  .SettingsPage .AddressBlock {
+    margin-right: 0px;
+  }
+
+  .SettingsPage .mana {
+    flex-flow: column nowrap;
+    align-items: flex-start;
+  }
+
+  .SettingsPage .mana .mana-actions {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    margin-top: 1em;
+  }
+
+  .SettingsPage .mana .mana-actions button {
+    margin-right: 0em;
+    margin-top: 1em;
+    width: 100%;
+  }
+}

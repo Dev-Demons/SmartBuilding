@@ -1,0 +1,117 @@
+.HomePage {
+  padding: 0 !important;
+  margin-top: -var(--navbar-height);
+}
+
+.HomePage .hero-container {
+  height: calc(100vh - 500px);
+  min-height: 128px;
+}
+
+.HomePage .hero-text,
+.HomePage .hero-image {
+  position: absolute;
+  height: calc(100vh - 440px);
+  top: calc(0px - var(--navbar-height));
+  left: 0;
+  right: 0;
+  min-height: 200px;
+}
+
+.HomePage .hero-text {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.HomePage .hero-text h1 {
+  text-align: center;
+  color: white;
+}
+.HomePage .hero-text p {
+  text-align: center;
+  color: var(--gray);
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+.HomePage .hero-image {
+  background-image: url('../../images/homepage.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.3;
+  box-shadow: -20px -20px 41px 2px inset;
+}
+
+.HomePage .tutorial-link {
+  margin-top: 24px;
+}
+
+.HomePage .banner-wrapper {
+  margin-bottom: 40px;
+}
+
+.HomePage .banner-wrapper .button {
+  padding: 10px 35px;
+}
+
+.HomePage .banner-wrapper a {
+  margin: auto;
+}
+
+.HomePage .publications-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.HomePage .publications-header h3 {
+  color: var(--text);
+}
+
+.HomePage .publications-header [role='button'] {
+  text-transform: uppercase;
+  color: var(--red);
+  font-size: smaller;
+  cursor: pointer;
+}
+
+.HomePage .publications-scroller {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  overflow-x: scroll;
+  height: 294px;
+}
+
+.HomePage .publications-scroller .ParcelCard,
+.HomePage .publications-scroller .EstateCard {
+  flex: none;
+  width: 224px !important;
+  margin-right: 25px;
+  overflow: initial;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .HomePage .hero-container {
+    min-height: 160px;
+  }
+}
+
+@media (max-width: 600px) {
+  .HomePage .hero-text h1 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  .HomePage .hero-text h1 {
+    font-size: 18px;
+  }
+  .HomePage .hero-text p {
+    font-size: 14px;
+  }
+}

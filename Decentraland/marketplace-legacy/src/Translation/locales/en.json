@@ -1,0 +1,653 @@
+{
+  "activity": {
+    "approve": "You can start by approving some MANA on your {settings_link}",
+    "clear": {
+      "body":
+        "Once you delete your transaction history you can't reverse the action, are you sure you want to continue?",
+      "title": "Delete transaction history"
+    },
+    "completed": "Completed",
+    "no_activity": "You have no activity yet.",
+    "pending": "Pending",
+    "start": "You are able to start trading at the {marketplace}!"
+  },
+  "address": {
+    "its_you": "It's you"
+  },
+  "asset_accept_bid": {
+    "about_to_accept_bid":
+      "You are about to accept the bid of {name} for {price}.",
+    "accept_bid_asset": "Accept bid for {asset_type}",
+    "expired": "Bid expired"
+  },
+  "asset_bid": {
+    "bid_asset": "Bid {asset_type}",
+    "errors": {
+      "maximum_expiration": "The maximum expiration date is {date} (6 months)",
+      "maximum_land_price": "The maximum {asset_name} price is {value} MANA",
+      "minimum_expiration": "The minimum expiration date is {date}",
+      "minimum_land_price": "The minimum {asset_name} price is {value} MANA"
+    },
+    "expiration": "Expiration",
+    "expiration_placeholder": "Expiration date for this publication",
+    "fingerprint_changed":
+      "This {asset_name} has been modified. Plase update or cancel the bid.",
+    "insufficient_funds":
+      "The bidder has insufficient funds to pay for the bid",
+    "list_asset": "Place a bid for the {asset_name}",
+    "not_enough": "You don't have enough MANA in your account",
+    "please_authorize":
+      "You need to go to {settings_link} and authorize the Bid contract to use MANA on your behalf before you can place a bid.",
+    "price_placeholder": "Price in MANA for this {asset_name}",
+    "set_asset_price": "Set a price and an expiration date for {asset_name}.",
+    "set_new_asset_price":
+      "Set the new price or expiration date for {asset_name}.",
+    "update_asset": "Update {asset_name} bid"
+  },
+  "asset_buy": {
+    "about_to_buy": "You are about to buy {name} {price}.",
+    "allowed_balance": "Your allowance is {allowance}",
+    "buy_asset": "Buy {asset_type}",
+    "buy_mana": "{click_here} to buy some MANA.",
+    "didnt_allow": "You haven't authorized MANA usage",
+    "didnt_allow_new_marketplace":
+      "You haven't authorized MANA usage for the new version of the Marketplace",
+    "needs_at_least":
+      "You need at least {mana} in order to buy this {asset_type}.",
+    "please_allow":
+      "Please go to {settings_link} and allow the LegacyMarketplace contract to operate MANA on your behalf",
+    "please_allow_new_marketplace":
+      "Please go to {settings_link} and allow the Marketplace contract to operate MANA on your behalf",
+    "total_balance": "Your balance is {balance}"
+  },
+  "asset_cancel": {
+    "about_to_cancel": "You are about to cancel the sale of {name}.",
+    "about_to_cancel_bid": "You are about to cancel the bid for {name}.",
+    "cancel_bid": "Cancel Bid",
+    "cancel_sale": "Cancel Sale",
+    "not_bid": "You don't have an open bid for the {asset_name} {asset}.",
+    "not_for_sale": "The {asset_name} {asset} is not for sale."
+  },
+  "asset_detail": {
+    "actions": {
+      "cancel": "Cancel sale",
+      "permissions": "Permissions",
+      "sell": "Sell",
+      "transfer": "Transfer",
+      "update_price": "Update price"
+    },
+    "bid": {
+      "place": "Bid",
+      "title": "Bids"
+    },
+    "history": {
+      "auction": "Auction",
+      "event": "Event",
+      "sold": "Sold",
+      "title": "Transaction History",
+      "to": "To",
+      "when": "When"
+    },
+    "publication": {
+      "buy": "Buy"
+    }
+  },
+  "asset_edit": {
+    "errors": {
+      "description_limit":
+        "The description should be lower than {length} characters",
+      "name_max_limit": "The name should be lower than {length} characters",
+      "name_min_limit": "The name can't be empty"
+    }
+  },
+  "asset_manage": {
+    "address": "Operator address",
+    "address_permission":
+      "This address will be able to update the contents of this {asset_type}",
+    "give_permission": "Give permission to update contents of {asset_name}",
+    "manage": "Manage {asset_type}"
+  },
+  "asset_publish": {
+    "errors": {
+      "maximum_expiration": "The maximum expiration date is {date}",
+      "maximum_land_price": "The maximum {asset_name} price is {value} MANA",
+      "minimum_expiration": "The minimum expiration date is {date}",
+      "minimum_land_price": "The minimum {asset_name} price is {value} MANA"
+    },
+    "expiration": "Expiration",
+    "expiration_placeholder": "Expiration date for this publication",
+    "list_asset": "List {asset_name} for sale",
+    "please_authorize":
+      "You need to go to {settings_link} and authorize the Marketplace to operate {asset_name} on your behalf before you can list it on sale.",
+    "price_placeholder": "Price in MANA for this {asset_name}",
+    "set_asset_price": "Set a price and an expiration date for {asset_name}.",
+    "set_new_asset_price":
+      "Set the new price or expiration date for {asset_name}.",
+    "update_asset": "Update {asset_name} publication"
+  },
+  "atlas": {
+    "available_at_auction": "Available at auction",
+    "loading": "Loading",
+    "no_owner": "No Owner",
+    "on_sale": "On Sale: ",
+    "owner": "Owner: {owner}",
+    "road": "Road",
+    "your_estate": "Your estate",
+    "your_parcel": "Your parcel",
+    "has_access": "You have access"
+  },
+  "auction": {
+    "description_after_finish": "The LAND auction has ended!",
+    "description_after_start":
+      "The LAND auction has started, participate and buy LAND before it ends!",
+    "description_before_start":
+      "Participate in the LAND auction on December 10 and buy LAND!",
+    "title": "Decentraland LAND Auction"
+  },
+  "auction_finished": {
+    "cta": "Go to marketplace",
+    "description": "Thank you for participating.",
+    "land_sold": "LAND sold",
+    "mana_burned": "MANA burned",
+    "stats_title": "Here are some stats:",
+    "title": "Auction Finished"
+  },
+  "auction_modal": {
+    "auction_terms_link": "LAND Auction Terms & Conditions",
+    "authorization": "Authorization",
+    "authorization_description":
+      "Before you can purchase any LAND in the auction using {token}, you must first authorize the {contract_link} contract to access and operate it in your behalf",
+    "authorize_token": "Authorize {token} token",
+    "confirmation": "Confirmation",
+    "confirmation_description":
+      "You are about to purchase {parcels} parcels of LAND for {price} {token}",
+    "decentraland_terms_link": "Terms of Service",
+    "description":
+      "There are just two things you need to do before you can start. First, you need to select the tokens you want to buy LAND with. Next, you have to authorize a new smart contract to access those tokens when you buy LAND.",
+    "get_started": "Get started",
+    "i_agree_with_auction_terms": "I accept the {auction_terms_link}",
+    "i_agree_with_main_terms":
+      "I accept the {decentraland_terms_link} and the {privacy_policy_link}",
+    "insufficient_funds": "Insufficient funds",
+    "privacy_policy_link": "Privacy Policy",
+    "processing_tx": "Processing Transaction",
+    "submit": "Proceed",
+    "tx_failed": "Transaction Failed",
+    "video_tutorial": "Video Tutorial",
+    "watch_tutorial": "Watch video tutorial",
+    "your_balance": "Your balance is: {balance} {token}"
+  },
+  "auction_page": {
+    "available_parcels": "parcels available",
+    "bid": "Purchase",
+    "blog_post": "blog post",
+    "conversion_disclaimer": "* Price increased {fee}% due to conversion fees",
+    "description": "Find the LAND you want to buy",
+    "empty_message":
+      "Find the parcels you want to buy, and add them to your cart. For more information, watch the {video_tutorial_link} or read the {blog_post_link}",
+    "find_available_parcel": "Find available parcel",
+    "gas_price": "Max gas price",
+    "land_price": "Price per parcel",
+    "max_amount_disclaimer":
+      "* Kyber reserves for {token} are not enough to trade {amount} MANA",
+    "maximum_parcels_message":
+      "If you try to buy more than {max} LAND in a single transaction it'll fail. You must submit this transaction and then buy more parcels in a subsequent transaction.",
+    "maximum_parcels_title": "You reached the maximum LAND per transaction",
+    "parcels": "Parcels",
+    "parcels_tooltip": "You can only purchase up to {max} parcels at a time",
+    "refresh": "Refresh price",
+    "searching": "Searching...",
+    "sold": "Sold",
+    "title": "LAND Cart",
+    "token": "Token",
+    "token_tooltip": "Select the token you want to purchase LAND with",
+    "total_price": "Total price",
+    "video_tutorial": "video tutorial"
+  },
+  "auction_splash": {
+    "already_subscribed": "You are already subscribed",
+    "cta": "send",
+    "cta_title": "Enter your mail and we’ll let you know!",
+    "subscribed": "Subscribed succesfully!"
+  },
+  "authorization": {
+    "allow": "Authorize the {contract_link} to operate {symbol} on your behalf",
+    "allowed":
+      "You authorized the {contract_link} to operate {symbol} on your behalf",
+    "approve":
+      "Authorize the {contract_link} to operate {symbol} on your behalf",
+    "approved":
+      "You authorized the {contract_link} to operate {symbol} on your behalf",
+    "disallowed":
+      "You unauthorized the {contract_link} to operate {symbol} on your behalf",
+    "disapproved":
+      "You unauthorized the {contract_link} to operate {symbol} on your behalf"
+  },
+  "bid": {
+    "placed": "bids placed",
+    "received": "bids received",
+    "see_all": "See All",
+    "see_archived": "See Archives"
+  },
+  "buy_mana": {
+    "action": "Buy more",
+    "amount_too_big": "This amount is too big for the Bancor Network",
+    "available_eth": "Available: {eth} ETH",
+    "not_enough": "You don't have enough ETH to pay for this",
+    "pay_with": "Pay with",
+    "powered_by": "powered by {bancor_link}",
+    "rate": "Rate",
+    "receive": "Receive",
+    "slippage": "Slippage",
+    "title": "Convert ETH to MANA"
+  },
+  "color_key": {
+    "contribution": "Contribution",
+    "district": "District",
+    "loading": "Loading",
+    "on_sale": "On sale",
+    "plaza": "Plaza",
+    "roads": "Roads",
+    "taken": "Taken",
+    "title": "Color key",
+    "unowned": "Unowned",
+    "yours": "Yours",
+    "yours_on_sale": "Yours on sale"
+  },
+  "contribution": {
+    "proposal": "proposal"
+  },
+  "derivation_path": {
+    "invalid":
+      "You have set a wrong derivation path for your wallet. Your derivation path must follow pattern 44'/60|61'/x'/n"
+  },
+  "estate_detail": {
+    "dissolve": "Dissolve Estate",
+    "dissolve_desc": "You are going to dissolve the estate {name}",
+    "edit_parcels": "Edit Parcels",
+    "empty_estate": "The estate {name} has been dissolved",
+    "maximum_parcels_message":
+      "If you add or remove more than {max} parcels in a single transaction it may run out of gas. You can submit this transaction and then add or remove more parcels in a subsequent transaction by editing the estate.",
+    "maximum_parcels_title": "You reached the maximum parcels per transaction",
+    "parcels": "Parcels included"
+  },
+  "estate_dissolve": {
+    "too_big": "This estate is too big",
+    "too_big_desc":
+      "When an estate has over {max} parcels a transaction to dissolve it may run out of gas. You should remove parcels by editing the estate and dissolve it when it has {max} parcels or less."
+  },
+  "estate_edit": {
+    "description": "Description",
+    "edit_estate": "Edit Estate",
+    "name": "Name",
+    "subtitle": "Set a name and description for your estate."
+  },
+  "estate_select": {
+    "bids_warning":
+      "This Estate has active bids. If you add or remove parcels from it, all bids will become invalid",
+    "description": "Select parcels adjacent to each other",
+    "detail": "Estate detail",
+    "edit_selection": "Select the parcels on the map",
+    "new_selection": "Select the parcels on the map for your new Estate",
+    "tx_to_be_send":
+      "You will send a transaction to {action} parcels: {parcels}"
+  },
+  "fatfinger_modal": {
+    "bid_type": "bid",
+    "description":
+      "You are going to {listing_type} the {asset_name} for {price}",
+    "error": "Prices don't match",
+    "publication_type": "list",
+    "re-enter": "Please re-enter the price to confirm"
+  },
+  "footer": {
+    "code_of_ethics": "Code of Ethics",
+    "color_key": "Color Key",
+    "copyright": "© 2019 Decentraland. All rights reserved.",
+    "mini_copyright": "© 2019 Decentraland.",
+    "privacy_policy": "Privacy Policy",
+    "terms": "Terms & Conditions"
+  },
+  "global": {
+    "accept": "Accept",
+    "acquired_ago": "Acquired {date}",
+    "activity": "Activity",
+    "add": "add",
+    "address_placeholder": "0x...",
+    "archive": "Archive",
+    "archive_bids": "archived bids",
+    "atlas": "Atlas",
+    "auction": "Auction",
+    "balance": "Balance",
+    "bids": "Bids",
+    "blog": "Blog",
+    "cancel": "Cancel",
+    "change": "Change",
+    "check_address": "Please check the address carefully",
+    "clear": "Clear history",
+    "click_here": "Click here",
+    "community_chat": "Community Chat",
+    "confirm": "Confirm",
+    "connect": "Connect",
+    "connecting": "Connecting",
+    "continue": "Continue",
+    "contributions": "Contributions",
+    "created_at": "Created at {date}",
+    "day": "day",
+    "days": "days",
+    "duration": "Duration",
+    "edit": "Edit",
+    "email": "mail@domain.com",
+    "estate": "Estate",
+    "estates": "Estates",
+    "expired_at": "Expired {time}",
+    "expires_in": "Expires {time}",
+    "expires_in_more_than_years": "Expires in over {years} years",
+    "for": "for",
+    "from": "from",
+    "hours": "hours",
+    "land": "LAND",
+    "learn_more": "learn more",
+    "loading": "Loading",
+    "marketplace": "Marketplace",
+    "minutes": "minutes",
+    "mortgage": "Mortgage",
+    "mortgages": "Mortgages",
+    "own_address_warning": "That's your own address!",
+    "owned_by": "Owned by",
+    "owned_by_link": "Owned by {address_link}",
+    "owner_address_warning": "That's already the owner!",
+    "paid_at": "Paid at",
+    "parcels": "Parcels",
+    "price": "price",
+    "profile": "My LAND",
+    "publications": "Publications",
+    "recipient_address": "Recipient address",
+    "remove": "remove",
+    "request": "Request",
+    "retry": "Retry",
+    "revoke": "Revoke",
+    "sale": "Sale",
+    "seconds": "seconds",
+    "see_less": "See less",
+    "see_more": "See more",
+    "service_unavailable": "Service unavailable",
+    "settings": "Settings",
+    "sign_in": "Sign In",
+    "submit": "Submit",
+    "the_estate": "the estate",
+    "the_parcel": "the parcel",
+    "time_left": "Time left",
+    "transfer_irreversible":
+      "Remember that transferring is an irreversible operation.",
+    "type": "Type",
+    "unarchive": "Unarchive",
+    "unauthorized": "Unauthorized",
+    "undo": "Undo",
+    "update": "Update",
+    "wallet_address": "Wallet address",
+    "warning": "Warning",
+    "website": "Website",
+    "you": "you"
+  },
+  "homepage": {
+    "get_started": "Get Started",
+    "hero_subtitle": "Decentralized market for LAND",
+    "hero_title": "Choose your ideal location in Genesis City",
+    "newest_lands": "Newest LAND",
+    "view_more": "View More",
+    "watch_tutorial": "Watch the tutorial"
+  },
+  "languages": {
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French",
+    "ja": "Japanese",
+    "ko": "Korean",
+    "zh": "Chinese"
+  },
+  "marketplace": {
+    "empty": "Oops... nothing found here.",
+    "filter": {
+      "cheapest": "Cheapest",
+      "close_to_expire": "Closest to expire",
+      "newest": "Newest"
+    }
+  },
+  "mortgage": {
+    "amount": "Amount",
+    "amount_placeholder": "Amount in MANA",
+    "cancel": "Cancel Mortgage",
+    "claim": "Claim parcel",
+    "defaulted_in": "Default",
+    "duration_placeholder": "Duration in days",
+    "errors": {
+      "amount_minimum": "Amount should be greater than {amount}",
+      "deposit_gt_balance": "Required deposit is greater than your balance",
+      "duration_gte_payable":
+        "Duration should be greater or equal than payable at days",
+      "insufficient_funds": "You don't have enough MANA. Required: {amount}",
+      "maximum_interest_rate": "The rate should be lower than {maximum}",
+      "minimum_duration": "Duration should be greater than {minimum} days",
+      "minimum_interest_rate": "The rate should be greater than {minimum}",
+      "minimum_payable": "Payable at should be greater than {minimum} days",
+      "parcel_price": "Amount required should be less than parcel price"
+    },
+    "expiration": "Request expiration",
+    "expiration_placeholder": "Expiration date for the mortgage",
+    "fetching_data": "Fetching mortgage data",
+    "interest_rate": "Interest rate",
+    "interest_rate_placeholder": "Interest rate",
+    "network_fee":
+      "You need at least {amount} in your balance due to network fees",
+    "oracle": "Oracle contract address",
+    "outstanding_amount": "Outstanding amount",
+    "partial_payment": "Partial payment",
+    "partial_payment_desc":
+      "You are about to make a partial payment for the mortgage to buy the land {parcel_name}. Outstading amount: {outstanding_amount}",
+    "pay": "Pay",
+    "payable": "Payable at",
+    "payable_placeholder": "Payable in days",
+    "pending_tx": "The mortgage for",
+    "please_authorize_MANA":
+      "Please go to {settings_link} and and authorize the MortgageHelper contract to operate MANA on your behalf",
+    "please_authorize_RCN":
+      "Please go to {settings_link} and authorize the MortgageManager contract to operate RCN on your behalf",
+    "punitory_rate": "Punitory interest rate",
+    "punitory_rate_placeholder": "Punitory rate",
+    "request": "Requesting a Mortgage",
+    "request_land":
+      "You are about to request a mortgage for {parcel_name} valued in {parcel_price}",
+    "requested": "Requested",
+    "required_deposit": "Required deposit: {deposit}"
+  },
+  "name": {
+    "estate": "Estate",
+    "parcel": "LAND"
+  },
+  "parcel": {
+    "no_description": "No description",
+    "no_name": "No name",
+    "view": "View"
+  },
+  "parcel_detail": {
+    "actions": {
+      "create_estate": "Create Estate"
+    },
+    "description": "Description",
+    "empty_description": "This parcel has no description",
+    "owner": {
+      "no_owner": "No Owner",
+      "part_of": "Part of {name}"
+    },
+    "publication": {
+      "mortgage": "Request Mortgage"
+    },
+    "tags": {
+      "title": "Highlights"
+    },
+    "view": "View on Atlas"
+  },
+  "parcel_edit": {
+    "description": "Description",
+    "edit_land": "Edit LAND",
+    "ipns": "Content link",
+    "name": "Name",
+    "set_name_and_desc": "Set a name and description for {parcel_name}.",
+    "warning_tooltip":
+      "This will be used to show your scene. Update only if you know what you are doing."
+  },
+  "parcel_tags": {
+    "adjacent": "Adjacent",
+    "district": "District",
+    "plaza": "Plaza",
+    "proximity":
+      "{distance} {distance, plural, one {parcel} other {parcels}} away",
+    "road": "Road"
+  },
+  "profile_page": {
+    "empty": "The user has no {content}",
+    "on_sale": "On Sale"
+  },
+  "publication": {
+    "sold": "Sold",
+    "view": "View"
+  },
+  "settings": {
+    "authorization": "Authorization",
+    "authorization_error":
+      "We couldn't load your authorizations, please try again",
+    "authorization_error_contact":
+      "If the error persist don't hesitate to contact us",
+    "for_buying": "For buying",
+    "for_buying_ERC721Bid": "Assets using MANA (bid)",
+    "for_buying_LANDAuction": "LAND at the Auction using {token}",
+    "for_buying_LegacyMarketplace": "Assets using MANA (legacy)",
+    "for_buying_Marketplace": "ERC721 using MANA",
+    "for_buying_MortgageHelper": "LAND by Mortgage",
+    "for_buying_MortgageManager": "LAND by Mortgage",
+    "for_selling": "For selling",
+    "legacy_authorization": "Legacy authorization",
+    "pending_tx":
+      "Transaction pending, click the loading to go to your activity for a detailed status"
+  },
+  "sign_in": {
+    "account_unlocked": "Make sure your account is unlocked",
+    "get_started": "Get Started",
+    "intro": "First off you’ll need a safe place to keep all your LAND.",
+    "options": {
+      "desktop":
+        "You can use the {metamask_link} extension or a hardware wallet like {ledger_nano_link}.",
+      "mobile":
+        "You can use mobile browsers such as {coinbase_link}, {imtoken_link} or {trust_link}."
+    }
+  },
+  "sign_in_notice": {
+    "message": "You need to connect your wallet to access this page"
+  },
+  "terms_modal": {
+    "also_agree":
+      "You also agree to our {privacy_policy_link}, which describes how we process your information.",
+    "by_agreeing":
+      "By choosing \"I agree\" below, you agree to our {terms_of_service_link}.",
+    "explanation":
+      "This dApp interacts with a decentralized exchange that runs on the Ethereum blockchain.",
+    "i_agree": "I agree",
+    "privacy_policy": "Privacy Policy",
+    "terms_of_service": "Terms of Service",
+    "title": "Welcome to Decentraland's LAND Marketplace"
+  },
+  "transaction": {
+    "accept_bid": "You accepted a bid for {asset_link} for {price} MANA",
+    "bid":
+      "You bought {parcel_count} {parcel_count, plural, one {parcel} other {parcels}} at the auction",
+    "buy": "You bought {parcel_link}",
+    "buy_mana": "You bought {mana} MANA",
+    "cancel": "You cancelled the sale on {asset_link}",
+    "cancel_bid": "You cancelled the bid for {asset_link}",
+    "cancel_mortgage": "You cancel a Mortgage to buy the parcel {parcel_link}",
+    "claim_mortgage_resolution": "You claimed {parcel_link}",
+    "create_estate": "You created the estate {name}",
+    "create_mortgage":
+      "You requested a Mortgage to buy the parcel {parcel_link}",
+    "dissolve_estate": "You dissolved the estate {name}",
+    "edit":
+      "You edited {parcel_link} with the name \"{name}\" and description \"{description}\"",
+    "edit_estate_metadata":
+      "You edited estate {estate_id} with the name \"{name}\" and description \"{description}\"",
+    "edit_estate_parcels_added": "You added {amount} parcels to estate {name}",
+    "edit_estate_parcels_removed":
+      "You removed {amount} parcels from estate {name}",
+    "manage":
+      "You gave {address_link} permission to update the contents of {asset_link}",
+    "manage_revoked":
+      "You revoked {address_link} permission to update the contents of {asset_link}",
+    "mortgage_mana":
+      "You {action} the {mortgage_contract_link} to operate MANA on your behalf",
+    "mortgage_rcn":
+      "You {action} the {mortgage_contract_link} to operate RCN on your behalf",
+    "pay_mortgage":
+      "You made a partial payment of {amount} MANA for the mortgage to buy the parcel {parcel_link}",
+    "place_bid": "You bid {asset_link} for {price} MANA",
+    "publish": "You listed {parcel_link} for sale",
+    "transfer": "You transfered {asset_type} {asset_link} to {owner_link}",
+    "transfer_mana": "You transfered {mana} MANA to {address_link}"
+  },
+  "transaction_confirmations": {
+    "count":
+      "{confirmations_count} {confirmations_count, plural, one {confirmation} other {confirmations}}"
+  },
+  "transaction_status": {
+    "activity_page": "activity page",
+    "idle": {
+      "please_confirm": "Please confirm the transaction"
+    },
+    "parcel": {
+      "still_pending":
+        "{parcel_name} still has {transactions_count} pending {transactions_count, plural, one {transaction} other {transactions}}"
+    },
+    "see_activity":
+      "To see your transaction history, visit your {activity_link}.",
+    "text": {
+      "failed": "Your transaction failed, you can try sending a new one.",
+      "pending": "The transaction is waiting to be confirmed."
+    }
+  },
+  "transaction_tooltips": {
+    "dropped":
+      "This transaction has been dropped by the network. This could happen temporarily if you've sent a replacement transaction.",
+    "loading":
+      "Fetching transaction status. If this takes too long, you might need to send another transaction with higher gas.",
+    "queued":
+      "This transaction can't be processed yet because there is an earlier pending transaction",
+    "replaced":
+      "Another transaction with the same nonce as this one was mined instead"
+  },
+  "transaction_types": {
+    "confirmed": "Accepted",
+    "dropped": "Dropped",
+    "loading": "Loading",
+    "pending": "Pending",
+    "queued": "Queued",
+    "replaced": "Replaced",
+    "reverted": "Failed"
+  },
+  "transfer_estate": {
+    "about_to_transfer": "You're about to transfer the estate {name}.",
+    "transfer_estate": "Transfer Estate"
+  },
+  "transfer_mana": {
+    "action": "Transfer",
+    "amount": "Amount",
+    "current_balance": "Your current balance is {balance}",
+    "irreversible":
+      "Remember that transferring MANA is an irreversible operation.",
+    "is_mana_contract_address": "That's the MANA contract address",
+    "title": "Transfer MANA"
+  },
+  "transfer_parcel": {
+    "about_to_transfer": "You're about to transfer {parcel_name}.",
+    "cant_transfer": "This LAND can't be transferred because it's on sale.",
+    "transfer_land": "Transfer LAND"
+  }
+}

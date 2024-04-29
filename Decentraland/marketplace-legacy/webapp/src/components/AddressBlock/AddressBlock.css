@@ -1,0 +1,9 @@
+.AddressBlock {
+  position: relative;
+  display: inline-flex;
+  flex: 1 0 auto;
+}
+
+.AddressBlock .Blockie {
+  border-radius: 5px;
+}

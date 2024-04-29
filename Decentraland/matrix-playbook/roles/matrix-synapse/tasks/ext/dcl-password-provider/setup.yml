@@ -1,0 +1,4 @@
+---
+
+- import_tasks: "{{ role_path }}/tasks/ext/dcl-password-provider/setup_install.yml"
+  when: "use_decentraland_password_provider|bool"

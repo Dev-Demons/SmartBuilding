@@ -1,0 +1,50 @@
+.AuctionCountdown {
+  background: var(--background);
+  max-width: 600px;
+  margin: auto;
+  padding: 25px;
+  color: var(--text);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.AuctionCountdown .title {
+  font-size: 2.4em;
+}
+
+.AuctionCountdown.banner {
+  background: #232027;
+}
+
+.AuctionCountdown .countdown-wrapper {
+  margin: 25px auto;
+  white-space: nowrap;
+}
+
+.AuctionCountdown.banner .actions {
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 450px) {
+  .AuctionCountdown {
+    padding: 40px 70px;
+  }
+}
+
+@media (min-width: 992px) {
+  .AuctionCountdown.banner {
+    display: flex;
+    align-content: flex-start;
+    margin: 20px 0;
+    padding: 20px;
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .AuctionCountdown.banner .countdown-wrapper {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+  }
+}

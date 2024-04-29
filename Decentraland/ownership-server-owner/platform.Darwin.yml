@@ -1,0 +1,11 @@
+# defaults for mac, syslog is not present there
+
+version: "3.5"
+
+services:
+  nginx: &COMMON
+    logging:
+      driver: local
+  certbot: *COMMON
+  ownership-server: *COMMON
+  postgres-exporter: *COMMON

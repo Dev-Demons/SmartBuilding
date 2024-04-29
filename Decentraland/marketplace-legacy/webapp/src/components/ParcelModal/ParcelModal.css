@@ -1,0 +1,75 @@
+.ParcelModal {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.ParcelModal .modal-column {
+  display: flex;
+  flex-flow: column nowrap;
+  flex: none;
+}
+
+.ParcelModal .modal-preview {
+  width: 217px;
+  height: 217px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0px 5px 15px 5px rgba(0, 0, 0, 0.3);
+}
+
+.ParcelModal .modal-title {
+  margin: 0px 50px;
+}
+
+.ParcelModal .modal-subtitle {
+  color: var(--gray);
+  font-weight: 100;
+  font-size: 1em;
+  margin: 15px 50px;
+  display: inline-block;
+}
+
+.ParcelModal .modal-children {
+  margin: 0px 0px 0px 50px;
+}
+
+.ParcelModal .modal-buttons {
+  margin-top: 20px;
+}
+
+/* TODO: rules are duplicated on EstateModal */
+@media (max-width: 768px) {
+  .ParcelModal {
+    flex-flow: column nowrap;
+  }
+
+  .ParcelModal .modal-preview {
+    width: calc(100% - 4em);
+    margin: 2em;
+  }
+
+  .ParcelModal .modal-children {
+    margin: 0px 50px 0px 50px;
+  }
+
+  .ParcelModal .modal-buttons {
+    display: flex;
+    flex-flow: column-reverse nowrap;
+  }
+
+  .ParcelModal .modal-buttons .button {
+    margin-top: 1em;
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .ParcelModal .modal-children {
+    min-width: 420px;
+  }
+
+  .ParcelModal .modal-buttons button + button {
+    margin-left: 20px;
+  }
+}

@@ -1,0 +1,53 @@
+.ActivityPage {
+  color: var(--text);
+}
+
+@media (max-width: 768px) {
+  .ActivityPage {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  .ActivityPage.container {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+
+.ActivityPage .section-title {
+  margin-bottom: 6px;
+  font-size: 32px;
+  font-weight: 600;
+  display: flex;
+}
+
+.ActivityPage .section-subtitle {
+  margin-bottom: 10px;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.ActivityPage .empty {
+  margin-top: 40px;
+  font-size: 16px;
+  text-align: center;
+  color: var(--gray);
+}
+
+.ActivityPage .transaction-list {
+  margin-top: 48px;
+}
+
+.ActivityPage .clear-button {
+  margin-left: auto;
+}
+
+.ActivityPage .modal-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 24px 24px 0px 24px;
+}
+
+.ActivityPage .Prompt .modal-header {
+  padding: 8px 8px;
+}

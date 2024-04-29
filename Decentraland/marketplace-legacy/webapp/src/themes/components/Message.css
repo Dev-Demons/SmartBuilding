@@ -1,0 +1,35 @@
+.ui.message {
+  background-color: var(--dark-gray);
+  color: white !important;
+  padding: 1em 2em 1em 1.5em;
+}
+
+.ui.warning.message {
+  font-family: var(--font-family);
+  background-color: black;
+  color: var(--gray);
+  box-shadow: 0 0px 0px 5px rgba(0, 0, 0, 0.5) !important;
+  font-weight: 100 !important;
+  margin-bottom: 50px;
+}
+
+.ui.warning.message .content {
+  font-size: 15px;
+}
+
+.ui.warning.message .header {
+  color: white !important;
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.ui.warning.message .icon {
+  color: var(--yellow);
+}
+
+.ui.error.message {
+  background-color: var(--light-red) !important;
+  color: var(--dark-red) !important;
+  border: 2px solid var(--red);
+  box-shadow: none !important;
+}

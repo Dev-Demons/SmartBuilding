@@ -1,0 +1,98 @@
+.Transaction {
+  word-break: break-word;
+  font-size: 15px;
+}
+
+.Transaction.with-link:hover {
+  background-color: var(--dark-gray);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.Transaction .transaction-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.Transaction .transaction-text-container {
+  font-weight: 100;
+  font-size: 14px;
+  width: 100%;
+}
+
+.Transaction .parcels-link {
+  margin-right: 10px;
+}
+
+.Transaction .parcels-link:last-child {
+  margin-right: 0;
+}
+
+.Transaction .transaction-avatar {
+  width: 54px;
+  height: 54px;
+  margin-right: 15px;
+  float: left;
+  border-radius: 8px;
+  overflow: hidden;
+  flex: none;
+}
+
+.Transaction .transaction-avatar .Mana {
+  font-size: 64px;
+  margin-top: 16px;
+  margin-left: -2px;
+}
+
+.Transaction .transaction-timestamp {
+  display: inline;
+  color: var(--gray);
+  white-space: nowrap;
+}
+
+.Transaction .transaction-icon {
+  height: 100%;
+  float: right;
+  margin-top: 10px;
+}
+
+.Transaction .transaction-container-left {
+  display: flex;
+  align-items: center;
+  flex: 1 0 auto;
+  opacity: 0.5;
+  max-width: calc(100% - 140px);
+}
+
+.Transaction .transaction-text {
+  margin-right: 8px;
+}
+
+.Transaction.with-link .transaction-container-left {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .Transaction .transaction-timestamp {
+    margin-left: 0px;
+    display: block;
+  }
+
+  .Transaction .transaction-avatar {
+    margin-left: 0px;
+    display: none;
+  }
+
+  .Transaction .transaction-text-container {
+  }
+
+  .Transaction .transaction-text-container {
+    width: calc(100% - 24px);
+  }
+  .Transaction .transaction-container-left {
+    width: calc(100% - 196px);
+    max-width: 100%;
+  }
+}

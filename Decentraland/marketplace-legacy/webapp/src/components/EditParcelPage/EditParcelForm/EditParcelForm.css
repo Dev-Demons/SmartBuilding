@@ -1,0 +1,11 @@
+.EditParcelForm .ipns-input .warning.sign {
+  color: var(--yellow);
+}
+
+.EditParcelForm .ipns-input ~ .warning-tooltip {
+  position: absolute;
+  z-index: 99;
+  right: 0;
+  width: 2.6em;
+  height: 2.6em;
+}

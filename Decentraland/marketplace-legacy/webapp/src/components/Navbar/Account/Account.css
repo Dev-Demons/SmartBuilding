@@ -1,0 +1,13 @@
+.Account {
+  display: inline-flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.Account .Mana {
+  margin-right: 25px;
+}
+
+.Account .AddressBlock {
+  height: 36px;
+}

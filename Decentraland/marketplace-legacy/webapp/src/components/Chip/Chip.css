@@ -1,0 +1,80 @@
+.Chip {
+  display: flex;
+  flex-direction: row nowrap;
+  align-items: center;
+  position: relative;
+}
+
+.Chip:after {
+  display: none;
+}
+
+.Chip .attribute {
+  padding: 5px 9px 5px 7px;
+  color: var(--text);
+  border: 1px solid var(--gray);
+}
+
+.Chip.medium .attribute {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.Chip.small .attribute {
+  padding: 2px 7px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.Chip.large .attribute {
+  font-size: 16px;
+}
+
+.Chip .content {
+  border-radius: 4px;
+}
+
+.Chip.has-status .content {
+  border-right: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.Chip .status {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.Chip.clickeable {
+  cursor: pointer;
+}
+
+.Chip.clickeable:hover .content {
+  color: var(--red);
+  border-color: var(--red);
+}
+
+.Chip.deleteable .delete-button {
+  display: none;
+  font-size: 8px;
+  width: 16px;
+  height: 16px;
+  top: -9px;
+  right: -4px;
+  position: absolute;
+  border-radius: 20px;
+  background-color: #ff2d55;
+  color: var(--text);
+  cursor: pointer;
+}
+.Chip.deleteable:hover .delete-button {
+  display: flex;
+  align-items: center;
+}
+
+.Chip.deleteable .delete-button i.icon {
+  height: inherit;
+  width: inherit;
+  margin: 0 0 2px 0;
+  flex-grow: 1;
+}

@@ -1,0 +1,77 @@
+import { locations } from 'locations'
+import { t } from '@dapps/modules/translation/utils'
+import { Location } from 'lib/Location'
+
+export function getSortTypes() {
+  return Object.freeze({
+    NEWEST: t('marketplace.filter.newest'),
+    CHEAPEST: t('marketplace.filter.cheapest'),
+    CLOSEST_TO_EXPIRE: t('marketplace.filter.close_to_expire')
+  })
+}
+
+export function getSortOptions() {
+  return Object.values(getSortTypes()).map(type => ({
+    text: type,
+    value: type
+  }))
+}
+
+export function getOptionsFromSortType(type) {
+  const sortTypes = getSortTypes()
+  switch (type) {
+    case sortTypes.CHEAPEST:
+      return {
+        sortBy: 'price',
+        sortOrder: 'asc'
+      }
+    case sortTypes.CLOSEST_TO_EXPIRE:
+      return {
+        sortBy: 'expires_at',
+        sortOrder: 'asc'
+      }
+    case sortTypes.NEWEST:
+    default:
+      return {
+        sortBy: 'created_at',
+        sortOrder: 'desc'
+      }
+  }
+}
+
+export function getSortTypeFromOptions({ sortBy, sortOrder }) {
+  try {
+    return Object.values(getSortTypes())
+      .map(sortType => ({
+        sortType,
+        options: getOptionsFromSortType(sortType)
+      }))
+      .find(
+        ({ sortType, options }) =>
+          sortBy === options.sortBy && sortOrder === options.sortOrder
+      ).sortType
+  } catch (error) {
+    const sortTypes = getSortTypes()
+    return sortTypes.NEWEST
+  }
+}
+
+export function getOptionsFromRouter(location) {
+  return new Location(location).getOptionsFromRouter([
+    'limit',
+    'offset',
+    'sortBy',
+    'sortOrder',
+    'assetType',
+    'status'
+  ])
+}
+
+export function buildUrl({ page, sortBy, sortOrder, assetType }) {
+  return Location.buildUrl(locations.marketplace(), {
+    page,
+    sort_by: sortBy,
+    sort_order: sortOrder,
+    asset_type: assetType
+  })
+}

@@ -1,0 +1,54 @@
+rewrite_log on;
+
+upstream ownership-server {
+    server 0.0.0.0:1234;
+}
+
+upstream postgres-metrics {
+    server 0.0.0.0:9187;
+}
+
+upstream sink-server {
+    server 0.0.0.0:9102;
+}
+
+upstream sink-server-dev {
+    server 0.0.0.0:9103;
+}
+
+server {
+    listen 80 reuseport;
+    server_name $katalyst_host;
+
+    root /etc/nginx/html;
+
+    location /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+        allow all;
+    }
+
+    location / {
+        return 301 https://$katalyst_host$request_uri;
+    }
+}
+
+
+server {
+    listen 443 reuseport ssl;
+    http2 on;
+    server_name $katalyst_host;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+    ssl_certificate /etc/letsencrypt/live/$katalyst_host/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/$katalyst_host/privkey.pem;
+    client_max_body_size 256M;
+
+    root /etc/nginx/html;
+
+    location /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+        allow all;
+    }
+
+    include /etc/nginx/include/routes.conf;
+}

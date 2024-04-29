@@ -1,0 +1,598 @@
+# NFT Server
+
+This server is meant to aggregate data from different subgraphs under a single API.
+
+# Run the project
+
+```bash
+npm install
+```
+
+After that you'll need to up check the `.env.example` file and create your own `.env` file. Some properties have defaults. Once you're done, you can run the project!
+
+```bash
+npm start # start the server
+
+npm run start:watch # will watch for changes
+```
+
+# Modules
+
+## NFTs
+
+**Endpoint**: `/v1/nfts`
+
+**Type**:
+
+```ts
+type NFT = {
+  id: string
+  contractAddress: string
+  tokenId: string
+  activeOrderId: string | null
+  activeRentalId: string | null
+  owner: string
+  name: string
+  category: NFTCategory
+  image: string
+  url: string
+  issuedId: string | null
+  itemId: string | null
+  data: Data
+  network: Network
+  chainId: ChainId
+  createdAt: number
+  updatedAt: number
+  order: Order | null
+  rental: Rental | null
+}
+```
+
+**Query Params**:
+
+- `first`: Limit the number of results. Type: `number`.
+- `skip`: Skip results. Type: `number`.
+- `sortBy`: Sort results. Possible values: `newest`, `name`, `recently_listed`, `recently_sold`, `cheapest`.
+- `category`: Filter by `NFTCategory`. Possible values: `parcel`, `estate`, `wearable`, `ens`.
+- `owner`: Filter by owner. Type: `address`.
+- `isOnSale`: Only return results that have an open, non-expired listing. Type: `boolean`.
+- `search`: Free text search. Type: `string`.
+- `isLand`: Only return results that their `category` is either `parcel` or `estate`.
+- `isWearableHead`: Only return results that their category is `wearable` and are part of the avatar's head. Type `boolean`.
+- `isWearableAccessory`: Only return results that their category is `wearable` and accessories (not a part of the body).
+- `isWearableSmart`: Only return smart wearables. Type `boolean`.
+- `wearableCategory`: Filter results by `WearableCategory`. Possible values: `eyebrows`,`eyes`,`facial_hair`,`hair`,`mouth`,`upper_body`,`lower_body`,`feet`,`earring`,`eyewear`,`hat`,`helmet`,`mask`,`tiara`,`top_head`, `skin`, `hands_wear`.
+- `wearableGender`: Filter results by `GenderFilterOption`. It supports multiple values by adding the query param multiple times. Possible values: `male`, `female`, `unisex`.
+- `emoteCategory`: Filter results by `EmoteCategory`. Possible values: `dance`, `stunt`, `greetings`, `fun`, `poses`, `reactions`, `horror`, `miscellaneous`.
+- `emoteGender`: Filter results by `GenderFilterOption`. It supports multiple values by adding the query param multiple times. Possible values: `male`, `female`, `unisex`.
+- `emotePlayMode`: Filter results by `EmotePlayMode`. It supports multiple values by adding the query param multiple times. Possible values: `simple`, `loop`
+- `contractAddress`: Filter results by contract address. It supports multiple values by adding the query param multiple times. Type: `address`.
+- `creator`: Filter results by the creator address. It supports multiple values by adding the query param multiple times. Type: `string`.
+- `tokenId`: Filter results by `tokenId`. Type: `string`.
+- `itemRarity`: Filter results by `Rarity`. It supports multiple values by adding the query param multiple times. Possible values: `unique`, `mythic`, `legendary`, `epic`, `rare`, `uncommon`, `common`.
+- `itemId`: Filter results by `itemId`. Type `string`.
+- `network`: Filter results by `Network`. Possible values: `ETHEREUM`, `MATIC`.
+- `isOnRent`: Filter results by NFTs that are on rent. Possible values: `true`, `false`
+- `rentalStatus`: Filter results by `Rental status`. Can be used only when querying NFTs that are on rent using the `isOnRent` flag. Possible values: `open`, `executed`, `claimed`, `cancelled`.
+- `minPrice`: Filter results by minimun price. Type: `number`
+- `maxPrice`: Filter results by max price. Type: `number`
+- `adjacentToRoad`: Filter land that is next to a road. Type: `boolean`
+- `minDistanceToPlaza`: Filter land that has a distance to a plaza of minimun this value. Type: `number`
+- `maxDistanceToPlaza`: Filter land that has a distance to a plaza of maximun this value. Type `number`
+- `minEstateSize`: Filter results by minimum amount of parcels in the Estate. Type: `number`
+- `maxEstateSize`: Filter results by maximum amount of parcels in the Estate. Type: `number`
+- `rentalDays`: Filter lands that have the possibility to be rented at least one of the days listed on rentalDays. Type: `number`. Repeatable
+
+## Items
+
+**Endpoint**: `/v1/items`
+
+**Type**:
+
+```ts
+type Item = {
+  id: string
+  name: string
+  thumbnail: string
+  url: string
+  category: NFTCategory
+  contractAddress: string
+  itemId: string
+  rarity: Rarity
+  price: string
+  available: number
+  isOnSale: boolean
+  creator: string
+  data: Data
+  network: Network
+  chainId: ChainId
+  createdAt: number
+  updatedAt: number
+  reviewedAt: number
+  soldAt: number
+}
+```
+
+**Query Params**:
+
+- `first`: Limit the number of results. Type: `number`.
+- `skip`: Skip results. Type: `number`.
+- `sortBy`: Sort results. Possible values: `newest`, `recently_reviewed`, `recently_sold`, `name`, `cheapest`.
+- `creator`: Filter by creator. It supports multiple values by adding the query param multiple times. Type: `string`.
+- `rarity`: Filter results by `Rarity`. It supports multiple values by adding the query param multiple times. Possible values: `unique`, `mythic`, `legendary`, `epic`, `rare`, `uncommon`, `common`.
+- `isSoldOut`: Only return results that are sold out (all NFTs have been minted). Type: `boolean`.
+- `isOnSale`: Only return results that can be bought (`CollectionStore` has been added as minter, and there's still available supply to mint). Type: `boolean`.
+- `search`: Free text search. Type: `string`.
+- `isWearableHead`: Only return results that their category is `wearable` and are part of the avatar's head. Type `boolean`.
+- `isWearableAccessory`: Only return results that their category is `wearable` and accessories (not a part of the body).
+- `isWearableSmart`: Only return smart wearables. Type `boolean`.
+- `wearableCategory`: Filter results by `WearableCategory`. Possible values: `eyebrows`,`eyes`,`facial_hair`,`hair`,`mouth`,`upper_body`,`lower_body`,`feet`,`earring`,`eyewear`,`hat`,`helmet`,`mask`,`tiara`,`top_head`, `skin`, `hands_wear`.
+- `wearableGender`: Filter results by `GenderFilterOption`. It supports multiple values by adding the query param multiple times. Possible values: `male`, `female`, `unisex`.
+- `emoteCategory`: Filter results by `EmoteCategory`. Possible values: `dance`, `stunt`, `greetings`, `fun`, `poses`, `reactions`, `horror`, `miscellaneous`.
+- `emoteGender`: Filter results by `GenderFilterOption`. It supports multiple values by adding the query param multiple times. Possible values: `male`, `female`, `unisex`.
+- `emotePlayMode`: Filter results by `EmotePlayMode`. It supports multiple values by adding the query param multiple times. Possible values: `simple`, `loop`
+- `id`: Filter results by id. It supports multiple values by adding the query param multiple times. Type: `contractAddress-itemId`.
+- `contractAddress`: Filter results by contract address. It supports multiple values by adding the query param multiple times. Type: `address`.
+- `itemId`: Filter results by `itemId`. Type: `string`.
+- `minPrice`: Return only sales with a price higher than this. Type `number`.
+- `maxPrice`: Return only sales with a price lower than this. Type `number`.
+- `network`: Filter results by `Network`. Possible values: `ETHEREUM`, `MATIC`.
+- `urn`: Filter results by URN. It supports multiple values by adding the query param multiple times. Type: `string`.
+
+## Catalog
+
+**Endpoint**: `/v1/catalog`
+
+**Type**:
+
+```ts
+type Item = {
+  id: string
+  name: string
+  contractAddress: string
+  thumbnail: string
+  url: string
+  rarity: Rarity
+  category: NFTCategory
+  creator: string
+  data: Data
+  network: Network
+  chainId: ChainId
+  available: number
+  isOnSale: boolean
+  price: string
+  minPrice: string
+  minListingPrice: string | null
+  maxListingPrice: string | null
+  listings: number | null
+  owners: number | null
+}
+```
+
+**Query Params**:
+
+- `limit`: Limit the number of results. Type: `number`.
+- `offset`: Skip results. Type: `number`.
+- `sortBy`: Sort results. Possible values: `newest`, `recently_sold`, `cheapest`, `most_expensive`, `recently_listed`.
+- `sortDirection`: Sort direction results. Possible values: `asc`, `desc`.
+- `creator`: Filter by creator. It supports multiple values by adding the query param multiple times. Type: `string`.
+- `rarity`: Filter results by `Rarity`. It supports multiple values by adding the query param multiple times. Possible values: `unique`, `mythic`, `legendary`, `epic`, `rare`, `uncommon`, `common`.
+- `isSoldOut`: Only return results that are sold out (all NFTs have been minted). Type: `boolean`.
+- `isOnSale`: Only return results that can be bought (`CollectionStore` has been added as minter, and there's still available supply to mint). Type: `boolean`.
+- `search`: Free text search. Type: `string`.
+- `isWearableHead`: Only return results that their category is `wearable` and are part of the avatar's head. Type `boolean`.
+- `isWearableAccessory`: Only return results that their category is `wearable` and accessories (not a part of the body).
+- `isWearableSmart`: Only return smart wearables. Type `boolean`.
+- `wearableCategory`: Filter results by `WearableCategory`. Possible values: `eyebrows`,`eyes`,`facial_hair`,`hair`,`mouth`,`upper_body`,`lower_body`,`feet`,`earring`,`eyewear`,`hat`,`helmet`,`mask`,`tiara`,`top_head`, `skin`, `hands_wear`.
+- `wearableGender`: Filter results by `GenderFilterOption`. It supports multiple values by adding the query param multiple times. Possible values: `male`, `female`, `unisex`.
+- `emoteCategory`: Filter results by `EmoteCategory`. Possible values: `dance`, `stunt`, `greetings`, `fun`, `poses`, `reactions`, `horror`, `miscellaneous`.
+- `emotePlayMode`: Filter results by `EmotePlayMode`. It supports multiple values by adding the query param multiple times. Possible values: `simple`, `loop`
+- `id`: Filter results by id. It supports multiple values by adding the query param multiple times. Type: `contractAddress-itemId`.
+- `contractAddress`: Filter results by contract address. It supports multiple values by adding the query param multiple times. Type: `address`.
+- `minPrice`: Return only sales with a price higher than this. Type `number`.
+- `maxPrice`: Return only sales with a price lower than this. Type `number`.
+- `network`: Filter results by `Network`. Possible values: `ETHEREUM`, `MATIC`.
+- `onlyMinting`: Only return results that are only available for minting. Type `boolean`.
+- `onlyListing`: Only return results that have opened listing and no minting. Type `boolean`.
+
+## Orders
+
+**Endpoint**: `/v1/orders`
+
+**Type**:
+
+```ts
+type Order = {
+  id: string
+  nftId: string
+  marketplaceAddress: string
+  contractAddress: string
+  tokenId: string
+  owner: string
+  buyer: string | null
+  price: string
+  status: OrderStatus
+  expiresAt: number
+  network: Network
+  chainId: ChainId
+  createdAt: number
+  updatedAt: number
+}
+```
+
+**Query Params**:
+
+- `first`: Limit the number of results. Type: `number`.
+- `skip`: Skip results. Type: `number`.
+- `sortBy`: Sort results. Possible values: `recently_listed`, `recently_updated`, `cheapest`.
+- `marketplaceAddress`: Filter results by marketplace contract address. Type: `address`.
+- `owner`: Filter by owner. Type: `address`.
+- `buyer`: Filter by buyer. Type: `address`.
+- `contractAddress`: Filter results by contract address. Type: `address`.
+- `tokenId`: Filter results by `tokenId`. Type: `string`.
+- `status`: Filter results by `OrderStatus`. Possible values: `open`, `sold`, `cancelled`.
+- `network`: Filter results by `Network`. Possible values: `ETHEREUM`, `MATIC`.
+
+## Bids
+
+**Endpoint**: `/v1/bids`
+
+**Type**:
+
+```ts
+type Bid = {
+  id: string
+  bidAddress: string
+  bidder: string
+  seller: string
+  price: string
+  fingerprint: string
+  status: BidStatus
+  blockchainId: string
+  blockNumber: string
+  expiresAt: number
+  contractAddress: string
+  tokenId: string
+  network: Network
+  chainId: ChainId
+  createdAt: number
+  updatedAt: number
+}
+```
+
+**Query Params**:
+
+- `first`: Limit the number of results. Type: `number`.
+- `skip`: Skip results. Type: `number`.
+- `sortBy`: Sort results. Possible values: `recently_offered`, `recently_updated`, `most_expensive`.
+- `bidAddress`: Filter results by bid contract address. Type: `address`.
+- `bidder`: Filter by bidder. Type: `address`.
+- `seller`: Filter by seller. Type: `address`.
+- `contractAddress`: Filter results by contract address. Type: `address`.
+- `tokenId`: Filter results by `tokenId`. Type: `string`.
+- `status`: Filter results by `BidStatus`. Possible values: `open`, `sold`, `cancelled`.
+- `network`: Filter results by `Network`. Possible values: `ETHEREUM`, `MATIC`.
+
+## Mints
+
+**Endpoint**: `/v1/mints`
+
+**Type**:
+
+```ts
+type Mint = {
+  id: string
+  creator: string
+  beneficiary: string
+  minter: string
+  itemId: string
+  tokenId: string
+  issuedId: string
+  contractAddress: string
+  price: string | null
+  timestamp: number
+  network: Network
+  chainId: ChainId
+}
+```
+
+**Query Params**:
+
+- `first`: Limit the number of results. Type: `number`.
+- `skip`: Skip results. Type: `number`.
+- `sortBy`: Sort results. Possible values: `recently_minted`, `most_expensive`.
+- `creator`: Filter by creator. Type: `address`.
+- `beneficiary`: Filter by beneficiary. Type: `address`.
+- `minter`: Filter by minter. Type: `address`.
+- `contractAddress`: Filter results by contract address. Type: `address`.
+- `tokenId`: Filter results by `tokenId`. Type: `string`.
+- `itemId`: Filter results by `itemId`. Type: `string`.
+- `issuedId`: Filter results by `issuedId`. Type: `string`.
+- `isSale`: Return only mints that came from a sale.
+- `network`: Filter results by `Network`. Possible values: `ETHEREUM`, `MATIC`.
+
+## Sales
+
+**Endpoint**: `/v1/sales`
+
+**Type**:
+
+```ts
+export type Sale = {
+  id: string
+  type: SaleType
+  buyer: string
+  seller: string
+  itemId: string | null
+  tokenId: string
+  contractAddress: string
+  price: string
+  timestamp: number
+  txHash: string
+  network: Network
+  chainId: ChainId
+}
+```
+
+**Query Params**:
+
+- `first`: Limit the number of results. Type: `number`.
+- `skip`: Skip results. Type: `number`.
+- `sortBy`: Sort results. Possible values: `recently_sold`, `most_expensive`.
+- `type`: Filter by sale type. Possible values: `order`, `bid`, `mint`.
+- `category`: Filter by NFT category. It supports multiple values by adding the query param multiple times. Possible values: `parcel`, `estate`, `ens`, `wearable`.
+- `seller`: Filter by seller. Type: `address`.
+- `buyer`: Filter by buyer. Type: `address`.
+- `contractAddress`: Filter results by contract address. Type: `address`.
+- `tokenId`: Filter results by `tokenId`. Type: `string`.
+- `itemId`: Filter results by `itemId`. Type: `string`.
+- `from`: Return only sales that happened after this timestamp. Type `number`.
+- `to`: Return only sales that happened before this timestamp. Type `number`.
+- `minPrice`: Return only sales with a price higher than this. Type `number`.
+- `maxPrice`: Return only sales with a price lower than this. Type `number`.
+- `network`: Filter results by `Network`. Possible values: `ETHEREUM`, `MATIC`.
+
+## Accounts
+
+**Endpoint**: `/v1/accounts`
+
+**Type**:
+
+```ts
+export type Account = {
+  id: string
+  address: string
+  sales: number
+  purchases: number
+  spent: string
+  earned: string
+  royalties: string
+}
+```
+
+**Query Params**:
+
+- `first`: Limit the number of results. Type: `number`.
+- `skip`: Skip results. Type: `number`.
+- `sortBy`: Sort results. Possible values: `most_sales`, `most_purchases`, `most_spent`, `most_earned`, `most_royalties`.
+- `id`: Filter by user address. Type: `string`.
+- `address`: Currently the same as id, Filter by user address. It supports multiple values by adding the query param multiple times. Type: `string`.
+- `network`: Filter results by `Network`. Possible values: `ETHEREUM`, `MATIC`.
+
+## Collections
+
+**Endpoint**: `/v1/collections`
+
+**Type**:
+
+```ts
+export type Collection = {
+  urn: string
+  name: string
+  creator: string
+  contractAddress: string
+  isOnSale: boolean
+  size: number
+  createdAt: number
+  updatedAt: number
+  reviewedAt: number
+  network: Network
+  chainId: ChainId
+}
+```
+
+**Query Params**:
+
+- `first`: Limit the number of results. Type: `number`.
+- `skip`: Skip results. Type: `number`.
+- `sortBy`: Sort results. Possible values: `newest`, `name`, `recently_reviewed`, `size`.
+- `name`: Filter by the collection name. Type: `string`.
+- `search`: Filter collections containing the search value in its name, case insensitive. Type: `string`.
+- `creator`: Filter by creator. Type: `address`.
+- `contractAddress`: Filter results by contract address. Type: `address`.
+- `isOnSale`: Return only collections are currently on sale. Type: `boolean`.
+- `network`: Filter results by `Network`. Possible values: `ETHEREUM`, `MATIC`.
+
+## Contracts
+
+**Endpoint**: `/v1/contracts`
+
+**Type**:
+
+```ts
+type Contract = {
+  name: string
+  address: string
+  category: NFTCategory
+  network: Network
+  chainId: ChainId
+}
+```
+
+**Query Params**:
+
+- `first`: Limit the number of results. Type: `number`.
+- `skip`: Skip results. Type: `number`.
+- `sortBy`: Sort results. Possible values: `name`.
+- `category`: Filter by `NFTCategory`. Possible values: `parcel`, `estate`, `wearable`, `ens`.
+- `network`: Filter results by `Network`. Possible values: `ETHEREUM`, `MATIC`.
+
+## Analytics
+
+**Endpoint**: `/v1/analytics/:timeframe`
+
+**Type**:
+
+```ts
+type AnalyticsDayData = {
+  id: string
+  date: number
+  sales: number
+  volume: string
+  creatorsEarnings: string
+  daoEarnings: string
+}
+```
+
+**URL Params**:
+
+- `timeframe`: The timeframe within the analytic data was gather. Possible values: `day` | `week` | `month` | `all`
+
+## Volume
+
+**Endpoint**: `/v1/volume/:timeframe`
+
+**Type**:
+
+```ts
+type VolumeData = {
+  sales: number
+  volume: string
+  creatorsEarnings: string
+  daoEarnings: string
+}
+```
+
+**URL Params**:
+
+- `timeframe`: The timeframe within the analytic data was gather. Possible values: `day` | `week` | `month` | `all`
+
+## Trendings
+
+**Endpoint**: `/v1/trendings`
+
+**Type**:
+
+```ts
+type Item = {
+  id: string
+  name: string
+  thumbnail: string
+  url: string
+  category: NFTCategory
+  contractAddress: string
+  itemId: string
+  rarity: Rarity
+  price: string
+  available: number
+  isOnSale: boolean
+  creator: string
+  beneficiary: string | null
+  createdAt: number
+  updatedAt: number
+  reviewedAt: number
+  soldAt: number
+  data: NFT['data']
+  network: Network
+  chainId: ChainId
+}
+```
+
+**Query Params**:
+
+- `size`: The amount of trending items to return
+
+## Rankings
+
+**Endpoint**: `/v1/rankings/:timeframe`
+
+**Type**:
+
+```ts
+type RankingItem = {
+  id: string
+  sales: number
+  volume: string
+}
+```
+
+**URL Params**:
+
+- `timeframe`: The timeframe within the analytic data was gather. Possible values: `day` | `week` | `month` | `all`
+- `entity`: The entity that wants to get ranked. Possible values: `items` | `creators` | `collectors`
+
+**Query Params**:
+
+- `first`: Limit the number of results. Type: number.
+- `rarity`: Filter the results by the rarity. Possible values: `unique`, `mythic`, `legendary`, `epic`, `rare`, `uncommon`, `common`.
+- `category`: Filter the results by wearable category. Possible values: `eyebrows`,`eyes`,`facial_hair`,`hair`,`mouth`,`upper_body`,`lower_body`,`feet`,`earring`,`eyewear`,`hat`,`helmet`,`mask`,`tiara`,`top_head`, `skin`.
+
+## Prices
+
+**Endpoint**: `/v1/prices`
+
+**Type**:
+
+```ts
+Record<string, number>
+```
+
+**Query Params**:
+
+- `category`: Filter by `NFTCategory`. Possible values: `land`, `parcel`, `estate`, `wearable`, `emote` and `ens`.
+- `assetType`: Filter by `AssetType`. Possible values: `item` or `nft`.
+- `isWearableHead`: Only return results that their category is `wearable` and are part of the avatar's head. Type `boolean`.
+- `isWearableAccessory`: Only return results that their category is `wearable` and accessories (not a part of the body).
+- `isWearableSmart`: Only return smart wearables. Type `boolean`.
+- `wearableCategory`: Filter results by `WearableCategory`. Possible values: `eyebrows`,`eyes`,`facial_hair`,`hair`,`mouth`,`upper_body`,`lower_body`,`feet`,`earring`,`eyewear`,`hat`,`helmet`,`mask`,`tiara`,`top_head`, `skin`, `hands_wear`.
+- `wearableGender`: Filter results by `GenderFilterOption`. It supports multiple values by adding the query param multiple times. Possible values: `male`, `female`, `unisex`.
+- `emoteCategory`: Filter results by `EmoteCategory`. Possible values: `dance`, `stunt`, `greetings`, `fun`, `poses`, `reactions`, `horror`, `miscellaneous`.
+- `emoteGender`: Filter results by `GenderFilterOption`. It supports multiple values by adding the query param multiple times. Possible values: `male`, `female`, `unisex`.
+- `emotePlayMode`: Filter results by `EmotePlayMode`. It supports multiple values by adding the query param multiple times. Possible values: `simple`, `loop`
+- `contractAddress`: Filter results by contract address. It supports multiple values by adding the query param multiple times. Type: `address`.
+- `itemRarity`: Filter results by `Rarity`. It supports multiple values by adding the query param multiple times. Possible values: `unique`, `mythic`, `legendary`, `epic`, `rare`, `uncommon`, `common`.
+- `network`: Filter results by `Network`. Possible values: `ETHEREUM`, `MATIC`.
+- `adjacentToRoad`: Filter land that is next to a road. Type: `boolean`
+- `minDistanceToPlaza`: Filter land that has a distance to a plaza of minimun this value. Type: `number`
+- `maxDistanceToPlaza`: Filter land that has a distance to a plaza of maximun this value. Type `number`
+- `minEstateSize`: Filter results by minimum amount of parcels in the Estate. Type: `number`
+- `maxEstateSize`: Filter results by maximum amount of parcels in the Estate. Type: `number`
+
+## Stats
+
+**Endpoint**: `/v1/stats/:category/:stat`
+
+**Type**:
+
+```ts
+Record<string, number>
+```
+
+**URL Params**:
+
+- `category`: The category asking stats about. Possible values: `estate`.
+- `stat`: The resource stat asked.
+  - Possible values:
+    - For resource `estate`: `size`
+
+**Query Params**:
+
+- `isOnSale`: Only return results that have an open, non-expired listing. Type: `boolean`.
+- `adjacentToRoad`: Filter land that is next to a road. Type: `boolean`
+- `minDistanceToPlaza`: Filter land that has a distance to a plaza of minimun this value. Type: `number`
+- `maxDistanceToPlaza`: Filter land that has a distance to a plaza of maximun this value. Type `number`
+- `minEstateSize`: Filter results by minimum amount of parcels in the Estate. Type: `number`
+- `maxEstateSize`: Filter results by maximum amount of parcels in the Estate. Type: `number`
+- `minPrice`: Filter results by minimun price. Type: `number`
+- `maxPrice`: Filter results by max price. Type: `number`
+

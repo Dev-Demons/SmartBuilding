@@ -1,0 +1,101 @@
+.ProfilePage .title {
+  margin-bottom: 10px !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ProfilePage .title .address {
+  color: var(--gray);
+  font-size: 26px;
+  margin-left: 10px;
+}
+
+.ProfilePage .profile-menu {
+  margin-top: 23px;
+}
+
+.ProfilePage .profile-grid {
+  position: relative;
+  margin-top: 50px;
+  min-height: 200px;
+  padding: 1px;
+}
+
+.ProfilePage  .profile-grid  .archive-toggle-title {
+  text-align: right;
+  display: block;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.ProfilePage .profile-grid .bids-title {
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.ProfilePage .profile-grid .cards.with-placed {
+  margin-bottom: 50px
+}
+
+.ProfilePage .pagination {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.ProfilePage .empty {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  color: #aaa;
+  font-style: italic;
+}
+
+.ProfilePage .profile-owner {
+  display: inline-flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  color: #aaa;
+}
+
+.ProfilePage .profile-owner .AddressBlock {
+  height: 25px;
+  margin-left: 5px;
+}
+
+.ProfilePage .label {
+  background-color: var(--dark-gray) !important;
+  color: white !important;
+}
+
+.ProfilePage .label.active {
+  background-color: var(--red) !important;
+}
+
+.ProfilePage .profile-header > div {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.ProfilePage .profile-header .AddressBlock {
+  flex: none;
+}
+
+.ProfilePage .profile-header .profile-address {
+  color: white;
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+  .ProfilePage .profile-menu .menu.secondary .item {
+    border-color: transparent !important;
+  }
+
+  .ProfilePage .profile-grid .bids-title {
+    margin-bottom: 30px;
+    margin-left: .5rem;
+  }
+}

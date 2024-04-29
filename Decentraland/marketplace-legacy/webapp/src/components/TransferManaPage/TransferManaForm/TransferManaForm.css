@@ -1,0 +1,14 @@
+.TransferManaForm .transfer-warning {
+  color: var(--gray);
+  font-style: italic;
+}
+
+.TransferManaForm .transfer-warning.error {
+  color: var(--red);
+}
+
+@media (min-width: 768px) {
+  .TransferManaForm {
+    min-width: 400px;
+  }
+}

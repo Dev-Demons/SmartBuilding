@@ -1,0 +1,10 @@
+[workspace]
+members = [
+    "livekit",
+    "livekit-api",
+    "livekit-protocol",
+    "livekit-ffi",
+    "libwebrtc",
+    "webrtc-sys",
+    "webrtc-sys/build",
+]

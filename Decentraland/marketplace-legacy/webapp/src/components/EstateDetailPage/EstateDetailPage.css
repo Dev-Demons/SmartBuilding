@@ -1,0 +1,94 @@
+.Page > .EstateDetailPage {
+  color: var(--text);
+  font-size: 15px;
+  padding-top: 0px;
+}
+
+.EstateDetailPage {
+  padding-top: 35px;
+}
+
+.EstateDetailPage .estate-title {
+  margin-bottom: 5px;
+}
+
+.EstateDetailPage .estate-title .estate-name {
+  margin-right: 15px;
+}
+
+.EstateDetailPage .estate-title .LandAmount {
+  display: inline-flex;
+  font-size: 20px;
+  transform: translateY(-2px);
+}
+
+.EstateDetailPage .estate-description {
+  color: var(--gray);
+  font-size: 15px;
+}
+
+.EstateDetailPage .estate-owner-container {
+  text-align: right !important;
+}
+
+.EstateDetailPage .row .estate-data.column {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  align-content: center;
+}
+
+.EstateDetailPage h3 {
+  text-transform: capitalize;
+}
+
+.EstateDetailPage .estate-data h3 {
+  margin: auto 0 15px 0;
+}
+
+.EstateDetailPage .estate-actions-container {
+  text-align: right;
+}
+
+.EstateDetailPage h3 {
+  font-family: var(--font-family) !important;
+}
+
+.EstateDetailPage .estate-parcels .link {
+  margin-left: 20px;
+}
+
+.EstateDetailPage .mana-price-icon {
+  font-size: 1.5em;
+}
+
+.EstateDetailPage .time-left .PublicationExpiration {
+  font-size: 20px;
+  display: block;
+  color: var(--gray);
+}
+
+.EstateDetailPage .AddressBlock {
+  height: 24px;
+  margin-left: 10px;
+}
+
+.EstateDetailPage.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.EstateDetailPage.empty .empty-estate-message {
+  color: var(--gray);
+}
+
+.EstateDetailPage .row .column.highlights {
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .EstateDetailPage .estate-owner-container {
+    text-align: left !important;
+  }
+}

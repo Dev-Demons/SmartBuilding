@@ -1,0 +1,46 @@
+name: Test
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          cache: 'yarn'
+
+      - name: Install Yarn
+        run: |
+          npm install -g yarn
+          yarn install
+
+        # TODO: Remove this when heft is removed as a dependency of tooling/api-documenter.
+      - name: Install Heft
+        run: yarn global add @rushstack/heft
+
+      - name: ESLint
+        run: yarn lint
+
+      - name: Prettier
+        run: yarn format:check
+
+      - name: Build Packages
+        run: yarn build
+
+      - name: Run Tests
+        run: yarn test
+
+      - name: Check for API Changes
+        run: yarn api:check

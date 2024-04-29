@@ -1,0 +1,115 @@
+name: Run matrix-reloaded
+
+on:
+  workflow_dispatch:
+    inputs:
+      homeserver:
+        description: "Homeserver URL (with or without https)"
+        required: true
+        default: "synapse.decentraland.zone"
+      ticks:
+        description: "Total ticks"
+        required: true
+        default: "4000"
+      max_users:
+        description: "Max users"
+        required: true
+        default: "5000"
+      tick_duration_in_secs:
+        description: "Tick duration where users interact each other"
+        required: true
+        default: "10"
+      users_per_tick:
+        description: "Users to act per tick"
+        required: true
+        default: "15"
+      execution_id:
+        description: "Used in user ID localpart"
+        required: false
+        default: "ci"
+      probability_to_act:
+        description: "User: probability to act (0-100)"
+        required: false
+        default: "100"
+      probability_for_short_lifes:
+        description: "User: probability to have a short life (0-100)"
+        required: false
+        default: "50"
+      channels_load:
+        description: "Enable/Disable channels load"
+        type: boolean
+        required: false
+        default: true
+      channels_per_user:
+        description: "User: number of channels that an user can have"
+        required: false
+        default: "5"
+
+env:
+  CARGO_TERM_COLOR: always
+  CI: 1
+
+jobs:
+  run:
+    name: Execute run operation with given homeserver
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+      - uses: Swatinem/rust-cache@v1.3.0
+      - name: Set ticks
+        uses: ciiiii/toml-editor@1.0.0
+        with:
+          file: "configuration.toml"
+          key: "simulation.ticks"
+          value: ${{ github.event.inputs.ticks }}
+      - name: Set max_users
+        uses: ciiiii/toml-editor@1.0.0
+        with:
+          file: "configuration.toml"
+          key: "simulation.max_users"
+          value: ${{ github.event.inputs.max_users }}
+      - name: Set tick_duration_in_secs
+        uses: ciiiii/toml-editor@1.0.0
+        with:
+          file: "configuration.toml"
+          key: "simulation.tick_duration_in_secs"
+          value: ${{ github.event.inputs.tick_duration_in_secs }}
+      - name: Set users_per_tick
+        uses: ciiiii/toml-editor@1.0.0
+        with:
+          file: "configuration.toml"
+          key: "simulation.users_per_tick"
+          value: ${{ github.event.inputs.users_per_tick }}
+      - name: Set probability_to_act
+        uses: ciiiii/toml-editor@1.0.0
+        with:
+          file: "configuration.toml"
+          key: "simulation.probability_to_act"
+          value: ${{ github.event.inputs.probability_to_act }}
+      - name: Set probability_for_short_lifes
+        uses: ciiiii/toml-editor@1.0.0
+        with:
+          file: "configuration.toml"
+          key: "simulation.probability_for_short_lifes"
+          value: ${{ github.event.inputs.probability_for_short_lifes }}
+      - name: Enable/Disable channels load
+        uses: ciiiii/toml-editor@1.0.0
+        with:
+          file: "configuration.toml"
+          key: "simulation.channels_load"
+          value: ${{ github.event.inputs.channels_load }}
+      - name: Set channels per user
+        uses: ciiiii/toml-editor@1.0.0
+        with:
+          file: "configuration.toml"
+          key: "simulation.channels_per_user"
+          value: ${{ github.event.inputs.channels_per_user }}
+      - uses: actions-rs/cargo@v1
+        with:
+          command: run
+          args: --release -- -h ${{ github.event.inputs.homeserver }} -e ${{ github.event.inputs.execution_id }}

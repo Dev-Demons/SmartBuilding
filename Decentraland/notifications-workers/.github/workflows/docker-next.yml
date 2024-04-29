@@ -1,0 +1,23 @@
+name: CI/CD on main branch
+
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  notifications-processor-deployment:
+    uses: decentraland/platform-actions/.github/workflows/apps-docker-next.yml@main
+    with:
+      service-name: notifications-processor
+      image-name: notifications-workers
+      deployment-environment: dev
+    secrets: inherit
+
+  notifications-inbox-deployment:
+    uses: decentraland/platform-actions/.github/workflows/apps-docker-next.yml@main
+    with:
+      service-name: notifications-inbox
+      image-name: notifications-workers
+      deployment-environment: dev
+    secrets: inherit

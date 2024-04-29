@@ -1,0 +1,55 @@
+.MarketplacePage .ui.header.title {
+  margin-bottom: 10px !important;
+}
+
+.MarketplacePage .publications {
+  position: relative;
+  margin-top: 50px;
+  min-height: 200px;
+  padding: 1px;
+}
+
+.MarketplacePage .publications.loading {
+  opacity: 0.5;
+}
+
+.MarketplacePage .pagination {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.MarketplacePage .empty {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  color: var(--gray);
+  font-size: 16px;
+}
+
+.MarketplacePage .dimmer {
+  background-color: var(--background) !important;
+  opacity: 0.8 !important;
+}
+
+.MarketplacePage .ui.menu .item > .label {
+  background-color: var(--dark-gray);
+  color: white;
+}
+
+.MarketplacePage .ui.menu .item > .label.active {
+  background-color: var(--primary);
+}
+
+.MarketplacePage .menu.right > .item {
+  padding-bottom: 0px !important;
+}
+
+@media (max-width: 768px) {
+  .MarketplacePage .ui.secondary.pointing.menu .active.item {
+    border: none;
+  }
+
+  .MarketplacePage .ui.selection.dropdown {
+    width: 100%;
+  }
+}

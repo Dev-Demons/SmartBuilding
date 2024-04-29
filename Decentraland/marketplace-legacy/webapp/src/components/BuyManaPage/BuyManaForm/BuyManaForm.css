@@ -1,0 +1,36 @@
+.BuyManaForm .transfer-warning {
+  color: var(--gray);
+  font-style: italic;
+}
+
+.BuyManaForm .transfer-warning.error {
+  color: var(--red);
+}
+
+.BuyManaForm .info {
+  color: var(--gray);
+  display: block;
+}
+
+.BuyManaForm .warning {
+  color: var(--error);
+}
+
+.BuyManaForm .ui.disabled.pay-with-input {
+  opacity: 1;
+}
+
+.BuyManaForm .external-link {
+  color: var(--gray);
+  text-decoration: underline;
+}
+
+.BuyManaForm .price-slippage-help {
+  color: var(--gray);
+}
+
+@media (min-width: 768px) {
+  .BuyManaForm {
+    min-width: 550px;
+  }
+}

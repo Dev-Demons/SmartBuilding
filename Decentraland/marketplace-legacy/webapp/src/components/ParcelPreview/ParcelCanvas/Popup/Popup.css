@@ -1,0 +1,73 @@
+.Popup {
+  font-size: 14px;
+  color: #fff;
+  user-select: none;
+}
+
+.Popup .header {
+  padding: 8px 8px;
+  text-align: center;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  color: #fff;
+}
+
+.Popup .header span {
+  opacity: 0.9;
+}
+
+.Popup .header.genesis,
+.Popup .header.roads {
+  color: #666;
+}
+
+.Popup .body {
+  padding: 16px;
+}
+
+.Popup .body .coordinates {
+  text-align: center;
+}
+
+.Popup .header:first-letter,
+.Popup .current-bid-status:first-letter {
+  text-transform: capitalize;
+}
+
+.Popup .body a {
+  color: var(--primary);
+}
+
+.Popup .body a:hover {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.Popup .description {
+  color: #b2b2b2;
+}
+
+.Popup .publication {
+  color: white;
+  display: flex;
+}
+
+.Popup .publication .Mana {
+  margin-left: 10px;
+}
+
+.Popup .body > div {
+  margin-bottom: 8px;
+}
+.Popup .body > div:last-child {
+  margin-bottom: 0;
+}
+
+.text.description {
+  color: var(--gray) !important;
+}
+
+.Popup .on-sale {
+  font-weight: bold;
+  color: white;
+}

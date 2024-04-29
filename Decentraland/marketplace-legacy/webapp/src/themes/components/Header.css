@@ -1,0 +1,9 @@
+.ui.header {
+  font-family: var(--font-family);
+  font-weight: 400;
+  color: white;
+}
+
+.ui.header.huge {
+  font-size: 42px;
+}

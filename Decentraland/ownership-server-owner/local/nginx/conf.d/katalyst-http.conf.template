@@ -1,0 +1,29 @@
+rewrite_log on;
+
+upstream ownership-server {
+    server 0.0.0.0:1234;
+}
+
+upstream postgres-metrics {
+    server 0.0.0.0:9187;
+}
+
+upstream sink-server {
+    server 0.0.0.0:9102;
+}
+
+upstream sink-server-dev {
+    server 0.0.0.0:9103;
+}
+
+server {
+    listen 80 reuseport;
+    server_name $katalyst_host;
+
+    client_max_body_size 256M;
+
+    root /etc/nginx/html;
+
+    include /etc/nginx/include/routes.conf;
+    include /etc/nginx/include/metrics.conf;
+}

@@ -1,0 +1,217 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--dark-background);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
+}
+
+a,
+.link {
+  color: var(--primary);
+  cursor: pointer;
+}
+
+a:hover,
+.link:hover {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+#app {
+  height: 100%;
+}
+
+.fade {
+  opacity: 0;
+  -webkit-transition: opacity 0.15s linear;
+  -o-transition: opacity 0.15s linear;
+  transition: opacity 0.15s linear;
+}
+.fade.in {
+  opacity: 1;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.pull-left {
+  float: left;
+}
+
+@media (max-width: 767px) {
+  .hidden-xs {
+    display: none;
+  }
+}
+
+/* -----------------------------------------------------------------------
+  Key colors */
+
+.my-parcels {
+  background-color: #ff9990;
+  color: #ff9990;
+  fill: #ff9990;
+}
+.district {
+  background-color: #5054d4;
+  color: #5054d4;
+  fill: #5054d4;
+}
+.contribution {
+  background-color: #4a27d4;
+  color: #4a27d4;
+  fill: #4a27d4;
+}
+.roads {
+  background-color: #716c7a;
+  color: #716c7a;
+  fill: #716c7a;
+}
+.plaza {
+  background-color: #70ac76;
+  color: #70ac76;
+  fill: #70ac76;
+}
+.taken {
+  background-color: #3d3a46;
+  color: #3d3a46;
+  fill: #3d3a46;
+}
+.on-sale {
+  background-color: #00d3ff;
+  color: #00d3ff;
+  fill: #00d3ff;
+}
+.yours-on-sale {
+  background-color: #ff4053;
+  color: #ff4053;
+  fill: #ff4053;
+}
+.unowned {
+  background-color: #09080a;
+  color: #09080a;
+  fill: #09080a;
+}
+
+/* -----------------------------------------------------------------------
+  Form Elements */
+
+label {
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: 400;
+  display: inline-block;
+}
+
+input[type='search'] {
+  box-sizing: border-box;
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+  margin: 5px 0 0;
+  margin-top: 1px \9;
+  line-height: normal;
+}
+
+input[type='file'] {
+  display: block;
+}
+
+input[type='range'] {
+  width: 100%;
+  display: block;
+}
+
+select[multiple],
+select[size] {
+  height: auto;
+}
+
+input[type='file']:focus,
+input[type='radio']:focus,
+input[type='checkbox']:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+input[type='email'],
+input[type='number'],
+input[type='password'],
+input[type='text'],
+textarea {
+  border: 1px solid #eee;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 0.4px;
+  outline: none;
+}
+
+input[type='email']:focus,
+input[type='number']:focus,
+input[type='password']:focus,
+input[type='text']:focus {
+  border-color: var(--primary);
+}
+
+input::-webkit-input-placeholder,
+input[type='text']::-webkit-input-placeholder {
+  color: #9c9c9b;
+}
+
+button[disabled],
+input[disabled] {
+  cursor: default;
+}
+
+button[disabled]:hover {
+  box-shadow: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.ui.message > .close.icon {
+  margin: 4px;
+}
+
+/* ------------
+  Intercom  */
+
+.intercom-launcher-frame,
+.intercom-launcher-discovery-frame {
+  bottom: 10px !important;
+  transform: scale(0.8) !important;
+}
+
+/* ------------
+  App */
+
+#app {
+  background: var(--gradient);
+}

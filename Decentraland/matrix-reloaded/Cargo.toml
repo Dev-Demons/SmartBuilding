@@ -1,0 +1,35 @@
+[package]
+description = "Matrix Reloaded is a load testing tool for Matrix homeservers"
+edition = "2021"
+name = "matrix-reloaded"
+repository = "https://github.com/decentraland/matrix-reloaded"
+version = "0.1.0"
+
+[dependencies]
+clap = { version = "3.2.8", features = ["derive"] }
+config = "0.13"
+env_logger = "0.9.0"
+futures = "0.3.21"
+indicatif = "0.16.2"
+lipsum = "0.8.0"
+log = "0.4.16"
+rand = "0.8.5"
+regex = "1"
+serde = "1.0.136"
+serde_with = "1.12.1"
+serde_yaml = "0.8.23"
+strum = { version = "0.21", features = ["derive"] }
+tokio = { version = "1", features = ["full", "time"] }
+chrono = "0.4.20"
+matrix-sdk = { git = "https://github.com/matrix-org/matrix-rust-sdk", rev = "d5728f2" }
+matrix-sdk-base = "0.5.1"
+async-std = "1.12.0"
+async-trait = "0.1.53"
+async-channel = "1.6.1"
+tokio-graceful-shutdown = "0.10"
+miette = { version = "4.4", features = ["fancy"] }
+
+[lib]
+name = "matrix_reloaded"
+path = "src/lib.rs"
+

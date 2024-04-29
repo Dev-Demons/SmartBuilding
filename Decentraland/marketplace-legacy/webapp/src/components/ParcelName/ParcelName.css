@@ -1,0 +1,40 @@
+.ParcelName {
+  max-width: 500px;
+  display: inline-block;
+}
+
+.ParcelName a {
+  display: inline-block;
+}
+
+.ParcelName a:hover {
+  text-decoration: underline;
+}
+
+.ParcelName a:hover i {
+  text-decoration: none;
+}
+
+.ParcelName .name {
+  color: white;
+  font-weight: bold;
+}
+
+.ParcelName .marker.icon {
+  margin-right: 0.1em !important;
+  margin-left: -0.2em !important;
+}
+
+.ParcelName .marker.icon {
+  margin-right: 0.1em !important;
+}
+
+.ParcelName.no-name .marker.icon {
+  margin-left: -0.2em !important;
+}
+
+@media (max-width: 767px) {
+  .ParcelName {
+    display: block;
+  }
+}

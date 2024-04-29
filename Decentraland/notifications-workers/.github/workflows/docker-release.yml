@@ -1,0 +1,23 @@
+name: Publish 'latest' image
+
+on:
+  release:
+    types:
+      - "created"
+
+jobs:
+  notifications-processor-deployment:
+    uses: decentraland/platform-actions/.github/workflows/apps-docker-release.yml@main
+    with:
+      service-name: notifications-processor
+      image-name: notifications-workers
+      deployment-environment: prd
+    secrets: inherit
+
+  notifications-inbox-deployment:
+    uses: decentraland/platform-actions/.github/workflows/apps-docker-release.yml@main
+    with:
+      service-name: notifications-inbox
+      image-name: notifications-workers
+      deployment-environment: prd
+    secrets: inherit

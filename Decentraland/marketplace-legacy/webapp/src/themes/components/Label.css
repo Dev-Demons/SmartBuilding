@@ -1,0 +1,28 @@
+.ui.form .field > label,
+.ui.form .fields > label {
+  color: var(--gray);
+  font-weight: 400;
+}
+
+.ui.form .field.disabled > label,
+.ui.form .fields.disabled > label {
+  opacity: 1;
+}
+
+.ui.label {
+  border-radius: 50px !important;
+}
+
+.ui.purple.label,
+.ui.purple.labels .label {
+  background-color: var(--red) !important;
+  border-color: var(--red) !important;
+  border-radius: 50px;
+}
+
+.ui.white.label,
+.ui.white.labels .label {
+  background-color: #fff !important;
+  color: var(--red) !important;
+  border-radius: 50px;
+}

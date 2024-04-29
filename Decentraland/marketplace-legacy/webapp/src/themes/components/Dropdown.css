@@ -1,0 +1,25 @@
+.ui.dropdown {
+  border: none !important;
+  background-color: var(--dark-gray) !important;
+  color: white !important;
+  border-radius: 22px !important;
+  font-weight: 100;
+}
+
+.ui.dropdown.active {
+  border: 1px solid white !important;
+  background-color: white !important;
+  border-radius: 5px !important;
+}
+
+.ui.dropdown .item {
+  border: none !important;
+}
+
+.ui.dropdown .menu {
+  border-radius: 0px 0px 5px 5px !important;
+}
+
+.ui.dropdown.upward .menu {
+  border-radius: 5px 5px 0px 0px !important;
+}

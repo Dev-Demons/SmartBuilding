@@ -1,0 +1,10 @@
+.ui.loader {
+}
+
+.ui.loader:before {
+  border-color: var(--dark-gray) !important;
+}
+
+.ui.loader:after {
+  border-color: var(--red) transparent transparent !important;
+}

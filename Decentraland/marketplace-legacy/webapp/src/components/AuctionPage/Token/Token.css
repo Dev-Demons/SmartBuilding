@@ -1,0 +1,12 @@
+.Token {
+  white-space: nowrap;
+}
+
+.Token .loading {
+  color: var(--gray);
+}
+
+.Token .symbol {
+  transform: translateY(-2px);
+  display: inline-block;
+}
