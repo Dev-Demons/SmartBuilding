@@ -1,0 +1,30 @@
+type: object
+required:
+  - elements
+  - totalAmount
+  - pageNum
+  - pageSize
+properties:
+  elements:
+    type: array
+    items:
+      type: object
+      required:
+        - name
+        - contractAddress
+        - tokenId
+      properties:
+        name:
+          type: string
+        contractAddress:
+          type: string
+        tokenId:
+          type: string
+        price:
+          type: number
+  totalAmount:
+    type: number
+  pageNum:
+    type: number
+  pageSize:
+    type: number

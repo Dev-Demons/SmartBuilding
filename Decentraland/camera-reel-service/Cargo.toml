@@ -1,0 +1,59 @@
+[package]
+name = "camera-reel-service"
+version = "0.1.0"
+edition = "2021"
+default-run = "camera-reel-service"
+
+[dependencies]
+# actix
+actix-web = "4"
+actix-multipart = "0.6"
+actix-multipart-derive = "0.6"
+actix-web-lab = "0.19"
+actix-cors = "0.6"
+
+# database
+sqlx = { version = "0.7", features = [
+  "runtime-tokio-native-tls",
+  "postgres",
+  "uuid",
+  "json",
+  "chrono",
+] }
+
+# aws
+rust-s3 = "0.33"
+
+# image
+image = "0.24"
+
+# tracing
+tracing = "0.1"
+tracing-log = "0.1"
+tracing-tree = "0.2"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+tracing-actix-web = "0.7"
+
+# decentraland
+dcl-crypto-middleware-rs = { version = "0.2.1", features = ["signed_fetch"] }
+dcl-crypto = "0.2.1"
+dcl-http-prom-metrics = "0.2.0"
+
+# metadata
+serde = { version = "1.0", features = ["derive"] }
+
+# misc
+clap = { version = "=4.4.18", features = ["env", "derive"] }
+
+# docs
+utoipa = { version = "3", features = ["actix_extras"] }
+utoipa-swagger-ui = { version = "3", features = ["actix-web"] }
+
+[dev-dependencies]
+reqwest = { version = "0.11", features = ["blocking", "json", "multipart"] }
+rand = "0.8"
+dcl-crypto = "0.2.2"
+actix-test = "0.1"
+
+[[example]]
+name = "upload-image"

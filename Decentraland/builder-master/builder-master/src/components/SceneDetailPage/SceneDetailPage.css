@@ -1,0 +1,103 @@
+.SceneDetailPage {
+  margin-top: 24px;
+}
+
+.SceneDetailPage .dcl.section.large {
+  margin-bottom: 26px;
+}
+
+.SceneDetailPage .dcl.back {
+  margin-right: 8px;
+}
+
+.SceneDetailPage .header-image {
+  height: 347px;
+  width: 100%;
+  background-color: var(--card);
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+}
+
+.SceneDetailPage .capitalize .ui.header:not(.sub) {
+  text-transform: capitalize;
+}
+
+.SceneDetailPage .header.name {
+  display: flex;
+  align-items: baseline;
+}
+
+.SceneDetailPage .header.name .icon.edit {
+  margin-left: 21px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.SceneDetailPage .status-container {
+  margin-left: 40px; /* Back Button Size + Margin Size */
+}
+
+.SceneDetailPage .status-badge {
+  height: 22px;
+  padding: 2px 8px;
+  border-radius: 34px;
+  color: var(--shadows);
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+.SceneDetailPage .button.download-button,
+.SceneDetailPage .button.download-button:hover {
+  background-color: #ffffff;
+  color: var(--shadows);
+}
+
+.SceneDetailPage .button.edit-button .icon.edit {
+  margin-right: 6.85px;
+}
+
+.SceneDetailPage .dcl.column.actions {
+  margin-left: 20px;
+}
+
+.SceneDetailPage .dcl.section.medium.no-margin-bottom {
+  margin-bottom: 0px;
+}
+
+.SceneDetailPage .dcl.section .ui.header.sub {
+  margin-bottom: 32px;
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.SceneDetailPage .empty-deployments-container {
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+  background-color: var(--dark-two);
+  color: var(--text);
+  border: none;
+}
+
+.SceneDetailPage .empty-deployments-thumbnail {
+  height: 86px;
+  width: 86px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('../../images/scene.svg');
+  margin-bottom: 16px;
+}
+
+.SceneDetailPage .deployments + .notice {
+  color: var(--text);
+  text-align: right;
+  margin-top: 8px;
+}
+
+.SceneDetailPage .description-content {
+  font-size: 20px;
+  font-weight: 400;
+}

@@ -1,0 +1,15 @@
+.FaucetPage {
+  height: calc(100vh - 129px);
+  display: flex;
+  align-items: center;
+}
+
+.FaucetPage.ui.segment:first-child {
+  margin-top: calc(50vh - 260px);
+}
+
+.FaucetPage .ui.button + i {
+  margin-left: 16px;
+  color: var(--danger);
+  font-style: normal;
+}

@@ -1,0 +1,211 @@
+.RightPanel {
+  width: var(--item-editor-panel-width);
+  flex: none;
+  background-color: #242229;
+  border-left: 1px solid rgba(115, 110, 125, 0.3);
+  padding: 16px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.RightPanel > .header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.RightPanel > .header .title {
+  flex: 1 0 auto;
+  text-align: center;
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: 500;
+  color: var(--secondary-text);
+}
+
+.RightPanel .container {
+  overflow-y: auto;
+  max-height: calc(100vh - 80px);
+  flex: 1;
+}
+
+.RightPanel .details {
+  display: flex;
+  border: 1px solid var(--gray);
+  border-radius: 6px;
+  padding: 8px;
+  align-items: stretch;
+  position: relative;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.RightPanel .details .edit-item-file {
+  position: absolute;
+  z-index: 9;
+  top: 8px;
+  right: 8px;
+  filter: brightness(100);
+}
+
+.RightPanel .details .ItemImage {
+  flex: none;
+  width: 96px;
+  height: 96px;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.RightPanel .details .thumbnail-container {
+  position: relative;
+  flex: 1;
+}
+
+.RightPanel .details .thumbnail-container .Icon.camera {
+  position: absolute;
+  top: 40%;
+  left: 36%;
+  cursor: pointer;
+}
+
+.RightPanel .details .thumbnail-container .thumbnail-edit-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--background);
+  opacity: 0.4;
+  width: 100%;
+  height: 100%;
+}
+
+.RightPanel .details .thumbnail-edit-container {
+  display: none;
+}
+
+.RightPanel .details .thumbnail-container:hover .thumbnail-edit-container {
+  display: block;
+}
+
+.RightPanel .details .thumbnail-container input[type='file'] {
+  display: none;
+}
+
+.RightPanel .overrides-label-panel {
+  margin-right: 5px;
+}
+
+.RightPanel > .header > .ui.dropdown {
+  position: absolute;
+  right: 0px;
+}
+
+.RightPanel .actions {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  background-image: url(../../../images/optons-right-panel.svg);
+  background-size: 18px;
+}
+
+.RightPanel .edit-buttons {
+  margin: 10px 0;
+  justify-content: center;
+  display: flex;
+}
+
+.RightPanel .edit-buttons .ui.button + .ui.button {
+  margin-left: 20px;
+}
+
+.RightPanel .danger-text {
+  word-break: break-word;
+}
+
+.RightPanel .details .download-item-button,
+.RightPanel .details .play-video-button {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+}
+
+.RightPanel .details .ui.tiny.active.loader.donwload-item-loader {
+  right: 1px;
+  bottom: 0px;
+  top: auto;
+  left: auto;
+}
+
+.RightPanel .event-tag {
+  color: var(--secondary-text);
+}
+
+.RightPanel .event-tag span {
+  color: var(--text-on-primary);
+  font-weight: 600;
+}
+
+.RightPanel .event-tag a {
+  color: var(--text-on-primary);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.ui.small.modal.VideoShowcaseModal > .header {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 26px;
+}
+
+.ui.modal.VideoShowcaseModal .content {
+  height: 500px;
+}
+
+.ui.modal.VideoShowcaseModal .content > video {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.08) 100%), #37333d;
+}
+
+.ui.modal.VideoShowcaseModal .actions {
+  justify-content: space-between;
+}
+
+.ui.modal.VideoShowcaseModal .actions button.ui.button {
+  flex-grow: 0;
+  width: 140px;
+}
+
+.RightPanel .details .ItemVideoContainer .ItemEmptyVideoContainer {
+  height: 96px;
+  width: 96px;
+}
+
+.RightPanel .details .ItemVideoContainer .ItemEmptyVideoContainer .empty-video-icon {
+  margin-bottom: 0;
+}
+
+.RightPanel .details .ItemVideoContainer .ItemEmptyVideoContainer .empty-video-text {
+  display: none;
+}
+
+.RightPanel .right-panel-copyright-section {
+  border: 1px solid var(--gray);
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+
+.right-panel-export-protection {
+  display: grid;
+  grid-template-columns: 1fr 105px;
+  align-items: center;
+  color: var(--secondary-text);
+}

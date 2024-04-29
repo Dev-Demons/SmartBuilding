@@ -1,0 +1,16 @@
+[package]
+name = "visuals"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+
+[dependencies]
+common = { workspace = true }
+console = { workspace = true }
+bevy = { workspace = true }
+
+bevy_atmosphere = { git = "https://github.com/robtfm/bevy_atmosphere", branch = "0.9.0-throttle-safe" }
+bevy_console = { workspace = true }
+
+clap = { workspace = true }

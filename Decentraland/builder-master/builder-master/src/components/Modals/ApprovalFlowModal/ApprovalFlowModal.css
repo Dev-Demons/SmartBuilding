@@ -1,0 +1,84 @@
+.ui.modal.ApprovalFlowModal .content {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.ui.modal.ApprovalFlowModal .content.loading {
+  height: 100px;
+}
+
+.ui.modal.ApprovalFlowModal .content.loading .ui.loader {
+  margin-top: 32px;
+}
+
+.ui.modal.ApprovalFlowModal .content .item .name {
+  display: flex;
+  align-items: center;
+}
+
+.ui.modal.ApprovalFlowModal .content .item .name .ItemImage {
+  width: 48px;
+  height: 48px;
+  margin-right: 12px;
+}
+
+.ui.modal.ApprovalFlowModal .content .item .name .ItemImage .item-image {
+  width: 48px;
+  height: 48px;
+}
+
+.ui.modal.ApprovalFlowModal .size {
+  color: var(--secondary-text);
+}
+
+.ui.modal.ApprovalFlowModal .content.error {
+  font-family: monospace;
+  color: var(--text);
+  background-color: var(--secondary-on-modal-hover);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.ui.tiny.visible.warning.message.warning-rescue-message {
+  margin-left: 32px;
+  margin-right: 32px;
+}
+
+.ui.modal.ApprovalFlowModal .progressBarContainer {
+  padding-left: 100px;
+  padding-right: 100px;
+  width: 100%;
+}
+
+.ui.modal.ApprovalFlowModal .progressBarLabel {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.ui.modal.ApprovalFlowModal .progressBarLabel {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.ui.modal.ApprovalFlowModal .progressBar:global(.ui.progress) :global(.label) {
+  color: white;
+}
+
+.ui.modal.ApprovalFlowModal .progressBar:global(.ui.progress) :global(.bar) {
+  background-color: var(--primary);
+  border-radius: 10px;
+}
+
+.ui.modal.ApprovalFlowModal .progressBar:global(.ui.progress) {
+  border-radius: 10px;
+  background-color: #37333d;
+}
+
+.ui.modal.ApprovalFlowModal .error-container {
+  max-width: 75%;
+}
+
+.ui.modal.ApprovalFlowModal .error-container .urn {
+  font-size: 12px;
+}

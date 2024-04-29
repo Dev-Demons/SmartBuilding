@@ -1,0 +1,92 @@
+.HomePageAd {
+  padding-top: 32px;
+}
+
+.HomePage > .ui.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.HomePage > .ui.container > .title {
+  margin: 60px 0px;
+  font-size: 28px;
+  line-height: 34px;
+}
+
+.HomePage > .ui.container > .ui.cards {
+  margin-top: 0;
+}
+
+.HomePage > .ui.container > .ui.cards > .ui.card {
+  margin: 0 16px 0 0;
+  width: 300px;
+}
+
+.HomePage > .ui.container > .ui.cards > .ui.card:nth-child(4n) {
+  margin-right: 0;
+}
+
+.HomePage .ui.cards .ui.card > .content {
+  padding: 0px;
+}
+
+.HomePage .ui.cards .ui.card > .content.extra {
+  padding: 0px 24px 32px;
+}
+
+.HomePage .ui.cards .ui.card > .content > .header {
+  flex: 0;
+  margin-top: 32px;
+  margin-bottom: 8px;
+  height: 30px;
+  font-size: 21px;
+  line-height: 30px;
+}
+
+.HomePage .ui.cards .ui.card > .content > .description > .card-description {
+  margin: 0px 24px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+  color: var(--light-gray);
+}
+
+.HomePage .ui.cards .ui.card > .content > .description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.HomePage .ui.cards .ui.card > .content > .description > .card-image {
+  height: 240px;
+  width: 280px;
+  margin-bottom: 10px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.HomePage .ui.cards .ui.card > .content > .description > .card-image.collections {
+  background-image: url('../../images/home-page-collections.webp');
+}
+
+.HomePage .ui.cards .ui.card > .content > .description > .card-image.scenes {
+  background-image: url('../../images/home-page-scenes.webp');
+  background-size: 90%;
+}
+
+.HomePage .ui.cards .ui.card > .content > .description > .card-image.land {
+  background-image: url('../../images/home-page-land.webp');
+}
+
+.HomePage .ui.cards .ui.card > .content > .description > .card-image.names {
+  background-image: url('../../images/home-page-names.webp');
+  background-size: 60%;
+}
+
+.HomePage .ui.cards .ui.card > .content.extra > button {
+  padding: 13px 0;
+  margin-bottom: 21px;
+}

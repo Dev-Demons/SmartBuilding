@@ -1,0 +1,28 @@
+{
+  "global": {
+    "learn_more": "了解更多"
+  },
+  "connect_to_world": {
+    "title": "在 Decentraland 上见面",
+    "description": "选择您想要连接的世界并开始流式传输。",
+    "image_alt": "在 Decentraland 上见面",
+    "cta": "连接",
+    "input_label": "世界名称",
+    "input_placeholder": "example:<name>.dcl.eth"
+  },
+  "people_panel": {
+    "title": "人们",
+    "subtitle": "这次会议的人",
+    "more": "{name} 和另外 {count} 人。"
+  },
+  "chat_panel": {
+    "title": "聊天"
+  },
+  "chat_entry": {
+    "you": "你"
+  },
+  "control_bar": {
+    "leave": "离开",
+    "stop_sharing": "停止共享"
+  }
+}

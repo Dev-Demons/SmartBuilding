@@ -1,0 +1,16 @@
+get:
+  operationId: getCatalystServers
+  summary: Get Catalyst Servers
+  tags:
+    - Lambdas
+  description: Retrieve the list of Catalyst Servers
+  responses:
+    '200':
+      description: List of Catalyst Servers
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../../components/schemas/lambdas/servers.yaml
+          examples:
+            default:
+              $ref: ../../components/examples/lambdas/200-servers.json

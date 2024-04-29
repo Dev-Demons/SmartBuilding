@@ -1,0 +1,7 @@
+dist
+.git
+.gitignore
+.vscode
+node_modules
+*.log
+tmpbin

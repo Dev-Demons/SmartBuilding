@@ -1,0 +1,82 @@
+.EditPriceAndBeneficiaryModal.ui.modal {
+  padding: 16px 32px 38px;
+}
+
+.EditPriceAndBeneficiaryModal .ui.form .dcl.field {
+  margin-bottom: 4px;
+}
+
+.EditPriceAndBeneficiaryModal .ui.form .dcl.field > .message {
+  display: none;
+}
+
+.EditPriceAndBeneficiaryModal .ui.form .price-field {
+  position: relative;
+}
+
+.EditPriceAndBeneficiaryModal .ui.form .price-field > .dcl.mana.inline {
+  position: absolute;
+  top: 24px;
+  margin: 0;
+}
+
+.EditPriceAndBeneficiaryModal .ui.form .price-field .disabled + .dcl.mana.inline {
+  opacity: 0.45;
+}
+
+.EditPriceAndBeneficiaryModal .ui.form .price-field .dcl.field .ui.input > input {
+  padding-left: 18px;
+}
+
+.EditPriceAndBeneficiaryModal .ui.form .price-field .dcl.field .ui.input input::placeholder {
+  color: var(--secondary-text);
+}
+
+.EditPriceAndBeneficiaryModal .ui.form .price-field > .ui.button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.EditPriceAndBeneficiaryModal .ui.form .price-field > .ui.active.button {
+  background-color: rgba(var(--bluish-steel-raw), 0.8) !important;
+  color: var(--text-on-secondary) !important;
+}
+
+.EditPriceAndBeneficiaryModal .info {
+  width: 11px;
+  height: 11px;
+  margin-left: 8px;
+}
+
+.EditPriceAndBeneficiaryModal .ui.card.min-price-notice {
+  background-color: var(--toast);
+}
+
+.EditPriceAndBeneficiaryModal .ui.card.min-price-notice .dcl.mana {
+  display: inline !important;
+  color: var(--text);
+}
+
+.EditPriceAndBeneficiaryModal .ui.form > .actions {
+  width: auto;
+  flex-wrap: wrap;
+}
+
+.EditPriceAndBeneficiaryModal .ui.form > .actions > button {
+  width: 100%;
+  margin: 1em 0 0;
+}
+
+.EditPriceAndBeneficiaryModal .checkbox.make-it-free,
+.EditPriceAndBeneficiaryModal .checkbox.beneficiary {
+  margin-top: 8px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.EditPriceAndBeneficiaryModal .checkbox.make-it-free .item-checkbox,
+.EditPriceAndBeneficiaryModal .checkbox.beneficiary .item-checkbox {
+  margin-right: 8px;
+}

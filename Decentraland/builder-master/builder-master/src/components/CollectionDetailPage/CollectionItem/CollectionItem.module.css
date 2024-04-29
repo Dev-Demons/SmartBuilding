@@ -1,0 +1,138 @@
+.itemImage {
+  min-width: 48px;
+  max-width: 48px;
+  height: 48px;
+  padding: 5px;
+  margin-right: 24px;
+}
+
+.itemStatus {
+  margin-right: 4px;
+}
+
+.mana {
+  font-size: 15px !important;
+  font-weight: normal;
+  line-height: 0;
+}
+
+.grid {
+  padding: 10px 0 !important;
+  color: var(--text);
+  border-bottom: 1px solid var(--divider);
+}
+
+.grid:hover {
+  background-color: rgba(36, 33, 41, 0.4);
+  color: var(--text);
+}
+
+.row {
+  align-items: center;
+  font-size: 15px;
+}
+
+.avatarColumn {
+  align-items: center;
+  flex-direction: inherit !important;
+}
+
+.avatarContainer {
+  display: flex;
+}
+
+.info {
+  width: calc(100% - 80px);
+  display: flex;
+}
+
+.nameWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.badgeContainer {
+  margin-left: 8px;
+}
+
+.badge {
+  background-color: #37333d;
+}
+
+.badge::before {
+  filter: none;
+}
+
+.name {
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  text-decoration: underline;
+}
+
+.linkAction {
+  text-transform: uppercase;
+}
+
+.subtitle {
+  margin-top: 2px;
+  color: var(--secondary-text);
+  text-transform: uppercase;
+}
+
+.itemActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.ready {
+  color: var(--light-blue-raw);
+}
+
+.notReady {
+  color: #736e7d;
+}
+
+.incomplete {
+  color: var(--primary);
+}
+
+.published {
+  color: var(--text);
+}
+
+.unsynced {
+  display: flex;
+  align-items: center;
+  color: var(--millenial-orange);
+}
+
+.alertIcon {
+  display: inline-block;
+  margin-right: 0.25rem;
+  height: 15px;
+  width: 15px;
+  vertical-align: text-bottom;
+  background: url('../../../icons/alert.svg') no-repeat;
+  background-size: contain;
+  filter: invert(64%) sepia(34%) saturate(797%) hue-rotate(331deg) brightness(140%) contrast(98%); /* #fc9965 */
+}
+
+.check {
+  margin-left: 2px;
+}
+
+.contextMenuButton {
+  width: 18px !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.contextMenu {
+  background-color: var(--smart-grey) !important;
+}

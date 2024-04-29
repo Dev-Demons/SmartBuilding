@@ -1,0 +1,42 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  Tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'npm'
+      - name: Install
+        run: npm ci
+      - name: Test
+        run: npm run test:coverage
+        if: ${{ always() }}
+        env:
+          AWS_ACCESS_KEY: AWS_ACCESS_KEY
+          AWS_ACCESS_SECRET: AWS_ACCESS_SECRET
+          AWS_BUCKET_NAME: AWS_BUCKET_NAME
+          RPC_URL: RPC_URL
+          WAREHOUSE_URL: WAREHOUSE_URL
+          WAREHOUSE_TOKEN: WAREHOUSE_TOKEN
+          DEFAULT_ETH_ADDRESS: DEFAULT_ETH_ADDRESS
+          ANALYTICS_CONNECTION_STRING: ANALYTICS_CONNECTION_STRING
+          PEER_URL: PEER_URL
+          CHAIN_NAME: Goerli
+          THIRD_PARTY_GRAPH_URL: 'http://thid-party-url'
+          OPEN_SEA_URL: OPEN_SEA_URL
+          OPEN_SEA_API_KEY: OPEN_SEA_API_KEY
+          IPFS_URL: IPFS_URL
+          IPFS_PROJECT_ID: IPFS_PROJECT_ID
+          IPFS_API_KEY: IPFS_API_KEY
+          EXPLORER_URL: EXPLORER_URL
+      - name: Report Coverage
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}

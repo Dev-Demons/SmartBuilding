@@ -1,0 +1,4 @@
+dist
+tmpbin
+linked-peer-package
+**/*.json

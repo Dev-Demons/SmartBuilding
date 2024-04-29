@@ -1,0 +1,109 @@
+.ConfirmCollectionItemsStep .details {
+  background-color: rgba(var(--dark-raw), 0.48);
+  border-radius: 8px;
+  width: 100%;
+  padding: 20px 24px 48px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.ConfirmCollectionItemsStep .details .title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.ConfirmCollectionItemsStep .details .subtitle {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--clear-divider);
+  margin-bottom: 0px;
+}
+
+.ConfirmCollectionItemsStep .details .description {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--clear-divider);
+}
+
+.ConfirmCollectionItemsStep .details .fields .dcl.field {
+  margin-top: 32px;
+}
+
+.ConfirmCollectionItemsStep .actions {
+  margin-top: 24px;
+  width: 100%;
+  justify-content: space-between !important;
+}
+
+.ConfirmCollectionItemsStep .actions .button {
+  width: 180px;
+}
+
+.ConfirmCollectionItemsStep .items {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ConfirmCollectionItemsStep .items tbody {
+  display: block;
+  max-height: 425px;
+  overflow-y: auto;
+}
+
+.ConfirmCollectionItemsStep .items thead,
+.ConfirmCollectionItemsStep .items tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.ConfirmCollectionItemsStep .items thead.has-scrollbar {
+  width: calc(100% - 10px);
+}
+
+.ConfirmCollectionItemsStep .avatarColumn .avatarContainer {
+  display: flex;
+  align-items: center;
+}
+
+.ConfirmCollectionItemsStep .avatarColumn .avatarContainer .ItemImage {
+  height: 48px;
+  width: 48px;
+  margin-right: 16px;
+}
+
+.ConfirmCollectionItemsStep .avatarColumn .avatarContainer .info {
+  display: flex;
+  align-items: center;
+}
+
+.ConfirmCollectionItemsStep .avatarColumn .avatarContainer .name {
+  margin-right: 8px;
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+.ConfirmCollectionItemsStep .avatarColumn .avatarContainer .badge {
+  background-color: var(--smart-grey);
+}
+
+.ConfirmCollectionItemsStep .avatarColumn .avatarContainer .badge::before {
+  filter: none;
+}
+
+.ConfirmCollectionItemsStep .column.priceColumn .ui.mana {
+  font-size: 15px;
+}
+
+.ui.visible.popup.price-popup {
+  z-index: 4000;
+}

@@ -1,0 +1,31 @@
+post:
+  operationId: getAvatarsDetailsByPost
+  summary: Get Avatars details
+  tags:
+    - Lambdas
+  description: Returns all the Avatars details associated with the Ethereum addresses in the body
+  requestBody:
+    description: >-
+       The body only has the `ids` property representing a list of Ethereum addresses
+    content:
+      application/json; charset=utf-8:
+        schema:
+          $ref: ../../components/schemas/lambdas/post-profiles.yaml
+        examples:
+          default:
+            $ref: ../../components/examples/lambdas/post-profiles.json
+  responses:
+    '200':
+      description: Array of Avatars
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../../components/schemas/lambdas/profile.yaml
+          examples:
+            default:
+              $ref: ../../components/examples/lambdas/200-profiles-ids.json
+
+    '304':
+      description: No profile was modified since `If-Modified-Since` header

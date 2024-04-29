@@ -1,0 +1,27 @@
+required:
+  - deltas
+type: object
+properties:
+  deltas:
+    type: array
+    items:
+      required:
+        - entityType
+        - entityId
+        - localTimestamp
+        - pointers
+        - authChain
+      type: object
+      properties:
+        entityType:
+          type: string
+        entityId:
+          type: string
+        localTimestamp:
+          type: number
+        pointers:
+          type: array
+          items:
+            type: string
+        authChain:
+          $ref: 'auth-chain.yaml'

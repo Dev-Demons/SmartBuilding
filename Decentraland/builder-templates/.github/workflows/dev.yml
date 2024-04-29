@@ -1,0 +1,42 @@
+on:
+  push:
+    branches:
+      - main
+
+name: dev
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.x
+      - name: Install
+        run: npm ci
+      - name: Dev
+        run: npm run build
+        env:
+          BUILDER_SERVER_URL: https://builder-api.decentraland.zone
+          AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_DEV }}
+          AWS_ACCESS_SECRET: ${{ secrets.AWS_ACCESS_SECRET_DEV }}
+          S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME_DEV }}
+          S3_REGION: us-east-1
+          S3_UPLOAD_CONCURRENCY: 20
+      - name: Stg
+        run: npm run build
+        env:
+          BUILDER_SERVER_URL: https://builder-api.decentraland.today
+          AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_STG }}
+          AWS_ACCESS_SECRET: ${{ secrets.AWS_ACCESS_SECRET_STG }}
+          S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME_STG }}
+          S3_REGION: us-east-1
+          S3_UPLOAD_CONCURRENCY: 20
+      - name: Publish
+        uses: menduz/oddish-action@master
+        with:
+          access: public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

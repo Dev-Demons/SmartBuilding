@@ -1,0 +1,37 @@
+.CurationPage .filters {
+  margin-bottom: 10px;
+}
+
+.CurationPage .text-filter {
+  width: 100%;
+}
+
+.CurationPage .filters .text-filter-row {
+  width: 100%;
+  box-sizing: border-box;
+  height: 44px;
+  background: var(--shadows);
+  border-radius: 10px;
+  margin-bottom: 24px;
+  padding: 14px 12px;
+}
+
+.CurationPage .pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.CurationPage .filters .dropdown.assignees .menu {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.CurationPage .filters .dropdown.assignees .menu .selected.item,
+.ui.dropdown.selected {
+  color: var(--primary);
+}
+
+.CurationPage .filters .filterByCampaignTag {
+  margin-right: 16px;
+}

@@ -1,0 +1,16 @@
+get:
+  operationId: getLambdaStatus
+  summary: Catalyst Server status
+  tags:
+    - Lambdas
+  description: Retrieve detailed information about the services
+  responses:
+    '200':
+      description: Catalyst services information
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../../components/schemas/lambdas/status-lambdas.yaml
+          examples:
+            default:
+              $ref: ../../components/examples/lambdas/200-status-lambdas.json

@@ -1,0 +1,38 @@
+.ItemImage {
+  position: relative;
+}
+
+.ItemImage.image-wrapper {
+  border-radius: 5px;
+}
+
+.ItemImage.image-wrapper .item-image {
+  width: auto;
+  max-width: 100%;
+}
+
+.ItemImage .ItemBadge {
+  background-color: #37333d;
+  width: 24px;
+  height: 24px;
+  margin-left: 8px;
+}
+
+.ItemImage .ItemBadge::before {
+  filter: none;
+}
+
+.ItemImage .rarity-badge {
+  height: 24px;
+}
+
+.ItemImage .SmartBadge.small {
+  margin-left: 8px;
+}
+
+.ItemImage .badges-container {
+  position: absolute;
+  display: flex;
+  bottom: 9px;
+  left: 9px;
+}

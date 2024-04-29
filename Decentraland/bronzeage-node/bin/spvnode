@@ -1,0 +1,46 @@
+#!/usr/bin/env node
+
+'use strict';
+
+process.title = 'decentraland-node-spv';
+
+var decentraland = require('../');
+var util = decentraland.util;
+var assert = require('assert');
+
+var options = decentraland.config({
+  config: true,
+  arg: true,
+  env: true,
+  logLevel: 'debug',
+  logFile: true,
+  db: 'leveldb'
+});
+
+decentraland.set(options);
+
+var node = decentraland.spvnode(options);
+
+node.on('error', function(err) {
+  ;
+});
+
+process.on('uncaughtException', function(err) {
+  node.logger.debug(err.stack);
+  node.logger.error(err);
+  process.exit(1);
+});
+
+node.open().then(function() {
+  if (process.argv.indexOf('--test') !== -1) {
+    node.pool.watchAddress('1VayNert3x1KzbpzMGt2qdqrAThiRovi8');
+    node.pool.watch(decentraland.outpoint().toRaw());
+    node.on('block', function(block) {
+      assert(block.txs.length >= 1);
+      if (block.txs.length > 1)
+        util.log(block.txs[1]);
+    });
+  }
+
+  node.startSync();
+});

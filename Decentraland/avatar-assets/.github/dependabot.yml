@@ -1,0 +1,12 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: weekly
+  allow:
+    - dependency-name: "@dcl/*"
+    - dependency-name: "@catalyst/*"
+    - dependency-name: "@well-known-components/*"
+    - dependency-name: "dcl-*"
+  versioning-strategy: auto

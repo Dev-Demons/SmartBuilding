@@ -1,0 +1,117 @@
+type: object
+required:
+  - healthy
+  - acceptingUsers
+  - configurations
+  - content
+  - lambdas
+properties:
+  healthy:
+    type: boolean
+  acceptingUsers:
+    type: boolean
+  configurations:
+    type: object
+    required:
+      - networkId
+      - globalScenesUrn
+      - scenesUrn
+    properties:
+      realmName:
+        type: string
+      networkId:
+        type: number
+      globalScenesUrn:
+        type: array
+        items:
+          type: string
+      scenesUrn:
+        type: array
+        items:
+          type: string
+      minimap:
+        type: object
+        required:
+          - enabled
+        properties:
+          enabled:
+            type: boolean
+          dataImage:
+            type: string
+          estateImage:
+            type: string
+      skybox:
+        type: object
+        properties:
+          fixedHour:
+            type: number
+          textures:
+            type: array
+            items:
+              type: string
+  content:
+    type: object
+    required:
+      - healthy
+      - publicUrl
+      - synchronizationStatus
+    properties:
+      synchronizationStatus:
+        type: string
+      healthy:
+        type: boolean
+      commitHash:
+        type: string
+      version:
+        type: string
+      publicUrl:
+        type: string
+  comms:
+    type: object
+    required:
+      - healthy
+      - protocol
+    properties:
+      healthy:
+        type: boolean
+      protocol:
+        type: string
+      commitHash:
+        type: string
+      version:
+        type: string
+      usersCount:
+        type: number
+      adapter:
+        type: string
+  lambdas:
+    type: object
+    required:
+      - healthy
+      - publicUrl
+    properties:
+      healthy:
+        type: boolean
+      commitHash:
+        type: string
+      version:
+        type: string
+      publicUrl:
+        type: string
+  bff:
+    type: object
+    required:
+      - healthy
+      - publicUrl
+      - protocolVersion
+    properties:
+      healthy:
+        type: boolean
+      commitHash:
+        type: string
+      userCount:
+        type: number
+      publicUrl:
+        type: string
+      protocolVersion:
+        type: string

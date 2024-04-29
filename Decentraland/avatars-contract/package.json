@@ -1,0 +1,47 @@
+{
+  "name": "avatars-contract",
+  "version": "1.0.0",
+  "description": "Decentraland avatar contract",
+  "main": "index.js",
+  "scripts": {
+    "test": "scripts/test.sh",
+    "test:coverage": "SOLIDITY_COVERAGE=true scripts/test.sh",
+    "test:watch": "nodemon test/** contracts/** --exec 'npm test'",
+    "lint": "npx eslint test && npx solium -d contracts",
+    "lint:fix": "npx eslint --fix test && npx solium -d contracts --fix",
+    "compile": "npx hardhat compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/decentraland/aux-contract/burner.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/decentraland/aux-contract/burner/issues"
+  },
+  "homepage": "https://github.com/decentraland/aux-contract/burner#readme",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.8",
+    "@nomiclabs/hardhat-etherscan": "^3.1.7",
+    "@nomiclabs/hardhat-truffle5": "^2.0.7",
+    "@openzeppelin/contracts": "^2.4.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "bn-chai": "^1.0.1",
+    "decentraland-contract-plugins": "^2.2.0",
+    "dotenv": "^16.0.3",
+    "eth-provider": "^0.13.6",
+    "ganache-cli": "^6.7.0",
+    "hardhat": "^2.13.0",
+    "openzeppelin-solidity": "^2.4.0",
+    "solidity-coverage": "^0.8.2"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 80
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "languages": {
+    "en": "English",
+    "es": "Spanish"
+  },
+  "global": {
+    "loading": "Loading",
+    "wallet": "Wallet",
+    "reconnect": "Reconnect",
+    "connecting": "Connecting",
+    "refill": "Refill"
+  },
+  "faucet_page": {
+    "title": "Decentraland Faucet",
+    "refill_with": "Fill your ropsten wallet with",
+    "no_wallet": "Could not find a valid wallet",
+    "incorrect_network": "This faucet only works on Ropsten Test Network",
+    "already_toped_up": "Already toped up",
+    "transaction_pending": "Transaction pending"
+  }
+}

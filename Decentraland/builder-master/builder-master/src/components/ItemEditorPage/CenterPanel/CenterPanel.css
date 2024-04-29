@@ -1,0 +1,208 @@
+.CenterPanel {
+  position: relative;
+  flex: 1 1 auto;
+  background-color: #4c4852;
+  display: flex;
+  flex-direction: column;
+}
+
+.CenterPanel .WearablePreview {
+  background: none;
+}
+
+.CenterPanel .footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.CenterPanel .footer .options {
+  margin-bottom: 16px;
+  display: inline-flex;
+  width: 100%;
+  /* justify-content: space-between; */
+}
+
+.CenterPanel .footer .option {
+  background-color: var(--light-gray);
+  padding: 4px 12px 6px 12px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-left: 16px;
+  cursor: pointer;
+  display: flex;
+  height: 35px;
+  align-items: center;
+}
+
+.CenterPanel .footer .option .user.icon {
+  margin-bottom: 4px;
+  margin-left: 2px;
+}
+
+.CenterPanel .footer .option:last-of-type {
+  margin-right: 16px;
+  margin-left: auto;
+}
+
+.CenterPanel .footer .option.active {
+  background-color: #ff2d55;
+}
+
+.CenterPanel .footer .ui.dropdown > .dropdown.icon {
+  color: var(--text);
+}
+
+.CenterPanel .footer .avatar-animation-dropdown-wrapper.option {
+  padding: 0;
+}
+
+.CenterPanel .footer .avatar-animation-dropdown-wrapper.option .ui.buttons {
+  width: 222px;
+  height: 100%;
+}
+
+.CenterPanel .footer .avatar-animation-dropdown-wrapper.option .ui.buttons .ui.button {
+  background-color: var(--light-gray);
+  font-size: 15px;
+  line-height: 17px;
+  min-width: 29.5px;
+  transform: translateY(0px);
+  padding: 6px 12px;
+}
+
+.CenterPanel .footer .avatar-animation-dropdown-wrapper.option .ui.buttons .ui.button span {
+  margin-left: 5px;
+}
+
+.CenterPanel .footer .avatar-animation-dropdown-wrapper.option .ui.buttons .ui.button.dropdown {
+  border-left-style: solid;
+  border-left-width: thin;
+  font-size: 20px;
+}
+
+.CenterPanel .footer .ui.dropdown > .text {
+  color: var(--text);
+  font-size: 11px;
+  line-height: 16px;
+}
+
+.CenterPanel .footer .ui.dropdown > .menu > .header {
+  color: var(--light-gray);
+  font-size: 15px;
+  line-height: 24px;
+  padding: 10px 16px !important;
+  margin: 0;
+  font-weight: normal;
+  min-width: 210px;
+}
+
+.CenterPanel .footer .ui.dropdown > .menu {
+  padding-top: 0;
+  max-width: 222px;
+}
+
+.CenterPanel .footer .ui.dropdown > .menu > .divider {
+  margin: 0;
+}
+
+.CenterPanel .footer .ui.dropdown > .menu > .item {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.CenterPanel .footer .avatar-attributes {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  transition: margin-bottom 0.2s ease-in-out;
+  background-color: var(--dark-two);
+  padding: 16px 16px 4px;
+  margin-bottom: -204px;
+  border-top: 1px solid rgba(115, 110, 125, 0.3);
+}
+
+.CenterPanel .footer .avatar-attributes .dropdown-container {
+  flex: 0 50%;
+}
+
+.CenterPanel .footer .avatar-attributes .ui.dropdown {
+  width: 95%;
+}
+
+.CenterPanel .footer .avatar-attributes.active {
+  margin-bottom: 0;
+}
+
+.CenterPanel .footer .ui.dropdown .menu {
+  background-color: var(--smart-grey);
+}
+
+.CenterPanel .emote-controls-container {
+  position: relative;
+  margin: 0 16px;
+}
+
+.CenterPanel .emote-controls {
+  padding: 4px;
+  background: #242129;
+  position: relative;
+}
+
+.CenterPanel .emote-controls .ui.button.sound-control {
+  margin: 0 15px;
+}
+
+.CenterPanel .EmoteControls {
+  padding: 0;
+}
+
+.CenterPanel .EmoteControls .frame-control {
+  margin: 4px;
+  margin-left: 0;
+}
+
+.CenterPanel .EmoteControls .ui.button.play-control {
+  width: 65px;
+  height: 51px;
+  border-radius: 0;
+}
+
+.CenterPanel .EmoteControls .ui.button.play-control:hover {
+  transform: none;
+}
+
+.CenterPanel.import-files-modal-is-open {
+  pointer-events: none;
+}
+
+.CenterPanel .zoom-controls {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.CenterPanel .zoom-controls > .ui.button.zoom-control {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  min-width: unset;
+  background-color: rgba(0, 0, 0, 0.64) !important;
+  border-radius: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.CenterPanel .zoom-controls > .ui.button.zoom-control i.icon {
+  margin: 0 !important;
+}
+
+.CenterPanel .zoom-controls > .ui.button.zoom-in-control {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  min-width: unset;
+}

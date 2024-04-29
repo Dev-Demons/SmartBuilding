@@ -1,0 +1,66 @@
+.EventBanner {
+  width: 100%;
+  padding: 25px 0;
+  display: grid;
+  grid-template-columns: 400px 1fr 450px;
+  background-image: url('./banner.png');
+  background-size: cover;
+  background-position: center;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 35px;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  align-items: center;
+}
+
+.EventBanner::before {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.EventBanner .event-banner-text {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  align-self: center;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 26px;
+  gap: 10px;
+  justify-content: center;
+  max-width: 750px;
+  justify-self: center;
+}
+
+.EventBanner .event-banner-logo {
+  width: calc(100% - 50px);
+  margin-left: 50px;
+}
+
+.EventBanner .title {
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.EventBanner .subtitle {
+  overflow-wrap: break-word;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.EventBanner .event-banner-icon {
+  width: 100%;
+}
+
+.EventBanner .event-banner-pink {
+  color: #fd98ff;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 1400px) {
+  .EventBanner {
+    grid-template-columns: 300px 1fr 300px;
+    gap: 20px;
+  }
+}

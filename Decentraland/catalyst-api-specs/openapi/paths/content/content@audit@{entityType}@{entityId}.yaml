@@ -1,0 +1,53 @@
+get:
+  operationId: getEntityAuditInformation
+  summary: Get information about an entity
+  tags:
+    - Content Server
+  parameters:
+    - in: path
+      name: entityType
+      required: true
+      schema:
+        type: string
+        enum:
+          - 'profile'
+          - 'scene'
+          - 'wearable'
+        example: profile
+      description: Specify the type of entity to audit
+    - in: path
+      name: entityId
+      required: true
+      schema:
+        type: string
+        example: QmQgezF4UWTZpD5VqKs2AGCzucRJdm8zU87MxdSRH9heZR
+      description: id of the entity
+  description: >-
+    Get information about an entity, such us Scenes Profiles or Wearables,
+    with the specified entityId.
+  security: []
+  responses:
+    '200':
+      description: 'Entity version, AuthChain and if the deployment was overwritten'
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../../components/schemas/content/audit-response.yaml
+          examples:
+            default:
+              $ref: ../../components/examples/content/200-audit-response.json
+    '400':
+      description: Unrecognized Entity type
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../../components/schemas/content/error.yaml
+          example:
+            error: 'Unrecognized type: Houses'
+    '404':
+      description: Not Found
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../../components/schemas/content/error.yaml
+          example: Not Found

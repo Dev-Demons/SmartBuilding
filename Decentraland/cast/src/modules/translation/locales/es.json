@@ -1,0 +1,28 @@
+{
+  "global": {
+    "learn_more": "Aprende más"
+  },
+  "connect_to_world": {
+    "title": "Reunirse en Decentraland",
+    "description": "Elija el mundo al que desea conectarse y comience a transmitir.",
+    "image_alt": "Reunirse en Decentraland",
+    "cta": "Conectar",
+    "input_label": "Nombre del mundo",
+    "input_placeholder": "ejemplo:<name>.dcl.eth"
+  },
+  "people_panel": {
+    "title": "Personas",
+    "subtitle": "Personas en esta reunión",
+    "more": "{name} y {count} personas más."
+  },
+  "chat_panel": {
+    "title": "Chat"
+  },
+  "chat_entry": {
+    "you": "Tu"
+  },
+  "control_bar": {
+    "leave": "Salir",
+    "stop_sharing": "Deja de compartir"
+  }
+}

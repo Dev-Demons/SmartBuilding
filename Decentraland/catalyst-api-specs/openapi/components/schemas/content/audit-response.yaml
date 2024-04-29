@@ -1,0 +1,20 @@
+required:
+  - version
+  - localTimestamp
+  - authChain
+type: object
+properties:
+  version:
+    type: string
+  localTimestamp:
+    type: number
+  authChain:
+    $ref: 'auth-chain.yaml'
+  overwrittenBy:
+    type: string
+  isDenylisted:
+    type: boolean
+  denylistedContent:
+    type: array
+    items:
+      type: string

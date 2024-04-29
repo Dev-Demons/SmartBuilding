@@ -1,0 +1,220 @@
+use anyhow::{anyhow, bail};
+use bevy::{
+    prelude::*,
+    render::render_resource::{AsBindGroup, ShaderRef, ShaderType},
+    ui::UiSystem,
+};
+use bevy_dui::{DuiContext, DuiProps, DuiRegistry, DuiTemplate, NodeMap};
+use bevy_ecss::StyleSheetAsset;
+// use common::util::TryInsertEx;
+
+/// specify a background image using 9-slice scaling
+/// https://en.wikipedia.org/wiki/9-slice_scaling
+/// must be added to an entity with `NodeBundle` components
+#[derive(Component, Default)]
+pub struct Ui9Slice {
+    /// the image to be sliced
+    pub image: Handle<Image>,
+    /// rect defining the edges of the center / stretched region
+    /// Val::Px uses so many pixels
+    /// Val::Percent uses a percent of the image size
+    /// Val::Auto and Val::Undefined are treated as zero.
+    pub center_region: UiRect,
+    pub tint: Option<BackgroundColor>,
+}
+
+impl Ui9Slice {
+    pub fn new(image: Handle<Image>, center_region: UiRect, tint: Option<BackgroundColor>) -> Self {
+        Self {
+            image,
+            center_region,
+            tint,
+        }
+    }
+}
+
+#[derive(SystemSet, Hash, PartialEq, Eq, PartialOrd, Ord, Debug, Clone)]
+pub struct Ui9SliceSet;
+
+pub struct Ui9SlicePlugin;
+
+impl Plugin for Ui9SlicePlugin {
+    fn build(&self, app: &mut App) {
+        app.add_systems(Startup, setup);
+        app.add_plugins(UiMaterialPlugin::<NineSliceMaterial>::default());
+        app.add_systems(PostUpdate, update_slices.after(UiSystem::Layout));
+    }
+}
+
+#[allow(clippy::type_complexity)]
+fn update_slices(
+    mut commands: Commands,
+    images: Res<Assets<Image>>,
+    mut new_slices: Query<
+        (
+            Entity,
+            &Node,
+            &mut Ui9Slice,
+            Option<&Handle<NineSliceMaterial>>,
+        ),
+        Or<(Changed<Ui9Slice>, Added<Ui9Slice>, Changed<Node>)>,
+    >,
+    mut removed: RemovedComponents<Ui9Slice>,
+    mut mats: ResMut<Assets<NineSliceMaterial>>,
+) {
+    // clean up removed slices
+    for ent in removed.read() {
+        if let Some(mut commands) = commands.get_entity(ent) {
+            commands.remove::<Handle<NineSliceMaterial>>();
+        }
+    }
+
+    for (ent, node, mut slice, maybe_material) in new_slices.iter_mut() {
+        let Some(image_size) = images.get(&slice.image).map(Image::size_f32) else {
+            slice.set_changed();
+            continue;
+        };
+
+        let new_mat = NineSliceMaterial {
+            image: slice.image.clone(),
+            bounds: GpuSliceData {
+                bounds: Vec4::new(
+                    slice
+                        .center_region
+                        .left
+                        .resolve(image_size.x, Vec2::ZERO)
+                        .unwrap_or(0.0),
+                    slice
+                        .center_region
+                        .left
+                        .resolve(image_size.x, Vec2::ZERO)
+                        .unwrap_or(0.0),
+                    slice
+                        .center_region
+                        .left
+                        .resolve(image_size.x, Vec2::ZERO)
+                        .unwrap_or(0.0),
+                    slice
+                        .center_region
+                        .left
+                        .resolve(image_size.x, Vec2::ZERO)
+                        .unwrap_or(0.0),
+                ),
+                surface: node.unrounded_size().extend(0.0).extend(0.0),
+            },
+            color: slice
+                .tint
+                .map(|bg| bg.0)
+                .unwrap_or(Color::WHITE)
+                .as_linear_rgba_f32()
+                .into(),
+        };
+
+        if let Some(mat) = maybe_material.and_then(|h| mats.get_mut(h)) {
+            *mat = new_mat;
+        } else {
+            commands.entity(ent).try_insert(mats.add(new_mat));
+        }
+    }
+}
+
+#[derive(ShaderType, Debug, Clone)]
+struct GpuSliceData {
+    bounds: Vec4,
+    surface: Vec4,
+}
+
+#[derive(AsBindGroup, Asset, TypePath, Debug, Clone)]
+struct NineSliceMaterial {
+    #[texture(0)]
+    #[sampler(1)]
+    image: Handle<Image>,
+    #[uniform(2)]
+    bounds: GpuSliceData,
+    #[uniform(3)]
+    color: Vec4,
+}
+
+impl UiMaterial for NineSliceMaterial {
+    fn fragment_shader() -> ShaderRef {
+        "shaders/nineslice_material.wgsl".into()
+    }
+}
+
+pub fn setup(mut dui: ResMut<DuiRegistry>) {
+    dui.register_template("nineslice", Ui9SliceTemplate);
+}
+
+pub struct Ui9SliceTemplate;
+impl DuiTemplate for Ui9SliceTemplate {
+    fn render(
+        &self,
+        commands: &mut bevy::ecs::system::EntityCommands,
+        mut props: DuiProps,
+        ctx: &mut DuiContext,
+    ) -> Result<NodeMap, anyhow::Error> {
+        let border = props
+            .take::<String>("slice-border")?
+            .ok_or(anyhow!("no slice-border specified"))?;
+
+        let image = match (
+            props.borrow::<String>("slice-image", ctx),
+            props.borrow::<Handle<Image>>("slice-image", ctx),
+        ) {
+            (Ok(Some(img)), _) => ctx.asset_server().load(img),
+            (_, Ok(Some(handle))) => handle.clone(),
+            _ => bail!("no slice-image specified"),
+        };
+
+        let tint = props.take::<String>("slice-color")?;
+
+        let border_sheet = if let Some(tint) = tint.as_ref() {
+            format!("#whatever {{ border: {border}; color: {tint}; }}")
+        } else {
+            format!("#whatever {{ border: {border}; }}")
+        };
+
+        let sheet = StyleSheetAsset::parse("", &border_sheet);
+        let properties = &sheet.iter().next().unwrap().properties;
+
+        let center_region = properties
+            .get("border")
+            .unwrap()
+            .rect()
+            .ok_or(anyhow!("failed to parse slice-border value `{border}`"))?;
+        let tint: Option<BackgroundColor> = if let Some(color) = properties.get("color") {
+            Some(
+                color
+                    .color()
+                    .ok_or(anyhow!(
+                        "failed to parse slice-color value `{}`",
+                        tint.unwrap()
+                    ))?
+                    .into(),
+            )
+        } else {
+            None
+        };
+
+        debug!("border rect: {center_region:?}");
+
+        commands.insert((
+            NodeBundle {
+                style: Style {
+                    position_type: PositionType::Absolute,
+                    width: Val::Percent(100.0),
+                    height: Val::Percent(100.0),
+                    ..Default::default()
+                },
+                ..Default::default()
+            },
+            Ui9Slice {
+                image,
+                center_region,
+                tint,
+            },
+        ));
+
+        Ok(NodeMap::default())
+    }
+}

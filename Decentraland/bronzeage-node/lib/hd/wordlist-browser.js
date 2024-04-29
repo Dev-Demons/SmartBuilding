@@ -1,0 +1,29 @@
+/*!
+ * wordlist.js - wordlists for decentraland
+ * Copyright (c) 2015-2016, Christopher Jeffrey (MIT License).
+ * Copyright (c) 2016-2017, Manuel Araoz (MIT License).
+ * https://github.com/decentraland/decentraland-node
+ */
+
+'use strict';
+
+var words = require('./words');
+
+exports.get = function get(name) {
+  switch (name) {
+    case 'simplified chinese':
+      return words.chinese.simplified;
+    case 'traditional chinese':
+      return words.chinese.traditional;
+    case 'english':
+      return words.english;
+    case 'french':
+      return words.french;
+    case 'italian':
+      return words.italian;
+    case 'japanese':
+      return words.japanese;
+    default:
+      throw new Error('Unknown language: ' + name);
+  }
+};

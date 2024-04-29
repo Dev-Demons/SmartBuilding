@@ -1,0 +1,117 @@
+{
+  "name": "decentraland",
+  "version": "1.0.0-alpha",
+  "description": "Full node for Decentraland, a blockchain-based virtual reality world.",
+  "main": "./lib/decentraland.js",
+  "bin": "./bin/start",
+  "preferGlobal": true,
+  "scripts": {
+    "start": "node bin/node --fast --port=2301 --prefix=./data --httpport=8301 --n=testnet --apikey=3TR6BveE2Qpu8ytMZ7AMqmALZor3dY --contentPort=9301"
+  },
+  "repository": "git://github.com/decentraland/decentraland-node.git",
+  "keywords": [
+    "decentraland",
+    "vr",
+    "blockchain",
+    "wallet"
+  ],
+  "author": "The Decentraland Team",
+  "contributors": [
+    "Manuel Araoz <manuelaraoz@gmail.com> (https://github.com/maraoz)",
+    "Esteban Ordano <eordano@gmail.com> (https://github.com/eordano)",
+    "Yemel Jardi <angel.jardi@gmail.com> (https://github.com/yemeljardi)",
+    "Dario Sneidermanis (https://github.com/esneider)",
+    "Kyllian Le Borgne Roperch (https://github.com/HPrivakos)",
+    "Martin Triay (https://github.com/martriay)",
+    "Kostas (https://github.com/vrinek)",
+    "3swordjack (https://github.com/3swordjack)",
+    "Mason Jeffers (https://github.com/masonjeffers)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/decentraland/decentraland-node/issues"
+  },
+  "homepage": "https://github.com/decentraland/decentraland-node",
+  "engines": {
+    "node": ">= 7.4.0"
+  },
+  "dependencies": {
+    "bn.js": "4.11.6",
+    "bs58": "^4.0.1",
+    "cors": "^2.8.1",
+    "electron-webrtc": "^0.3.0",
+    "elliptic": "6.3.2",
+    "express": "^4.14.0",
+    "fs-ext": "^0.6.0",
+    "get-stdin": "^5.0.1",
+    "graceful-fs": "^4.0.0",
+    "install": "^0.8.4",
+    "ipfs": "^0.25.0",
+    "isomorphic-fetch": "^2.2.1",
+    "leveldown": "^1.5.0",
+    "libp2p-webrtc-star": "^0.11.0",
+    "miniwatch": "^0.1.1",
+    "mkdirp": "^0.5.1",
+    "node-pre-gyp": "^0.6.36",
+    "npm": "^4.0.5",
+    "socket.io-client": "^1.4.8",
+    "streamifier": "^0.1.1",
+    "whatwg-fetch": "^2.0.3",
+    "wrtc": "^0.0.62"
+  },
+  "optionalDependencies": {
+    "bcoin-native": "0.0.12",
+    "leveldown": "1.5.0",
+    "secp256k1": "3.2.0",
+    "socket.io": "1.4.8",
+    "socket.io-client": "1.4.8"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-regenerator": "6.14.0",
+    "babel-plugin-transform-runtime": "6.12.0",
+    "babel-polyfill": "6.13.0",
+    "babel-preset-es2015": "6.14.0",
+    "babelify": "7.3.0",
+    "browserify": "13.1.0",
+    "hash.js": "1.0.3",
+    "jsdoc": "3.4.0",
+    "level-js": "2.2.4",
+    "mocha": "3.0.2",
+    "randomcolor": "^0.4.4",
+    "uglify-js": "2.7.3"
+  },
+  "browser": {
+    "./lib/http/base": "./browser/empty.js",
+    "./lib/http/client": "./browser/empty.js",
+    "./lib/http/request": "./browser/empty.js",
+    "./lib/http/rpcclient": "./browser/empty.js",
+    "./lib/http/server": "./browser/empty.js",
+    "./lib/http/wallet": "./browser/empty.js",
+    "./lib/utils/lazy": "./lib/utils/lazy-browser.js",
+    "./lib/utils/native": "./browser/empty.js",
+    "./lib/utils/nfkd": "./lib/utils/nfkd-browser.js",
+    "./lib/utils/nexttick": "./lib/utils/nexttick-browser.js",
+    "./lib/crypto/backend": "./lib/crypto/backend-browser.js",
+    "./lib/crypto/ec": "./lib/crypto/ec-elliptic.js",
+    "./lib/crypto/pk": "./lib/crypto/pk-browser.js",
+    "./lib/db/backends": "./lib/db/backends-browser.js",
+    "./lib/hd/wordlist": "./lib/hd/wordlist-browser.js",
+    "./lib/net/tcp": "./lib/net/tcp-browser.js",
+    "./lib/net/dns": "./lib/net/dns-browser.js",
+    "./lib/blockchain/layout": "./lib/blockchain/layout-browser.js",
+    "./lib/wallet/layout": "./lib/wallet/layout-browser.js",
+    "fs": "./browser/empty.js",
+    "crypto": "./browser/empty.js",
+    "child_process": "./browser/empty.js",
+    "os": "./browser/empty.js",
+    "net": "./browser/empty.js",
+    "bcoin-native": "./browser/empty.js",
+    "secp256k1": "./browser/empty.js"
+  },
+  "browserify": {
+    "transform": [
+      "./browser/transform.js",
+      "babelify"
+    ]
+  }
+}

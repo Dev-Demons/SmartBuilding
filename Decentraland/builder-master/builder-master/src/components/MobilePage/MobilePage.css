@@ -1,0 +1,230 @@
+.MobilePage {
+  display: flex;
+  align-items: center;
+  color: initial;
+}
+
+.MobilePage .ui.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text);
+}
+
+.MobilePage .ui.container .slot-image {
+  margin-top: calc(var(--navbar-height) + 69px);
+  background: url('../../images/tools.svg') no-repeat center;
+  height: 96px;
+  width: 96px;
+}
+
+.MobilePage .ui.container h2 {
+  margin: 28px 90px;
+  text-align: center;
+  font-size: 17px;
+  line-height: 26px;
+}
+
+.MobilePage .ui.container span {
+  margin-top: 48px;
+  font-size: 15px;
+  line-height: 24px;
+  color: var(--light-gray);
+}
+
+.MobilePage .ui.container .ui.list > .item {
+  display: flex;
+  margin: 16px 24px;
+  font-size: 15px;
+  line-height: 24px;
+}
+
+.MobilePage .ui.container .ui.list > .item .content {
+  padding-left: 12px;
+}
+
+.MobilePage .ui.container .ui.list > .item .icon {
+  width: 26px;
+  height: 24px;
+}
+
+.MobilePage .ui.container .ui.list > .item .icon.dress-icon {
+  background: url('../../icons/dress.svg') no-repeat;
+}
+
+.MobilePage .ui.container .ui.list > .item .icon.tools-icon {
+  background: url('../../icons/tools.svg') no-repeat;
+}
+
+.MobilePage .ui.container .ui.list > .item .icon.landscape-icon {
+  background: url('../../icons/landscape.svg') no-repeat;
+}
+
+.MobilePage .ui.container .ui.list > .item .icon.cat-icon {
+  background: url('../../icons/cat.svg') no-repeat;
+}
+
+.MobilePage .ui.container .ui.button {
+  margin-top: 34px;
+  width: 180px;
+  padding: 7px 45px;
+  border-color: var(--light-gray);
+}
+
+.MobilePage .ui.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 32px;
+  padding: 24px 0px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.MobilePage .ui.form .message {
+  font-weight: 100;
+  font-size: 15px;
+  text-align: center;
+  line-height: 24px;
+  margin: 0px 10px 24px 10px;
+}
+
+.MobilePage .form-container {
+  display: flex;
+  height: 48px;
+  width: 90%;
+  justify-content: center;
+}
+
+.MobilePage .form-container button {
+  margin: 0px 0px 0px 16px;
+  height: 44px;
+}
+
+.MobilePage .form-container .field {
+  min-width: 100px;
+  overflow: hidden;
+  height: 44px;
+}
+
+.MobilePage .form-container .field .ui.input > input {
+  background: white;
+  color: #5c5c6e;
+  font-size: 15px;
+  border-radius: 6px;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  height: 44px;
+}
+
+.MobilePage .hero-actions .hollow {
+  margin-top: 32px;
+}
+
+.MobilePage .success {
+  width: 75%;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 10px 0px;
+  border-radius: 6px;
+  color: white;
+  text-align: center;
+}
+
+.MobilePage .dcl.hero.secondary-hero {
+  padding: 64px 24px;
+}
+
+.MobilePage .dcl.hero.secondary-hero .primary {
+  width: 275px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.MobilePage .dcl.hero.secondary-hero .background {
+  height: 100%;
+  background-image: var(--metaverse-gradient);
+}
+
+.MobilePage .gallery {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 48px 0px;
+  padding: 0px 24px;
+}
+
+.MobilePage .gallery .header {
+  margin: 32px 0px;
+  font-size: 28px !important;
+  line-height: 34px !important;
+}
+
+.MobilePage .gallery .thumbnail-column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.MobilePage .thumbnail {
+  width: 343px;
+  height: 220px;
+  border-radius: 8px;
+  background-color: #d8d8d8;
+  margin-top: 12px;
+  margin-right: 0px;
+  background-size: cover;
+}
+
+.MobilePage .thumbnail.thumb-1 {
+  background-image: url('../../images/mobile-thumb-1.jpg');
+}
+
+.MobilePage .thumbnail.thumb-2 {
+  background-image: url('../../images/mobile-thumb-2.webp');
+}
+
+.MobilePage .thumbnail.thumb-3 {
+  background-image: url('../../images/mobile-thumb-3.jpg');
+}
+
+.MobilePage .thumbnail.thumb-4 {
+  background-image: url('../../images/mobile-thumb-4.jpg');
+}
+
+.MobilePage .mobile-page-banner {
+  padding: 64px 24px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 26px;
+  text-align: center;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .MobilePage .thumbnail:nth-child(odd) {
+    margin-right: 12px;
+  }
+
+  .MobilePage .dcl.hero {
+    padding: 100px 100px 232px 100px;
+  }
+
+  .MobilePage .gallery {
+    padding: 0px;
+  }
+}
+
+@media (max-width: 480px) {
+  .MobilePage .form-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .MobilePage .form-container button {
+    margin: 0px;
+  }
+}

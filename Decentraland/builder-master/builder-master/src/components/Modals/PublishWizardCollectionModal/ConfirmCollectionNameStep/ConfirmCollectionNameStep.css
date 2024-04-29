@@ -1,0 +1,44 @@
+.ConfirmCollectionNameStep .details {
+  background-color: rgba(var(--dark-raw), 0.48);
+  border-radius: 8px;
+  width: 100%;
+  padding: 20px 24px 84px;
+}
+
+.ConfirmCollectionNameStep .details .title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.ConfirmCollectionNameStep .details .subtitle {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--clear-divider);
+  margin-bottom: 0px;
+}
+
+.ConfirmCollectionNameStep .details .description {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--clear-divider);
+}
+
+.ConfirmCollectionNameStep .details .fields .dcl.field {
+  margin-top: 32px;
+}
+
+.ConfirmCollectionNameStep .details .fields .confirm-collection-name .has-label .header {
+  color: white;
+}
+
+.ConfirmCollectionNameStep .actions {
+  margin-top: 24px;
+  width: 100%;
+}
+
+.ConfirmCollectionNameStep .actions .button {
+  width: 180px;
+}

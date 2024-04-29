@@ -1,0 +1,16 @@
+get:
+  operationId: getContentStatus
+  summary: Content Server status
+  tags:
+    - Content Server
+  description: Retrieve deteailed information about the content server status
+  responses:
+    '200':
+      description: Content Server status information
+      content:
+        application/json; charset=utf-8:
+          schema:
+            $ref: ../../components/schemas/content/status-content.yaml
+          examples:
+            default:
+              $ref: ../../components/examples/content/200-status-content.json

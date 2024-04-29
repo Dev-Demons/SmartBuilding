@@ -1,0 +1,31 @@
+get:
+  operationId: getCollections
+  summary: Get Collections
+  tags:
+    - Lambdas
+  description: Retrieve the list of collections URNs
+  responses:
+    '200':
+      description: Array of collections URNs and names
+      content:
+        application/json; charset=utf-8:
+          schema:
+            type: object
+            properties:
+              collections:
+                type: array
+                items:
+                  type: object
+                  required:
+                    - id
+                    - name
+                  properties:
+                    id:
+                      type: string
+                    name:
+                      type: string
+          examples:
+            default:
+              $ref: ../../components/examples/lambdas/200-collections.json
+    '500':
+      description:  Internal Server Error

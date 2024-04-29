@@ -1,0 +1,52 @@
+.ui.small.modal.ExportModal {
+  padding: 60px;
+}
+
+.ui.small.modal.ExportModal .export-modal-title {
+  text-align: center;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 36px;
+}
+
+.ui.small.modal.ExportModal .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ui.small.modal.ExportModal .content .export-modal-content-image {
+  background-image: url('../../../images/export_modal_img.webp');
+  height: 180px;
+  width: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 20px;
+}
+
+.ui.small.modal.ExportModal .details {
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  max-width: 386px;
+}
+
+.ui.small.modal.ExportModal .export-modal-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ui.small.modal.ExportModal .export-modal-actions > .ui.button {
+  margin: 0;
+}
+
+.ui.small.modal.ExportModal .export-modal-loader {
+  margin-left: 10px;
+}
+
+.ui.small.modal.ExportModal .export-modal-loader.ui.loader:before {
+  border-color: white !important; /** override important */
+}

@@ -1,0 +1,25 @@
+.VideoConferenceInnerContainer {
+  padding: 0px 60px;
+}
+
+.LayoutWrapper {
+  flex-direction: row;
+  padding: 8px 0px;
+  height: calc(100% - (var(--lk-control-bar-height) + var(--lk-control-bar-margin-top) + var(--lk-control-bar-margin-bottom)));
+}
+
+.GridLayout {
+  flex: 1;
+  padding: 0;
+  margin-right: 12px;
+}
+
+@media (max-width: 768px) {
+  .VideoConferenceInnerContainer {
+    padding: 0px 2px;
+  }
+
+  .GridLayout {
+    margin-right: 0;
+  }
+}

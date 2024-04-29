@@ -1,0 +1,59 @@
+{
+  "name": "catalyst",
+  "version": "0.1.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "author": "Decentraland Contributors",
+  "workspaces": [
+    "content",
+    "lambdas"
+  ],
+  "scripts": {
+    "build": "yarn list-mismatches && yarn workspaces run build",
+    "build:content": "yarn list-mismatches && yarn workspace @catalyst/content-server build",
+    "build:content:sourcemap": "yarn list-mismatches && yarn workspace @catalyst/content-server build:sourcemap",
+    "build:lambdas": "yarn list-mismatches && yarn workspace @catalyst/lambdas-server build",
+    "cleanup": "yarn workspaces run cleanup && rm -rf node_modules",
+    "lint:check": "eslint '**/*.{js,ts}'",
+    "lint:fix": "eslint '**/*.{js,ts}' --fix",
+    "list-mismatches": "npx syncpack list-mismatches --source 'package.json' --source 'lambdas/package.json' --source 'content/package.json'",
+    "migrate": "node-pg-migrate -m content/src/migrations/scripts -j ts",
+    "sort-pkg": "npx sort-package-json; yarn sort-pkg:content; yarn sort-pkg:lambdas",
+    "sort-pkg:content": "npx sort-package-json content/package.json",
+    "sort-pkg:lambdas": "npx sort-package-json lambdas/package.json",
+    "start": "yarn workspaces run start:server",
+    "start:content": "yarn workspace @catalyst/content-server start:db && yarn workspace @catalyst/content-server start:server",
+    "start:lambdas": "yarn workspace @catalyst/lambdas-server start:server",
+    "test": "yarn test:content && yarn test:lambdas",
+    "test:content": "yarn workspace @catalyst/content-server test",
+    "test:lambdas": "yarn workspace @catalyst/lambdas-server test",
+    "unused": "npx depcheck; yarn unused:content; yarn unused:lambdas",
+    "unused:content": "npx depcheck content",
+    "unused:lambdas": "npx depcheck lambdas"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,tsx}": [
+      "eslint --fix"
+    ]
+  },
+  "prettier": {
+    "printWidth": 120,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "5.33.0",
+    "@typescript-eslint/parser": "5.33.0",
+    "eslint": "8.21.0",
+    "eslint-plugin-prettier": "4.2.1",
+    "lint-staged": "13.0.3",
+    "prettier": "2.7.1",
+    "syncpack": "8.2.4",
+    "typescript": "^4.7.4"
+  },
+  "jest-junit": {
+    "addFileAttribute": "true"
+  },
+  "dependencies": {}
+}

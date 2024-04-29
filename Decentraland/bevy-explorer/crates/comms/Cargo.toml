@@ -1,0 +1,39 @@
+[package]
+name = "comms"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+
+[dependencies]
+common = { workspace = true }
+dcl = { workspace = true }
+dcl_component = { workspace = true }
+ipfs = { workspace = true }
+wallet = { workspace = true }
+
+bevy = { workspace = true }
+bimap = { workspace = true }
+ethers-signers = { workspace = true }
+ethers-core = { workspace = true }
+tokio = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+anyhow = { workspace = true }
+futures-lite = { workspace = true }
+isahc = { workspace = true }
+prost = { workspace = true }
+async-std = { workspace = true }
+bevy_kira_audio = { workspace = true }
+kira = { workspace = true }
+
+async-trait = "0.1.68"
+async-tungstenite = { version = "0.22.0", features = ["async-std-runtime", "async-tls"] }
+async-tls = "0.12.0"
+futures-util = "0.3.28"
+livekit = { git = "https://github.com/robtfm/client-sdk-rust", branch="h264-false", features=["rustls-tls-webpki-roots"] }
+rand = "0.8.5"
+multihash-codetable = { version = "0.1.1", features = ["digest", "sha2"] }
+cid = "0.11.0"
+multipart = { version = "0.18.0", default-features = false, features = ["client", "lazy_static"] }
+image = "0.24"

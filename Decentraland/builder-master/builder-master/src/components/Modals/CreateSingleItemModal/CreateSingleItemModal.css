@@ -1,0 +1,284 @@
+/* This CSS is used to hide the CreateSingleItem modal when setting the price for an Item */
+.CreateSingleItemModalContainer > .ui.page.modals:not(:only-child):nth-child(1) {
+  visibility: hidden !important;
+}
+
+.CreateSingleItemModal.ui.modal > .content {
+  margin-bottom: 32px;
+}
+
+.CreateSingleItemModal .details {
+  background-color: rgba(var(--dark-raw), 0.48);
+  border-radius: 8px;
+  width: 100%;
+}
+
+.CreateSingleItemModal .details .ui.sub.header {
+  color: var(--text);
+}
+
+.CreateSingleItemModal .details .dcl.field .message,
+.CreateSingleItemModal .details .dcl.select-field .message {
+  display: none;
+}
+
+.CreateSingleItemModal .details .dcl.field,
+.CreateSingleItemModal .details .dcl.select-field,
+.CreateSingleItemModal .details .required-permissions {
+  margin-bottom: 24px;
+}
+
+.CreateSingleItemModal .details .notice {
+  min-width: 400px;
+  margin-bottom: 0;
+  width: calc(100% - 40px);
+  margin: 0 20px;
+}
+
+.CreateSingleItemModal .preview {
+  padding: 24px;
+}
+
+.CreateSingleItemModal .preview .thumbnail-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.CreateSingleItemModal .smart-wearable .preview .thumbnail-container {
+  margin-bottom: 0;
+}
+
+.CreateSingleItemModal .preview .thumbnail-container .emote-thumbnail {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.CreateSingleItemModal .preview .thumbnail-container .thumbnail {
+  width: 100%;
+  background-color: var(--modal);
+  border-radius: 8px;
+}
+
+.CreateSingleItemModal .preview .thumbnail-container .Icon.camera {
+  position: absolute;
+  bottom: 16px;
+  right: 12px;
+}
+
+.CreateSingleItemModal .ItemVideoContainer .ItemVideo.video-wrapper .icon.video {
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.CreateSingleItemModal .preview .thumbnail-container input[type='file'] {
+  display: none;
+}
+
+.CreateSingleItemModal .smart-wearable .previews .preview input[type='file'] {
+  display: none;
+}
+
+.CreateSingleItemModal .preview .metric,
+.CreateSingleItemModal .smart-wearable .ItemVideoContainer .item-metric {
+  color: var(--text);
+  font-size: 13px;
+  line-height: 18px;
+  margin-bottom: 16px;
+  background-repeat: no-repeat;
+  background-position-y: center;
+}
+
+.CreateSingleItemModal .preview .item-metric.image {
+  padding-left: 20px;
+}
+
+.CreateSingleItemModal .smart-wearable .previews.row {
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.CreateSingleItemModal .smart-wearable .previews .header.sub {
+  margin-bottom: 8px;
+  line-height: 24px;
+}
+
+.CreateSingleItemModal .smart-wearable .preview {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+}
+
+.CreateSingleItemModal .smart-wearable .ui.message.info {
+  margin-bottom: 0;
+}
+
+.CreateSingleItemModal .smart-wearable .preview .thumbnail-container,
+.CreateSingleItemModal .smart-wearable .ItemVideoContainer .ItemVideo,
+.CreateSingleItemModal .smart-wearable .ItemVideoContainer .ItemEmptyVideoContainer {
+  width: 144px;
+  height: 144px;
+}
+
+.CreateSingleItemModal .smart-wearable .previews .thumbnail-metrics {
+  margin-left: 20px;
+}
+
+.CreateSingleItemModal .smart-wearable .previews .video-preview-container .ItemEmptyVideoContainer {
+  margin-right: 60px;
+}
+
+.CreateSingleItemModal .actions {
+  margin-top: 24px;
+  width: 100%;
+}
+
+.CreateSingleItemModal .dcl.row.details {
+  align-items: flex-start;
+}
+
+.CreateSingleItemModal .data {
+  padding-top: 24px;
+}
+
+.CreateSingleItemModal .smart-wearable.data {
+  padding: 24px;
+  width: 100%;
+}
+
+.CreateSingleItemModal .data .ui.header.sub {
+  text-transform: none;
+}
+
+.CreateSingleItemModal .option {
+  font-size: 13px;
+  line-height: 18px;
+  border-radius: 5px;
+  border: 1px solid var(--divider);
+  padding: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  color: var(--secondary-text);
+  text-transform: capitalize;
+}
+
+.CreateSingleItemModal .option.has-icon {
+  padding-left: 32px;
+  background-size: 16px;
+  background-repeat: no-repeat;
+  background-position-y: center;
+  background-position-x: 8px;
+}
+
+.CreateSingleItemModal .option + .option {
+  margin-left: 16px;
+}
+
+.CreateSingleItemModal .option:hover {
+  border-color: white;
+  color: white;
+  cursor: pointer;
+}
+
+.CreateSingleItemModal .option.active {
+  border-color: var(--primary);
+  color: white;
+  background-color: var(--primary);
+}
+
+.CreateSingleItemModal .option.has-icon.both {
+  background-image: url(../../../images/unisex.svg);
+}
+
+.CreateSingleItemModal .option.has-icon.male {
+  background-image: url(../../../images/male.svg);
+}
+
+.CreateSingleItemModal .option.has-icon.female {
+  background-image: url(../../../images/female.svg);
+  background-size: 12px;
+  background-position-x: 12px;
+}
+
+.CreateSingleItemModal .dcl.field {
+  margin: 0;
+}
+
+.CreateSingleItemModal .error {
+  margin-top: 15px;
+  width: 100%;
+}
+
+.CreateSingleItemModal .ui.dropdown .menu > .item > .ui.label {
+  float: right;
+  color: var(--text-on-secondary);
+  background-color: var(--secondary-text);
+}
+
+.CreateSingleItemModal .importer-thumbnail-container .WearablePreview {
+  display: none;
+}
+
+.CreateSingleItemModal .thumbnail-step-container {
+  width: 100%;
+  height: 440px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.CreateSingleItemModal .thumbnail-actions.dcl.row.grow.shrink {
+  justify-content: space-between;
+}
+
+.CreateSingleItemModal .ui.dropdown.upward .menu {
+  background-color: var(--smart-grey);
+}
+
+.CreateSingleItemModal .ui.dropdown.has-description .menu > .item {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.CreateSingleItemModal .ui.dropdown.has-description .menu > .item > .description {
+  color: var(--text);
+  font-weight: 300;
+  font-size: 14px;
+  margin: 0 0 0 0em;
+}
+
+.CreateSingleItemModal .ui.message.info {
+  background-color: var(--modal);
+  margin-bottom: 24px;
+}
+
+.CreateSingleItemModal .ui.message.info > .Icon.alert {
+  height: 15px;
+  width: 15px;
+  background-size: 200px;
+}
+
+.CreateSingleItemModal .ui.message.info > .Icon.alert {
+  margin-right: 8px;
+}
+
+.CreateSingleItemModal .ui.message.info .content p {
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.CreateSingleItemModal .field-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.CreateSingleItemModal .field-header .learn-more {
+  text-decoration: underline;
+}

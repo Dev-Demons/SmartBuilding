@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  app:
+    build:
+      dockerfile: "./Dockerfile"
+      context: "."
+    volumes:
+      - "./db:/decentraland/data"
+    environment:
+      RPC_API_KEY: "38Dpwnjsj2zn3QETJ6GKv8YkHomA"
+    ports:
+      - "2301:2301"
+      - "8301:8301"
+      - "9301:9301"
+      - "5000:5000"

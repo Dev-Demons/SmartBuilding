@@ -1,0 +1,14 @@
+# See https://redoc.ly/docs/cli/configuration/ for more information.
+apis:
+  main@v1:
+    root: openapi/catalyst.yaml
+rules:
+  no-unused-components: warn
+theme:
+  openapi:
+    sideNavStyle: path-only
+    htmlTemplate: ./docs/index.html
+    theme:
+      colors:
+        primary:
+          main: "#32329f"

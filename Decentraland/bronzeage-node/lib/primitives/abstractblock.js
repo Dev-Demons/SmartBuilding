@@ -1,0 +1,341 @@
+/*!
+ * abstractblock.js - abstract block object for decentraland
+ * Copyright (c) 2014-2015, Fedor Indutny (MIT License)
+ * Copyright (c) 2014-2016, Christopher Jeffrey (MIT License).
+ * Copyright (c) 2016-2017, Manuel Araoz (MIT License).
+ * https://github.com/decentraland/decentraland-node
+ */
+
+'use strict';
+
+var assert = require('assert');
+var constants = require('../protocol/constants');
+var util = require('../utils/util');
+var crypto = require('../crypto/crypto');
+var btcutils = require('../btc/utils');
+var VerifyResult = require('../btc/errors').VerifyResult;
+var StaticWriter = require('../utils/staticwriter');
+var InvItem = require('./invitem');
+
+/**
+ * The class which all block-like objects inherit from.
+ * @exports AbstractBlock
+ * @constructor
+ * @abstract
+ * @property {Number} version - Block version. Note
+ * that Decentraland reads versions as unsigned despite
+ * them being signed on the protocol level. This
+ * number will never be negative.
+ * @property {Hash} prevBlock - Previous block hash.
+ * @property {Hash} merkleRoot - Merkle root hash.
+ * @property {Number} ts - Timestamp.
+ * @property {Number} bits
+ * @property {Number} nonce
+ * @property {Number} totalTX - Transaction count.
+ * @property {TX[]} txs - Transaction vector.
+ * @property {ReversedHash} rhash - Reversed block hash (uint256le).
+ */
+
+function AbstractBlock() {
+  if (!(this instanceof AbstractBlock))
+    return new AbstractBlock();
+
+  this.version = 1;
+  this.prevBlock = constants.NULL_HASH;
+  this.merkleRoot = constants.NULL_HASH;
+  this.ts = 0;
+  this.bits = 0;
+  this.nonce = 0;
+  this.totalTX = 0;
+
+  this.txs = null;
+  this.mutable = false;
+
+  this._valid = null;
+  this._validHeaders = null;
+
+  this._hash = null;
+  this._hhash = null;
+  this._size = -1;
+  this._witness = -1;
+}
+
+/**
+ * Memory flag.
+ * @const {Boolean}
+ * @default
+ * @memberof AbstractBlock#
+ */
+
+AbstractBlock.prototype.memory = false;
+
+/**
+ * Inject properties from options object.
+ * @private
+ * @param {NakedBlock} options
+ */
+
+AbstractBlock.prototype.parseOptions = function parseOptions(options) {
+  assert(options, 'Block data is required.');
+  assert(util.isNumber(options.version));
+  assert(typeof options.prevBlock === 'string');
+  assert(typeof options.merkleRoot === 'string');
+  assert(util.isNumber(options.ts));
+  assert(util.isNumber(options.bits));
+  assert(util.isNumber(options.nonce));
+
+  this.version = options.version;
+  this.prevBlock = options.prevBlock;
+  this.merkleRoot = options.merkleRoot;
+  this.ts = options.ts;
+  this.bits = options.bits;
+  this.nonce = options.nonce;
+
+  if (options.totalTX != null) {
+    assert(util.isNumber(options.totalTX));
+    this.totalTX = options.totalTX;
+  }
+
+  if (options.mutable != null)
+    this.mutable = !!options.mutable;
+
+  return this;
+};
+
+/**
+ * Inject properties from json object.
+ * @private
+ * @param {Object} json
+ */
+
+AbstractBlock.prototype.parseJSON = function parseJSON(json) {
+  assert(json, 'Block data is required.');
+  assert(util.isNumber(json.version));
+  assert(typeof json.prevBlock === 'string');
+  assert(typeof json.merkleRoot === 'string');
+  assert(util.isNumber(json.ts));
+  assert(util.isNumber(json.bits));
+  assert(util.isNumber(json.nonce));
+  assert(util.isNumber(json.totalTX));
+
+  this.version = json.version;
+  this.prevBlock = util.revHex(json.prevBlock);
+  this.merkleRoot = util.revHex(json.merkleRoot);
+  this.ts = json.ts;
+  this.bits = json.bits;
+  this.nonce = json.nonce;
+  this.totalTX = json.totalTX;
+
+  return this;
+};
+
+/**
+ * Clear any cached values (abstract).
+ * @param {Boolean?} all - Clear transactions.
+ */
+
+AbstractBlock.prototype._refresh = function refresh(all) {
+  var i, tx;
+
+  this._valid = null;
+  this._validHeaders = null;
+  this._hash = null;
+  this._hhash = null;
+  this._size = -1;
+  this._witness = -1;
+
+  if (!all)
+    return;
+
+  if (!this.txs)
+    return;
+
+  for (i = 0; i < this.txs.length; i++) {
+    tx = this.txs[i];
+    tx.refresh();
+  }
+};
+
+/**
+ * Clear any cached values.
+ * @param {Boolean?} all - Clear transactions.
+ */
+
+AbstractBlock.prototype.refresh = function refresh(all) {
+  return this._refresh(all);
+};
+
+/**
+ * Hash the block headers.
+ * @param {String?} enc - Can be `'hex'` or `null`.
+ * @returns {Hash|Buffer} hash
+ */
+
+AbstractBlock.prototype.hash = function hash(enc) {
+  var hash = this._hash;
+  var hex;
+
+  if (!hash) {
+    hash = crypto.hash256(this.abbr());
+    if (!this.mutable)
+      this._hash = hash;
+  }
+
+  if (enc === 'hex') {
+    hex = this._hhash;
+    if (!hex) {
+      hex = hash.toString('hex');
+      if (!this.mutable)
+        this._hhash = hex;
+    }
+    hash = hex;
+  }
+
+  return hash;
+};
+
+/**
+ * Serialize the block headers.
+ * @returns {Buffer}
+ */
+
+AbstractBlock.prototype.abbr = function abbr() {
+  return this.writeAbbr(new StaticWriter(80)).render();
+};
+
+/**
+ * Serialize the block headers.
+ * @param {BufferWriter} bw
+ */
+
+AbstractBlock.prototype.writeAbbr = function writeAbbr(bw) {
+  bw.writeU32(this.version);
+  bw.writeHash(this.prevBlock);
+  bw.writeHash(this.merkleRoot);
+  bw.writeU32(this.ts);
+  bw.writeU32(this.bits);
+  bw.writeU32(this.nonce);
+  return bw;
+};
+
+/**
+ * Parse the block headers.
+ * @param {BufferReader} br
+ */
+
+AbstractBlock.prototype.parseAbbr = function parseAbbr(br) {
+  this.version = br.readU32();
+  this.prevBlock = br.readHash('hex');
+  this.merkleRoot = br.readHash('hex');
+  this.ts = br.readU32();
+  this.bits = br.readU32();
+  this.nonce = br.readU32();
+  return this;
+};
+
+/**
+ * Verify the block.
+ * @param {Object?} ret - Return object, may be
+ * set with properties `reason` and `score`.
+ * @returns {Boolean}
+ */
+
+AbstractBlock.prototype.verify = function verify(ret) {
+  var valid = this._valid;
+
+  if (valid == null) {
+    valid = this._verify(ret);
+    if (!this.mutable)
+      this._valid = valid;
+  }
+
+  return valid;
+};
+
+/**
+ * Verify the block.
+ * @private
+ * @param {Object?} ret - Return object, may be
+ * set with properties `reason` and `score`.
+ * @returns {Boolean}
+ */
+
+AbstractBlock.prototype._verify = function verify(ret) {
+  throw new Error('Abstract method.');
+};
+
+/**
+ * Verify the block headers (called by `verify()` in
+ * all objects which inherit from AbstractBlock).
+ * @param {Object?} ret - Return object, may be
+ * set with properties `reason` and `score`.
+ * @returns {Boolean}
+ */
+
+AbstractBlock.prototype.verifyHeaders = function verifyHeaders(ret) {
+  var valid = this._validHeaders;
+
+  if (valid == null) {
+    valid = this._verifyHeaders(ret);
+    if (!this.mutable)
+      this._validHeaders = valid;
+  }
+
+  return valid;
+};
+
+/**
+ * Verify the block headers (called by `verify()` in
+ * all objects which inherit from AbstractBlock).
+ * @private
+ * @param {Object?} ret - Return object, may be
+ * set with properties `reason` and `score`.
+ * @returns {Boolean}
+ */
+
+AbstractBlock.prototype._verifyHeaders = function verifyHeaders(ret) {
+  if (!ret)
+    ret = new VerifyResult();
+
+  // Check proof of work.
+  if (!this.verifyPOW()) {
+    ret.reason = 'high-hash';
+    ret.score = 50;
+    return false;
+  }
+
+  return true;
+};
+
+/**
+ * Verify proof-of-work.
+ * @returns {Boolean}
+ */
+
+AbstractBlock.prototype.verifyPOW = function verifyPOW() {
+  return btcutils.verifyPOW(this.hash(), this.bits);
+};
+
+/**
+ * Get little-endian block hash.
+ * @returns {Hash}
+ */
+
+AbstractBlock.prototype.rhash = function() {
+  return util.revHex(this.hash('hex'));
+};
+
+/**
+ * Convert the block to an inv item.
+ * @returns {InvItem}
+ */
+
+AbstractBlock.prototype.toInv = function toInv() {
+  return new InvItem(constants.inv.BLOCK, this.hash('hex'));
+};
+
+/*
+ * Expose
+ */
+
+module.exports = AbstractBlock;
