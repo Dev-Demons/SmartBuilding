@@ -1,0 +1,42 @@
+import { BigNumber } from '../src/utils/BigNumber'
+import * as testMethod from './helpers/test.method'
+
+let method = 'getTransaction'
+
+let txResult = {
+  hash: '0xc6ef2fc5426d6ad6fd9e2a26abeab0aa2411b7ab17f30a99d3cb96aed1d1055b',
+  nonce: '0x5',
+  blockHash: '0x6fd9e2a26ab',
+  blockNumber: '0x15df',
+  transactionIndex: '0x1',
+  from: '0x407d73d8a49eeb85d32cf465507dd71d507100c1',
+  to: '0x85h43d8a49eeb85d32cf465507dd71d507100c1',
+  value: '0x7f110',
+  gas: '0x7f110',
+  gasPrice: '0x09184e72a000',
+  input: '0x603880600c6000396000f30060'
+}
+
+let formattedTxResult = {
+  hash: '0xc6ef2fc5426d6ad6fd9e2a26abeab0aa2411b7ab17f30a99d3cb96aed1d1055b',
+  nonce: 5,
+  blockHash: '0x6fd9e2a26ab',
+  blockNumber: 5599,
+  transactionIndex: 1,
+  from: '0x407d73d8a49eeb85d32cf465507dd71d507100c1',
+  to: '0x85h43d8a49eeb85d32cf465507dd71d507100c1',
+  value: new BigNumber(520464),
+  gas: 520464,
+  gasPrice: new BigNumber(10000000000000),
+  input: '0x603880600c6000396000f30060'
+}
+
+testMethod.runTests(`eth_getTransactionByHash`, [
+  {
+    args: ['0xd6960376d6c6dea93647383ffb245cfced97ccc5c7525397a543a72fdaea5265'],
+    formattedArgs: ['0xd6960376d6c6dea93647383ffb245cfced97ccc5c7525397a543a72fdaea5265'],
+    result: txResult,
+    formattedResult: formattedTxResult,
+    call: 'eth_' + method + 'ByHash'
+  }
+])

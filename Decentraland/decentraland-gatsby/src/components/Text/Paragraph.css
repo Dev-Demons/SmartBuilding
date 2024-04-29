@@ -1,0 +1,87 @@
+.dg.Paragraph,
+.dg.List > .dg.ListItem {
+  color: var(--text);
+  font-size: 21px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.81;
+  letter-spacing: 0.3px;
+}
+
+.dg.Paragraph.Paragraph--small,
+.dg.List > .dg.ListItem.ListItem--small {
+  font-size: 17px;
+}
+
+.dg.Paragraph.Paragraph--tiny,
+.dg.List > .dg.ListItem.ListItem--tiny {
+  font-size: 11px;
+}
+
+.dg.Paragraph.Paragraph--primary,
+.dg.List > .dg.ListItem.ListItem--primary {
+  color: var(--primary);
+}
+
+.dg.Paragraph.Paragraph--secondary,
+.dg.List > .dg.ListItem.ListItem--secondary {
+  color: var(--secondary-text);
+}
+
+.dg.Paragraph.Paragraph--semi-bold,
+.dg.List > .dg.ListItem.ListItem--semi-bold {
+  font-weight: 400;
+}
+
+.dg.Paragraph.Paragraph--bold,
+.dg.List > .dg.ListItem.ListItem--bold {
+  font-weight: bold;
+}
+
+.dg.Paragraph.Paragraph--italic,
+.dg.List > .dg.ListItem.ListItem--italic {
+  font-style: italic;
+}
+
+.dg.Paragraph.Paragraph--underline,
+.dg.List > .dg.ListItem.ListItem--underline {
+  text-decoration: underline;
+}
+
+.dg.Paragraph.Paragraph--uppercase,
+.dg.List > .dg.ListItem.ListItem--uppercase {
+  text-transform: uppercase;
+}
+
+@media only screen and (max-width: 767px) {
+  .dg.Paragraph {
+    font-size: 21px;
+  }
+
+  .dg.Paragraph.Paragraph--small,
+  .dg.List > .dg.ListItem.ListItem--small {
+    font-size: 17px;
+  }
+
+  .dg.Paragraph.Paragraph--tiny,
+  .dg.List > .dg.ListItem.ListItem--tiny {
+    font-size: 11px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .dg.Paragraph {
+    font-size: 17px;
+  }
+
+  .dg.Paragraph.Paragraph--small,
+  .dg.List > .dg.ListItem.ListItem--small {
+    font-size: 17px;
+  }
+
+  .dg.Paragraph.Paragraph--tiny,
+  .dg.List > .dg.ListItem.ListItem--tiny {
+    font-size: 11px;
+  }
+}

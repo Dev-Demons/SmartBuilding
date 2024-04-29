@@ -1,0 +1,14 @@
+.dg.ImgFixed {
+  width: 100%;
+  background-repeat: no-repeat;
+}
+
+.dg.ImgFixed img {
+  width: 100%;
+  height: auto;
+}
+
+.dg.ImgFixed.ImgFixed--circle,
+.dg.ImgFixed.ImgFixed--circle img {
+  border-radius: 100%;
+}

@@ -1,0 +1,11 @@
+.vscode
+.idea
+.DS_Store
+buf.gen.yaml
+/target
+*.spkg
+substreams
+/scripts/node_modules
+/scripts/dist/*
+logs-*
+*-*-pid.txt

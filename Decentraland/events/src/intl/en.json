@@ -1,0 +1,363 @@
+{
+  "general": {
+    "sign_in": "sign in",
+    "utc": "UTC",
+    "dao": "DAO"
+  },
+  "sign_in": {
+    "message": "You need to {action} before to submit an event"
+  },
+  "navigation": {
+    "events": "Events",
+    "my_events": "My Events",
+    "pending_events": "Pending Events",
+    "submit_events": "Submit Event",
+    "submit_users": "Add User",
+    "submit_schedules": "Add Schedule",
+    "search": "Search..."
+  },
+  "user_menu": {
+    "api": "API",
+    "users": "Users",
+    "schedules": "Schedule"
+  },
+  "page": {
+    "404": {
+      "title": "Page not found",
+      "description": "You just hit a route that doesn't exist..."
+    },
+    "confirm": {
+      "email_verified": "Your email was verified",
+      "subscription_canceled": "Your subscription was canceled",
+      "invalid_token": "Invalid token",
+      "link_expired": "This link expired"
+    },
+    "events": {
+      "no_events": "No events planned yet.",
+      "not_found": "No events found.",
+      "all_events": "All Events"
+    },
+    "me": {
+      "going": "INTERESTED",
+      "you_are_not_attending": "You are not attending to any event, find some",
+      "amazing_event": "amazing event",
+      "hosted_by_me": "HOSTED BY ME",
+      "you_are_not_hosting": "You are not hosting any events, try to propose a",
+      "new_event": "new event"
+    },
+    "pending": {
+      "pending_events": "PENDING EVENTS",
+      "you_dont_have_any_pending": "You don't have any pending events, try to propose a",
+      "new_event": "new event"
+    },
+    "submit": {
+      "submit_event": "Submit event",
+      "be_sure_to_fill": "Host your own event in Decentraland. Visit the {event} for answers to commonly asked questions.",
+      "event": "Events FAQ",
+      "events_faq_url": "https://docs.decentraland.org/player/events/faq/",
+      "error_image_size": "This image is too heavy (more than 500Kb), try with",
+      "optimizilla": "optimizilla",
+      "error_image_format": "This file format is not supported, try with",
+      "image_recommended_size": "(recommended size: 1340 x 670)",
+      "image_recommended_label": "Upload a PNG, JPG or GIF. Recommended size 1340x670px. Maximum file size 500kb",
+      "event_cover": "Event Cover",
+      "browse": "Browse",
+      "browse_line1_label": "your computer or",
+      "browse_line2_label": "drag a picture to add a cover",
+      "advance_label": "ADMIN AREA",
+      "schedule_label": "Schedules",
+      "schedule_placeholder": "Add schedules",
+      "highlight_label": "HIGHLIGHT",
+      "trending_label": "TRENDING",
+      "event_name_label": "Event Name",
+      "event_name_placeholder": "Be as descriptive as you can",
+      "preview_label": "PREVIEW",
+      "description_label": "Description",
+      "description_placeholder": "Keep it short but keep it interesting!",
+      "start_date_label": "Start date",
+      "start_time_label": "Start time",
+      "end_date_label": "End date",
+      "end_time_label": "End time",
+      "maximum_allowed_duration": "Maximum allowed duration",
+      "recurrent_label": "Repeat",
+      "recurrent_placeholder": "Does not repeat",
+      "day_sun_label": "SUN",
+      "day_mon_label": "MON",
+      "day_tue_label": "TUE",
+      "day_wed_label": "WED",
+      "day_thu_label": "THU",
+      "day_fri_label": "FRI",
+      "day_sat_label": "SAT",
+      "repeat_on_label": "Repeat on",
+      "recurrent_monthday_label": "Monthly on day {date}",
+      "recurrent_setpos_current_label": "Monthly on day {name} {day}",
+      "recurrent_setpos_last_label": "Monthly on the last {day}",
+      "ends_label": "Ends",
+      "occurrences": "Occurrences",
+      "dates": "Dates",
+      "categories_label": "Category",
+      "want_new_category_label": "Want a new category? Ask for it on the",
+      "add_category_placeholder": "Add category",
+      "latitude_label": "Latitude (X)",
+      "longitude_label": "Longitude (Y)",
+      "server_label": "Server",
+      "server_placeholder": "any server",
+      "world_label": "World name",
+      "world_placeholder": "e.g. name.dcl.eth",
+      "world_help": "You can host events in Worlds belonging to LAND owners or renters",
+      "location_label": "Location",
+      "location_placeholder": "",
+      "contact_label": "Email or Discord username",
+      "contact_placeholder": "hello@decentraland.org",
+      "details_label": "Additional info",
+      "details_placeholder": "Add any other useful details for our reviewers",
+      "save": "save",
+      "clone": "clone",
+      "submit": "submit",
+      "delete": "delete",
+      "reject": "reject",
+      "event_submission_will_be_reviewed": "The event submission will be reviewed by our team, you’ll be notified by email",
+      "limit_attendees_label": "The limit of attendees is {limit}",
+      "limit_attendees": "100 people",
+      "renters": "renters",
+      "worlds_proposal_url": "https://governance.decentraland.org/proposal/?id=e712bb50-e822-11ed-b8f1-75dbe089d333",
+      "dao_proposal": "View DAO proposal",
+      "timezone": "Timezone",
+      "confirm_modal": {
+        "title": "Are you absolutely sure?",
+        "paragraph": "This action **cannot** be undone. This will permanently delete the **{name}** event",
+        "submit": "yes, delete this event"
+      }
+    },
+    "users": {
+      "not_found": "No user found",
+      "section_label_profile": "PROFILE",
+      "section_label_permissions": "PERMISSIONS",
+      "load_user": "Load users",
+      "permissions": {
+        "approve_own_event": {
+          "name": "Approve events",
+          "description": "User can approve events from any other user"
+        },
+        "approve_any_event": {
+          "name": "Approve own events",
+          "description": "User can approve events created by it self"
+        },
+        "edit_any_event": {
+          "name": "Edit events",
+          "description": "User can edit event's details from any other user"
+        },
+        "edit_any_schedule": {
+          "name": "Edit schedules",
+          "description": "User can create, edit and remove schedules"
+        },
+        "edit_any_profile": {
+          "name": "Edit Users",
+          "description": "User can grant permissions to any other user"
+        },
+        "test_any_notification": {
+          "name": "Test notifications",
+          "description": "User can send test notifications to it self"
+        }
+      }
+    },
+    "schedules": {
+      "not_found": "No schedule found",
+      "name": "NAME",
+      "active_since": "ACTIVE SINCE",
+      "active_until": "ACTIVE UNTIL",
+      "active": "VISIBILITY",
+      "active_true": "Main Page + API",
+      "active_false": "API Only",
+      "actions": "ACTIONS",
+      "open": "VIEW",
+      "edit": "EDIT"
+    },
+    "schedule_edit": {
+      "title": "Submit schedule",
+      "name_label": "Name",
+      "name_placeholder": "Name of the Schedule",
+      "schedule_cover_label": "Schedule cover",
+      "error_image_size": "This image is too heavy (more than 500Kb), try with",
+      "theme_label": "Schedule theme",
+      "theme_option_empty": "Custom",
+      "theme_option_mvmf_2022": "Metaverse Music Festival 2022",
+      "theme_option_mvfw_2023": "Metaverse Fashion Week 2023",
+      "theme_option_pride_2023": "Pride Week 2023",
+      "description_label": "Description",
+      "description_placeholder": "This description is important for SEO",
+      "background_label": "Background color",
+      "active_label": "Visibility",
+      "active_option_true": "Main Page + API",
+      "active_option_false": "API Only",
+      "active_since_date_label": "Active since date",
+      "active_since_time_label": "Active since time",
+      "active_until_date_label": "Active until date",
+      "active_until_time_label": "Active until time",
+      "background_preview": "Example of background color",
+      "background_select_color_label": "Click to select a color",
+      "background_add_button": "Add color",
+      "background_selected_label": "Color: {color}"
+    }
+  },
+  "social": {
+    "home": {
+      "title": "Decentraland Events",
+      "description": "Live music, conferences, and more in a community built virtual world.",
+      "image": "https://decentraland.org/images/decentraland.png",
+      "og:site_name": "Decentraland Events",
+      "og:type": "website",
+      "twitter:card": "summary",
+      "twitter:creator": "@decentraland",
+      "twitter:site": "@decentraland",
+      "trending": "TRENDING"
+    },
+    "submit": {
+      "title": "Submit an Event",
+      "description": "Organize and host your own community event in Decentraland.",
+      "image": "https://decentraland.org/images/decentraland.png",
+      "og:site_name": "Decentraland Events",
+      "og:type": "website",
+      "twitter:card": "summary",
+      "twitter:creator": "@decentraland",
+      "twitter:site": "@decentraland"
+    }
+  },
+  "settings": {
+    "profile_section": {
+      "label": "Profile",
+      "email_title": "Email",
+      "email_description": "Add you email address to receive notifications and our weekly digest",
+      "email_save_action": "SAVE",
+      "email_verified": "Verified",
+      "email_verifying": "Pending",
+      "email_reverifying": "Send again",
+      "email_verifying_message": "we sent you a verification email. try again in {seconds} {seconds, plural, one {second} other {seconds}}",
+      "email_reverifying_message": "didn't receive our email? try it again",
+      "email_address_label": "Email address",
+      "email_address_placeholder": "example@domain.com"
+    },
+    "event_section": {
+      "label": "Event settings",
+      "timezone_title": "Timezone",
+      "timezone_description": "Use UTC over local time",
+      "timezone_message": "Turn this off if you want to use your computers clock",
+      "notification_title": "Notifications",
+      "notification_by_email_description": "Receive Alerts via Email",
+      "notification_by_email_message": "10 Minutes before",
+      "notification_by_browser_description": "Receive Alerts via Browser",
+      "notification_by_browser_message": " "
+    }
+  },
+  "components": {
+    "badge": {
+      "live": "LIVE",
+      "start_in": {
+        "day": "day",
+        "days": "days",
+        "hour": "hour",
+        "hours": "hours",
+        "minute": "minute",
+        "minutes": "minutes",
+        "in_less_than_a_minute": "in less than a minute"
+      }
+    },
+    "button": {
+      "add_to_calendar": "add to calendar",
+      "get_google_calendar": {
+        "jump_in": "jump in"
+      },
+      "attending_buttons": {
+        "jump_in": "jump in",
+        "going": "interested",
+        "want_to_go": "interested",
+        "share": "share"
+      },
+      "edit_buttons": {
+        "reject": "reject",
+        "restore": "restore",
+        "approve": "approve"
+      },
+      "jump_in_button": "jump in"
+    },
+    "event": {
+      "event_date": {
+        "now": "now",
+        "today": "today",
+        "tomorrow": "tomorrow"
+      },
+      "event_modal": {
+        "event_attendee_list": {
+          "people_going": "People going",
+          "guest": "Guest"
+        },
+        "event_detail": {
+          "event_date_detail": {
+            "started": "Started",
+            "starts_in": "Starts in",
+            "from": "from",
+            "to": "to",
+            "at": "at"
+          }
+        },
+        "event_status_banner": {
+          "this_event_was_rejected": "This event was rejected",
+          "this_event_was_rejected_by": "This event was rejected (by {user})",
+          "this_event_is_pending_approval": "This event is pending approval",
+          "this_event_is_in_the_past": "This event has finished, can't be approve or rejected"
+        }
+      },
+      "event_detail": {
+        "public_organized_by": "Public, Organized by {organizer}",
+        "no_description": "No description",
+        "nobody_confirmed_yet": "Nobody confirmed yet",
+        "no_contact": "No contact",
+        "no_details": "No details",
+        "decentraland_foundation_info": "This event is produced by The Decentraland Foundation."
+      }
+    },
+    "modal": {
+      "enabled_notification_modal": {
+        "notifications": "Notifications",
+        "go_to_settings_paragraph": "Go to settings and setup your notifications preferences!",
+        "go_to_settings": "GO TO SETTINGS"
+      },
+      "wallet_required_modal": {
+        "sub_title": "Get a wallet to continue",
+        "paragraph": "A crypto wallet helps you manage your transactions: earn rewards, purchase items, claim your name, and more!",
+        "paragraph_secondary": "Once you've installed your wallet, you will need to refresh this page to continue"
+      }
+    }
+  },
+  "validation": {
+    "module_field_required": "{module} {field} is required",
+    "module_field_invalid": "{module} {field} is invalid"
+  },
+  "categories": {
+    "art": "Art & Culture",
+    "causes": "Causes",
+    "competition": "Competition",
+    "education": "Education",
+    "gambling": "Gambling",
+    "gaming": "Gaming",
+    "giveaway": "Giveaway",
+    "health": "Health & Wellbeing",
+    "hobbies": "Hobbies & Passions",
+    "identity": "Identity & Language",
+    "live": "Live Performances",
+    "music": "Music",
+    "networking": "Networking",
+    "nft": "NFT",
+    "other": "Other",
+    "party": "Party",
+    "play": "Play to Earn",
+    "poap": "POAP",
+    "religion": "Religion & Spirituality",
+    "shopping": "Shopping",
+    "social": "Social Activities",
+    "sports": "Sports",
+    "talks": "Talks & Presentations",
+    "town": "Town Hall",
+    "tv": "TV & Movies"
+  }
+}

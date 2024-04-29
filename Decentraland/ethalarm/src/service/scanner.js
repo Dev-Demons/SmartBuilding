@@ -1,0 +1,67 @@
+import { Log } from 'decentraland-commons'
+
+const min = (array, prop) => array.reduce((prev, elem) => Math.min(prev, elem[prop]), Infinity)
+const max = (array, prop) => array.reduce((prev, elem) => Math.max(prev, elem[prop]), -Infinity)
+const nameMatches = (events, eventNames) => {
+  eventNames = eventNames.map(name => name.replace(/\([^)]+\)/, ''))
+  return events.reduce((prev, event) => prev || eventNames.includes(event.event), false)
+}
+
+export default class ScannerService {
+  constructor(alarmService, ethService) {
+    this.ethService = ethService
+    this.alarmService = alarmService
+    this.log = new Log('Scanner')
+  }
+
+  async run() {
+    try {
+      return this.ethService.watchNewBlocks(this.checkAlarms.bind(this))
+    } catch (err) {
+      this.log.error('Unable to start watching', err.stack)
+    }
+  }
+
+  async checkAlarms() {
+    const alarmService = this.alarmService
+    const ethService = this.ethService
+    try {
+      const addressToAlarms = await alarmService.mapAddressesToAlarm()
+      const allAddresses = Object.keys(addressToAlarms)
+      const contracts = ethService.getContracts(await alarmService.getContractData(addressToAlarms))
+      const reorgSafety = await alarmService.getReorgSafety()
+      const currentTip = await ethService.getCurrentTip()
+      const lastBlockSync = await alarmService.mapAddressesToLastSync(allAddresses, currentTip)
+
+      const height = await this.ethService.getCurrentTip()
+      this.log.info(`Received new block height: ${height}`)
+
+      await Promise.all(contracts.map(async (contract) => {
+        const alarms = addressToAlarms[contract.address]
+        const fromBlock = lastBlockSync[contract.address] - max(alarms, 'blockConfirmations') - reorgSafety
+        const toBlock = height - min(alarms, 'blockConfirmations')
+        const events = await contract.getPastEvents('allEvents', { fromBlock, toBlock })
+        this.log.debug(`Data received for contract in ${contract.address}`, fromBlock, toBlock, events.length)
+        const byTransaction = alarmService.mapByTransactionId(events)
+        for (let events of byTransaction) {
+          const confirmations = height - events[0].blockNumber
+          await Promise.all(alarms.map(async (alarm) => {
+            if (confirmations >= alarm.blockConfirmations
+              && nameMatches(events, alarm.eventNames)
+            ) {
+              const existingReceipts = await alarmService.getReceipt(alarm.id, events[0].transactionHash)
+              if(!existingReceipts.length) {
+                await alarmService.dispatchNotification(alarm, events)
+              }
+            }
+          }))
+        }
+        await alarmService.storeLastSyncBlock(contract.address, height)
+      })).catch(err => {
+        this.log.error(`Error: ${err.stack}`)
+      })
+    } catch (err) {
+      this.log.error(`Error: ${err.stack}`)
+    }
+  }
+}

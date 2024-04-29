@@ -1,0 +1,34 @@
+name: Testing
+
+on:
+  push:
+    branches:
+      - next
+      - chore/*
+      - feat/*
+      - fix/*
+
+jobs:
+  release_alpha:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest ]
+        node-version: [ 14, 16, 18, 20 ]
+
+    name: Test(Node ${{ matrix.node-version }} on ${{ matrix.os }})
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: installing
+        run: npm ci
+
+      - name: testing
+        run: npm test

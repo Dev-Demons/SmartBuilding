@@ -1,0 +1,9 @@
+{
+  "network": "goerli",
+  "address_catalyst": "0x380e46851c47b73b6aa9bea50cf3b50e2cf637cf",
+  "startBlock_catalyst": 7215472,
+  "address_poi": "0xb8c7a7afd42675ab61f0a3732f8d0491825a933b",
+  "startBlock_poi": 7215479,
+  "address_name": "0x71c84760df0537f7db286274817462dc2e6c1366",
+  "startBlock_name": 7215460
+}

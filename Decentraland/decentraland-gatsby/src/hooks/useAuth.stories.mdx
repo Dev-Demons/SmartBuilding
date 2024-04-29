@@ -1,0 +1,334 @@
+import { useState, useMemo, useEffect } from 'react'
+import {
+  Meta,
+  Story,
+  Preview,
+  Source,
+  PureArgsTable as ArgsTable,
+} from '@storybook/addon-docs'
+import { ChainId, getChainName } from '@dcl/schemas'
+import { ProviderType } from '@dcl/schemas/dist/dapps/provider-type'
+import Grid from 'semantic-ui-react/dist/commonjs/collections/Grid/Grid'
+import { Button } from 'decentraland-ui/dist/components/Button/Button'
+import { SelectField } from 'decentraland-ui/dist/components/SelectField/SelectField'
+import { Args } from '../components/Storybook/utils'
+import Container from '../components/Storybook/Container'
+import Textarea from '../components/Form/Textarea'
+import Paragraph from '../components/Text/Paragraph'
+import AuthProvider from '../context/Auth/AuthProvider'
+import useAuthContext from '../context/Auth/useAuthContext'
+import useAuth from './useAuth'
+import { chains } from './useAuth.utils'
+
+<Meta title="Hooks/useAuth" />
+
+# Auth Hook
+
+> The _auth hook_ allows to create a user session using one of the availables providers.
+
+```ts
+const [account, state] = useAuth()
+```
+
+<ArgsTable
+  rows={[
+    Args.returns('account', 'ethereum address ', `string | null`),
+    Args.returns(
+      'state.loading',
+      '`true` when is waiting for a user initeraction',
+      `boolean`
+    ),
+    Args.returns(
+      'state.selecting',
+      '`true` when is showing the wallet selector modal',
+      `boolean`
+    ),
+    Args.returns(
+      'state.error',
+      'contains the error message when a connection fails',
+      `string`
+    ),
+    Args.returns(
+      'state.providerType',
+      'type of provider conneceted to, `null` if not connected. \n\n imported from [decentraland-connect](https://www.npmjs.com/package/decentraland-connect)',
+      Args.definedTypes(`ProviderType | null`, [
+        'ProviderType.INJECTED',
+        'ProviderType.FORTMATIC',
+        'ProviderType.WALLET_CONNECT',
+        'ProviderType.WALLET_LINK',
+        null,
+      ])
+    ),
+    Args.returns(
+      'state.chainId',
+      'chain id connected to, `null` if not connected. \n\n imported from [decentraland-connect](https://www.npmjs.com/package/decentraland-connect)',
+      Args.definedTypes(`ChainId | null`, [
+        'ChainId.ETHEREUM_MAINNET',
+        'ChainId.ETHEREUM_ROPSTEN',
+        'ChainId.ETHEREUM_RINKEBY',
+        'ChainId.ETHEREUM_GOERLI',
+        'ChainId.ETHEREUM_KOVAN',
+        'ChainId.MATIC_MUMBAI',
+        'ChainId.MATIC_MAINNET',
+        null,
+      ])
+    ),
+  ]}
+/>
+
+## Connect Preview
+
+export const ConnectExample = () => {
+  const [account, state] = useAuthContext()
+  const [chain, setChain] = useState(ChainId.ETHEREUM_MAINNET)
+  const selectChain = (_, { value }) => setChain(value)
+  const connectInjected = () => state.connect(ProviderType.INJECTED, chain)
+  const connectFortmatic = () => state.connect(ProviderType.FORTMATIC, chain)
+  const connectWalletConnect = () =>
+    state.connect(ProviderType.WALLET_CONNECT, chain)
+  const connectWalletConnect2 = () =>
+    state.connect(ProviderType.WALLET_CONNECT_V2, chain)
+  const connectWalletLink = () => state.connect(ProviderType.WALLET_LINK, chain)
+  const disconnect = () => state.disconnect()
+  return (
+    <Container>
+      <div style={{ display: 'flex' }}>
+        <div>
+          <SelectField
+            value={chain}
+            label="chain"
+            onChange={selectChain}
+            options={[
+              {
+                key: ChainId.ETHEREUM_MAINNET,
+                value: ChainId.ETHEREUM_MAINNET,
+                text: 'ETHEREUM_MAINNET',
+              },
+              {
+                key: ChainId.ETHEREUM_ROPSTEN,
+                value: ChainId.ETHEREUM_ROPSTEN,
+                text: 'ETHEREUM_ROPSTEN',
+              },
+              {
+                key: ChainId.ETHEREUM_RINKEBY,
+                value: ChainId.ETHEREUM_RINKEBY,
+                text: 'ETHEREUM_RINKEBY',
+              },
+              {
+                key: ChainId.ETHEREUM_GOERLI,
+                value: ChainId.ETHEREUM_GOERLI,
+                text: 'ETHEREUM_GOERLI',
+              },
+              {
+                key: ChainId.ETHEREUM_KOVAN,
+                value: ChainId.ETHEREUM_KOVAN,
+                text: 'ETHEREUM_KOVAN',
+              },
+              {
+                key: ChainId.MATIC_MUMBAI,
+                value: ChainId.MATIC_MUMBAI,
+                text: 'MATIC_MUMBAI',
+              },
+              {
+                key: ChainId.MATIC_MAINNET,
+                value: ChainId.MATIC_MAINNET,
+                text: 'MATIC_MAINNET',
+              },
+            ]}
+          />
+        </div>
+        <div style={{ paddingTop: '20px', paddingLeft: '20px' }}>
+          <Button
+            primary
+            size="small"
+            style={{ margin: '0 .5em .5em 0' }}
+            disabled={!!account}
+            loading={state.loading}
+            onClick={connectInjected}
+          >
+            injected
+          </Button>
+          <Button
+            primary
+            size="small"
+            style={{ margin: '0 .5em .5em 0' }}
+            disabled={!!account}
+            loading={state.loading}
+            onClick={connectFortmatic}
+          >
+            fortmatic
+          </Button>
+          <Button
+            primary
+            size="small"
+            style={{ margin: '0 .5em .5em 0' }}
+            disabled={!!account}
+            loading={state.loading}
+            onClick={connectWalletConnect2}
+          >
+            wallet connect 2
+          </Button>
+          <Button
+            primary
+            size="small"
+            style={{ margin: '0 .5em .5em 0' }}
+            disabled={!!account}
+            loading={state.loading}
+            onClick={connectWalletConnect}
+          >
+            wallet connect
+          </Button>
+          <Button
+            primary
+            size="small"
+            style={{ margin: '0 .5em .5em 0' }}
+            disabled={!!account}
+            loading={state.loading}
+            onClick={connectWalletLink}
+          >
+            connect wallet link
+          </Button>
+          <Button
+            primary
+            size="small"
+            style={{ margin: '0 .5em .5em 0' }}
+            disabled={!account}
+            loading={state.loading}
+            onClick={disconnect}
+          >
+            disconnect
+          </Button>
+        </div>
+      </div>
+      <Source language="ts" code={JSON.stringify(account, null, 2)} />
+      <Source
+        language="ts"
+        code={JSON.stringify(
+          {
+            loading: state.loading,
+            providerType: state.providerType,
+            chainId: state.chainId,
+            error: state.error,
+          },
+          null,
+          2
+        )}
+      />
+    </Container>
+  )
+}
+
+export const ConnectExampleWrapper = () => {
+  return (
+    <AuthProvider sso="https://id.decentraland.zone">
+      <ConnectExample />
+    </AuthProvider>
+  )
+}
+
+<ConnectExampleWrapper />
+
+```tsx dark=true
+import React from 'react'
+import type { ProviderType, ChainId } from 'decentraland-connect'
+
+export function ConnectExample() {
+  const [account, state] = useAuth()
+
+  const connectInjected = () =>
+    state.connect(ProviderType.INJECTED, ChainId.ETHEREUM_MAINNET)
+  const connectFortmatic = () =>
+    state.connect(ProviderType.FORTMATIC, ChainId.ETHEREUM_MAINNET)
+  const connectWalletConnect = () =>
+    state.connect(ProviderType.WALLET_CONNECT, ChainId.ETHEREUM_MAINNET)
+  const connectWalletLink = () =>
+    state.connect(ProviderType.WALLET_LINK, ChainId.ETHEREUM_MAINNET)
+  const disconnect = () => state.disconnect()
+
+  return (
+    <div>
+      <button
+        disabled={!!account}
+        loading={state.loading}
+        onClick={connectInjected}
+      >
+        connect injected
+      </button>
+      <button
+        disabled={!!account}
+        loading={state.loading}
+        onClick={connectFortmatic}
+      >
+        connect fortmatic
+      </button>
+      <button
+        disabled={!!account}
+        loading={state.loading}
+        onClick={connectWalletConnect}
+      >
+        connect wallet connect
+      </button>
+      <button
+        disabled={!!account}
+        loading={state.loading}
+        onClick={connectWalletLink}
+      >
+        connect wallet link
+      </button>
+      <button disabled={!account} loading={state.loading} onClick={disconnect}>
+        disconnect
+      </button>
+      <pre>{JSON.stringify(account, null, 2)}</pre>
+    </div>
+  )
+}
+```
+
+## Switch network Preview
+
+export const SwitchExample = () => {
+  const [account, state] = useAuth()
+  return (
+    <Container>
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        {chains.map((chainId) => {
+          return (
+            <Button
+              key={chainId}
+              size="small"
+              style={{ margin: '0 .5em .5em 0' }}
+              loading={state.loading}
+              disabled={
+                !account ||
+                state.chainId === chainId ||
+                state.providerType !== ProviderType.INJECTED
+              }
+              primary={state.chainId !== chainId}
+              onClick={() => state.switchTo(chainId)}
+            >
+              Switch to {getChainName(chainId)}
+            </Button>
+          )
+        })}
+      </div>
+      {state.providerType !== ProviderType.INJECTED && (
+        <div style={{ paddingTop: '1em' }}>
+          <Paragraph primary small>
+            Network switch is only available for INJECTED providers
+          </Paragraph>
+        </div>
+      )}
+    </Container>
+  )
+}
+
+<SwitchExample />
+
+## Related hooks
+
+- [`useAuth`](./?path=/docs/hooks-useauth--docs): allows to create a user session using one of the availables providers
+- [`useSign`](./?path=/docs/hooks-usesign--docs): allow to sign a message using a pair address and provider
+- [`useTransaction`](./?path=/docs/hooks-usetransaction--docs): allow to track transactions
+- [`useAuthContext`](./?path=/docs/context-auth-useauthcontext--docs): use a single instance of `useAuth` injected through a provider
+- [`useSignContext`](./?path=/docs/context-auth-usesigncontext--docs): same as `useSign` but detects params automatically usgin the `useAuthContext` hook
+- [`useTransactionContext`](./?path=/docs/context-auth-usetransactioncontext--docs): same as `useTransaction` but detects params automatically usign the `useAuthContext` hook

@@ -1,0 +1,101 @@
+on:
+  pull_request:
+
+name: CI Validation
+jobs:
+  check_and_build:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    outputs:
+      s3_bucket_key: ${{ steps.publish_package.outputs.s3-bucket-key }}
+    steps:
+      - uses: actions/checkout@master
+      - name: Use Node.js 18.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      # Initializes the CodeQL tools for scanning.
+      - name: Initialize CodeQL
+        if: ${{ github.actor != 'dependabot[bot]' }}
+        uses: github/codeql-action/init@v2
+        with:
+          languages: typescript
+          # If you wish to specify custom queries, you can do so here or in a config file.
+          # By default, queries listed here will override any specified in a config file.
+          # Prefix the list here with "+" to use these queries and those in the config file.
+          # queries: ./path/to/local/query, your-org/your-repo/queries@main
+      - name: clean
+        run: make clean
+      - name: install
+        run: yarn install --frozen-lockfile
+      - name: lint
+        run: yarn lint:check
+      - name: build & test
+        run: make ci
+      - name: print diff if failed
+        if: ${{ failure() }}
+        run: cp dist/temp/eth-connect.api.md report/eth-connect.api.md && git diff
+      - name: Perform CodeQL Analysis
+        if: ${{ github.actor != 'dependabot[bot]' }}
+        uses: github/codeql-action/analyze@v2
+      - name: report coverage
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: publish packages
+        if: ${{ github.actor != 'dependabot[bot]' }}
+        uses: menduz/oddish-action@master
+        id: publish_package
+        with:
+          cwd: ./dist
+          registry-url: 'https://registry.npmjs.org'
+          access: public
+          ## use action runId instead of current date to generate snapshot numbers
+          deterministic-snapshot: true
+
+          ## publish every package to s3
+          s3-bucket: ${{ secrets.SDK_TEAM_S3_BUCKET }}
+          s3-bucket-key-prefix: '@dcl/${{ github.event.repository.name }}/branch/${{ github.head_ref }}'
+
+          ## inform gitlab after publishing to proceed with CDN propagation
+          gitlab-token: ${{ secrets.GITLAB_TOKEN }}
+          gitlab-pipeline-url: ${{ secrets.GITLAB_URL }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          AWS_DEFAULT_REGION: us-east-1
+          AWS_ACCESS_KEY_ID: ${{ secrets.SDK_TEAM_AWS_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.SDK_TEAM_AWS_SECRET }}
+
+  notify_deployment:
+    needs: [check_and_build]
+    if: ${{ github.event.pull_request.number && !startsWith(github.head_ref, 'dependabot/') }}
+    runs-on: ubuntu-latest
+    name: Deployment Notification
+    steps:
+      - name: Find Comment
+        uses: peter-evans/find-comment@v2
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: Test this pull request
+
+      - name: Generate S3 URL
+        id: url-generator
+        run: echo "body=${{ secrets.SDK_TEAM_S3_BASE_URL }}/${{ needs.check_and_build.outputs.s3_bucket_key }}" >> $GITHUB_OUTPUT
+
+      - name: Create or update comment
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            # Test this pull request
+            - The package can be tested by running
+               ```bash
+               yarn upgrade "${{ steps.url-generator.outputs.body }}"
+               ```
+          edit-mode: replace

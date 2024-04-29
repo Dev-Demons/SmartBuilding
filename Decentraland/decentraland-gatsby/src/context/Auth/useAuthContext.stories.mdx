@@ -1,0 +1,108 @@
+import { useState, useMemo, useEffect } from 'react'
+import {
+  Meta,
+  Story,
+  Preview,
+  Source,
+  PureArgsTable as ArgsTable,
+} from '@storybook/addon-docs'
+import { ProviderType } from '@dcl/schemas/dist/dapps/provider-type'
+import { Button } from 'decentraland-ui/dist/components/Button/Button'
+import AuthProvider from './AuthProvider'
+import { Args } from '../../components/Storybook/utils'
+import Container from '../../components/Storybook/Container'
+import useAuthContext from './useAuthContext'
+
+<Meta title="Context/Auth/useAuthContext" />
+
+# Auth Hook (Context)
+
+> The _auth hook context_ use the AuthProvider to provider a single instance of [`useAuth`](./?path=/docs/hooks-useauth--docs)
+
+In order to use this hook you must include an `AuthProvider` in your `gatsby-browser.js`
+
+```tsx dark=true
+// gatsby-browser.js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import AuthProvider from 'decentraland-gatsby/dist/context/Auth/AuthProvider'
+
+export const wrapRootElement = ({ element }) => (
+  <AuthProvider>{element}</AuthProvider>
+)
+```
+
+After that you can use this hook in your components
+
+```tsx dark=true
+// componenet.jsx
+import React from 'react'
+import type { ProviderType, ChainId } from 'decentraland-connect'
+
+export default function Component() {
+  const [address, state] = useAuthContext()
+  const connectInjected = () =>
+    state.connect(ProviderType.INJECTED, ChainId.ETHEREUM_MAINNET)
+  const connectFortmatic = () =>
+    state.connect(ProviderType.FORTMATIC, ChainId.ETHEREUM_MAINNET)
+  const disconnect = () => state.disconnect()
+
+  return (
+    <div>
+      <button
+        disabled={!!account}
+        loading={state.loading}
+        onClick={connectInjected}
+      >
+        connect injected
+      </button>
+      <button
+        disabled={!!account}
+        loading={state.loading}
+        onClick={connectFortmatic}
+      >
+        connect fortmatic
+      </button>
+      <button disabled={!account} loading={state.loading} onClick={disconnect}>
+        disconnect
+      </button>
+      <pre>{JSON.stringify(account, null, 2)}</pre>
+    </div>
+  )
+}
+```
+
+## Single Sign on
+
+The AuthProvider receives an additional prop `sso`.
+
+By providing a valid url to this prop, the identity of the user will be stored in the local storage of the Single Sign On application hosted there instead of the current application.
+
+This is useful when you want to share the same identity between multiple applications.
+
+```tsx dark=true
+// gatsby-browser.js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import AuthProvider from 'decentraland-gatsby/dist/context/Auth/AuthProvider'
+
+export const wrapRootElement = ({ element }) => (
+  <AuthProvider sso="https://id.decentraland.zone">{element}</AuthProvider>
+)
+```
+
+You can learn more about SSO in:
+
+- https://github.com/decentraland/single-sign-on-client/blob/main/packages/lib/README.md
+- https://github.com/decentraland/single-sign-on
+
+Read the [full documentation](./?path=/docs/hooks-useauth--docs)
+
+## Related hooks
+
+- [`useAuth`](./?path=/docs/hooks-useauth--docs): allows to create a user session using one of the availables providers
+- [`useSign`](./?path=/docs/hooks-usesign--docs): allow to sign a message using a pair address and provider
+- [`useTransaction`](./?path=/docs/hooks-usetransaction--docs): allow to track transactions
+- [`useAuthContext`](./?path=/docs/context-auth-useauthcontext--docs): use a single instance of `useAuth` injected through a provider
+- [`useSignContext`](./?path=/docs/context-auth-usesigncontext--docs): same as `useSign` but detects params automatically usgin the `useAuthContext` hook
+- [`useTransactionContext`](./?path=/docs/context-auth-usetransactioncontext--docs): same as `useTransaction` but detects params automatically usign the `useAuthContext` hook

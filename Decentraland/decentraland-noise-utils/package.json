@@ -1,0 +1,53 @@
+{
+  "name": "@dcl/noise-utils",
+  "version": "0.0.0-development",
+  "description": "Tools for generating semi-random noise based on the Perlin and Simplex algorithms, to simulate an organic kind of randomness.",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "decentralandLibrary": {},
+  "scripts": {
+    "build": "rollup -c --environment BUILD:production",
+    "make": "cp -r src dist && cp package.json dist/package.json && cp LICENSE dist/LICENSE && cp README.md dist/README.md",
+    "makeclean": "rm -rf dist && npm run make",
+    "semantic-release": "semantic-release",
+	"link": "npm link && rollup --watch -c --environment BUILD:production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/decentraland/decentraland-noise-utils.git"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "singleQuote": true,
+    "semi": false
+  },
+  "keywords": [],
+  "author": "Decentraland",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/decentraland/decentraland-noise-utils/issues"
+  },
+  "homepage": "https://github.com/decentraland/decentraland-noise-utils#readme",
+  "devDependencies": {
+    "decentraland-ecs": "latest",
+    "typescript": "^3.7.4",
+    "semantic-release": ">=17.2.3",
+    "rollup": "^2.35.1",
+    "prettier": "^1.19.1",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.29.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "files": [
+    "dist"
+  ]
+}

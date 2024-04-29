@@ -1,0 +1,618 @@
+@import "_dcl-ui.scss";
+@import "_home.scss";
+html {
+  font-size: $font-size-base;
+  scroll-behavior: smooth;
+  touch-action: manipulation;
+}
+
+*, body {
+  ::-webkit-scrollbar {
+    height: 6px;
+    margin-left: 10px;
+    width: 6px ;
+  }
+  ::-webkit-scrollbar-track {
+    background: #ededed;
+    border-radius: 2px
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #b7b7b7;
+    border-radius: 2px
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #999
+  }
+}
+
+body {
+  min-width: $body-min-width;
+  color: var(--body-font-color);
+  background: var(--body-background);
+
+  font-weight: $body-font-weight;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  box-sizing: border-box;
+  * {
+    box-sizing: inherit;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: $body-font-weight;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary);
+}
+
+img {
+  vertical-align: baseline;
+}
+
+pre:focus {
+  @include outline;
+}
+
+aside nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  li {
+    margin: $padding-4 0;
+    position: relative;
+  }
+
+  a {
+    display: block;
+  }
+
+  ul {
+    padding-inline-start: $padding-16;
+  }
+}
+
+.book-menu-content label a {
+  font-weight: 400 !important;
+  color: #736e7d !important;
+}
+
+.book-menu-content nav > ul {
+  padding-inline-start: 0;
+}
+
+.book-menu ul li ul{
+  padding-inline-start: 16px !important;
+}
+
+ul.pagination {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding-inline-start: 0px;
+
+  .page-item a {
+    padding: $padding-16;
+  }
+}
+
+.container {
+  max-width: calc(1200px + 2rem);
+  margin: 0 auto;
+}
+
+.book-icon {
+  filter: var(--icon-filter);
+}
+
+.book-brand {
+  margin-top: 0;
+  margin-bottom: $padding-16;
+
+  img {
+    height: 1.5em;
+    width: 1.5em;
+    margin-inline-end: $padding-8;
+  }
+}
+
+.book-menu {
+  user-select: none;
+  // flex: 0 0 $menu-width;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+  color: #736e7d;
+
+  .book-menu-content {
+    width: $menu-width;
+    background: var(--body-background);
+    padding: $padding-16;
+  }
+
+  a,
+  label,
+  span {
+    display: inline-block;
+    color: inherit;
+    word-wrap: break-word;
+    font-weight: 400;
+    width: 100%;
+  }
+
+  a,
+  label {
+    cursor: pointer;
+  }
+
+  nav > ul > li {
+    margin-bottom: $padding-16 * 2;
+  }
+
+  ul {
+    padding-inline-start: $padding-8 * 3;
+  }
+
+  span,
+  label {
+    margin-bottom: $padding-8;
+  }
+
+  a,
+  label {
+    cursor: pointer;
+  }
+
+  a[role="button"],
+  span {
+    font-weight: 600;
+    color: #0d0d17;
+  }
+
+  a.active {
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  a.active::before {
+    content: "\2022";
+    color: var(--primary);
+    // font-weight: bold;
+    // display: inline-block;
+    // width: 1em;
+    // margin-left: -1em;
+    display: inline-block;
+    position: absolute;
+    font-size: 1.6rem;
+    left: -17px;
+    top: -1px;
+  }
+
+  input.toggle + label + ul {
+    display: none;
+  }
+
+  input.toggle:checked + label + ul {
+    display: block;
+  }
+
+  input.toggle + label::before {
+    color: #0d0d17;
+    display: inline-block;
+    width: 10px;
+    margin-left: -1em;
+    content: "▸";
+  }
+
+  input.toggle:checked + label::before {
+    content: "▾";
+  }
+
+  li {
+    margin: 0 0 $padding-8 0;
+  }
+}
+
+// for RTL support
+body[dir="rtl"] .book-menu {
+  input.toggle + label::after {
+    content: "◂";
+  }
+
+  input.toggle:checked + label::after {
+    content: "▾";
+  }
+}
+
+.book-section-flat {
+  margin: $padding-16 * 2 0;
+
+  > a,
+  > span,
+  > label {
+    font-weight: bolder;
+  }
+
+  > ul {
+    padding-inline-start: 0;
+  }
+}
+
+.book-page {
+  min-width: $body-min-width;
+  // flex-grow: 1;
+  padding: $padding-8;
+  width: 100%;
+}
+
+iframe {
+  width: 100%;
+  height: calc(100vh - 32px - 100px);
+}
+
+
+.book-post {
+  margin-bottom: $padding-16 * 3;
+}
+
+.book-header {
+  display: none;
+  margin-bottom: $padding-16;
+
+  label {
+    line-height: 0;
+  }
+
+  img.book-icon {
+    height: 1.5em;
+    width: 1.5em;
+  }
+}
+
+.book-search {
+  z-index: 2;
+  position: relative;
+  margin: $padding-16 0;
+  border-bottom: 1px solid transparent;
+  width: 356px;
+  #book-search-input {
+    display: flex;
+    align-items: center;
+    img {
+      z-index: 5;
+      position: absolute;
+      left: 30px;
+    }
+  }
+  #search-overlay {
+    background-color: #000;
+    pointer-events: auto;
+    opacity: 0.1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 3;
+  }
+  #book-search-results {
+    width: 100%;
+    position: absolute;
+    z-index: 3;
+    #book-search-hits {
+      overflow-x: hidden;
+      overflow-y: auto;
+      max-height: calc(100vh - 130px); // 130px -> uitopbar + content topbar
+      background-color: var(--body-background);
+      border-radius: 10px;
+      box-shadow: 0 16px 32px 16px rgba(0, 0, 0, 0.16);
+      margin-top: 5px;
+      padding: 16px;
+      position: relative;
+      ul {
+        margin: 0;
+        padding: 0;
+        li {
+          box-sizing: border-box;
+          cursor: pointer;
+          list-style-type: none;
+          padding: 10px;
+          h4 {
+            font-weight: 700;
+            color: var(--body-font-color);
+          }
+          &:hover {
+            background-color: var(--gray-100);
+          }
+        }
+      }
+    }
+  }
+
+  input {
+    z-index: 4;
+    position: relative;
+    width: 100%;
+    padding: 7px 20px 7px 48px;
+
+    border: 0;
+    border-radius: $border-radius;
+
+    background: var(--gray-100);
+    color: var(--body-font-color);
+
+    height: 40px;
+    border-radius: 20px;
+
+    border: 1px solid rgba(115, 110, 125, 0.24);
+
+    background: white;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 26px;
+
+    /* identical to box height, or 153% */
+    letter-spacing: -0.2px;
+
+    color: #736e7d;
+
+    &:required + .book-search-spinner {
+      display: block;
+    }
+  }
+
+  .book-search-spinner {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    margin: $padding-8;
+    margin-inline-start: calc(100% - #{$padding-16 + $padding-8});
+
+    width: 1.5em;
+    height: 1.5em;
+
+    border: $padding-1 solid transparent;
+    border-top-color: var(--body-font-color);
+    border-radius: 50%;
+
+    @include spin(1s);
+  }
+}
+
+.tabs-header {
+  position: relative;
+  .dcl.tab {
+    cursor: default;
+  }
+}
+
+
+@media screen and (max-width: 991px) {
+  .book-search {
+    width: auto !important;
+  }
+}
+
+@media screen and (min-width: $mobile-breakpoint) {
+  .book-search {
+    position: relative;
+    right: 0;
+    top: 0;
+    margin: 0;
+    float: right;
+    padding: 12px;
+    width: 356px;
+  }
+}
+
+.book-toc {
+  flex: 0 0 $toc-width;
+  font-size: $font-size-12;
+
+  .book-toc-content {
+    width: $toc-width;
+    padding: $padding-16;
+
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  img {
+    height: 1em;
+    width: 1em;
+  }
+
+  nav > ul > li:first-child {
+    margin-top: 0;
+  }
+}
+
+.book-footer {
+  padding-top: $padding-16;
+  font-size: $font-size-14;
+
+  img {
+    height: 1em;
+    width: 1em;
+    margin-inline-end: $padding-8;
+  }
+}
+
+.book-comments {
+  margin-top: $padding-16;
+}
+
+.book-languages {
+  margin-block-end: $padding-16 * 2;
+
+  .book-icon {
+    height: 1em;
+    width: 1em;
+    margin-inline-end: 0.5em;
+  }
+
+  ul {
+    padding-inline-start: 1.5em;
+  }
+}
+
+// Responsive styles
+.book-menu-content,
+.book-toc-content,
+.book-page,
+.book-header aside,
+.markdown {
+  transition: 0.2s ease-in-out;
+  transition-property: transform, margin, opacity, visibility;
+  will-change: transform, margin, opacity;
+}
+
+@media screen and (max-width: $mobile-breakpoint) {
+  #menu-control,
+  #toc-control {
+    display: inline;
+  }
+
+  .book-menu {
+    visibility: hidden;
+    margin-inline-start: -$menu-width;
+    font-size: $font-size-base;
+    z-index: 1;
+  }
+
+  .book-toc {
+    display: none;
+  }
+
+  .book-header {
+    display: block;
+  }
+
+  #menu-control:focus ~ main label[for="menu-control"] {
+    @include outline;
+  }
+
+  #menu-control:checked ~ main {
+    .book-menu {
+      visibility: initial;
+    }
+
+    .book-menu .book-menu-content {
+      transform: translateX($menu-width);
+      box-shadow: 0 0 $padding-8 rgba(0, 0, 0, 0.1);
+    }
+
+    .book-menu-overlay {
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  #toc-control:focus ~ main label[for="toc-control"] {
+    @include outline;
+  }
+
+  #toc-control:checked ~ main {
+    .book-header aside {
+      display: block;
+    }
+  }
+
+  // for RTL support
+  body[dir="rtl"] #menu-control:checked ~ main {
+    .book-menu .book-menu-content {
+      transform: translateX(-$menu-width);
+    }
+  }
+}
+
+// Extra space for big screens
+@media screen and (min-width: $container-max-width) {
+  .book-toc .book-toc-content {
+    padding: $padding-16;
+  }
+}
+
+@import "syntax.scss";
+
+.sidebar > div > nav > ul > li > a {
+  font-weight: 600;
+  color: #0d0d17;
+  &.external-link {
+    svg {
+      path {
+        fill: #0d0d17 !important;
+      }
+    }
+  }
+}
+
+.sidebar .external-link {
+  display: flex;
+  align-items: center;
+  svg {
+    path {
+      fill: #736e7d;
+    }
+    width: 12px;
+    margin-left: 6px;
+  }
+}
+
+.code {
+  font-family: 'monospace' !important;
+}
+.tabs-navigation {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 26px;
+
+  /* identical to box height, or 153% */
+  letter-spacing: -0.2px;
+  color: var(--text);
+}
+
+@media screen and (max-width: $mobile-breakpoint) {
+  .dcl.navbar .ui.menu {
+    .item {
+      display: none;
+    }
+  }
+
+  .dcl.tabs {
+    margin-top: 0;
+  }
+
+  .dcl.tab {
+    display: inline-block;
+    padding: $padding-16 0;
+    margin-right: $padding-16;
+  }
+  .tabs-navigation {
+    font-size: 16px;
+  }
+  .dcl.tab.active {
+    border-left: 0;
+    border-bottom: 2px solid;
+  }
+}

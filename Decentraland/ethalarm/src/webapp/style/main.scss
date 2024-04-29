@@ -1,0 +1,89 @@
+@import 'reset';
+@import 'colors';
+@import 'base';
+@import 'constants';
+@import 'components';
+@import 'fonts';
+
+.select-address {
+  .queryLarge {
+    .explain {
+      text-align: center;
+    }
+  }
+  .large-input {
+    margin-top: 50px;
+    margin-bottom: 40px;
+  }
+}
+
+.lookingup {
+  text-align: center;
+  .explain {
+    margin-bottom: 60px;
+  }
+}
+
+.insertabi {
+  textarea {
+    border: 1px solid $black;
+    border-radius: 3px;
+    font-family: $monospace;
+    font-size: 14px;
+    padding: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    min-width: 450px;
+    min-height: 200px;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.selectevents {
+  .explain {
+    text-align: center;
+  }
+
+  ul {
+    text-align: left;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    li {
+      margin-bottom: 15px;
+      list-style: none;
+
+      input {
+        margin-right: 10px;
+        position: relative;
+        top: -2px;
+        border-color: $black;
+        border-radius: 3px;
+      }
+    }
+  }
+}
+
+.hownotify {
+  .selectedContract {
+    margin-top: 0px;
+  }
+  .how {
+    margin-top: 40px;
+  }
+  button {
+    margin-top: 40px;
+  }
+}
+
+.verify, .success {
+  .highlight {
+    font-size: 20px;
+    margin-top: 0px;
+    padding-top: 0px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "@dcl-sdk/dynamic-ui",
+  "version": "0.1",
+  "description": "A collection of dynamic UI elements and systems to make it easier to build a reactive, animated 2D UI for a Decentraland scene using the SDK 7.",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/decentraland/dynamic-ui.git"
+  },
+  "keywords": ["decentraland", "ui", "dynamic", "sdk7", "sdk 7", "sdk utils", "sdk library"],
+  "author": "Decentraland",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/decentraland/dynamic-ui/issues"
+  },
+  "homepage": "https://github.com/decentraland/dynamic-ui#readme",
+  "devDependencies": {
+    "@dcl/sdk": "^7.1.6",
+    "typescript": "^5.0.2"
+  },
+  "files": [
+    "dist"
+  ]
+}

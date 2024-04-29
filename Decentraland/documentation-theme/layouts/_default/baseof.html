@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="{{ default .Site.Language.Lang .Site.LanguageCode  }}" dir="{{ default "ltr" .Site.Language.LanguageDirection }}">
+<head>
+  {{ partial "docs/html-head" . }}
+  {{ partial "docs/inject/head" . }}
+</head>
+<body dir="{{ default "ltr" .Site.Language.LanguageDirection }}" >
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  {{ partial "docs/navbar" . }}
+
+  {{ if .IsHome }}
+  <main class="main-home">
+    <div class="ui container">
+      <div class="home">
+        <div class="dcl section welcome-wrapper">
+          <h1 class="welcome-header">Decentraland Documentation</h1>
+          <p class="welcome-subheader">The first-ever virtual world owned by its users</p>
+        </div>
+        {{ partial "docs/search" . }}
+        <p class="welcome-description">
+          This site is maintained by the Decentraland Foundation.<br>
+          The content in this site is divided into sections for different user profiles. Choose a section that matches your needs.
+        </p>
+        <div class="section-cards-container">
+          {{ range $.Site.Data.sections }}
+            <div class="user-card" style="background: {{ .accent }}">
+              <a href="/{{.path}}">
+                <div class="card-img">
+                  <img alt="{{.name}}" src="/{{.img}}" />
+                </div>
+                <div class="card-info">
+                  <h3>For {{.name}}</h3>
+                  <p>{{.description}}</p>
+                </div>
+                <div class="card-cta">
+                  <span>VIEW MORE</span>
+                  <img src="https://cdn.decentraland.org/@dcl/docs-site/1.0.0-3184947587.commit-74f4df1/caret.png" alt="View More"/>
+                </div>
+              </a>
+            </div>
+          {{end}}
+        </div>
+      </div>
+    </div>
+  {{end}}
+
+  {{ if not .IsHome }}
+  <div class="tabs-header">
+    <div class="dcl tabs ">
+      <div class="ui container">
+        {{ range $.Site.Data.sections }}
+          <div class="dcl tab active"
+          {{if (not (eq .path $.Section)) }}style="border-color: transparent"{{end}}
+          >
+            <a aria-current="page" class="tabs-navigation" href="/{{.path}}"
+            >{{.name}}</a>
+            {{if (eq .path $.Section) }}
+              <div class="active-bar" style="border-color: {{.accent}};"></div>
+              <style>
+                :root {
+                  --primary: {{.accent}};
+                }
+              </style>
+            {{end}}
+          </div>
+          {{ end }}
+        {{ partial "docs/search" . }}
+      </div>
+    </div>
+  </div>
+  <main class="container flex">
+    <aside class="book-menu sidebar">
+      <div class="book-menu-content">
+        {{ template "menu" . }} <!-- Left menu Content -->
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        {{ template "header" . }} <!-- Mobile layout header -->
+      </header>
+
+      {{ partial "docs/inject/content-before" . }}
+      {{ template "main" . }} <!-- Page Content -->
+      {{ partial "docs/inject/content-after" . }}
+
+      <footer class="book-footer">
+        {{ template "footer" . }} <!-- Footer under page content -->
+        {{ partial "docs/inject/footer" . }}
+      </footer>
+
+      {{ template "comments" . }} <!-- Comments block -->
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    {{ if default true (default .Site.Params.BookToC .Params.BookToC) }}
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        {{ template "toc" . }} <!-- Table of Contents -->
+      </div>
+    </aside>
+    {{ end }}
+  </main>
+  {{ end }}
+  {{ partial "docs/html-footer.html" . }}
+  {{ partial "docs/inject/body" . }}
+</body>
+</html>
+
+{{ define "menu" }}
+  {{ partial "docs/menu" . }}
+{{ end }}
+
+{{ define "header" }}
+  {{ partial "docs/header" . }}
+
+  {{ if default true (default .Site.Params.BookToC .Params.BookToC) }}
+  <aside class="hidden clearfix">
+    {{ template "toc" . }}
+  </aside>
+  {{ end }}
+{{ end }}
+
+{{ define "footer" }}
+  {{ partial "docs/footer" . }}
+{{ end }}
+
+{{ define "comments" }}
+  {{ if and .Content (default true (default .Site.Params.BookComments .Params.BookComments)) }}
+  <div class="book-comments">
+    {{- partial "docs/comments" . -}}
+  </div>
+  {{ end }}
+{{ end }}
+
+{{ define "main" }}
+  <article class="markdown">
+    <h1>{{ partial "docs/title.html" . }}</h1>
+    {{- .Content -}}
+  </article>
+{{ end }}
+
+{{ define "toc" }}
+  {{ partial "docs/toc" . }}
+{{ end }}

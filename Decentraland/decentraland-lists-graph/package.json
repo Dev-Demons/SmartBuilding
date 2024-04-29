@@ -1,0 +1,28 @@
+{
+  "name": "decentraland_lists_graph",
+  "version": "0.1.0",
+  "scripts": {
+    "codegen": "graph codegen --output-dir src/entities/",
+    "prepare:ropsten": "mustache config/ropsten.json subgraph.template.yaml > subgraph.yaml && npm run codegen",
+    "prepare:goerli": "mustache config/goerli.json subgraph.template.yaml > subgraph.yaml && npm run codegen",
+    "prepare:sepolia": "mustache config/sepolia.json subgraph.template.yaml > subgraph.yaml && npm run codegen",
+    "prepare:mainnet": "mustache config/mainnet.json subgraph.template.yaml > subgraph.yaml && npm run codegen",
+    "deploy:ropsten": "npm run prepare:ropsten && npx graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ decentraland/decentraland-lists-ethereum-ropsten",
+    "deploy:goerli": "npm run prepare:goerli && npx graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ decentraland/decentraland-lists-ethereum-goerli",
+    "deploy:sepolia": "npm run prepare:sepolia && npx graph deploy --studio lists-ethereum-mainnet",
+    "deploy:mainnet": "npm run prepare:mainnet && npx graph deploy --node https://api.thegraph.com/deploy/ --ipfs https://api.thegraph.com/ipfs/ decentraland/decentraland-lists-ethereum-mainnet"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "^0.51.2",
+    "@graphprotocol/graph-ts": "^0.31.0",
+    "mustache": "^4.0.1",
+    "prettier": "2.4.1",
+    "ts-node": "^8.5.4",
+    "typescript": "^3.7.4"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.26.0",
+    "tslint-plugin-prettier": "^2.0.1"
+  }
+}

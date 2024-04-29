@@ -1,0 +1,48 @@
+{
+  "name": "erc821",
+  "version": "6.0.0",
+  "description": "Contract for ERC 821 (now 721)",
+  "scripts": {
+    "test": "scripts/test.sh",
+    "test:watch": "nodemon test/** contracts/** --exec 'npm test'",
+    "lint": "npx eslint test",
+    "lint:fix": "npx eslint --fix test"
+  },
+  "precommit": "test",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/decentraland/erc821.git"
+  },
+  "author": "The Decentraland Team <hello@decentraland.org>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/decentraland/erc821/issues"
+  },
+  "homepage": "https://github.com/decentraland/erc821#readme",
+  "dependencies": {
+    "openzeppelin-solidity": "^1.12.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "chai-bignumber": "^2.0.1",
+    "eslint": "^4.17.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "ganache-cli": "^6.0.3",
+    "mocha": "^3.5.3",
+    "npx": "^9.7.1",
+    "pre-commit": "^1.2.2",
+    "prettier": "^1.12.1",
+    "solidity-sha3": "^0.4.1",
+    "truffle": "^4.1.7",
+    "truffle-flattener": "^1.2.4",
+    "truffle-hdwallet-provider": "0.0.3"
+  }
+}

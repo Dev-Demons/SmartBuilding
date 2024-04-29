@@ -1,0 +1,43 @@
+.dg.Subscribe {
+  width: 100%;
+  display: inline-flex;
+  align-items: flex-start;
+}
+
+.dg.Subscribe .dg.Input {
+  flex: 1;
+  padding-right: 1em;
+}
+
+.dg.Subscribe .dg.Input input {
+  width: 100%;
+}
+
+.dg.Subscribe .ui.button {
+  flex: 0;
+  padding: 13px 32px;
+  white-space: nowrap;
+  min-width: 128px;
+}
+
+.dg.Subscribe .dg.Input,
+.dg.Subscribe .ui.button {
+  vertical-align: top;
+}
+
+@media only screen and (max-width: 767px) {
+  .dg.Subscribe {
+    flex-direction: column;
+  }
+
+  .dg.Subscribe .dg.Input {
+    padding: 0;
+  }
+
+  .dg.Subscribe .dg.Input,
+  .dg.Subscribe .ui.button {
+    min-width: auto;
+    width: 100%;
+    margin-bottom: 1em;
+  }
+}

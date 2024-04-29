@@ -1,0 +1,8 @@
+.husky
+.github
+tsconfig.json
+coverage
+*.lcov
+node_modules/
+src/
+bin/

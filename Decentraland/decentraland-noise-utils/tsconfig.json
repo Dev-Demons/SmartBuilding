@@ -1,0 +1,10 @@
+{
+	"include": ["src"],
+	"compilerOptions": {
+	  "module": "ESNext",
+	  "inlineSourceMap": false,
+	  "sourceMap": true,
+	  "declaration": true
+	},
+	"extends": "./node_modules/decentraland-ecs/types/tsconfig.json"
+  }

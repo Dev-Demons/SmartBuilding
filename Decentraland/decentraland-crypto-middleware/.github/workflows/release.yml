@@ -1,0 +1,80 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+
+  test:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest ]
+        node-version: [ 14, 16, 18, 20 ]
+
+    name: Test(Node ${{ matrix.node-version }} on ${{ matrix.os }})
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: installing
+        run: npm ci
+
+      - name: testing
+        run: npm test
+
+      - name: building
+        run: npm run build
+
+  release:
+    runs-on: ubuntu-20.04
+
+    needs: test
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: node.js 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+          cache: 'npm'
+
+      - name: installing
+        run: npm ci
+
+      - name: linters
+        uses: wearerequired/lint-action@v2
+        with:
+          prettier: true
+          prettier_extensions: ts,js,json,md
+          continue_on_error: false
+
+      - name: testing
+        run: npm test -- --coverage
+
+      - name: coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: building
+        run: npm run build
+
+      - name: releasing
+        run: npm run semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,0 +1,178 @@
+.navbar {
+  max-width: 1170px;
+  padding: 20px 10px;
+  margin-right: auto;
+  margin-left: auto;
+
+  .navbar-logo {
+    float: left;
+    padding: 29px 10px;
+  }
+
+  h1 {
+    margin: 0 10px;
+    font-size: 19px;
+    bottom: 17px;
+    color: #232323;
+    font-family: Source Sans Pro SemiBold,Helvetica,sans-serif;
+    display: inline-block;
+    position: relative;
+  }
+
+  .networks {
+    margin-top: 17px;
+    float: right;
+    display: inline-block;
+    li {
+      display: inline-block;
+      font-family: $monospace;
+      color: $light-gray;
+      cursor: pointer;
+      font-weight: 100;
+      margin-right: 10px;
+    }
+    li.selected {
+      color: $black;
+    }
+    li:before {
+      content: '[ ';
+    }
+    li:after {
+      content: ' ]';
+    }
+  }
+}
+
+
+.logo {
+  h1 {
+    font-weight: 200;
+    text-align: center;
+    color: $black;
+  }
+}
+
+.offset-value {
+  margin-top: 6px;
+  margin-left: 40px;
+  display: block;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  .explain {
+    letter-spacing: 1.2px;
+  }
+}
+
+.large-input {
+  input {
+    width: 400px;
+    font-family: $monospace;
+    padding: 10px 5px 10px 5px;
+    font-size: $fontsize;
+    border: 1px solid $black;
+    border-radius: 3px;
+    text-align: center;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .large-input input {
+    width: 90%;
+  }
+}
+
+
+.next {
+  background: $white;
+  color: $green;
+  border: none;
+  font-size: $fontsize;
+  font-family: $font;
+  letter-spacing: $letter-spacing;
+  font-weight: 400;
+  padding: 20px;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:visited {
+    color: darken($green, 5%);
+  }
+  &:hover {
+    color: darken($green, 15%);
+  }
+  &:focus {
+    outline: 0 !important;
+  }
+  &:disabled {
+    color: $light-gray;
+  }
+  span:before {
+    content: '[ ';
+  }
+  span:after {
+    content: ' ]';
+  }
+}
+
+.loadingDots {
+  display: flex;
+  width: 50px;
+  justify-content: space-between;
+
+  $duration: 1.5s;
+  .dot {
+    background: $black;
+    width: 10px;
+    height: 10px;
+    border-radius: 100px;
+    -webkit-animation: resize $duration/2 infinite alternate;
+    animation-delay: $duration * 2 / 3;
+  }
+  .dot:first-child {
+    animation-delay: $duration / 3;
+  }
+  .dot:last-child {
+    animation-delay: 0s;
+  }
+}
+
+@-webkit-keyframes resize {
+    from {
+        -webkit-transform:scale(1.5);
+    }
+    to {
+        -webkit-transform:scale(1);
+    }
+}
+
+.queryLarge {
+  .explain {
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+}
+
+.logdetail {
+  margin-bottom: 30px;
+
+  p {
+    margin-bottom: 0;
+  }
+
+  ul {
+    li {
+      margin-bottom: 10px;
+    }
+    margin-bottom: 0;
+  }
+}

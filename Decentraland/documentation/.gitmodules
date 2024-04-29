@@ -1,0 +1,3 @@
+[submodule "themes/documentation-theme"]
+	path = themes/documentation-theme
+	url = https://github.com/decentraland/documentation-theme.git

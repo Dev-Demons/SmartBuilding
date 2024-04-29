@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Decentraland</title>
+
+  <style>
+    html {
+      font-family: 'Inter', sans-serif;
+    }
+
+    @supports (font-variation-settings: normal) {
+      html {
+        font-family: 'Inter var', sans-serif;
+      }
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      background-color: #000;
+    }
+
+    .container {
+      position: relative;
+      height: 100%;
+      width: 100%;
+    }
+
+    .container .image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      width: 250px;
+      height: 170px;
+      text-align: center;
+    }
+
+    .container .form {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      width: 600px;
+      height: 400px;
+      text-align: center;
+    }
+
+    .container .form input[type=text] {
+      width: 100%;
+    }
+
+    .container .form textarea {
+      width: 100%;
+      height: 50px;
+    }
+
+    p {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="loading" class="container">
+    <div class="image">
+      <img src="decentraland-loading.gif" alt="Decentraland" width="128px">
+      <p>Loading Decentraland</p>
+    </div>
+  </div>
+  <div id="preview" class="container" hidden="true">
+    <div class="form">
+      <img src="decentraland-loading.gif" alt="Decentraland" width="128px">
+      <p>You're entering a local Decentraland preview hosted at:</p>
+      <p style="color: #f05; text-decoration: underline;" id="preview-mode-url">empty</p>
+      <p><small>Only follow links to trusted domains</small></p>
+
+      <p><input onclick="submitForm()" type="button"
+          style="background-color: #ff2d55; border-radius: 6px; border: 0; height: 44px; color: #fff; font-weight: bold; font-size: 13px; width: 128px; font-family: -apple-system,system-ui,segoe ui,Roboto,helvetica neue,Arial,sans-serif;"
+          value="CONTINUE" /></p>
+
+      <label>Add custom URL parameters:</label>
+      <input onchange="checkChange(`preview-custom-param`)" type="checkbox" id="preview-check-custom-param" /></br>
+      <input oninput="updateUrl()" type="text" id="preview-custom-param" value="EXAMPLE=VALUE&" disabled='' /></br></br>
+    </div>
+  </div>
+  <div id="dev" class="container" hidden="true">
+    <div class="form">
+      <label>explorer branch:</label></br>
+      <input type="text" value="main" id="explorer-branch" /></br></br>
+
+      <label>explorer-website branch:</label>
+      <input onchange="checkChange(`explorer-website-branch`)" type="checkbox"
+        id="check-explorer-website-branch" /></br>
+      <input oninput="updateUrl()" type="text" value="main" id="explorer-website-branch" disabled='' /></br></br>
+
+      <label>custom param:</label>
+      <input onchange="checkChange(`custom-param`)" type="checkbox" id="check-custom-param" /></br>
+      <input oninput="updateUrl()" type="text" id="custom-param" value="EXAMPLE=VALUE&" disabled='' /></br></br>
+
+      <label>custom-url:</label>
+      <input onchange="checkChange(`custom-url`)" type="checkbox" id="check-custom-url" /></br>
+      <textarea oninput="updateUrl()" type="text" value="" id="custom-url" disabled=''></textarea></br></br>
+
+      <input onclick="submitForm()" type="button" value="Start" />
+    </div>
+  </div>
+  <script>
+    // Display the current version
+    const version = window.location.hash.substring(1);
+
+    let baseUrl = `http://decentraland.org/play?`
+
+    const updateUrl = () => {
+      const hasExplorerWebsiteBranch = document.getElementById("check-explorer-website-branch").checked
+      const hasCustomParam = document.getElementById("check-custom-param").checked
+      const hasPreviewCustomParam = document.getElementById("preview-check-custom-param").checked
+      const hasCustomUrl = document.getElementById("check-custom-url").checked
+
+      const explorerWebsiteBranch = document.getElementById("explorer-website-branch").value
+      const customParam = document.getElementById("custom-param").value
+      const previewCustomParam = document.getElementById("preview-custom-param").value
+      const customUrlObj = document.getElementById("custom-url")
+
+      const previewPanelHidden = document.getElementById("preview").hasAttribute('hidden')
+
+
+      if (!hasCustomUrl) {
+        const newUrl = new URL(
+          hasExplorerWebsiteBranch ? `https://explorer-artifacts.decentraland.org/@dcl/explorer-website/branch/${explorerWebsiteBranch}/?`
+            : baseUrl
+        )
+
+        if (hasCustomParam) {
+          const customParamObj = new URLSearchParams(customParam)
+          for (const [paramKey, paramValue] of customParamObj) {
+            newUrl.searchParams.append(paramKey, paramValue)
+          }
+        }
+
+        customUrlObj.value = newUrl.toString()
+        return newUrl.toString()
+      } else if (!previewPanelHidden) {
+        const newUrl = new URL(baseUrl)
+
+        if (hasPreviewCustomParam) {
+          const customParamObj = new URLSearchParams(previewCustomParam)
+          for (const [paramKey, paramValue] of customParamObj) {
+            newUrl.searchParams.append(paramKey, paramValue)
+          }
+        }
+
+        customUrlObj.value = newUrl.toString()
+        document.getElementById("preview-mode-url").innerText = newUrl.toString()
+        return newUrl.toString()
+      } else {
+        return customUrlObj.value
+      }
+    }
+
+    const submitForm = () => {
+      const explorerDesktopBranch = document.getElementById("explorer-branch").value
+      const url = updateUrl()
+
+      console.log(url, explorerDesktopBranch)
+      next(url, explorerDesktopBranch)
+    }
+
+    updateUrl()
+
+    const checkChange = (activeElementID) => {
+      const activeElement = document.getElementById(activeElementID)
+      if (activeElement.hasAttribute("disabled")) {
+        activeElement.removeAttribute("disabled")
+      } else {
+        activeElement.setAttribute("disabled", '')
+      }
+
+      updateUrl()
+    }
+
+
+    const ipcRenderer = window.electron.ipcRenderer
+
+    ipcRenderer.on('checkDeveloperMode', (event, { isDev, desktopBranch, customParams, previewMode }) => {
+      if (isDev) {
+        document.getElementById("loading").setAttribute("hidden", '')
+        document.getElementById("dev").removeAttribute("hidden")
+
+        if (previewMode) {
+          baseUrl = previewMode
+          document.getElementById("check-custom-url").checked = true
+          document.getElementById("custom-url").removeAttribute("disabled")
+          document.getElementById("custom-url").value = previewMode
+        }
+
+        const explorerDesktopBranchElement = document.getElementById("explorer-branch")
+        const customParamElement = document.getElementById("custom-param")
+        const customParamCheckElement = document.getElementById("check-custom-param")
+
+        explorerDesktopBranchElement.value = desktopBranch
+
+        if (customParams && customParams.length > 0) {
+          customParamElement.value = customParams
+          customParamCheckElement.checked = true
+          checkChange('custom-param')
+        }
+      } else if (previewMode) {
+        baseUrl = previewMode
+        document.getElementById("loading").setAttribute("hidden", '')
+        document.getElementById("preview").removeAttribute("hidden")
+
+        document.getElementById("check-custom-url").checked = true
+        document.getElementById("custom-url").removeAttribute("disabled")
+        document.getElementById("custom-url").value = previewMode
+        document.getElementById("preview-mode-url").innerText = previewMode
+
+        updateUrl()
+      }
+    })
+
+    ipcRenderer.send('checkDeveloperMode')
+
+    const next = (url, explorerDesktopBranch) => {
+      ipcRenderer.send('loadDecentralandWeb', url, explorerDesktopBranch)
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+specVersion: 0.0.2
+description: Decentraland Lists
+#graft:
+#  base: QmYf4h6nbvohbxUAXF6U3sVsNvQrZz5zkNgeh6Ah4S7vts # Subgraph ID of base subgraph
+#  block: 18290388 # Block number
+repository: https://github.com/decentraland/decentraland-lists-graph
+schema:
+  file: ./schema.graphql
+dataSources:
+  # ---------------------------------------------------------
+  # Catalyst ----------------------------------------------
+  # ---------------------------------------------------------
+  - kind: ethereum/contract
+    name: Catalyst
+    network: {{network}}
+    source:
+      address: '{{address_catalyst}}'
+      abi: Catalyst
+      startBlock: {{startBlock_catalyst}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      file: ./src/handlers/catalyst.ts
+      entities:
+        - Catalyst
+      abis:
+        - name: Catalyst
+          file: ./abis/Catalyst.json
+      eventHandlers:
+        - event: AddCatalyst(indexed bytes32,indexed address,string)
+          handler: handleAddCatalyst
+        - event: RemoveCatalyst(indexed bytes32,indexed address,string)
+          handler: handleRemoveCatalyst
+  # ---------------------------------------------------------
+  # POIs --------------------------------------
+  # ---------------------------------------------------------
+  - kind: ethereum/contract
+    name: POI
+    network: {{network}}
+    source:
+      abi: List
+      startBlock: {{startBlock_poi}}
+      address: '{{address_poi}}'
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      file: ./src/handlers/poi.ts
+      entities:
+        - POI
+      abis:
+        - name: List
+          file: ./abis/List.json
+      eventHandlers:
+        - event: Add(indexed address,string)
+          handler: handleAddPOI
+        - event: Remove(indexed address,string)
+          handler: handleRemovePOI
+  # ---------------------------------------------------------
+  # POIs --------------------------------------
+  # ---------------------------------------------------------
+  - kind: ethereum/contract
+    name: Name
+    network: {{network}}
+    source:
+      abi: List
+      startBlock: {{startBlock_name}}
+      address: '{{address_name}}'
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      file: ./src/handlers/name.ts
+      entities:
+        - Nane
+      abis:
+        - name: List
+          file: ./abis/List.json
+      eventHandlers:
+        - event: Add(indexed address,string)
+          handler: handleAddName
+        - event: Remove(indexed address,string)
+          handler: handleRemoveName

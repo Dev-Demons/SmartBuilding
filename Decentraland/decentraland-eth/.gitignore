@@ -1,0 +1,15 @@
+
+/out/
+
+/node_modules/
+
+/dist/
+
+**/*.js
+**/*.js.map
+**/*.d.ts
+.DS_Store
+**/.DS_Store
+.idea
+
+eth_common

@@ -1,0 +1,73 @@
+{
+  "name": "eth-connect",
+  "version": "6.0.0",
+  "private": true,
+  "description": "Ethereum TypeScript API, middleware to talk to a ethereum node using an async provider",
+  "decentralandLibrary": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/decentraland/eth-connect.git"
+  },
+  "homepage": "https://github.com/decentraland/eth-connect",
+  "bugs": "https://github.com/decentraland/eth-connect/issues",
+  "scripts": {
+    "lint:check": "eslint '**/*.{js,ts}'",
+    "lint:fix": "eslint '**/*.{js,ts}' --fix",
+    "test": "jest --forceExit --coverage --verbose --testTimeout=60000"
+  },
+  "keywords": [
+    "ethereum",
+    "typescript",
+    "web3",
+    "json-rpc",
+    "eth",
+    "API"
+  ],
+  "license": "LGPL-3.0",
+  "files": [
+    "dist"
+  ],
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 120,
+    "trailingComma": "none"
+  },
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "exclude": [
+      "**/*.d.ts",
+      "**/dist/**",
+      "**/test/**"
+    ],
+    "reporter": [
+      "html",
+      "text"
+    ],
+    "all": true
+  },
+  "devDependencies": {
+    "@dcl/eslint-config": "^1.1.13",
+    "@microsoft/api-documenter": "^7.22.30",
+    "@microsoft/api-extractor": "^7.36.3",
+    "@rollup/plugin-commonjs": "^25.0.3",
+    "@rollup/plugin-node-resolve": "^15.1.0",
+    "@rollup/plugin-terser": "^0.4.3",
+    "@rollup/plugin-typescript": "^11.1.2",
+    "@types/node-fetch": "^2.6.4",
+    "@well-known-components/test-helpers": "^1.5.3",
+    "bignumber.js": "^9.1.1",
+    "fp-future": "^1.0.1",
+    "ganache": "^7.9.0",
+    "isomorphic-fetch": "^3.0.0",
+    "js-sha3": "^0.8.0",
+    "rollup": "^3.27.1",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.6.1",
+    "typescript": "^5.1.6",
+    "websocket": "^1.0.33"
+  }
+}

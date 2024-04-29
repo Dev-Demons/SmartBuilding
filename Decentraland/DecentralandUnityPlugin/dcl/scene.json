@@ -1,0 +1,29 @@
+{
+  "display": {
+    "title": "USample"
+  },
+  "owner": "0x1a38ac06099D648Bb14418D61956133a3d0E1f1C",
+  "contact": {
+    "name": "",
+    "email": ""
+  },
+  "scene": {
+    "parcels": [
+      "57,-11",
+      "58,-11",
+      "59,-11"
+    ],
+    "base": "57,-11"
+  },
+  "communications": {
+    "type": "webrtc",
+    "signalling": "https://rendezvous.decentraland.org"
+  },
+  "policy": {
+    "fly": true,
+    "voiceEnabled": true,
+    "blacklist": [],
+    "teleportPosition": "0,0,0"
+  },
+  "main": "scene.js"
+}

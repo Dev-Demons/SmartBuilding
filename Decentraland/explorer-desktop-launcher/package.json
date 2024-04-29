@@ -1,0 +1,145 @@
+{
+  "name": "explorer-desktop-launcher",
+  "version": "0.1.55",
+  "author": "decentraland",
+  "description": "Decentraland Desktop Launcher",
+  "homepage": ".",
+  "main": "build/electron/main.js",
+  "private": false,
+  "dependencies": {
+    "axios": "^1.2.2",
+    "decompress-zip": "^0.3.3",
+    "electron-dl": "^3.5.0",
+    "electron-is-dev": "^2.0.0",
+    "electron-updater": "^5.3.0",
+    "find-free-port": "^2.0.0",
+    "node-stream-zip": "^1.15.0",
+    "web-vitals": "^1.1.2"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.4",
+    "@types/chai-as-promised": "^7.1.5",
+    "@types/mocha": "^10.0.1",
+    "chai": "^4.3.7",
+    "chai-as-promised": "^7.1.1",
+    "concurrently": "^8.0.1",
+    "cross-env": "^7.0.3",
+    "electron": "^22.0.0",
+    "electron-builder": "^23.6.0",
+    "http-server": "^14.1.1",
+    "mocha": "^10.2.0",
+    "spectron": "^19.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "~4.6.3",
+    "wait-on": "^7.0.1"
+  },
+  "scripts": {
+    "selfcertificate": "electron-builder create-self-signed-cert -p self",
+    "postinstall": "electron-builder install-app-deps",
+    "start": "tsc -p . && electron .",
+    "start:dev": "tsc -p . && electron . --developer-mode",
+    "start:local": "tsc -p . && electron . --custom-url http://localhost:3000/?",
+    "build": "tsc -p . && electron-builder --publish never",
+    "build:appx": "tsc -p . && electron-builder --windows appx --publish never",
+    "publish": "tsc -p . && electron-builder --publish always",
+    "publish:appx": "tsc -p . && electron-builder --windows appx --publish always",
+    "test": "mocha -r ts-node/register 'test/**/*.test.ts'"
+  },
+  "build": {
+    "appId": "decentraland.desktop.launcher",
+    "productName": "Decentraland",
+    "extends": null,
+    "artifactName": "Decentraland.${ext}",
+    "compression": "maximum",
+    "files": [
+      "build/**/*",
+      "public/**/*",
+      "public/systray/iOS/**/*",
+      "public/systray/Windows/**/*"
+    ],
+    "protocols": [
+      {
+        "name": "Decentraland Desktop App",
+        "schemes": [
+          "dcl"
+        ]
+      }
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "win": {
+      "publisherName": "Decentraland Foundation",
+      "icon": "public/app-icon.png",
+      "target": [
+        "nsis"
+      ],
+      "verifyUpdateCodeSignature": false,
+      "signAndEditExecutable": false,
+      "signingHashAlgorithms": [
+        "sha256"
+      ],
+      "rfc3161TimeStampServer": "http://ts.ssl.com",
+      "timeStampServer": "http://ts.ssl.com"
+    },
+    "nsis": {
+      "oneClick": false,
+      "shortcutName": "Decentraland",
+      "artifactName": "Install Decentraland.${ext}",
+      "installerIcon": "public/installer-icon.ico",
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": true,
+      "perMachine": true,
+      "include": "electron/installer.nsh"
+    },
+    "appx": {
+      "applicationId": "com.decentraland.launcher",
+      "identityName": "DecentralandFoundation.Decentraland",
+      "publisherDisplayName": "Decentraland Foundation",
+      "publisher": "CN=546D5DDE-76D5-4F9D-99D8-07C3235EC3A0"
+    },
+    "linux": {
+      "icon": "public/app-icon.png",
+      "target": [
+        "AppImage"
+      ]
+    },
+    "appImage": {
+      "artifactName": "Decentraland.${ext}"
+    },
+    "mac": {
+      "icon": "public/app-icon.png",
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "hardenedRuntime": true,
+      "entitlements": "entitlements.mac.plist",
+      "extendInfo": {
+        "NSMicrophoneUsageDescription": "Need microphone access to use voice chat in the application"
+      }
+    },
+    "dmg": {
+      "icon": "public/installer-icon.icns",
+      "artifactName": "Decentraland.${ext}"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "decentraland",
+      "repo": "explorer-desktop-launcher",
+      "private": false
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

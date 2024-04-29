@@ -1,0 +1,55 @@
+name: Deployment Notification
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  deployment_notification:
+    runs-on: ubuntu-latest
+    name: Decentraland Unity-Renderer Deployment Notification
+    steps:
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@main
+        with:
+          message: |
+            After the CI passes:
+
+            This branch can be downloaded with the following instructions:
+
+            ### Custom protocol:
+            If you have the launcher installed ([download launcher](https://github.com/decentraland/explorer-desktop-launcher/releases)) you can press open on the following link:
+            - [Open custom protocol](https://renderer-artifacts.decentraland.org/desktop/index.html?dcl://DESKTOP-BRANCH=${{ github.head_ref }})
+            - [Open custom protocol with Developer Mode](https://renderer-artifacts.decentraland.org/desktop/index.html?dcl://DESKTOP-BRANCH=${{ github.head_ref }}&DESKTOP-DEVELOPER-MODE)
+
+            ### For Windows:
+            Execute the following commands in `Windows PowerShell`
+            ```bash
+            # Download
+            curl -o unity-renderer-windows.zip https://renderer-artifacts.decentraland.org/desktop/${{ github.head_ref }}/unity-renderer-windows.zip
+
+            # Unzip
+            Expand-Archive -Path unity-renderer-windows.zip -DestinationPath unity-renderer-windows -Force
+            ```
+            ### For Mac:
+            Execute the following commands:
+            ```bash
+            # Download
+            curl -o unity-renderer-mac.zip https://renderer-artifacts.decentraland.org/desktop/${{ github.head_ref }}/unity-renderer-mac.zip
+
+            # Unzip
+            unzip unity-renderer-mac.zip -d unity-renderer-mac
+            ```
+            ### For Linux: 
+            Execute the following commands:
+            ```bash
+            # Download
+            curl -o unity-renderer-linux.zip https://renderer-artifacts.decentraland.org/desktop/${{ github.head_ref }}/unity-renderer-linux.zip
+
+            # Unzip
+            unzip unity-renderer-linux.zip -d unity-renderer-linux
+            ```
+
+            Code coverage report: [https://renderer-artifacts.decentraland.org/desktop-coverage/${{ github.head_ref }}](https://renderer-artifacts.decentraland.org/desktop-coverage/${{ github.head_ref }})
+
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

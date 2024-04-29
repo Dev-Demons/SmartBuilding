@@ -1,0 +1,14 @@
+.dg.Link {
+  font-size: inherit;
+  line-height: inherit;
+  color: var(--primary);
+}
+
+.dg.Link.Link--pointer {
+  cursor: pointer;
+}
+
+.dg.Link .icon {
+  font-size: 19px;
+  vertical-align: middle;
+}

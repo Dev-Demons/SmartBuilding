@@ -1,0 +1,16 @@
+{
+  "editor.formatOnSave": false,
+  "eslint.validate": [
+    "typescript"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "never"
+  },
+  "cSpell.words": [
+    "Ethereum",
+    "classname",
+    "stackable"
+  ],
+  "mdx.experimentalLanguageServer": true
+}

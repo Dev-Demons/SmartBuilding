@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": [ "es2015" ],
+    "noEmit": true,
+    "module": "commonjs",
+    "moduleResolution": "node"
+  },
+  "include": [
+    "*.ts",
+    ".eslintrc.js"
+  ]
+}
