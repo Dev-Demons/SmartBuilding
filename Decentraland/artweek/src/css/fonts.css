@@ -1,0 +1,55 @@
+@font-face {
+  font-family: "Gothic";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/Gothic.ttf);
+}
+
+@font-face {
+  font-family: "Gothic";
+  font-style: normal;
+  font-weight: 500;
+  src: url(../fonts/GothicB.ttf);
+}
+
+@font-face {
+  font-family: "Gothic";
+  font-style: normal;
+  font-weight: 600;
+  src: url(../fonts/GothicB.ttf);
+}
+
+@font-face {
+  font-family: "Gothic";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/GothicB.ttf);
+}
+
+@font-face {
+  font-family: "Gothic";
+  font-style: normal;
+  font-weight: 800;
+  src: url(../fonts/GothicB.ttf);
+}
+
+@font-face {
+  font-family: "SaintRegular";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/SaintRegular.ttf);
+}
+
+@font-face {
+  font-family: "NumerinoPixel";
+  font-style: italic;
+  font-weight: 400;
+  src: url(../fonts/Numerino-PixelItalic.otf);
+}
+
+@font-face {
+  font-family: "HackerNoon";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/HackerNoonV2.ttf);
+}

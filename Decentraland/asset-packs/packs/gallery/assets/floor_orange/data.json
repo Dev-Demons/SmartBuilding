@@ -1,0 +1,11 @@
+{
+  "id": "730e8de2-1d7d-4f4d-ba91-326ceb97a890",
+  "name": "Floor - Orange",
+  "category": "decorations",
+  "tags": [],
+  "components": {
+    "core::GltfContainer": {
+      "src": "{assetPath}/OrangeFloor.glb"
+    }
+  }
+}

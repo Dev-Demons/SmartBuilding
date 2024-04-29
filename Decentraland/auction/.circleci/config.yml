@@ -1,0 +1,73 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:7.10
+    working_directory: /tmp/auction
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "webapp/package.json" }}
+          - v1-dependencies-
+      - run: cd webapp && npm install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "webapp/package.json" }}
+      - run:
+          name: Build
+          command: cd webapp && npm run remotebuild
+          environment:
+            NODE_ENV: production
+            REACT_APP_API_URL: https://api.auction.decentraland.today
+            REACT_APP_MANA_CONTRACT_ADDRESS: 0x2a8fd99c19271f4f04b1b7b9c4f7cf264b626edb
+            REACT_APP_RESERVE_CONTRACT_ADDRESS: 0x4bc79175f1f6fded07f04aa1b4b0465ecff6f1b3
+            REACT_APP_TERRAFORM_CONTRACT_ADDRESS: 0x4bc79175f1f6fded07f04aa1b4b0465ecff6f1b3
+      - save_cache:
+          paths:
+            - webapp/build
+          key: build-{{ .Revision }}
+  deploy:
+    docker:
+      - image: circleci/node:7.10
+    working_directory: /tmp/auction
+    steps:
+      - restore_cache:
+          keys:
+          - build-{{ .Revision }}
+      - run: sudo apt-get -y -qq install awscli
+      - run:
+          name: Deploy to S3 if tests pass and branch is Master
+          command: aws s3 sync webapp/build s3://auction.decentraland.today/ --delete --acl public-read
+  staging:
+    docker:
+      - image: circleci/node:7.10
+    working_directory: /tmp/auction
+    steps:
+      - restore_cache:
+          keys:
+          - build-{{ .Revision }}
+      - run: sudo apt-get -y -qq install awscli
+      - run:
+          name: Deploy to S3 if tests pass and branch is Master
+          command: aws s3 sync webapp/build s3://staging.decentraland.today/ --delete --acl public-read
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+      - staging:
+          requires:
+            - build
+          filters:
+            branches:
+              only: staging
+

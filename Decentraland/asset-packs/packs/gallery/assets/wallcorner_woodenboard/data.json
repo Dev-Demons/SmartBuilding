@@ -1,0 +1,11 @@
+{
+  "id": "079b9591-2331-41bc-aaaa-b86acaae5cdd",
+  "name": "WallCorner - WoodenBoard ",
+  "category": "decorations",
+  "tags": [],
+  "components": {
+    "core::GltfContainer": {
+      "src": "{assetPath}/WoodenBoardCorner.glb"
+    }
+  }
+}

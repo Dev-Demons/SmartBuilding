@@ -1,0 +1,162 @@
+{
+  "id": "a186416e-81f1-4d0a-b0cd-a4b0077d264d",
+  "name": "Toggle Button",
+  "category": "buttons",
+  "tags": ["button", "toggle"],
+  "components": {
+    "core::GltfContainer": {
+      "src": "{assetPath}/toggle_fantasy_button.glb"
+    },
+    "asset-packs::Actions": {
+      "id": "{self}",
+      "value": [
+        {
+          "name": "Activate",
+          "type": "set_state",
+          "jsonPayload": "{ \"state\": \"Activated\" }",
+          "allowedInBasicView": true
+        },
+        {
+          "name": "Deactivate",
+          "type": "set_state",
+          "jsonPayload": "{ \"state\": \"Deactivated\" }",
+          "allowedInBasicView": true
+        },
+        {
+          "name": "Play Sound",
+          "type": "play_sound",
+          "jsonPayload": "{ \"src\": \"{assetPath}/sound.mp3\" }"
+        },
+        {
+          "name": "Play Activate Animation",
+          "type": "play_animation",
+          "jsonPayload": "{ \"animation\": \"activate\" }"
+        },
+        {
+          "name": "Play Deactivate Animation",
+          "type": "play_animation",
+          "jsonPayload": "{ \"animation\": \"deactivate\" }"
+        }
+      ]
+    },
+    "asset-packs::Triggers": {
+      "value": [
+        {
+          "type": "on_input_action",
+          "conditions": [
+            {
+              "id": "{self:asset-packs::States}",
+              "type": "when_state_is",
+              "value": "Deactivated"
+            }
+          ],
+          "actions": [
+            {
+              "id": "{self:asset-packs::Actions}",
+              "name": "Activate"
+            }
+          ]
+        },
+        {
+          "type": "on_input_action",
+          "conditions": [
+            {
+              "id": "{self:asset-packs::States}",
+              "type": "when_state_is",
+              "value": "Activated"
+            }
+          ],
+          "actions": [
+            {
+              "id": "{self:asset-packs::Actions}",
+              "name": "Deactivate"
+            }
+          ]
+        },
+        {
+          "type": "on_state_change",
+          "conditions": [
+            {
+              "id": "{self:asset-packs::States}",
+              "type": "when_state_is",
+              "value": "Activated"
+            }
+          ],
+          "actions": [
+            {
+              "id": "{self:asset-packs::Actions}",
+              "name": "Play Activate Animation"
+            },
+            {
+              "id": "{self:asset-packs::Actions}",
+              "name": "Play Sound"
+            }
+          ],
+          "basicViewId": "trigger-when-activated"
+        },
+        {
+          "type": "on_state_change",
+          "conditions": [
+            {
+              "id": "{self:asset-packs::States}",
+              "type": "when_state_is",
+              "value": "Deactivated"
+            }
+          ],
+          "actions": [
+            {
+              "id": "{self:asset-packs::Actions}",
+              "name": "Play Deactivate Animation"
+            },
+            {
+              "id": "{self:asset-packs::Actions}",
+              "name": "Play Sound"
+            }
+          ],
+          "basicViewId": "trigger-when-deactivated"
+        }
+      ]
+    },
+    "asset-packs::States": {
+      "id": "{self}",
+      "value": ["Activated", "Deactivated"],
+      "defaultValue": "Deactivated"
+    },
+    "core-schema::Sync-Components": {
+      "value": ["core::Animator", "core::AudioSource", "asset-packs::States"]
+    },
+    "core::PointerEvents": {
+      "pointerEvents": [
+        {
+          "eventType": 1,
+          "eventInfo": {
+            "button": 1,
+            "hoverText": "Activate / Deactivate",
+            "maxDistance": 10,
+            "showFeedback": true
+          }
+        }
+      ]
+    },
+    "inspector::Config": {
+      "isBasicViewEnabled": true,
+      "componentName": "Toggle Button",
+      "fields": [
+        {
+          "name": "Hover Text",
+          "type": "core::PointerEvents"
+        },
+        {
+          "name": "When Activated",
+          "type": "asset-packs::Triggers",
+          "basicViewId": "trigger-when-activated"
+        },
+        {
+          "name": "When Deactivated",
+          "type": "asset-packs::Triggers",
+          "basicViewId": "trigger-when-deactivated"
+        }
+      ]
+    }
+  }
+}

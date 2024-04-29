@@ -1,0 +1,38 @@
+{
+  "id": "03bdce84-a242-49d2-9d10-fadb9b07d15e",
+  "name": "Reddit Link",
+  "category": "social",
+  "tags": [
+    "social",
+    "links",
+    "reddit"
+  ],
+  "components": {
+    "core::GltfContainer": {
+      "src": "{assetPath}/reddit.glb"
+    },
+    "asset-packs::Actions": {
+      "id": "{self}",
+      "value": [
+        {
+          "name": "Open Link",
+          "type": "open_link",
+          "jsonPayload": "{ \"url\": \"https://reddit.com\" }"
+        }
+      ]
+    },
+    "asset-packs::Triggers": {
+      "value": [
+        {
+          "type": "on_click",
+          "actions": [
+            {
+              "id": "{self:asset-packs::Actions}",
+              "name": "Open Link"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "aef92255-eaa4-4f36-9f08-8b1784ae2725",
+  "name": "YouTube Link",
+  "category": "social",
+  "tags": [
+    "social",
+    "links",
+    "youtube"
+  ],
+  "components": {
+    "core::GltfContainer": {
+      "src": "{assetPath}/youtube.glb"
+    },
+    "asset-packs::Actions": {
+      "id": "{self}",
+      "value": [
+        {
+          "name": "Open Link",
+          "type": "open_link",
+          "jsonPayload": "{ \"url\": \"https://youtube.com\" }"
+        }
+      ]
+    },
+    "asset-packs::Triggers": {
+      "value": [
+        {
+          "type": "on_click",
+          "actions": [
+            {
+              "id": "{self:asset-packs::Actions}",
+              "name": "Open Link"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

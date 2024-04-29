@@ -1,0 +1,38 @@
+{
+  "id": "26bfc07d-59d7-4aed-a03b-9ccc3462b1a2",
+  "name": "Reddit Button",
+  "category": "social",
+  "tags": [
+    "social",
+    "links",
+    "reddit"
+  ],
+  "components": {
+    "core::GltfContainer": {
+      "src": "{assetPath}/reddit.glb"
+    },
+    "asset-packs::Actions": {
+      "id": "{self}",
+      "value": [
+        {
+          "name": "Open Link",
+          "type": "open_link",
+          "jsonPayload": "{ \"url\": \"https://reddit.com\" }"
+        }
+      ]
+    },
+    "asset-packs::Triggers": {
+      "value": [
+        {
+          "type": "on_click",
+          "actions": [
+            {
+              "id": "{self:asset-packs::Actions}",
+              "name": "Open Link"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

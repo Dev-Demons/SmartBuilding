@@ -1,0 +1,78 @@
+.PollProgress {
+  display: flex;
+  width: 100%;
+  height: 42px;
+  background-color: #7d8499;
+  border-radius: 8px;
+}
+
+.PollProgress .PollOption:first-child .bg {
+  border-radius: 8px 0px 0px 8px;
+}
+
+.PollProgress .PollOption:last-child .bg {
+  border-radius: 0px 8px 8px 0px;
+}
+
+.PollProgress .mask {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: var(--text-on-primary);
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 8px;
+}
+
+.PollProgress .bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-left: 2px solid var(--background);
+}
+
+.PollProgress .PollOption:first-child .bg {
+  border-left: none;
+}
+
+.PollProgress .PollOption {
+  min-width: calc(8px + 8px);
+  cursor: default !important;
+}
+
+.PollProgress .PollOption.color-0 .bg {
+  background: var(--night-time);
+}
+
+.PollProgress .PollOption.color-1 .bg {
+  background: var(--luisxvi-violet);
+}
+
+.PollProgress .PollOption.color-2 .bg {
+  background: var(--candy-purple);
+}
+
+.PollProgress .PollOption.color-3 .bg {
+  background: var(--summer-red);
+}
+
+.PollProgress .PollOption.color-4 .bg {
+  background: var(--oj-not-simpson);
+}
+
+.PollProgress .PollOption.winner {
+  flex: 1 1 auto;
+}
+
+.PollProgress .text {
+  z-index: 100;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  color: var(--background);
+  text-transform: uppercase;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  {{> head}}
+  <body class="toc-inline">
+    <main role="main">
+      {{> nav}}
+      <section>
+        <h1>{{ matterfront.title }}</h1>
+
+        {{{ markdown content }}}
+
+        <h1 title="all">List of ADRs</h1>
+
+        {{#each matterfront.states as |status| }}
+          <h2>{{status}}</h2>
+          {{#each (sortAsc @root.context.pages "matterfront.adr") as |doc| }}
+            {{#if (eq doc.matterfront.status status) }}
+              <a href="{{ publicUrl }}" class="post-item" title="{{ doc.matterfront.title }}">
+                <div class="article-title status-{{ doc.matterfront.status }}">
+                  <span>ADR-{{ doc.matterfront.adr }} - {{ doc.matterfront.title }} <span class="status">{{doc.matterfront.status}}</span></span>
+                  <span class="type-label"><span>{{ doc.matterfront.type }}</span> <time datetime="{{ isoDate doc.matterfront.date }}">{{ prettyDate doc.matterfront.date }}</time></span>
+                </div>
+              </a>
+            {{/if}}
+          {{/each}}
+        {{/each}}
+
+        {{> license-section }}
+      </section>
+    </main>
+    {{>footer}}
+  </body>
+</html>

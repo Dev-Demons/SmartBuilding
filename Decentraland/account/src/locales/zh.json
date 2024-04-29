@@ -1,0 +1,178 @@
+{
+  "global": {
+    "guest": "客人",
+    "settings": "设定",
+    "usd_symbol": "USD",
+    "mana_symbol": "MANA",
+    "done": "完毕",
+    "max": "最大",
+    "fees_warning": "请记住，将资产移入以太坊区块链或从以太坊区块链移出的任何交易都将产生汽油费。 仅在Polygon上专门进行的交易是无耗油的"
+  },
+  "account_header": {
+    "actions": {
+      "change_alias": "更改别名",
+      "get_a_name": "取个名字",
+      "edit_avatar": "编辑头像",
+      "set_description": "单击此处设置说明..."
+    }
+  },
+  "account_card_header": {
+    "add": "买",
+    "convert": "改造",
+    "receive": "接收",
+    "send": "发送",
+    "tooltip_ethereum": "你在以太坊主区块链上的 MANA 余额。你可以将 MANA 从这个余额换成 Polygon。",
+    "tooltip_matic": "您在 Polygon 侧链上的 MANA 余额。您可以使用 Polygon MANA 而无需支付 gas 费用。您可以随时从 Polygon 的侧链中提取 MANA。",
+    "import_withdrawal": "出口退运"
+  },
+  "account_card": {
+    "tx_latests": "最新交易",
+    "tx_pending": "待交易",
+    "see_all": "看到所有",
+    "empty": "您还没有任何交易。"
+  },
+  "transaction_detail_modal": {
+    "title": "交易明细",
+    "operation": "操作方式",
+    "amount": "量",
+    "type": "类型",
+    "status": "状态",
+    "datetime": "约会时间",
+    "to": "发送",
+    "tx": "交易哈希",
+    "initialize_tx": "交易哈希（初始取款）",
+    "finalize_tx": "交易哈希（完全取款）"
+  },
+  "see_all_transaction_modal": {
+    "title_ethereum": "Ethereum 交易",
+    "title_matic": "Polygon 交易"
+  },
+  "receive_mana_modal": {
+    "title": "接收令牌",
+    "message": "如果您想在此钱包中接收令牌，可以通过共享您的地址来完成",
+    "copy": "复制",
+    "copied": "复制！"
+  },
+  "transaction_description": {
+    "deposit": "存入Polygon MANA",
+    "withdrawal": "提款至Ethereum MANA",
+    "buy": "通过{gateway}添加令牌",
+    "send": "将令牌发送到"
+  },
+  "transaction_type": {
+    "deposit": "存款",
+    "withdrawal": "退出"
+  },
+  "transaction_status": {
+    "pending": "待定",
+    "confirmed": "已确认"
+  },
+  "transfer_mana_modal": {
+    "usd": "USD",
+    "mana": "MANA",
+    "wallet_label": "钱包",
+    "amount_label": "量",
+    "send_tokens": "发送令牌",
+    "title": "发送令牌",
+    "subtitle": "将令牌发送到所需的电子钱包",
+    "no_balance": "您的余额不足",
+    "errors": {
+      "invalid_char": "地址的无效字符",
+      "invalid_address": "无效地址"
+    }
+  },
+  "import_withdrawal_modal": {
+    "title": "进口提款",
+    "description": "取款是一个 2 步过程。您使用燃烧多边形 MANA 的多边形交易初始取款，几分钟后，您将能够在以太坊上解锁您的 MANA 令牌。我们将来自第一笔交易的信息存储在您的设备上，并且必须完成您的取款。如果由于某种原因丢失此信息（即您删除浏览器的存储），或者如果您正在完成从新设备的取款，您可以使用此屏幕输入取款初始化交易的哈希（Polygon）来恢复您的取款信息。您可以在 {link} 上查看您所有的最新交易",
+    "polygonscan": "Polygonscan",
+    "tx_label": "交易哈希",
+    "import_withdrawal": "进口",
+    "errors": {
+      "invalid_hash": "无效哈希",
+      "duplicate": "此提款已存在于您的列表中",
+      "not_found": "不存在",
+      "not_withdrawal": "不是撤退",
+      "not_own_tx": "属于另一个钱包",
+      "already_processed": "此务虚会已处理完毕"
+    }
+  },
+  "edit_profile_avatar_description_modal": {
+    "title": "编辑个人资料描述",
+    "subtitle": "为这个配置文件设置一个新的描述",
+    "submit": "保存",
+    "error_header": "保存描述时出错",
+    "description": "描述"
+  },
+  "convert_mana_modal": {
+    "usd": "USD",
+    "mana": "MANA",
+    "amount_label": "量",
+    "label_button_ethereum": "完成存款",
+    "label_button_matic": "开始提款",
+    "title_ethereum": "转换为Polygon MANA",
+    "subtitle_ethereum": "将MANA从Ethereum存入Polygon",
+    "title_matic": "转换为MANA",
+    "subtitle_matic": "将MANA从Polygon撤至Ethereum",
+    "label_approvement": "获MANA批准",
+    "no_balance": "您的余额不足",
+    "withdrawal_cost": "该操作包括两个步骤。第一步不会有任何费用。第二个将在以太坊上花费大约 ${cost} 的汽油费",
+    "withdrawal_cost_accept": "继续",
+    "withdrawal_cost_cancel": "取消",
+    "authorization": {
+      "title_action": "订金",
+      "action": "交换",
+      "confirm_transaction_title": "完整的交易以存放法力",
+      "authorize_mana_description": "请记住，某些钱包需要设置自定义的法力支出限制。输入要存入{price}的法力值或更高舒适的内容。您可以随时更改限制。",
+      "set_cap_description": "输入要存入{price}法力或更高量的范围的内容。您可以随时更改限制."
+    }
+  },
+  "withdrawal_status_modal": {
+    "title": "转化为法力",
+    "amount_placeholder": "数量",
+    "status_placeholder": "状态",
+    "status_initialized": "提款已初始化",
+    "status_checkpoint": "检查站",
+    "status_checkpoint_placeholder": "通常需要30分钟",
+    "status_completed": "完成提款",
+    "complete_withdrawal": "完全取款"
+  },
+  "withdrawal_status": {
+    "pending": "待办的",
+    "checkpoint": "检查站",
+    "complete": "完全的"
+  },
+  "deposit_status": {
+    "pending": "待办的",
+    "complete": "完全的"
+  },
+  "send_status": {
+    "rejected": "拒绝了",
+    "complete": "完全的",
+    "pending": "待办的"
+  },
+  "purchase_status": {
+    "failed": "失败的",
+    "cancelled": "取消",
+    "complete": "完全的",
+    "refunded": "已退款",
+    "pending": "待办的",
+    "expired": "已到期"
+  },
+  "tooltip": {
+    "button": "去吧"
+  },
+  "deposit_tooltip": {
+    "header": "存款已初始化",
+    "text": "请记住，将资产移入以太坊区块链或从以太坊区块链移出的任何交易都将产生汽油费。 仅在Polygon上专门进行的交易是无耗油的。 初始化您的存款后，有30分钟的延迟，您的资产将被转移到Polygon"
+  },
+  "withdrawal_tooltip": {
+    "header": "提款已初始化",
+    "text": "初始化提款后，您必须等待30分钟才能到达检查站。 到达检查点后，将在您的以太坊钱包中触发一笔交易，您必须签名以完成提款"
+  },
+  "toast": {
+    "meta_transaction_failure": {
+      "title": "元交易",
+      "body": "发送元交易时出错。{br}请重试或加入我们的{discord_link}以获取支持。"
+    }
+  }
+}

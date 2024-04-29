@@ -1,0 +1,115 @@
+.ui.modal.TransferManaModal {
+  padding: 26px;
+  width: 520px;
+}
+.TransferManaModal .title {
+  text-align: center;
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 30px;
+letter-spacing: 0.3px;
+}
+
+.TransferManaModal .subtitle {
+  margin-top: 10px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 17px;
+  line-height: 26px;
+
+  /* identical to box height, or 153% */
+  text-align: center;
+  letter-spacing: -0.2px;
+}
+
+.TransferManaModal .amount-error {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 24px;
+  margin-top: -15px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: red;
+}
+.TransferManaModal .usd-amount {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 24px;
+  margin-top: -15px;
+  margin-bottom: 10px;
+
+  /* identical to box height, or 160% */
+  text-align: center;
+  color: #736E7D;
+}
+
+.TransferManaModal .dcl.close, .ui.modal > .dcl.close {
+  margin:10px;
+  padding: 10px;
+  background-color: white;
+}
+
+.TransferManaModal .ui.sub.header {
+  text-transform: none;
+  font-size: 15px;
+  line-height: 24px;
+}
+
+.TransferManaModal .price {
+  padding-top: 10px;
+  text-align: center;
+}
+
+.TransferManaModal .button-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.TransferManaModal .dcl.field {
+  width: 100%;
+  min-width: 100%;
+  margin-top: 30px;
+  text-align:center;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+}
+
+.TransferManaModal .dcl.field .ui.input.amount input, .TransferManaModal .ui.form .dcl.field .ui.input.amount input
+{
+  text-align:center;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 48px;
+}
+
+.TransferManaModal .dcl.field .ui.input.wallet input, .TransferManaModal .ui.form .dcl.field .ui.input.wallet input
+{
+  text-align:center;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 26px;
+}
+
+.TransferManaModal .dcl.field .ui.basic.button {
+  padding-bottom: 40px;
+}
+
+.TransferManaModal button.ui.primary {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.TransferManaModal .fees-warning {
+  min-height: 20px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 18px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #736E7D;
+}

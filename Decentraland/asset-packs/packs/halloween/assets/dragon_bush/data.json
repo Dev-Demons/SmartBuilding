@@ -1,0 +1,11 @@
+{
+  "id": "e131a459-9dba-4b3d-a215-cec69b417ec6",
+  "name": "Dragon Bush",
+  "category": "decorations",
+  "tags": [],
+  "components": {
+    "core::GltfContainer": {
+      "src": "{assetPath}/HWN20_DragonBush.glb"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "2312b12f-d481-4229-be52-82aa3819a391",
+  "name": "Bar 4 2M",
+  "category": "furniture",
+  "tags": [],
+  "components": {
+    "core::GltfContainer": {
+      "src": "{assetPath}/Furnit Bar 4 2M.glb"
+    }
+  }
+}

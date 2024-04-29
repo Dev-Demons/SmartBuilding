@@ -1,0 +1,39 @@
+.OptionOrb {
+  display: flex;
+  align-items: center;
+  margin-right: 18px;
+  margin-bottom: 18px;
+}
+
+.OptionOrb .orb {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 16px;
+  margin-right: 8px;
+}
+
+.OptionOrb .label {
+  font-weight: bold;
+  color: var(--text);
+}
+
+.OptionOrb.color-0 .orb {
+  background: var(--night-time);
+}
+
+.OptionOrb.color-1 .orb {
+  background: var(--luisxvi-violet);
+}
+
+.OptionOrb.color-2 .orb {
+  background: var(--candy-purple);
+}
+
+.OptionOrb.color-3 .orb {
+  background: var(--summer-red);
+}
+
+.OptionOrb.color-4 .orb {
+  background: var(--oj-not-simpson);
+}

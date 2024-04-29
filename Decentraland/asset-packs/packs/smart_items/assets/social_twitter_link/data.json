@@ -1,0 +1,38 @@
+{
+  "id": "ae504c4d-fa75-416c-a7bd-d96d5e0dd0b1",
+  "name": "Twitter Link",
+  "category": "social",
+  "tags": [
+    "social",
+    "links",
+    "twitter"
+  ],
+  "components": {
+    "core::GltfContainer": {
+      "src": "{assetPath}/twitter.glb"
+    },
+    "asset-packs::Actions": {
+      "id": "{self}",
+      "value": [
+        {
+          "name": "Open Link",
+          "type": "open_link",
+          "jsonPayload": "{ \"url\": \"https://twitter.com\" }"
+        }
+      ]
+    },
+    "asset-packs::Triggers": {
+      "value": [
+        {
+          "type": "on_click",
+          "actions": [
+            {
+              "id": "{self:asset-packs::Actions}",
+              "name": "Open Link"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

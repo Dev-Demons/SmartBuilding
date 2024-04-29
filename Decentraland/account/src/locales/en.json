@@ -1,0 +1,178 @@
+{
+  "global": {
+    "guest": "Guest",
+    "settings": "Settings",
+    "usd_symbol": "USD",
+    "mana_symbol": "MANA",
+    "done": "Done",
+    "max": "Max",
+    "fees_warning": "Remember, any transaction that moves assets within, to, or from the Ethereum blockchain will incur gas fees. Only transactions conducted exclusively on Polygon are gas-less."
+  },
+  "account_header": {
+    "actions": {
+      "change_alias": "Change Alias",
+      "get_a_name": "Get a name",
+      "edit_avatar": "Edit Avatar",
+      "set_description": "Click here to set a description..."
+    }
+  },
+  "account_card_header": {
+    "add": "Buy",
+    "convert": "Swap",
+    "receive": "Receive",
+    "send": "Send",
+    "tooltip_ethereum": "Your MANA balance on the main Ethereum blockchain. You can swap MANA from this balance to Polygon.",
+    "tooltip_matic": "Your MANA balance on Polygon's sidechain. You can use Polygon MANA without paying for gas fees. You can withdraw MANA from Polygon's sidechain at any time.",
+    "import_withdrawal": "Import Withdrawal"
+  },
+  "account_card": {
+    "tx_latests": "Latests Transactions",
+    "tx_pending": "Pending Transactions",
+    "see_all": "See all",
+    "empty": "You have no transactions yet."
+  },
+  "transaction_detail_modal": {
+    "title": "Transaction Detail",
+    "operation": "Operation",
+    "amount": "Amount",
+    "type": "Type",
+    "status": "Status",
+    "datetime": "Date time",
+    "to": "Sent to",
+    "tx": "Tx Hash",
+    "initialize_tx": "Tx Hash (Initialize withdrawal)",
+    "finalize_tx": "Tx Hash (Complete withdrawal)"
+  },
+  "see_all_transaction_modal": {
+    "title_ethereum": "Ethereum Transactions",
+    "title_matic": "Polygon Transactions"
+  },
+  "receive_mana_modal": {
+    "title": "Receive Tokens",
+    "message": "If you want to receive tokens in this wallet you can do it by sharing your address",
+    "copy": "Copy",
+    "copied": "Copied!"
+  },
+  "transaction_description": {
+    "deposit": "Deposit to Polygon MANA",
+    "withdrawal": "Withdrawal to Ethereum MANA",
+    "buy": "Add tokens via {gateway}",
+    "send": "Send tokens to"
+  },
+  "transaction_type": {
+    "deposit": "Deposit",
+    "withdrawal": "Withdrawal"
+  },
+  "transaction_status": {
+    "pending": "Pending",
+    "confirmed": "Confirmed"
+  },
+  "transfer_mana_modal": {
+    "usd": "USD",
+    "mana": "MANA",
+    "amount_label": "Amount",
+    "wallet_label": "Wallet",
+    "send_tokens": "Send Tokens",
+    "title": "Send Tokens",
+    "subtitle": "Send Tokens to the desired Wallet",
+    "no_balance": "You don't have enough balance",
+    "errors": {
+      "invalid_char": "Invalid character for an Address",
+      "invalid_address": "Invalid Address"
+    }
+  },
+  "import_withdrawal_modal": {
+    "title": "Import Withdrawal",
+    "description": "Withdrawals are a 2-step process. You initialize a withdrawal with a Polygon transaction that burns your Polygon MANA, and after some minutes you are able to unlock your MANA tokens on Ethereum. We store the information from the first transaction on your device, and it's necessary to finish your withdrawal. If for some reason this information is lost (ie. you erase your browser's storage) or if you are finishing your withdrawal from a new device, you can use this screen to recover your withdrawal information by entering the hash of the withdrawal initialization transaction (in Polygon). You can see all your latest transaction on {link}",
+    "polygonscan": "Polygonscan",
+    "tx_label": "Tx Hash",
+    "import_withdrawal": "Import",
+    "errors": {
+      "invalid_hash": "Invalid Hash",
+      "duplicate": "This Withdrawal already exists on your list",
+      "not_found": "Not found",
+      "not_withdrawal": "Not a Withdrawal",
+      "not_own_tx": "Belongs to another wallet",
+      "already_processed": "This Withdrawal has already been completed"
+    }
+  },
+  "edit_profile_avatar_description_modal": {
+    "title": "Edit avatar's profile description",
+    "subtitle": "Set a new description for the avatar of this profile",
+    "submit": "Save",
+    "error_header": "An error occured while saving the description",
+    "description": "Description"
+  },
+  "convert_mana_modal": {
+    "usd": "USD",
+    "mana": "MANA",
+    "amount_label": "Amount",
+    "label_button_ethereum": "Complete Deposit",
+    "label_button_matic": "Start Withdrawal",
+    "title_ethereum": "Convert to Polygon MANA",
+    "subtitle_ethereum": "Deposit MANA from Ethereum into Polygon",
+    "title_matic": "Convert to Ethereum MANA",
+    "subtitle_matic": "Withdraw MANA from Polygon into Ethereum",
+    "label_approvement": "MANA Approved",
+    "no_balance": "You don't have enough balance",
+    "withdrawal_cost": "This operation consists of two steps. The first step won't have any cost. The second one will cost approximately {cost} of gas fees on Ethereum.",
+    "withdrawal_cost_accept": "Proceed",
+    "withdrawal_cost_cancel": "Cancel",
+    "authorization": {
+      "title_action": "deposit",
+      "action": "swap",
+      "confirm_transaction_title": "Complete transaction to deposit the MANA",
+      "authorize_mana_description": "Keep in mind that some wallets require setting a custom MANA spending limit. Enter what you want to deposit {price} MANA or a higher amount you're comfortable with. You can change the limit at any time.",
+      "set_cap_description": "Enter what you want to deposit {price} MANA or a higher amount you're comfortable with. You can change the limit at any time."
+    }
+  },
+  "withdrawal_status_modal": {
+    "title": "Convert to Mana",
+    "amount_placeholder": "Amount",
+    "status_placeholder": "Status",
+    "status_initialized": "Withdrawal initialized",
+    "status_checkpoint": "Ready to withdraw",
+    "status_checkpoint_placeholder": "Usually takes 30 minutes",
+    "status_completed": "Complete withdrawal",
+    "complete_withdrawal": "Complete Withdrawal"
+  },
+  "withdrawal_status": {
+    "pending": "Pending",
+    "checkpoint": "Ready to withdraw",
+    "complete": "Complete"
+  },
+  "deposit_status": {
+    "pending": "Pending",
+    "complete": "Complete"
+  },
+  "send_status": {
+    "rejected": "Rejected",
+    "complete": "Complete",
+    "pending": "Pending"
+  },
+  "purchase_status": {
+    "failed": "Failed",
+    "cancelled": "Cancelled",
+    "complete": "Complete",
+    "refunded": "Refunded",
+    "pending": "Pending",
+    "expired": "Expired"
+  },
+  "tooltip": {
+    "button": "Got it"
+  },
+  "deposit_tooltip": {
+    "header": "Deposit initialized",
+    "text": "Remember, any transaction that moves assets within, to, or from the Ethereum blockchain will incur gas fees. Only transactions conducted exclusively on Polygon are gas-less. After initializing your deposit, there is a 30 minute delay before your assets will be transferred to Polygon"
+  },
+  "withdrawal_tooltip": {
+    "header": "Withdrawal initialized",
+    "text": "After initializing your withdrawal, you must wait 30 minutes before reaching a checkpoint. After the checkpoint is reached, a transaction will be triggered in your Ethereum wallet that you must sign to complete the withdrawal"
+  },
+  "toast": {
+    "meta_transaction_failure": {
+      "title": "Meta transaction",
+      "body": "There was an error sending the meta transaction.{br}Please try again or join our {discord_link} to get support."
+    }
+  }
+}

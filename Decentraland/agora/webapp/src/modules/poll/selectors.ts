@@ -1,0 +1,57 @@
+import { createSelector } from 'reselect'
+import { RootState } from 'types'
+import { utils } from 'decentraland-commons'
+import { PollWithAssociations, Poll } from 'modules/poll/types'
+import { getData as getOptions } from 'modules/option/selectors'
+import { getData as getTokens } from 'modules/token/selectors'
+import { getData as getVotes } from 'modules/vote/selectors'
+import { ModelById } from '@dapps/lib/types'
+import { PollState } from 'modules/poll/reducer'
+import { OptionState } from 'modules/option/reducer'
+import { VoteState } from 'modules/vote/reducer'
+import { TokenState } from 'modules/token/reducer'
+
+export const getState: (state: RootState) => PollState = state => state.poll
+
+export const getData: (state: RootState) => PollState['data'] = state =>
+  getState(state).data
+
+export const isLoading: (state: RootState) => boolean = state =>
+  getState(state).loading.length > 0
+
+export const getError: (state: RootState) => PollState['error'] = state =>
+  getState(state).error
+
+export const getPolls = createSelector<
+  RootState,
+  PollState['data'],
+  OptionState['data'],
+  TokenState['data'],
+  VoteState['data'],
+  ModelById<PollWithAssociations>
+>(getData, getOptions, getTokens, getVotes, (polls, options, tokens, votes) =>
+  Object.keys(polls).reduce<ModelById<PollWithAssociations>>(
+    (result, pollId) => {
+      const poll = polls[pollId]
+
+      const fullPoll: PollWithAssociations = {
+        ...utils.omit<Poll>(poll, ['option_ids', 'vote_ids']),
+        token: tokens[poll.token_address],
+
+        votes: poll.vote_ids
+          .map(voteId => votes[voteId])
+          .filter(vote => !!vote),
+
+        options: poll.option_ids
+          .map(optionIds => options[optionIds])
+          .filter(option => !!option)
+      }
+
+      return {
+        ...result,
+        [pollId]: fullPoll
+      }
+    },
+    {}
+  )
+)

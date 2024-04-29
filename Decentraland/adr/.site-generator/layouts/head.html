@@ -1,0 +1,43 @@
+<head>
+  <meta charset="utf-8" />
+  <base href="{{ context.baseUrl }}" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>{{ matterfront.title }}</title>
+
+  <meta name="description" content="{{ matterfront.description }}" />
+  <meta name="keywords" content="{{ join matterfront.keywords ', ' }}" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+
+  <!-- rel prev and next -->
+  <link rel="stylesheet" href="{{ styleUrl context 'main.css' }}" />
+
+  <link rel="icon" href="https://decentraland.org/favicon-32x32.png" type="image/png" />
+  <link rel="icon" href="https://decentraland.org/favicon.svg" type="image/svg+xml" />
+
+  <!-- Canonical link tag -->
+  <link rel="canonical" href="{{ publicUrl }}" />
+
+  {{#if context.DRAFT}}
+  <meta name="robots" content="noindex" />
+  {{/if}}
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ publicUrl }}" />
+  <meta property="og:title" content="{{ matterfront.title }}" />
+  <meta property="og:image" content="https://decentraland.org/favicon.svg" />
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="Decentraland ADR & RFC" />
+  <meta property="og:locale" content="en-us" />
+  
+  <script>
+    !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="0ZQ80U27nML5VsBbQzqO7CfJteJ7h6NG";;analytics.SNIPPET_VERSION="4.15.3";
+    analytics.load("0ZQ80U27nML5VsBbQzqO7CfJteJ7h6NG");
+    analytics.page();
+    }}();
+  </script>
+</head>

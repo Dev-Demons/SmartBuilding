@@ -1,0 +1,38 @@
+{
+  "id": "be1802bc-b110-4363-bdee-bff4881e0c17",
+  "name": "Telegram Button",
+  "category": "social",
+  "tags": [
+    "social",
+    "links",
+    "telegram"
+  ],
+  "components": {
+    "core::GltfContainer": {
+      "src": "{assetPath}/telegram.glb"
+    },
+    "asset-packs::Actions": {
+      "id": "{self}",
+      "value": [
+        {
+          "name": "Open Link",
+          "type": "open_link",
+          "jsonPayload": "{ \"url\": \"https://telegram.com\" }"
+        }
+      ]
+    },
+    "asset-packs::Triggers": {
+      "value": [
+        {
+          "type": "on_click",
+          "actions": [
+            {
+              "id": "{self:asset-packs::Actions}",
+              "name": "Open Link"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "654624d3-0400-466e-bb63-a2663fc9430f",
+  "name": "Window - Cream Large",
+  "category": "decorations",
+  "tags": [],
+  "components": {
+    "core::GltfContainer": {
+      "src": "{assetPath}/CreamWindowLarge.glb"
+    }
+  }
+}

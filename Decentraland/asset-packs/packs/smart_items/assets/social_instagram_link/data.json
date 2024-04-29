@@ -1,0 +1,38 @@
+{
+  "id": "1717d6ad-f689-40a7-9a1c-7bfd3b4389e6",
+  "name": "Instagram Link",
+  "category": "social",
+  "tags": [
+    "social",
+    "links",
+    "instagram"
+  ],
+  "components": {
+    "core::GltfContainer": {
+      "src": "{assetPath}/instagram.glb"
+    },
+    "asset-packs::Actions": {
+      "id": "{self}",
+      "value": [
+        {
+          "name": "Open Link",
+          "type": "open_link",
+          "jsonPayload": "{ \"url\": \"https://instagram.com\" }"
+        }
+      ]
+    },
+    "asset-packs::Triggers": {
+      "value": [
+        {
+          "type": "on_click",
+          "actions": [
+            {
+              "id": "{self:asset-packs::Actions}",
+              "name": "Open Link"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

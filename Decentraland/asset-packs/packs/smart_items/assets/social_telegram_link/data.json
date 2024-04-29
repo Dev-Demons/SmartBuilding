@@ -1,0 +1,38 @@
+{
+  "id": "2d8d5b85-3206-4dd4-8e53-0e395473450a",
+  "name": "Telegram Link",
+  "category": "social",
+  "tags": [
+    "social",
+    "links",
+    "telegram"
+  ],
+  "components": {
+    "core::GltfContainer": {
+      "src": "{assetPath}/telegram.glb"
+    },
+    "asset-packs::Actions": {
+      "id": "{self}",
+      "value": [
+        {
+          "name": "Open Link",
+          "type": "open_link",
+          "jsonPayload": "{ \"url\": \"https://telegram.com\" }"
+        }
+      ]
+    },
+    "asset-packs::Triggers": {
+      "value": [
+        {
+          "type": "on_click",
+          "actions": [
+            {
+              "id": "{self:asset-packs::Actions}",
+              "name": "Open Link"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

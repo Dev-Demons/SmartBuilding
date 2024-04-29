@@ -1,0 +1,16 @@
+{
+  "name": "archipelago-service",
+  "private": true,
+  "workspaces": ["core", "ws-connector", "stats"],
+  "scripts": {
+    "build": "yarn workspaces run build",
+    "test": "yarn workspaces run test",
+    "start:local": "yarn workspace core start & yarn workspace ws-connector start & yarn workspace stats start",
+    "lint:check": "eslint '**/*.{js,ts}'",
+    "lint:fix": "eslint . --ext .ts --fix"
+  },
+  "resolutions": {
+    "**/make-dir/semver": "^6.3.1"
+  },
+  "license": "Apache-2.0"
+}

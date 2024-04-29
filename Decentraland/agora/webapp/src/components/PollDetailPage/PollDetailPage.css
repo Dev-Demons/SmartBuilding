@@ -1,0 +1,94 @@
+.PollDetailPage {
+  margin-bottom: 96px;
+}
+
+.PollDetailPage .description {
+  font-size: 17px;
+  line-height: 26px;
+  letter-spacing: -0.2px;
+  margin-top: 8px;
+}
+
+.PollDetailPage .description-wrapper {
+  margin-bottom: 48px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.PollDetailPage .description-wrapper a {
+  color: var(--primary);
+}
+
+.PollDetailPage .description-wrapper a:hover {
+  color: var(--primary-dark);
+}
+
+.PollDetailPage > .stats {
+  margin-bottom: 48px;
+}
+
+.PollDetailPage .row {
+  display: flex;
+  align-items: flex-start;
+}
+
+.PollDetailPage .progress {
+  flex: 1 0 auto;
+  max-width: calc(100% - 262px);
+}
+
+.PollDetailPage .main.row {
+  margin-bottom: 18px;
+}
+
+.PollDetailPage .sub.row {
+  justify-content: space-between;
+}
+
+.PollDetailPage .options {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.PollDetailPage .votes {
+  margin-top: 80px;
+}
+
+.PollDetailPage .votes-pagination {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.PollDetailPage .mobile-header {
+  display: none;
+  font-weight: bold;
+}
+
+.PollDetailPage .sign-in-message {
+  color: var(--secondary-text);
+}
+
+@media (max-width: 768px) {
+  .PollDetailPage .votes {
+    margin-top: 0px;
+  }
+
+  .PollDetailPage .ui.basic.table thead tr {
+    display: none !important;
+  }
+
+  .PollDetailPage .ui.pagination.menu .item {
+    margin-left: 8px;
+    min-width: 15px;
+    padding: 12px;
+  }
+
+  .PollDetailPage .mobile-header {
+    display: inline;
+  }
+
+  .ui.table:not(.unstackable) td:first-child,
+  .ui.table:not(.unstackable) th:first-child {
+    font-weight: normal;
+  }
+}

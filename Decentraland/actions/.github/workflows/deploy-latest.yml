@@ -1,0 +1,31 @@
+name: Deploy specific tag to environment
+
+on:
+  workflow_call:
+    inputs:
+      service-name:
+        required: true
+        type: string
+      deployment-environment:
+        required: false
+        type: string
+      tag:
+        required: true
+        default: "latest"
+        type: string
+        description: "Docker tag (quay.io)"
+
+jobs:
+  deployment:
+    if: ${{ inputs.deployment-environment }}
+    name: "Deploy to: ${{ inputs.deployment-environment }}"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger deployment
+        id: deploy
+        uses: decentraland/dcl-deploy-action@main
+        with:
+          dockerImage: "quay.io/decentraland/${{ inputs.service-name }}:${{ input.tag }}"
+          serviceName: ${{ inputs.service-name }}
+          env: ${{ inputs.deployment-environment }}
+          token: ${{ secrets.GITHUB_TOKEN }}

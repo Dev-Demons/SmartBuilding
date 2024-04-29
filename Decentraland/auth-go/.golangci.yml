@@ -1,0 +1,18 @@
+run:
+  skip-dirs:
+    - internal/ethereum
+    - /root/project/internal/ethereum
+
+linters-settings:
+  govet:
+    check-shadowing: true
+  misspell:
+    locale: US
+
+linters:
+  enable-all: true
+  disable:
+    - dupl
+
+issues:
+  exclude-use-default: false

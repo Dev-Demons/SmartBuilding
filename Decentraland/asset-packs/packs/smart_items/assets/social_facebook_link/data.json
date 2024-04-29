@@ -1,0 +1,38 @@
+{
+  "id": "b8f365c6-0a30-4c59-b25b-f9bc006df712",
+  "name": "Facebook Link",
+  "category": "social",
+  "tags": [
+    "social",
+    "links",
+    "facebook"
+  ],
+  "components": {
+    "core::GltfContainer": {
+      "src": "{assetPath}/facebook.glb"
+    },
+    "asset-packs::Actions": {
+      "id": "{self}",
+      "value": [
+        {
+          "name": "Open Link",
+          "type": "open_link",
+          "jsonPayload": "{ \"url\": \"https://facebook.com\" }"
+        }
+      ]
+    },
+    "asset-packs::Triggers": {
+      "value": [
+        {
+          "type": "on_click",
+          "actions": [
+            {
+              "id": "{self:asset-packs::Actions}",
+              "name": "Open Link"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

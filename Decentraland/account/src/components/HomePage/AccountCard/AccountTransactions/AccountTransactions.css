@@ -1,0 +1,57 @@
+.AccountTransactions {
+  position: relative;
+  min-height: 512px;
+}
+
+.AccountTransactions .description {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 24px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  text-transform: uppercase;
+  color: #736e7d;
+}
+
+.AccountTransactions .TransactionData {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.AccountTransactions .no-transactions-message {
+  padding: 24px;
+}
+
+.AccountTransactions .no-transactions-message p {
+  margin-top: 160px;
+  font-size: 16px;
+  line-height: 18px;
+  color: var(--secondary-text);
+  text-align: center;
+}
+
+.AccountTransactions .empty {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  color: var(--secondary-text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.AccountTransactions .empty .watermelon {
+  background-image: url(../../../../images/watermelon.svg);
+  background-position: center;
+  background-size: 64px;
+  background-repeat: no-repeat;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 24px;
+}

@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "name": "account",
+  "github": {
+    "silent": true
+  },
+  "build": {
+    "env": {
+      "GEN_STATIC_LOCAL": "true",
+      "VITE_REACT_APP_DCL_DEFAULT_ENV": "dev"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/auth/:match*",
+      "destination": "https://decentraland.zone/auth/:match*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
+}

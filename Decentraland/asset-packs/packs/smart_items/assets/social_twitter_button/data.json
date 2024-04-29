@@ -1,0 +1,38 @@
+{
+  "id": "476c556e-dbc6-44a7-a8af-633a230d3af5",
+  "name": "Twitter Button",
+  "category": "social",
+  "tags": [
+    "social",
+    "links",
+    "twitter"
+  ],
+  "components": {
+    "core::GltfContainer": {
+      "src": "{assetPath}/twitter.glb"
+    },
+    "asset-packs::Actions": {
+      "id": "{self}",
+      "value": [
+        {
+          "name": "Open Link",
+          "type": "open_link",
+          "jsonPayload": "{ \"url\": \"https://twitter.com\" }"
+        }
+      ]
+    },
+    "asset-packs::Triggers": {
+      "value": [
+        {
+          "type": "on_click",
+          "actions": [
+            {
+              "id": "{self:asset-packs::Actions}",
+              "name": "Open Link"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

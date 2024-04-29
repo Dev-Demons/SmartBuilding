@@ -1,0 +1,38 @@
+{
+  "id": "e11d2848-b79d-4ddc-bfea-5033cbdd8f9f",
+  "name": "Discord Link",
+  "category": "social",
+  "tags": [
+    "social",
+    "links",
+    "discord"
+  ],
+  "components": {
+    "core::GltfContainer": {
+      "src": "{assetPath}/discord.glb"
+    },
+    "asset-packs::Actions": {
+      "id": "{self}",
+      "value": [
+        {
+          "name": "Open Link",
+          "type": "open_link",
+          "jsonPayload": "{ \"url\": \"https://discord.com\" }"
+        }
+      ]
+    },
+    "asset-packs::Triggers": {
+      "value": [
+        {
+          "type": "on_click",
+          "actions": [
+            {
+              "id": "{self:asset-packs::Actions}",
+              "name": "Open Link"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

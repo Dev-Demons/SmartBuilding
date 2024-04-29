@@ -1,0 +1,178 @@
+{
+  "global": {
+    "guest": "Invitado",
+    "settings": "Configuración",
+    "usd_symbol": "USD",
+    "mana_symbol": "MANA",
+    "done": "Hecho",
+    "max": "Max",
+    "fees_warning": "Recuerde, cualquier transacción que mueva activos dentro, hacia o desde la cadena de bloques Ethereum incurrirá en tarifas de gas. Solo las transacciones realizadas exclusivamente en Polygon son sin gas."
+  },
+  "account_header": {
+    "actions": {
+      "change_alias": "Cambiar Alias",
+      "get_a_name": "Obtener un nombre",
+      "edit_avatar": "Editar Avatar",
+      "set_description": "Clickea aquí para establecer una descripción..."
+    }
+  },
+  "account_card_header": {
+    "add": "Comprar",
+    "convert": "Cambiar",
+    "receive": "Recibir",
+    "send": "Enviar",
+    "tooltip_ethereum": "Este es tu balance de MANA en Ethereum. Puedes cambiarlo por MANA en Polygon.",
+    "tooltip_matic": "Este es tu balance de MANA en Polygon. Puedes usar el MANA en Polygon sin pagar tarifa de gas. Puedes volver tu MANA de Polygon a Ethereum en cualquier momento.",
+    "import_withdrawal": "Importar retiro"
+  },
+  "account_card": {
+    "tx_latests": "Ultimas Transacciones",
+    "tx_pending": "Transacciones Pendientes",
+    "see_all": "Ver Todas",
+    "empty": "No has realizado ninguna transacción todavía."
+  },
+  "transaction_detail_modal": {
+    "title": "Detalle de Transaction",
+    "operation": "Operacion",
+    "amount": "Cantidad",
+    "type": "Tipo",
+    "status": "Estado",
+    "datetime": "Operacion realizada en",
+    "to": "Enviado a",
+    "tx": "Hash de la Transacción",
+    "initialize_tx": "Hash de la Transacción (Inicio del retiro)",
+    "finalize_tx": "Hash de la Transacción (Completado del retiro)"
+  },
+  "see_all_transaction_modal": {
+    "title_ethereum": "Transacciones en Ethereum",
+    "title_matic": "Transacciones en Polygon"
+  },
+  "receive_mana_modal": {
+    "title": "Recibir Tokens",
+    "message": "Si quieres recibir tokens in esta billetera puedes hacerlo compartiendo tu dirección",
+    "copy": "Copiar",
+    "copied": "Copiado!"
+  },
+  "transaction_description": {
+    "deposit": "Depósito de MANA en Polygon",
+    "withdrawal": "Retiro de MANA a Ethereum",
+    "buy": "Compra de Tokens via {gateway}",
+    "send": "Envio de tokens a"
+  },
+  "transaction_type": {
+    "deposit": "Deposito",
+    "withdrawal": "Retiro"
+  },
+  "transaction_status": {
+    "pending": "Pendiente",
+    "confirmed": "Confirmado"
+  },
+  "transfer_mana_modal": {
+    "usd": "USD",
+    "mana": "MANA",
+    "wallet_label": "Billetera",
+    "amount_label": "Cantidad",
+    "send_tokens": "Enviar Tokens",
+    "title": "Enviar Tokens",
+    "subtitle": "Enviar Tokens a la billetera deseada",
+    "no_balance": "No tiene suficientes fondos",
+    "errors": {
+      "invalid_char": "Caracter invalido para una Billetera",
+      "invalid_address": "Billetera inválida"
+    }
+  },
+  "import_withdrawal_modal": {
+    "title": "Importar retiro",
+    "description": "Los retiros son un proceso de 2 pasos. Inicializa un retiro con una transacción de Polygon que quema su Polygon MANA, y después de unos minutos puede desbloquear sus tokens MANA en Ethereum. Almacenamos la información de la primera transacción en su dispositivo, y es necesario para finalizar su retiro. Si por alguna razón esta información se pierde (es decir, borra el almacenamiento de su navegador) o si está terminando su retiro de un nuevo dispositivo, puede usar esta pantalla para recuperar su información de retiro ingresando el hash de la transacción de inicialización de retiro (en Polygon). Puedes ver todas tus últimas transacciones en {link}",
+    "polygonscan": "Polygonscan",
+    "tx_label": "Hash de la Transacción",
+    "import_withdrawal": "Importar",
+    "errors": {
+      "invalid_hash": "Hash invalido",
+      "duplicate": "Este retiro ya existe en su listado",
+      "not_found": "No se encuentra",
+      "not_withdrawal": "No es un Retiro",
+      "not_own_tx": "Pertenece a otra billetera",
+      "already_processed": "Este retiro ya ha sido completado"
+    }
+  },
+  "edit_profile_avatar_description_modal": {
+    "title": "Editar descripción del avatar del perfil",
+    "subtitle": "Establecer una nueva descripción para el avatar de este perfil",
+    "submit": "Salvar",
+    "error_header": "Un error ocurrió cuando se salvaba la descripción",
+    "description": "Descripción"
+  },
+  "convert_mana_modal": {
+    "usd": "USD",
+    "mana": "MANA",
+    "amount_label": "Cantidad",
+    "label_button_ethereum": "Completar Depósito",
+    "label_button_matic": "Comenzar Retiro",
+    "title_ethereum": "Convertir a MANA en Polygon",
+    "subtitle_ethereum": "Depositar MANA de Ethereum a Polygon",
+    "title_matic": "Convertir a MANA en Ethereum",
+    "subtitle_matic": "Retira MANA de Polygon a Ethereum",
+    "label_approvement": "MANA Aprobado",
+    "no_balance": "No tiene suficientes fondos",
+    "withdrawal_cost": "Esta operación consta de dos pasos. El primer paso no tendrá ningún costo. El segundo costará aproximadamente ${cost} de gas en Ethereum",
+    "withdrawal_cost_accept": "Continuar",
+    "withdrawal_cost_cancel": "Cancelar",
+    "authorization": {
+      "title_action": "depósito",
+      "action": "intercambio",
+      "confirm_transaction_title": "Completar transacción para depositar el MANA",
+      "authorize_mana_description": "Tenga en cuenta que algunas billeteras requieren establecer un límite de gasto de MANA personalizado. Ingrese lo que desea depositar {price} Mana o una cantidad más alta con la que se sienta cómodo. Puede cambiar el límite en cualquier momento.",
+      "set_cap_description": "Ingrese lo que desea depositar {price} MANA o una cantidad más alta con la que se sienta cómodo. Puede cambiar el límite en cualquier momento."
+    }
+  },
+  "withdrawal_status_modal": {
+    "title": "Convertir a Mana",
+    "amount_placeholder": "Cantidad",
+    "status_placeholder": "Estado",
+    "status_initialized": "Retirar inicializado",
+    "status_checkpoint": "Listo para retirar",
+    "status_checkpoint_placeholder": "Usualmente toma 30 minutos",
+    "status_completed": "Completar Retiro",
+    "complete_withdrawal": "Completar Retiro"
+  },
+  "withdrawal_status": {
+    "pending": "Pendiente",
+    "checkpoint": "Listo para retirar",
+    "complete": "Completado"
+  },
+  "deposit_status": {
+    "pending": "Pendiente",
+    "complete": "Completado"
+  },
+  "send_status": {
+    "rejected": "Rechazado",
+    "complete": "Completado",
+    "pending": "Pendiente"
+  },
+  "purchase_status": {
+    "failed": "Fallido",
+    "cancelled": "Cancelado",
+    "complete": "Completado",
+    "refunded": "Reintegrada",
+    "pending": "Pendiente",
+    "expired": "Expirada"
+  },
+  "tooltip": {
+    "button": "Ejecutar"
+  },
+  "deposit_tooltip": {
+    "header": "Deposito initializado",
+    "text": "Recuerde, cualquier transacción que mueva activos dentro, hacia o desde la red Ethereum incurrirá en tarifas de gas. Solo las transacciones realizadas exclusivamente en Polygon son gratuitas. Después de inicializar su depósito, hay un retraso de 30 minutos antes de que sus activos se transfieran a Polygon"
+  },
+  "withdrawal_tooltip": {
+    "header": "Retiro initializado",
+    "text": "Después de inicializar su retiro, debe esperar 30 minutos antes de llegar a un punto de control. Una vez que se alcanza el punto de control, se activará una transacción en su billetera Ethereum que debe firmar para completar el retiro"
+  },
+  "toast": {
+    "meta_transaction_failure": {
+      "title": "Meta transacción",
+      "body": "Ocurrió un error publicando la meta transacción.{br}Intentelo de nuevo o ingrese a nuestro {discord_link} para obtener más información."
+    }
+  }
+}

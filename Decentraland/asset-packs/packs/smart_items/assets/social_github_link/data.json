@@ -1,0 +1,38 @@
+{
+  "id": "79ee0689-3ae1-4f39-b8fd-b742b4509255",
+  "name": "Github Link",
+  "category": "social",
+  "tags": [
+    "social",
+    "links",
+    "github"
+  ],
+  "components": {
+    "core::GltfContainer": {
+      "src": "{assetPath}/github.glb"
+    },
+    "asset-packs::Actions": {
+      "id": "{self}",
+      "value": [
+        {
+          "name": "Open Link",
+          "type": "open_link",
+          "jsonPayload": "{ \"url\": \"https://github.com\" }"
+        }
+      ]
+    },
+    "asset-packs::Triggers": {
+      "value": [
+        {
+          "type": "on_click",
+          "actions": [
+            {
+              "id": "{self:asset-packs::Actions}",
+              "name": "Open Link"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

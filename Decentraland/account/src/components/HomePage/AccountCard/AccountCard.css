@@ -1,0 +1,39 @@
+.AccountCard.ui.card {
+  flex-grow: 1;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+}
+
+.AccountCard.ui.card:last-child,
+.AccountCard.ui.card:first-child {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.AccountCard.ui.card:first-child {
+  margin-right: 12px;
+}
+
+.AccountCard.ui.card:last-child {
+  margin-left: 12px;
+}
+
+.AccountCard:hover .see-all {
+  color: var(--primary);
+  opacity: 1;
+}
+
+.AccountCard .see-all {
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 18px;
+  text-align: right;
+  text-transform: uppercase;
+  margin-right: 40px;
+  margin-top: 23px;
+  float: right;
+  opacity: 0;
+  cursor: pointer;
+}

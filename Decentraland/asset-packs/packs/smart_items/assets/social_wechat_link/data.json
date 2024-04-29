@@ -1,0 +1,38 @@
+{
+  "id": "98b9c32c-cab6-42b7-a25c-a0aa19c3aec9",
+  "name": "WeChat Link",
+  "category": "social",
+  "tags": [
+    "social",
+    "links",
+    "wechat"
+  ],
+  "components": {
+    "core::GltfContainer": {
+      "src": "{assetPath}/wechat.glb"
+    },
+    "asset-packs::Actions": {
+      "id": "{self}",
+      "value": [
+        {
+          "name": "Open Link",
+          "type": "open_link",
+          "jsonPayload": "{ \"url\": \"https://wechat.com\" }"
+        }
+      ]
+    },
+    "asset-packs::Triggers": {
+      "value": [
+        {
+          "type": "on_click",
+          "actions": [
+            {
+              "id": "{self:asset-packs::Actions}",
+              "name": "Open Link"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

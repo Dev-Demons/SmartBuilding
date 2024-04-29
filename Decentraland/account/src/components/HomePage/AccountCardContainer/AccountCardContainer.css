@@ -1,0 +1,4 @@
+.AccountCardContainer {
+  display: flex;
+  flex-direction: row;
+}
