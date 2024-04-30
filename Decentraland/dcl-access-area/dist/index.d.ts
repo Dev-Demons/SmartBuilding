@@ -1,0 +1,1 @@
+export { createArea } from './accessArea';

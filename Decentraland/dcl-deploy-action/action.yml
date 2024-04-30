@@ -1,0 +1,22 @@
+name: 'Deployment with progressive deployment'
+branding:
+  icon: shopping-bag
+  color: green
+description: 'Sends a request to GitHub in order to track deployment'
+inputs:
+  serviceName:
+    description: 'Name of the NPM package'
+    required: true
+  dockerImage:
+    description: 'Docker image and digest'
+    required: true
+  env:
+    description: 'dev,prd,stg,biz'
+    required: true
+  token:
+    description: 'GitHub token'
+    required: true
+
+runs:
+  using: 'node16'
+  main: 'dist/index.js'

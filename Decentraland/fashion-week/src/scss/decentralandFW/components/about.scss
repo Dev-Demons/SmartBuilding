@@ -1,0 +1,165 @@
+@use "../mixins";
+
+#about {
+
+  width: 100%;
+
+  .about__text {
+    width: 100%;
+    max-width: 906px;
+    margin: 0 auto;
+    padding: 2rem var(--gutter) 3rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+
+    @include for-tablet-landscape-up {
+      padding: 5vw var(--gutter) 8vw;
+    }
+
+    > div {
+
+      > p {
+        line-height: 1.2em;
+        white-space: pre-line;
+        margin-bottom: 1.5em;
+        text-transform: uppercase;
+      }
+
+      //image container
+      > div:first-of-type {
+        position: relative;
+        border-radius: 22px;
+        overflow: hidden;
+        width: 100%;
+        padding-top: 33%;
+        margin-bottom: 2.5em;
+
+
+        > div {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+
+          img {
+            width: 100%;
+          }
+        }
+
+      }
+
+      > div:last-of-type {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style: none;
+        align-items: center;
+
+        @include for-tablet-landscape-up {
+          justify-content: space-between;
+        }
+
+      }
+
+      div.text__details {
+
+        > p {
+
+          position: relative;
+          flex: 0 1 auto;
+          flex-grow:  1;
+
+          display: inline-flex;
+
+          justify-content: space-between;
+
+          &:after {
+
+            display: inline-block;
+            margin:0 auto;
+            content: "";
+            text-align: center;
+            widtH: 24px;
+            height: 25px;
+            letter-spacing: 1em;
+            background: center center no-repeat url("data:image/svg+xml,%3Csvg width='24' height='25' viewBox='0 0 24 25' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 0.801758L13.7541 8.56707L20.4853 4.31648L16.2347 11.0477L24 12.8018L16.2347 14.5558L20.4853 21.287L13.7541 17.0364L12 24.8018L10.2459 17.0364L3.51472 21.287L7.76531 14.5558L0 12.8018L7.76531 11.0477L3.51472 4.31648L10.2459 8.56707L12 0.801758Z' fill='%23BE3455'/%3E%3C/svg%3E%0A");
+          }
+
+          &:last-of-type {
+            flex-grow: 0;
+            &:after {
+              content: unset;
+            }
+          }
+        }
+
+      }
+    }
+  }
+
+  //transitions
+  .about__text {
+    > div {
+      p {
+        transition: opacity 500ms, transform 700ms;
+        opacity: 0;
+        transform: translate(0, 20px)
+      }
+
+      div.text__image {
+        transition: opacity 500ms 300ms, transform 700ms 300ms;
+        opacity: 0;
+        transform: translate(0, 20px)
+      }
+
+      .text__details {
+
+        > * {
+          opacity: 0;
+          transition: opacity 200ms;
+        }
+
+
+      }
+
+    }
+  }
+
+  &.visible {
+
+    .about__text {
+      > div {
+        p {
+          opacity: 1;
+          transform: translate(0, 0)
+        }
+
+        div.text__image {
+          opacity: 1;
+          transform: translate(0, 0)
+        }
+
+        .text__details {
+          > * {
+            opacity: 1;
+          }
+
+          @for $i from 1 through 8 {
+            > *:nth-child(#{$i}) {
+              transition: opacity 1500ms #{$i * 30 + 1000}ms;
+            }
+          }
+        }
+
+      }
+    }
+  }
+
+}

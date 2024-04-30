@@ -1,0 +1,44 @@
+@use "sass:math";
+
+#teaser {
+
+  display: flex;
+  flex-direction: column;
+  padding:var(--gutter);
+  @include for-tablet-landscape-up{
+    flex-direction: row;
+    padding:0;
+  }
+
+  .teaser__video {
+    border-radius: 10px;
+    padding-top: percentage(math.div(177,312));
+    @include for-tablet-landscape-up {
+      padding-top: percentage(math.div(533,1920));
+      flex: 0 0 percentage(math.div(1317,1920));
+    }
+    overflow: hidden;
+    position:relative;
+
+    iframe{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    }
+  }
+
+  .teaser__poster {
+
+    padding-top: percentage(math.div(533, 602));
+    @include for-tablet-landscape-up{
+      padding: 0;
+    }
+
+
+    flex-grow: 1;
+    background-image: url('/Frame_89_yf8ykt_c_scale,w_913.png');
+    background-size: cover;
+  }
+}

@@ -1,0 +1,3 @@
+name: service-graph-node
+runtime: nodejs
+description: Matic Graph Node

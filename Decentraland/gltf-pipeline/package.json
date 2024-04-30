@@ -1,0 +1,64 @@
+{
+  "name": "gltf-pipeline",
+  "version": "2.1.10",
+  "description": "Content pipeline tools for optimizing glTF assets.",
+  "license": "Apache-2.0",
+  "contributors": [
+    {
+      "name": "Richard Lee, Cesium GS, Inc., and Contributors",
+      "url": "https://github.com/CesiumGS/gltf-pipeline/graphs/contributors"
+    }
+  ],
+  "keywords": [
+    "glTF",
+    "WebGL"
+  ],
+  "homepage": "https://github.com/CesiumGS/gltf-pipeline",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:CesiumGS/gltf-pipeline.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CesiumGS/gltf-pipeline/issues"
+  },
+  "main": "index.js",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "cesium": "^1.69.0",
+    "draco3d": "^1.3.6",
+    "fs-extra": "^9.0.0",
+    "mime": "^2.4.5",
+    "object-hash": "^2.0.3",
+    "yargs": "^15.3.1"
+  },
+  "devDependencies": {
+    "cloc": "^2.5.1",
+    "coveralls": "^3.1.0",
+    "dependency-tree": "^7.2.1",
+    "eslint": "^7.0.0",
+    "eslint-config-cesium": "^8.0.1",
+    "gulp": "^4.0.2",
+    "jasmine": "^3.5.0",
+    "jasmine-spec-reporter": "^5.0.2",
+    "jsdoc": "^3.6.4",
+    "nyc": "^15.0.1",
+    "open": "^7.0.3"
+  },
+  "scripts": {
+    "jsdoc": "jsdoc ./lib -R ./README.md -d doc",
+    "eslint": "eslint \"./**/*.js\" --cache --quiet",
+    "eslint-watch": "gulp eslint-watch",
+    "test": "gulp test",
+    "test-watch": "gulp test-watch",
+    "coverage": "gulp coverage",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
+    "cloc": "gulp cloc",
+    "build-cesium": "gulp build-cesium"
+  },
+  "bin": {
+    "gltf-pipeline": "./bin/gltf-pipeline.js"
+  }
+}

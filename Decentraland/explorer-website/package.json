@@ -1,0 +1,83 @@
+{
+  "name": "@dcl/explorer-website",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "tsc && NODE_OPTIONS=\"--max-old-space-size=8192\" vite build",
+    "build:full": "npm run build && npm run copy-cdn",
+    "postinstall": "node ./scripts/hash_generator.cjs",
+    "copy-cdn": "node ./scripts/copy_cdn.cjs"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 120,
+    "trailingComma": "none"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      "chrome >= 67",
+      "edge >= 79",
+      "firefox >= 68",
+      "opera >= 54",
+      "safari >= 14"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@dcl/explorer": "^1.0.158859-20240110140315.commit-19935b0",
+    "@dcl/feature-flags": "^1.2.0",
+    "@dcl/kernel-interface": "^2.0.0-20230512115658.commit-b582e05",
+    "@dcl/schemas": "^9.12.0",
+    "@dcl/single-sign-on-client": "^0.1.0",
+    "@dcl/urn-resolver": "^1.4.0",
+    "@sentry/browser": "^7.91.0",
+    "@sentry/tracing": "^7.91.0",
+    "decentraland-connect": "^6.5.0",
+    "decentraland-dapps": "^17.4.0",
+    "decentraland-ui": "^5.4.6",
+    "detect-browser": "^5.2.0",
+    "dotenv": "^16.3.1",
+    "eth-connect": "^6.2.4",
+    "md5-file": "^5.0.0",
+    "mime-types": "^2.1.35",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.9",
+    "react-virtualized": "^9.22.5",
+    "redux": "^4.0.5",
+    "redux-saga": "^1.2.3",
+    "uuid": "^9.0.1",
+    "validator": "^13.7.0",
+    "vite": "^5.0.11"
+  },
+  "devDependencies": {
+    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
+    "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
+    "@types/react": "^17.0.52",
+    "@types/react-dom": "^17.0.18",
+    "@types/react-redux": "^7.1.9",
+    "@types/uuid": "^9.0.7",
+    "@types/validator": "^13.11.7",
+    "@vitejs/plugin-basic-ssl": "^1.0.2",
+    "@vitejs/plugin-react": "^4.2.1",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "fs-extra": "^10.0.0",
+    "redux-devtools-extension": "^2.13.8",
+    "rollup-plugin-polyfill-node": "^0.13.0",
+    "typescript": "^4.5.5"
+  },
+  "engines": {
+    "node": "^20"
+  },
+  "homepage": ""
+}

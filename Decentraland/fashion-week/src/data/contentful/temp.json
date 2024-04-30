@@ -1,0 +1,46 @@
+{
+  "metadata": {
+    "title": "Metaverse Fashion Week 2023",
+    "description": "Metaverse Fashion Week (MVFW), pioneered by Decentraland and UNXD, will be held from March 28-31, 2023 concluding the Spring/Summer Fashion season on virtual catwalks.",
+    "image": "https://mvfw.org/static/mvfw-2023-c3be9b8398889a64b7e0e915e3beed64.png"
+  },
+  "header": {
+    "agenda": "Agenda",
+    "maps": "Maps",
+    "marketplace": "MarketPlace",
+    "events": "Events",
+    "partners": "Partners",
+    "faqs": "FAQ"
+  },
+  "agenda": {
+    "title": "Agenda",
+    "cta": "Jump In"
+  },
+  "maps": {
+    "title": "Maps"
+  },
+  "marketplace": {
+    "title": "MarketPlace",
+    "cta": "Jump In"
+  },
+  "events": {
+    "title": "Events",
+    "cta": "Jump In"
+  },
+  "partners": {
+    "title": "Meet Our Partners"
+  },
+  "faqs": {
+    "title": "FAQS"
+  },
+  "footer": {
+    "twitter": "Twitter",
+    "twitterUrl": "https://twitter.com/decentraland",
+    "discord": "Discord",
+    "discordUrl": "https://decentraland.org/discord/",
+    "github": "Github",
+    "githubUrl": "https://github.com/decentraland",
+    "reddit": "Reddit",
+    "redditUrl": "https://www.reddit.com/r/decentraland"
+  }
+}

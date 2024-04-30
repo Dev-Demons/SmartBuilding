@@ -1,0 +1,36 @@
+{
+  "name": "dcl-xml",
+  "version": "0.0.0-development",
+  "description": "Decentraland-flavored XML parser",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "watch": "decentraland-compiler build.json --watch",
+    "build": "decentraland-compiler build.json",
+    "test": "mocha -r ts-node/register test/**/*.spec.ts"
+  },
+  "author": "Decentraland",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/decentraland/dcl-xml.git"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 140
+  },
+  "dependencies": {
+    "ebnf": "^1.6.3"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.5",
+    "@types/mocha": "^2.2.48",
+    "chai": "^4.1.2",
+    "dcl-tslint-config-standard": "^1.1.0",
+    "decentraland-rpc": "^2.8.5",
+    "mocha": "^4.1.0",
+    "semantic-release": "^15.9.16",
+    "ts-node": "^4.1.0"
+  }
+}

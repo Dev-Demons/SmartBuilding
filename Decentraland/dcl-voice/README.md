@@ -1,0 +1,2 @@
+`make watch`
+`make build`

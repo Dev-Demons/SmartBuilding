@@ -1,0 +1,176 @@
+@import "normalize";
+@import "mixins";
+@import "fonts";
+
+:root {
+  font-size: 16px;
+  font-family: 'Neue Montreal';
+
+  --gutter: 30px;
+  --header-height: 64px;
+  --max-width: 1245px;
+
+  --color-black: #111111;
+  --color-pink: #FDC5DB;
+
+  --color-grey: #1d1d1d;
+  --color-grey-dark : #606060;
+
+  --color-focus-primary: #77E197;
+  --color-focus-secondary: #BE3455;
+
+
+  --border: 4px solid #000000;
+  --border-radius: 35px;
+
+  --marquee-height: 94px;
+
+
+  @include for-tablet-landscape-up {
+    font-size: 24px;
+    --header-height: 80px;
+  }
+
+
+  *::-webkit-scrollbar * {
+    background: transparent; // manage scrollbar background color here
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--color-focus-primary);
+    border-radius: 2px;
+    //border: 3px dashed #ffffff;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: var(--color-grey);
+  }
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+
+  &:visited {
+    color: white;
+  }
+}
+
+button, input[type="submit"], input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+::selection {
+  background: var(--color-focus-primary);
+}
+
+main {
+  width: 100%;
+  background-color: var(--color-black);
+}
+
+h1 {
+  font-size: 42px;
+  line-height: 82%;
+  font-weight: 400;
+  /* or 79px */
+
+  @include for-tablet-landscape-up {
+    font-size: 5vw;
+  }
+
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 58px;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 38px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+h4 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  /* identical to box height */
+
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+h5{
+  font-weight: 500;
+  font-size:0.66rem;
+  line-height: 1rem;
+}
+.marquee {
+  height: 4rem;
+  color: white;
+
+  background-color: var(--color-grey);
+  border: 4px solid white;
+  border-radius: 1rem;
+
+  > div {
+    font-family: 'Neue Montreal';
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.66rem;
+    line-height: 2rem;
+    text-transform: uppercase;
+
+    svg {
+      path {
+        stroke: white;
+      }
+    }
+  }
+}
+
+.button__arrow{
+  width:60px;
+}
+
+@import "components/header";
+@import "components/landing";
+@import "components/about";
+@import "components/agenda";
+@import "components/maps";
+@import "components/marketplace";
+@import "components/marketplaceItem";
+@import "components/events";
+@import "components/partners";
+@import "components/faqs";
+@import "components/footer";
+@import "components/teaser";

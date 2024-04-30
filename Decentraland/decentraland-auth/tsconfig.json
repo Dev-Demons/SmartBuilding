@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "declaration": true,
+    "outDir": "./build",
+    "rootDirs": ["./src", "./public"],
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "esModuleInterop": true,
+    "plugins": [{ "name": "tslint-language-service" }]
+  },
+  "exclude": ["public", "build"]
+}

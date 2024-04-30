@@ -1,0 +1,39 @@
+name: release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: node.js 18
+        uses: actions/setup-node@v1
+        with:
+          node-version: 18
+          registry-url: https://registry.npmjs.org/
+          cache: "npm"
+
+      - name: installing
+        run: npm ci
+
+      - name: building
+        run: npm run build
+        env:
+          GATSBY_SEGMENT_KEY: "julsNQhiodZFvdOZTXrrPiKmwX4CkHoa"
+          GATSBY_CONTENTFUL_SPACE_ID: "ea2ybdmmn1kv"
+          GATSBY_CONTENTFUL_ACCESS_TOKEN: "lx1c4KypDoWjLy2WT8vImClZch3EC-2QYrqBeN79XGs"
+          GATSBY_CONTENTFUL_ENVIRONMENT: "master"
+
+      - name: publishing documents
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: ./public
+          CNAME: mvfw.org

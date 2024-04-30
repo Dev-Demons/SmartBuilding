@@ -1,0 +1,53 @@
+get:
+  operationId: getQuests
+  summary: List of Quests
+  tags:
+    - Quests
+  description: >- 
+    Retrieves the list of existing Quests in the Server.
+  parameters:
+    - in: query 
+      name: details      
+      schema:
+        type: boolean
+        example: true
+      description: >- 
+        When this is set to true the response list of quest will include the tasks for each quest
+  responses:
+    '200':
+      description: List of Quests
+      content:
+        application/json; charset=utf-8:
+          schema:
+            type: object
+        example:
+          $ref: ../../components/examples/quests/200-quests.json
+post:
+  operationId: createQuest
+  summary: Create Quest
+  tags:
+    - Quests
+  description: >- 
+    Create a new Quest 
+  requestBody:
+    description: Quest Object
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/quest.json'      
+        example:
+          name: quest-tests
+          active: false
+          description: this is a tests quest
+          thumbnailEntry: https://assets.coingecko.com/coins/images/878/large/decentraland-mana.png?1550108745
+          thumbnailBanner: https://assets.coingecko.com/coins/images/878/large/decentraland-mana.png?1550108745
+          visibility: secret    
+          orderedTasks: false
+  responses:
+    '200':
+      description: Created Quest details 
+      content:
+        application/json:
+          example:             
+            $ref: '../../components/examples/quests/200-POST-quest.json'

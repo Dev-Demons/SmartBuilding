@@ -1,0 +1,25 @@
+{
+  "name": "com.decentraland.videoplayer",
+  "version": "1.0.0",
+  "displayName": "DCLVideoPlayer",
+  "description": "DCLVideoPlayer",
+  "unity": "2020.3",
+  "unityRelease": "0f1",
+  "gitDependencies": {
+  },
+  "dependencies": {
+  },
+  "testables": [
+
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/decentraland/DCLVideoPlayerUnity.git"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Decentraland",
+    "email": "contact@decentraland.org",
+    "url": "https://www.decentraland.org"
+  }
+}

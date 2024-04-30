@@ -1,0 +1,52 @@
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch name'
+        required: true
+        default: 'main'
+
+name: Android Build
+
+jobs:
+  build:
+    runs-on: bigrunner
+    container:
+      image: docker://kuruk/dcl-godot-android-builder:latest
+      volumes:
+        - /home/user/.cache/devgodot:/github/home/.cache/devgodot
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'push' && 'main' || github.event.inputs.branch }}
+      - name: Setup Rust
+        run: |
+          echo $ANDROID_HOME
+          ls -la /root/
+          ls -la /root/.cargo/bin/
+          export PATH="/root/.cargo/bin:${PATH}"
+          rustup default stable
+          rustup target add aarch64-linux-android
+          rustup target add x86_64-linux-android
+      - name: Build
+        run: |
+          bash build-android-apk.sh
+      
+      # if libdecentraland_godot_lib.so does not exist, the build failed, nothing to upload
+      - name: Copy artifacts
+        if: success() || failure()
+        run: |
+          mkdir -p android-artifacts
+          mv godot/lib/android/arm64/libdecentraland_godot_lib.so android-artifacts/
+          mv android.apk android-artifacts/ || true
+          mv android-unsigned.aab android-artifacts/ || true
+          
+      - uses: actions/upload-artifact@v3
+        if: success() || failure()
+        with:
+          name: Android APK
+          path: android-artifacts/

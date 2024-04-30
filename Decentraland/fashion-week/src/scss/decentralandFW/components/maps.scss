@@ -1,0 +1,62 @@
+#maps{
+
+  width: 100%;
+  min-height:100vh;
+
+  padding-bottom: 10vw;
+
+  .maps__map{
+    padding : 1rem var(--gutter) 0rem;
+    width:100%;
+    max-width: var(--max-width);
+    margin:0 auto;
+    overflow: hidden;
+    img {
+      z-index: 2;
+      position:relative;
+      padding:1rem 0 0;
+      width: 100%;
+    }
+
+    &-1{
+      position:relative;
+      z-index: 2;
+
+      &:after{
+        content: "";
+        position:absolute;
+        width: 448px;
+        height: 448px;
+        right: 0;
+        top:50%;
+        z-index: 1;
+        transform: translate(90%, -50%) rotate(7deg);
+        //background-color: red;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image : url('/Denoised beauty 12.png');
+      }
+    }
+
+    &-2{
+      position:relative;
+      z-index: 2;
+      &:after{
+        content: "";
+        position:absolute;
+        width: 799px;
+        height: 799px;
+        left: 0;
+        top:50%;
+        z-index: 1;
+        transform: translate(-70%, -50%) rotate(-7deg);
+        //background-color: red;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-image : url('/Denoised beauty 8.png');
+      }
+    }
+  }
+}

@@ -1,0 +1,255 @@
+
+.marketplace-item {
+  width: 312px;
+  flex: 0 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--color-grey);
+  display: flex;
+  flex-direction: column;
+
+  > div.marketplace-item__image {
+    width: 100%;
+    padding-top: 80%;
+    position: relative;
+    pointer-events: all;
+    cursor: pointer;
+    background-color: var(--color-focus-primary);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      position: absolute;
+      object-position: center;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  > div.marketplace-item__text {
+    padding: 1rem;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height:100%;
+
+    > div:first-of-type{
+      flex:1 0 auto;
+    }
+
+    .marketplace-item__title {
+
+      display: flex;
+      justify-content: space-between;
+      //align-items: top;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      font-size: 18px;
+      line-height: 1.2em;
+
+      span {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        font-weight: 500;
+        line-height: inherit;
+        gap:0.5em;
+      }
+      margin-bottom: 0.5em;
+    }
+
+    h5 {
+      line-height: inherit;
+      font-size: inherit;
+
+    }
+
+    .marketplace-item__creator {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      color: var(--color-grey-dark);
+      margin-bottom: 1em;
+    }
+
+    .marketplace-item__tags {
+      display: flex;
+      justify-content: space-between;
+
+      button.button__tag {
+        //pointer-events: all;
+        cursor: pointer;
+        color: white;
+        border-radius: 8px;
+        text-transform: uppercase;
+        min-width: 127px;
+        height: 27px;
+        padding: 0 1em;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--color-focus-primary);
+        font-size: 14px;
+        line-height: 17px;
+
+        a {
+          position: relative;
+          z-index: 2;
+        }
+
+      }
+
+      > div {
+
+        display: flex;
+        gap: 5px;
+
+        .icon {
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: 24px 24px;
+          width: 27px;
+          height: 27px;
+          background-color: #37333d;
+          border-radius: 4px;
+          display: inline-block;
+        }
+
+        .marketplace-item__type {
+          display: inline-block;
+
+          &.body_shape {
+            background-image: url(/wearables/BodyShapeIcon.svg);
+          }
+
+          &.earring {
+            background-image: url(/wearables/EarringsIcon.svg);
+          }
+
+          &.eyebrows {
+            background-image: url(/wearables/EyebrowIcon.svg);
+          }
+
+          &.eyes {
+            background-image: url(/wearables/EyesIcon.svg);
+          }
+
+          &.eyewear {
+            background-image: url(/wearables/EyewearIcon.svg);
+          }
+
+          &.facial_hair {
+            background-image: url(/wearables/FacilHairIcon.svg);
+          }
+
+          &.feet {
+            background-image: url(/wearables/FeetIcon.svg);
+          }
+
+          &.hair {
+            background-image: url(/wearables/HairIcon.svg);
+          }
+
+          &.hat {
+            background-image: url(/wearables/HatIcon.svg);
+          }
+
+          &.helmet {
+            background-image: url(/wearables/HelmetIcon.svg);
+          }
+
+          &.lower_body {
+            background-image: url(/wearables/LowerBodyIcon.svg);
+          }
+
+          &.mask {
+            background-image: url(/wearables/MaskIcon.svg);
+          }
+
+          &.mouth {
+            background-image: url(/wearables/MouthIcon.svg);
+          }
+
+          &.tiara {
+            background-image: url(/wearables/TiaraIcon.svg);
+          }
+
+          &.top_head {
+            background-image: url(/wearables/TopHeadIcon.svg);
+          }
+
+          &.upper_body {
+            background-image: url(/wearables/UpperBodyIcon.svg);
+          }
+
+          &.skin {
+            background-image: url(/wearables/SkinIcon.svg);
+          }
+
+        }
+
+        .marketplace-item__bodyShape {
+
+          &.BaseMale {
+            background-image: url(/wearables/MaleIcon.svg);
+          }
+
+          &.BaseFemale {
+            background-image: url(/wearables/FemaleIcon.svg);
+          }
+
+          &.BaseFemale.BaseFemale {
+            background-image: url(/wearables/UnisexIcon.svg);
+          }
+
+        }
+      }
+    }
+
+
+    button.button_link {
+      pointer-events: all;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      lefT: 0;
+      z-index: 3;
+      opacity: 0;
+      transition: opacity 200ms;
+      background: rgba(0, 0, 0, 0.7);
+      cursor: unset;
+      /* white */
+      backdrop-filter: blur(6.5px);
+      //background-color: red;
+
+      a {
+        font-size: 18px;
+        background: #BE3455;
+        box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.16), 0px 5.21357px 2.60679px rgba(0, 0, 0, 0.16), 0px 1.30339px 2.60679px rgba(0, 0, 0, 0.16), inset 0px -3px 0px rgba(0, 0, 0, 0.12);
+        border-radius: 12px;
+        padding: 0.5em 1em;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+    }
+
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      border: 3px solid white;
+
+      > div.marketplace-item__text {
+        button.button_link {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

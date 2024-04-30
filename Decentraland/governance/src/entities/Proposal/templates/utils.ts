@@ -1,0 +1,55 @@
+import markdown from 'remark-parse'
+import stringify from 'remark-stringify'
+import unified from 'unified'
+
+import Time from '../../../utils/date/Time'
+import ProposalModel from '../model'
+import { ProposalAttributes } from '../types'
+import { proposalUrl } from '../utils'
+
+type NodeItem = {
+  type: string
+  depth?: number
+}
+
+type Node = {
+  type: string
+  depth: number
+  children: NodeItem[]
+}
+
+export function template(raw: TemplateStringsArray, ...subs: any[]) {
+  return String.raw(raw, ...subs).trim()
+}
+
+export async function formatLinkedProposal(linked_proposal_id: string) {
+  const url = proposalUrl(linked_proposal_id)
+  const proposal = await ProposalModel.findOne<ProposalAttributes>({ id: linked_proposal_id, deleted: false })
+  return `[${proposal?.title}](${url})` || ''
+}
+
+const parser = unified().use(markdown).use(stringify)
+
+export function formatMarkdown(value: string): string {
+  const tree = parser.parse(value)
+  const result = parser.stringify(formatMarkdownAST(tree as Node))
+  return result
+}
+
+function formatMarkdownAST(node: Node): Node {
+  switch (node.type) {
+    case 'heading':
+      return {
+        ...node,
+        depth: (node.depth as number) < 3 ? 3 : (node.depth as number),
+        children: node.children && (node.children as Node[]).map((node) => formatMarkdownAST(node)),
+      }
+    default:
+      return {
+        ...node,
+        children: node.children && (node.children as Node[]).map((node) => formatMarkdownAST(node)),
+      }
+  }
+}
+
+export const formatDate = (date: Date | string) => Time.from(date).format('MMM DD, YYYY')

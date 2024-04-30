@@ -1,0 +1,97 @@
+#root {
+  position: fixed;
+}
+
+.explorer-website-start {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../../images/background-v4.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+}
+
+.explorer-website-start .ui.loader:after {
+  border-color: #540880 transparent transparent !important;
+}
+
+.explorer-website-start .start-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 150px;
+  padding-right: 40px;
+  height: 100%;
+}
+
+.explorer-website-start .start-wearable-preview {
+  height: 100%;
+  width: 50%;
+  position: relative;
+  right: 8%;
+}
+
+.explorer-website-start .start-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.explorer-website-start .start-links .ui.button {
+  max-width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.explorer-website-start .start-links .ui.button.inverted {
+  color: white;
+  border-color: white;
+}
+
+.explorer-website-start .start-title {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-size: 30px;
+  line-height: normal;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.explorer-website-start .start-desktop-download {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  font-weight: 300;
+  gap: 10px;
+  border-top: 1px solid white;
+  padding-top: 20px;
+  width: fit-content;
+  letter-spacing: 1px;
+}
+
+.explorer-website-start .start-desktop-download a span {
+  text-decoration: underline;
+  color: white;
+}
+
+.explorer-website-start .start-links .icon:before {
+  font-size: 20px;
+}
+
+.explorer-website-start .start-links .icon {
+  width: fit-content;
+  height: fit-content;
+  opacity: 1;
+}
+
+.start-community-bubble {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}

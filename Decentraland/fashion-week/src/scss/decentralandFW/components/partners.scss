@@ -1,0 +1,58 @@
+#partners {
+
+  width: 100%;
+  //min-height: 100vh;
+  padding: 0 0 4rem;
+
+  @include for-tablet-landscape-up{
+    padding:  0 0 4rem;
+  }
+
+  .partners__grid {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 4rem auto;
+    padding: 0 var(--gutter);
+
+    display: flex;
+    gap: var(--gutter);
+    flex-wrap: wrap;
+    justify-content: center;
+
+    --columns:3;
+
+    @include for-tablet-landscape-up{
+      &:has(> div:nth-child(7)) { /* 6 or more elements */
+        --columns:4;
+      }
+      &:has(> div:nth-child(13)) { /* 12 or more elements */
+        --columns:6;
+      }
+
+    }
+    --gap-count:calc( var(--columns) - 1 );
+
+    > div {
+
+      flex: 0 0 auto;
+      height: 74px;
+      //see https://stackoverflow.com/questions/72116170/account-for-gap-when-calculating-flex-basis
+      width: calc( calc( 100% / var(--columns) ) - calc( var(--gutter) / var(--columns) * var(--gap-count) ) );
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+  }
+
+  &:after {
+    content: "";
+    background-image: url('/texture 2.png');
+    width: 320px;
+    height: 252px;
+    display: block;
+    margin: 0 auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+}

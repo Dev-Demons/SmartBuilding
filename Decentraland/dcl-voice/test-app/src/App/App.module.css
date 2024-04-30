@@ -1,0 +1,74 @@
+.container {
+  min-height: 100vh;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  user-select: none;
+}
+
+.header {
+  margin: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.header > :first-child {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  min-width: 100px !important;
+}
+
+.videoContainer {
+  margin-top: 1.6rem;
+}
+
+.grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin-top: 3rem;
+}
+
+
+.card h2 {
+  font-size: 1.5rem;
+}
+
+.card p {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.logo {
+  height: 1em;
+  margin-left: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+
+.graphs {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+
+.graphs > :first-child {
+  position: relative;
+  width: 50%;
+  min-width: 50%;
+  min-height: 100%;
+  border: 1px solid;
+  border-radius: 16px;
+}

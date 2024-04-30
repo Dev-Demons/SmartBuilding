@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://cy43hvd5bivso"]
+
+[ext_resource type="PackedScene" uid="uid://dvu5i0n51gph3" path="res://src/decentraland_components/avatar/avatar.tscn" id="1_dtjd5"]
+[ext_resource type="Script" path="res://src/ui/components/backpack/avatar_preview.gd" id="1_sayag"]
+[ext_resource type="PackedScene" uid="uid://0ccix5xpw76a" path="res://assets/ui/backpack/platform_compressed.glb" id="3_i62gc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6yihh"]
+sky_top_color = Color(1, 1, 1, 1)
+sky_horizon_color = Color(0.8, 0.79225, 0.78325, 1)
+ground_horizon_color = Color(0.8, 0.79225, 0.78325, 1)
+
+[sub_resource type="Sky" id="Sky_0qr0h"]
+sky_material = SubResource("ProceduralSkyMaterial_6yihh")
+
+[sub_resource type="Environment" id="Environment_lhy6q"]
+background_mode = 2
+sky = SubResource("Sky_0qr0h")
+
+[node name="AvatarPreview" type="SubViewportContainer"]
+offset_right = 256.0
+offset_bottom = 500.0
+size_flags_horizontal = 4
+script = ExtResource("1_sayag")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+unique_name_in_owner = true
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(256, 500)
+render_target_update_mode = 4
+
+[node name="Avatar" parent="SubViewport" instance=ExtResource("1_dtjd5")]
+unique_name_in_owner = true
+non_3d_audio = true
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+unique_name_in_owner = true
+transform = Transform3D(-1, -5.16436e-08, 1.4189e-07, 0, 0.939693, 0.34202, -1.50996e-07, 0.34202, -0.939693, 0, 2.3, -3.5)
+fov = 40.0
+size = 3.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_reverse_cull_face = true
+shadow_transmittance_bias = 2.455
+shadow_blur = 6.834
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport"]
+environment = SubResource("Environment_lhy6q")
+
+[node name="Platform" parent="SubViewport" instance=ExtResource("3_i62gc")]
+unique_name_in_owner = true
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, -0.09, 0)
+visible = false
